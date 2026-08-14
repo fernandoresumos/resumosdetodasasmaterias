@@ -1,0 +1,2781 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242b27">
+  <title>Resumos do Fernando</title>
+  <meta name="description" content="Resumos temáticos, animados e interativos feitos por Fernando.">
+  <style>
+:root {
+  --paper: #f3efe6;
+  --ink: #171915;
+  --muted: #66685f;
+  --line: rgba(23, 25, 21, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Aptos", "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 60%, white);
+  outline-offset: 3px;
+}
+
+.study-shell {
+  --accent: #d54b34;
+  --accent-2: #f2b84b;
+  --stage: #eee7dc;
+  --deep: #242b27;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(20, 22, 18, 0.025) 1px, transparent 1px),
+    var(--paper);
+  background-size: 100% 26px;
+}
+
+.study-shell[data-theme="sepia"] {
+  --accent: #a54836;
+  --accent-2: #d49b54;
+  --stage: #eadfc9;
+  --deep: #2f201c;
+}
+
+.study-shell[data-theme="blueprint"] {
+  --accent: #2875b5;
+  --accent-2: #efb942;
+  --stage: #e1edf3;
+  --deep: #153348;
+}
+
+.study-shell[data-theme="archive"] {
+  --accent: #8c4d31;
+  --accent-2: #c59b52;
+  --stage: #e7dcc5;
+  --deep: #33261d;
+}
+
+.study-shell[data-theme="editorial"] {
+  --accent: #df3d37;
+  --accent-2: #ffd84f;
+  --stage: #f1eee4;
+  --deep: #1d1d1a;
+}
+
+.study-shell[data-theme="dusk"] {
+  --accent: #7252a3;
+  --accent-2: #d69b45;
+  --stage: #e8e1ec;
+  --deep: #2b2037;
+}
+
+.study-shell[data-theme="terrain"] {
+  --accent: #39775c;
+  --accent-2: #e09a3c;
+  --stage: #dfe8dc;
+  --deep: #1d3a2e;
+}
+
+.study-shell[data-theme="cosmos"] {
+  --accent: #425bd3;
+  --accent-2: #efbb45;
+  --stage: #dfe3f1;
+  --deep: #17213f;
+}
+
+.study-shell[data-theme="garden"] {
+  --accent: #3f7b50;
+  --accent-2: #d99b50;
+  --stage: #e2eadb;
+  --deep: #1f3826;
+}
+
+.study-shell[data-theme="lab"] {
+  --accent: #137e83;
+  --accent-2: #e67d4d;
+  --stage: #dcebea;
+  --deep: #173b3d;
+}
+
+.study-shell[data-theme="civic"] {
+  --accent: #b64e38;
+  --accent-2: #416a8a;
+  --stage: #ebe0d9;
+  --deep: #38211c;
+}
+
+.study-shell[data-theme="zine"] {
+  --accent: #d73573;
+  --accent-2: #14a3a1;
+  --stage: #f0e2eb;
+  --deep: #321c2d;
+}
+
+.skip-link {
+  position: fixed;
+  left: 18px;
+  top: 18px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: white;
+  color: #171915;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-decoration: none;
+  transform: translateY(-180%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.cover {
+  position: relative;
+  min-height: clamp(680px, 100svh, 900px);
+  padding: clamp(42px, 6vw, 92px) clamp(24px, 7vw, 110px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  align-items: center;
+  gap: clamp(48px, 8vw, 140px);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    #202722;
+  background-size: 34px 34px;
+  color: #f5f0e7;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  width: clamp(300px, 43vw, 700px);
+  aspect-ratio: 1;
+  right: -10vw;
+  top: -23vw;
+  z-index: -1;
+  border-radius: 50%;
+  background: #d54b34;
+  box-shadow: -48px 42px 0 #f2b84b;
+  opacity: 0.92;
+}
+
+.cover::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  left: -150px;
+  bottom: -148px;
+  z-index: -1;
+  border: 42px solid rgba(242, 184, 75, 0.34);
+  border-radius: 50%;
+}
+
+.cover-copy,
+.cover-art {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-copy {
+  max-width: 760px;
+}
+
+.cover-eyebrow {
+  margin: 0 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #f2b84b;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.cover-eyebrow::before {
+  content: "";
+  width: 46px;
+  height: 3px;
+  background: currentColor;
+}
+
+.cover h1 {
+  margin: 0;
+  max-width: 760px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(4.2rem, 9.2vw, 9rem);
+  line-height: 0.78;
+  letter-spacing: -0.075em;
+  font-weight: 800;
+}
+
+.cover h1 > span:first-child {
+  display: block;
+  margin: 0 0 16px 7px;
+  font-family: "Aptos", "Segoe UI", Arial, sans-serif;
+  font-size: clamp(0.82rem, 1.35vw, 1.2rem);
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cover h1 > span:last-child {
+  color: #d54b34;
+}
+
+.cover-lede {
+  max-width: 610px;
+  margin: 34px 0 0;
+  color: rgba(245, 240, 231, 0.76);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.12rem, 1.8vw, 1.45rem);
+  line-height: 1.5;
+}
+
+.cover-actions {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.cover-button {
+  min-height: 54px;
+  padding: 0 23px;
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  border-radius: 99px;
+  background: #f5f0e7;
+  color: #202722;
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.cover-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+}
+
+.cover-button span {
+  color: #d54b34;
+  font-size: 1.2rem;
+}
+
+.cover-actions > p {
+  max-width: 210px;
+  margin: 0;
+  color: rgba(245, 240, 231, 0.56);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.cover-art {
+  display: grid;
+  place-items: center;
+}
+
+.cover-sheet {
+  position: relative;
+  width: min(100%, 420px);
+  min-height: 535px;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(rgba(32, 39, 34, 0.055) 1px, transparent 1px),
+    #f5f0e7;
+  background-size: 100% 27px;
+  color: #202722;
+  border-radius: 3px;
+  box-shadow: 24px 28px 0 rgba(0, 0, 0, 0.2), 0 36px 70px rgba(0, 0, 0, 0.28);
+  transform: rotate(2.2deg);
+}
+
+.cover-sheet::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(32, 39, 34, 0.18);
+  pointer-events: none;
+}
+
+.cover-sheet-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 0.66rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.cover-sheet-head b {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #d54b34;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  letter-spacing: 0;
+}
+
+.cover-monogram {
+  margin: auto 0 2px;
+  color: #202722;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(9rem, 19vw, 14rem);
+  font-weight: 800;
+  line-height: 0.72;
+  letter-spacing: -0.12em;
+  text-align: center;
+  text-shadow: 11px 10px 0 #f2b84b, 20px 18px 0 #d54b34;
+}
+
+.cover-sheet > p {
+  position: relative;
+  z-index: 1;
+  margin: 24px 0 20px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.cover-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(32, 39, 34, 0.24);
+  border-bottom: 1px solid rgba(32, 39, 34, 0.24);
+}
+
+.cover-stats > div {
+  padding: 17px 8px;
+  display: grid;
+  text-align: center;
+}
+
+.cover-stats > div + div {
+  border-left: 1px solid rgba(32, 39, 34, 0.24);
+}
+
+.cover-stats strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.8rem;
+}
+
+.cover-stats span,
+.cover-progress-line > span,
+.cover-sheet > small {
+  color: #65675f;
+  font-size: 0.63rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cover-progress-line {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+
+.cover-progress-line > i {
+  height: 6px;
+  margin-top: 9px;
+  display: block;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #d8d2c7;
+}
+
+.cover-progress-line > i > b {
+  width: 0;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+  background: #d54b34;
+  transition: width 240ms ease;
+}
+
+.cover-sheet > small {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.topbar {
+  min-height: 86px;
+  padding: 16px clamp(20px, 4vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(247, 244, 237, 0.92);
+  backdrop-filter: blur(14px);
+}
+
+.brand-lockup {
+  min-width: 245px;
+}
+
+.brand-kicker,
+.overline,
+.card-label,
+.snapshot > span,
+.memory-note > span,
+.trap-note > span,
+.topic-main > header > span,
+.hero-memory > span,
+.route-strip > span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.brand-kicker {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.brand-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.65rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+
+.brand-name > span:first-child {
+  font-family: "Aptos", "Segoe UI", sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  margin-right: 5px;
+  color: var(--muted);
+}
+
+.brand-dot {
+  color: var(--accent);
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  width: min(100%, 680px);
+}
+
+.search-box {
+  flex: 1;
+  max-width: 320px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: white;
+}
+
+.search-box > span {
+  font-size: 1.25rem;
+  color: var(--accent);
+}
+
+.search-box input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+
+.search-box input::placeholder {
+  color: #86867f;
+}
+
+.mode-toggle {
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.toggle-track {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  border-radius: 99px;
+  background: #cbc9c1;
+  transition: background 180ms ease;
+}
+
+.toggle-track > span {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  left: 3px;
+  top: 3px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+  transition: transform 180ms ease;
+}
+
+.mode-toggle.is-on .toggle-track {
+  background: var(--accent);
+}
+
+.mode-toggle.is-on .toggle-track > span {
+  transform: translateX(16px);
+}
+
+.progress-ring {
+  --progress: 0deg;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--accent) var(--progress), #d9d6ce 0);
+  position: relative;
+}
+
+.progress-ring::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #f7f4ed;
+}
+
+.progress-ring > div {
+  position: relative;
+  z-index: 1;
+  font-size: 0.72rem;
+}
+
+.progress-ring strong {
+  font-size: 0.94rem;
+}
+
+.progress-ring span {
+  color: var(--muted);
+}
+
+.subject-tabs {
+  min-height: 76px;
+  padding: 12px clamp(20px, 4vw, 64px) 0;
+  display: flex;
+  gap: 7px;
+  align-items: flex-end;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  background: #f7f4ed;
+  border-bottom: 1px solid var(--line);
+}
+
+.subject-tabs::before,
+.subject-tabs::after {
+  content: "";
+  min-width: 1px;
+}
+
+.subject-tabs > button {
+  position: relative;
+  min-width: 106px;
+  height: 58px;
+  padding: 8px 12px 10px;
+  display: grid;
+  grid-template-columns: 29px 1fr;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  background: transparent;
+  color: #696a64;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 750;
+  white-space: nowrap;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.subject-tabs > button:hover {
+  transform: translateY(-2px);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.subject-tabs > button.active {
+  height: 63px;
+  color: var(--ink);
+  background: var(--stage);
+  border-color: var(--line);
+}
+
+.subject-tabs > button.active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent);
+}
+
+.subject-tabs > button > i {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  background: var(--deep);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.58rem;
+  font-style: normal;
+}
+
+.tab-mark {
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.active .tab-mark {
+  color: var(--accent);
+}
+
+.no-results {
+  margin: auto;
+  align-self: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.subject-stage {
+  position: relative;
+  min-height: calc(100vh - 162px);
+  padding: clamp(28px, 4vw, 58px) clamp(20px, 4vw, 64px) 70px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 5%, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 27%),
+    linear-gradient(110deg, var(--stage), color-mix(in srgb, var(--stage) 82%, white));
+  transition: background 240ms ease;
+  animation: stage-arrival 480ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.subject-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.19;
+  background-image:
+    linear-gradient(90deg, var(--deep) 1px, transparent 1px),
+    linear-gradient(var(--deep) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 62%);
+}
+
+[data-theme="sepia"] .subject-stage::before,
+[data-theme="archive"] .subject-stage::before {
+  background-image: repeating-linear-gradient(0deg, transparent 0 27px, var(--deep) 28px);
+  background-size: auto;
+  opacity: 0.08;
+}
+
+[data-theme="cosmos"] .subject-stage::before {
+  background-image: radial-gradient(circle, var(--deep) 1px, transparent 1.5px);
+  background-size: 34px 34px;
+  opacity: 0.18;
+}
+
+[data-theme="garden"] .subject-stage::before,
+[data-theme="terrain"] .subject-stage::before {
+  background-image: repeating-radial-gradient(ellipse at 20% 10%, transparent 0 22px, var(--deep) 23px 24px, transparent 25px 44px);
+  background-size: 300px 180px;
+  opacity: 0.1;
+}
+
+[data-theme="lab"] .subject-stage::before {
+  background-image: radial-gradient(circle, var(--deep) 1px, transparent 2px);
+  background-size: 24px 24px;
+  opacity: 0.12;
+}
+
+[data-theme="zine"] .subject-stage::before {
+  background-image: repeating-linear-gradient(135deg, transparent 0 20px, var(--deep) 21px, transparent 22px 42px);
+  opacity: 0.08;
+}
+
+.ambient-shape {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--deep) 24%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.shape-one {
+  width: 280px;
+  height: 280px;
+  right: -100px;
+  top: 25px;
+}
+
+.shape-two {
+  width: 160px;
+  height: 160px;
+  right: 45px;
+  top: 84px;
+  border-style: dashed;
+  animation: slow-orbit 18s linear infinite;
+}
+
+.subject-hero,
+.route-strip,
+.content-grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subject-hero {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) minmax(190px, 280px);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: center;
+}
+
+.hero-index {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  color: var(--muted);
+  font-size: 0.67rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.hero-mark {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+  font: 800 1.75rem/1 Georgia, serif;
+}
+
+.overline {
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+
+.hero-copy h1 {
+  max-width: 820px;
+  margin: 0;
+  font: 800 clamp(2.6rem, 6vw, 5.9rem)/0.88 Georgia, "Times New Roman", serif;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+}
+
+.tagline {
+  max-width: 780px;
+  margin: 18px 0 0;
+  color: color-mix(in srgb, var(--deep) 82%, white);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+.hero-memory {
+  padding: 20px 0 20px 22px;
+  border-left: 3px solid var(--accent-2);
+}
+
+.hero-memory > span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+.hero-memory > strong {
+  font-family: Georgia, serif;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.route-strip {
+  margin-top: clamp(28px, 4vw, 48px);
+  min-height: 56px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid color-mix(in srgb, var(--deep) 18%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, white 68%, transparent);
+  box-shadow: 0 12px 36px rgba(40, 38, 32, 0.05);
+}
+
+.route-strip > span {
+  color: var(--accent);
+  padding-right: 12px;
+  border-right: 1px solid var(--line);
+}
+
+.route-strip > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #505149;
+  font-size: 0.77rem;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.route-strip b {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--deep);
+  color: white;
+  font-size: 0.65rem;
+}
+
+.route-strip i {
+  color: var(--accent);
+  font-style: normal;
+  margin-left: 5px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 350px);
+  gap: clamp(20px, 3vw, 38px);
+  align-items: start;
+  margin-top: 26px;
+}
+
+.topic-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.topic-card {
+  --topic-tone: var(--accent);
+  position: relative;
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  border: 1px solid color-mix(in srgb, var(--deep) 17%, transparent);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.83);
+  box-shadow: 0 16px 38px rgba(34, 32, 26, 0.07);
+  overflow: hidden;
+  transform-origin: center top;
+  animation: card-arrival 620ms cubic-bezier(.16,.84,.3,1) both;
+  animation-delay: calc(var(--topic-order) * 110ms + 100ms);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.topic-card-2 { --topic-tone: var(--accent-2); }
+.topic-card-3 { --topic-tone: color-mix(in srgb, var(--accent) 58%, var(--accent-2)); }
+
+.topic-card:hover {
+  transform: translateY(-6px) rotate(.12deg);
+  box-shadow: 0 24px 55px color-mix(in srgb, var(--deep) 14%, transparent);
+  border-color: color-mix(in srgb, var(--topic-tone) 48%, transparent);
+}
+
+.topic-card::before {
+  content: "";
+  position: absolute;
+  left: 67px;
+  top: 68px;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+
+.topic-scene {
+  position: relative;
+  grid-column: 1 / -1;
+  min-height: 68px;
+  padding: 10px 16px;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  border-bottom: 1px solid color-mix(in srgb, var(--topic-tone) 36%, transparent);
+  background:
+    radial-gradient(circle at 78% 30%, color-mix(in srgb, var(--topic-tone) 18%, transparent) 0 4px, transparent 5px),
+    linear-gradient(105deg, color-mix(in srgb, var(--topic-tone) 13%, white), rgba(255,255,255,.82));
+  background-size: 28px 28px, auto;
+}
+
+.topic-card-2 .topic-scene {
+  background:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--topic-tone) 8%, white) 0 10px, color-mix(in srgb, var(--topic-tone) 16%, white) 11px 12px),
+    white;
+}
+
+.topic-card-3 .topic-scene {
+  background:
+    linear-gradient(90deg, transparent 0 50%, color-mix(in srgb, var(--topic-tone) 13%, transparent) 50% 51%, transparent 51%),
+    linear-gradient(color-mix(in srgb, var(--topic-tone) 14%, white), rgba(255,255,255,.86));
+  background-size: 32px 100%, auto;
+}
+
+.scene-symbol {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--topic-tone);
+  border-radius: 50%;
+  background: white;
+  color: var(--topic-tone);
+  font: 900 .72rem/1 ui-monospace, Consolas, monospace;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--topic-tone) 28%, transparent);
+}
+
+.topic-card-2 .scene-symbol {
+  border-radius: 7px;
+  transform: rotate(-5deg);
+}
+
+.topic-card-3 .scene-symbol {
+  border-radius: 4px 50% 50%;
+  clip-path: polygon(50% 0, 100% 42%, 72% 100%, 18% 88%, 0 28%);
+}
+
+.topic-scene > div {
+  display: grid;
+  gap: 2px;
+}
+
+.topic-scene small {
+  color: var(--muted);
+  font-size: .56rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.topic-scene strong {
+  font: 800 1rem/1.1 Georgia, serif;
+  color: var(--deep);
+}
+
+.topic-check {
+  position: relative;
+  z-index: 2;
+  min-height: 34px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid color-mix(in srgb, var(--topic-tone) 65%, transparent);
+  border-radius: 99px;
+  background: rgba(255,255,255,.75);
+  color: color-mix(in srgb, var(--topic-tone) 76%, black);
+  cursor: pointer;
+  font-size: .61rem;
+  font-weight: 850;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.topic-check span {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--topic-tone);
+  color: white;
+  font-size: .75rem;
+}
+
+.topic-check:hover { transform: scale(1.04); background: white; }
+.is-topic-done .topic-check { background: var(--topic-tone); color: white; }
+.is-topic-done .topic-check span { background: white; color: var(--topic-tone); }
+
+.scene-spark {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--topic-tone);
+  opacity: .28;
+  animation: spark-pulse 2.4s ease-in-out infinite;
+}
+
+.spark-one { right: 28%; top: 11px; }
+.spark-two { right: 38%; bottom: 10px; animation-delay: .8s; }
+
+.is-topic-done .topic-scene::after {
+  content: "";
+  position: absolute;
+  right: 13%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--topic-tone);
+  box-shadow: 20px -16px 0 var(--accent-2), 35px 7px 0 var(--accent), -18px 14px 0 var(--topic-tone), -34px -10px 0 var(--accent-2);
+  animation: mission-pop 650ms ease both;
+}
+
+.topic-number {
+  padding-top: 25px;
+  color: var(--accent);
+  font: 800 1.15rem/1 Georgia, serif;
+  text-align: center;
+}
+
+.topic-main {
+  padding: clamp(22px, 3vw, 34px);
+}
+
+.topic-main > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.topic-main > header > span {
+  color: var(--accent);
+}
+
+.topic-main h2 {
+  margin: 0;
+  font: 800 clamp(1.4rem, 2.3vw, 2.05rem)/1.08 Georgia, serif;
+  letter-spacing: -0.03em;
+}
+
+.snapshot {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 21px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.snapshot > span {
+  color: var(--accent);
+  padding-top: 3px;
+}
+
+.snapshot p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  font-weight: 650;
+}
+
+.topic-details > h3 {
+  margin: 22px 0 13px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.topic-details > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+}
+
+.topic-details > ul li {
+  position: relative;
+  padding: 0 0 0 17px;
+  color: #474941;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.topic-details > ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-2);
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.memory-note,
+.trap-note {
+  min-height: 94px;
+  padding: 15px 17px;
+  border-radius: 8px;
+}
+
+.memory-note {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+  border: 0;
+  text-align: left;
+  background: var(--deep);
+  color: white;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 260ms ease, background 260ms ease;
+}
+
+.memory-note:hover { transform: rotateX(3deg) translateY(-2px); }
+.memory-note.is-revealed { background: color-mix(in srgb, var(--accent) 72%, var(--deep)); animation: flashcard-flip 420ms ease both; }
+
+.memory-note > span {
+  color: color-mix(in srgb, var(--accent-2) 82%, white);
+}
+
+.memory-note > strong {
+  font: 700 0.95rem/1.4 Georgia, serif;
+}
+
+.memory-note > i {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  color: color-mix(in srgb, var(--accent-2) 80%, white);
+  font-style: normal;
+  font-size: 1rem;
+}
+
+.trap-note {
+  border: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 7%, white);
+}
+
+.trap-note > span {
+  color: var(--accent);
+}
+
+.trap-note p {
+  margin: 8px 0 0;
+  color: #4c463f;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.competency-box {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f9f7f2;
+}
+
+.competency-box summary {
+  list-style: none;
+  min-height: 46px;
+  padding: 11px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.competency-box summary::-webkit-details-marker {
+  display: none;
+}
+
+.competency-box summary::before {
+  content: "+";
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.competency-box[open] summary::before {
+  content: "−";
+}
+
+.competency-box summary span {
+  margin-right: auto;
+}
+
+.competency-box summary small {
+  color: var(--muted);
+  font-size: 0.63rem;
+  letter-spacing: 0;
+  font-weight: 650;
+}
+
+.competency-box > p {
+  margin: 0;
+  padding: 0 14px 12px 39px;
+  color: #4f504b;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.code-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 12px 14px;
+  border-top: 1px solid var(--line);
+}
+
+.code-cloud code {
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 9%, white);
+  color: color-mix(in srgb, var(--accent) 75%, black);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.67rem;
+}
+
+.learning-goal {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px solid color-mix(in srgb, var(--topic-tone) 34%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--topic-tone) 7%, white);
+}
+
+.learning-goal span {
+  display: block;
+  color: var(--topic-tone);
+  font-size: .65rem;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.learning-goal p {
+  margin: 7px 0 0;
+  color: #4f504b;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.fernando-signature {
+  position: relative;
+  margin-top: 18px;
+  padding-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 5px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.fernando-signature span {
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.fernando-signature strong {
+  position: relative;
+  z-index: 1;
+  color: var(--topic-tone);
+  font: italic 800 1rem/1 Georgia, serif;
+}
+
+.fernando-signature i {
+  position: absolute;
+  right: -3px;
+  bottom: -5px;
+  width: 78px;
+  height: 8px;
+  border-bottom: 2px solid var(--topic-tone);
+  border-radius: 50%;
+  transform: rotate(-3deg);
+  animation: signature-draw 700ms ease calc(var(--topic-order) * 100ms + 500ms) both;
+}
+
+.study-sidebar {
+  position: sticky;
+  top: 18px;
+  display: grid;
+  gap: 13px;
+}
+
+.sidebar-card {
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--deep) 18%, transparent);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 12px 30px rgba(34, 32, 26, 0.055);
+}
+
+.card-label {
+  display: block;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.lens-card p {
+  margin: 0;
+  color: #4b4c46;
+  font-size: 0.88rem;
+  line-height: 1.58;
+}
+
+.mission-card > div {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.mission-card > div strong {
+  color: var(--accent);
+  font: 900 2rem/1 Georgia, serif;
+}
+
+.mission-card > div span {
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 750;
+}
+
+.mission-card > i {
+  display: block;
+  height: 8px;
+  margin-top: 11px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--accent) 12%, white);
+}
+
+.mission-card > i span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 450ms cubic-bezier(.2,.8,.2,1);
+}
+
+.mission-card > p {
+  margin: 9px 0 0;
+  color: #686861;
+  font-size: .7rem;
+  line-height: 1.4;
+}
+
+.quiz-card {
+  background: var(--deep);
+  color: white;
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--deep) 20%, transparent);
+}
+
+.quiz-card .card-label {
+  color: var(--accent-2);
+}
+
+.quiz-card h3 {
+  margin: 0 0 17px;
+  font: 700 1.05rem/1.4 Georgia, serif;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 7px;
+}
+
+.quiz-options button {
+  min-height: 44px;
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  text-align: left;
+  font-size: 0.77rem;
+  cursor: pointer;
+  transition: background 150ms ease, border 150ms ease;
+}
+
+.quiz-options button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: var(--accent-2);
+}
+
+.quiz-options button > span {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--accent-2);
+  font-weight: 800;
+}
+
+.quiz-options button.correct {
+  background: #2e764d;
+  border-color: #73ce91;
+}
+
+.quiz-options button.wrong {
+  background: #8d3d3a;
+  border-color: #e18b83;
+}
+
+.quiz-feedback {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.quiz-feedback strong {
+  color: var(--accent-2);
+  font-size: 0.83rem;
+}
+
+.quiz-feedback p {
+  margin: 6px 0 10px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.77rem;
+  line-height: 1.46;
+}
+
+.quiz-feedback button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: white;
+  font-size: 0.71rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.complete-button {
+  min-height: 54px;
+  border: 2px solid var(--deep);
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  color: var(--deep);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+}
+
+.complete-button > span {
+  font-size: 1.15rem;
+}
+
+.complete-button:hover,
+.complete-button.is-complete {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.quick-mode .topic-details > h3,
+.quick-mode .topic-details > ul,
+.quick-mode .trap-note,
+.quick-mode .competency-box,
+.quick-mode .lens-card,
+.quick-mode .route-strip {
+  display: none;
+}
+
+.quick-mode .memory-grid {
+  grid-template-columns: 1fr;
+}
+
+.quick-mode .memory-note {
+  min-height: auto;
+}
+
+.quick-mode .subject-stage {
+  min-height: calc(100vh - 162px);
+}
+
+footer {
+  min-height: 72px;
+  padding: 20px clamp(20px, 4vw, 64px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: var(--deep);
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.75rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer span {
+  color: var(--accent-2);
+}
+
+/* Cada disciplina é tratada como um pequeno universo visual. */
+.theme-world {
+  position: absolute;
+  z-index: 0;
+  width: min(36vw, 470px);
+  height: 250px;
+  right: clamp(18px, 4vw, 64px);
+  top: 24px;
+  pointer-events: none;
+  color: var(--deep);
+  opacity: 0.78;
+}
+
+.world-label {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px 11px;
+  border: 1px solid currentColor;
+  font-size: 0.61rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.motif-cloud {
+  position: absolute;
+  inset: 0;
+}
+
+.motif {
+  position: absolute;
+  font-size: 0.57rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.motif-1 { right: 13%; top: 31%; }
+.motif-2 { right: 36%; top: 55%; }
+.motif-3 { right: 4%; top: 78%; }
+
+.world-symbol {
+  position: absolute;
+  display: block;
+  border: 2px solid currentColor;
+}
+
+.symbol-one { width: 118px; height: 118px; right: 22px; top: 58px; }
+.symbol-two { width: 72px; height: 72px; right: 172px; top: 95px; }
+.symbol-three { width: 32px; height: 32px; right: 132px; top: 178px; }
+
+/* Português — caderno editorial, margem vermelha e marcas de revisão. */
+[data-theme="ink"] .subject-stage {
+  background:
+    linear-gradient(90deg, transparent 0 7.2%, rgba(213, 75, 52, 0.2) 7.25% 7.35%, transparent 7.4%),
+    repeating-linear-gradient(0deg, #eee9df 0 31px, rgba(61, 72, 65, 0.12) 32px, #eee9df 33px);
+}
+
+[data-theme="ink"] .subject-stage::before {
+  background: repeating-linear-gradient(90deg, transparent 0 240px, rgba(23, 25, 21, 0.035) 241px 242px);
+  opacity: 1;
+}
+
+[data-theme="ink"] .theme-world { transform: rotate(-2deg); }
+[data-theme="ink"] .world-label { background: #f7f2e9; box-shadow: 5px 5px 0 var(--accent); }
+[data-theme="ink"] .world-symbol { border-width: 0 0 3px; height: 20px; transform: rotate(-8deg); }
+[data-theme="ink"] .symbol-one { width: 150px; right: 20px; top: 82px; }
+[data-theme="ink"] .symbol-two { width: 92px; right: 160px; top: 137px; transform: rotate(5deg); }
+[data-theme="ink"] .symbol-three { width: 58px; right: 75px; top: 188px; transform: rotate(-14deg); }
+[data-theme="ink"] .topic-card { border-radius: 4px 12px 12px 4px; border-left: 5px solid var(--accent); }
+[data-theme="ink"] .topic-card::after {
+  content: "revisão";
+  position: absolute;
+  right: 16px;
+  bottom: 10px;
+  color: rgba(213, 75, 52, 0.18);
+  font: italic 700 0.8rem Georgia, serif;
+  transform: rotate(-7deg);
+}
+
+/* Literatura — livro antigo, páginas, lombada e atmosfera sépia. */
+[data-theme="sepia"] .subject-stage {
+  background:
+    radial-gradient(circle at 82% 8%, rgba(144, 78, 49, 0.2), transparent 24%),
+    repeating-linear-gradient(90deg, rgba(77, 49, 31, 0.025) 0 1px, transparent 1px 5px),
+    #eadfc9;
+}
+
+[data-theme="sepia"] .theme-world {
+  height: 210px;
+  top: 46px;
+  border: 1px solid rgba(67, 39, 25, 0.35);
+  border-radius: 4px 20px 20px 4px;
+  background: rgba(250, 239, 213, 0.58);
+  box-shadow: -12px 12px 0 rgba(83, 49, 30, 0.12), inset 18px 0 rgba(92, 51, 29, 0.06);
+  transform: perspective(500px) rotateY(-5deg) rotate(1deg);
+}
+
+[data-theme="sepia"] .theme-world::after {
+  content: "“";
+  position: absolute;
+  right: 36px;
+  bottom: -30px;
+  color: rgba(130, 68, 43, 0.22);
+  font: 180px/1 Georgia, serif;
+}
+
+[data-theme="sepia"] .world-label { right: 18px; top: 16px; background: #e9d5ae; }
+[data-theme="sepia"] .world-symbol { display: none; }
+[data-theme="sepia"] .motif { font-family: Georgia, serif; font-style: italic; }
+[data-theme="sepia"] .topic-card {
+  border-radius: 3px 14px 14px 3px;
+  background: #fbf5e7;
+  box-shadow: -7px 0 0 #7c4a34, 0 16px 35px rgba(74, 47, 31, 0.1);
+}
+[data-theme="sepia"] .topic-main h2,
+[data-theme="sepia"] .hero-copy h1 { font-style: italic; }
+
+/* Matemática — blueprint técnico com grade, eixos e formas geométricas. */
+[data-theme="blueprint"] .subject-stage {
+  background:
+    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+    #123f61;
+  background-size: 48px 48px, 48px 48px, 12px 12px, 12px 12px, auto;
+}
+
+[data-theme="blueprint"] .subject-stage::before { display: none; }
+[data-theme="blueprint"] .hero-copy h1,
+[data-theme="blueprint"] .tagline,
+[data-theme="blueprint"] .hero-index,
+[data-theme="blueprint"] .hero-memory,
+[data-theme="blueprint"] .theme-world { color: #eef9ff; }
+[data-theme="blueprint"] .hero-mark { border-radius: 5px; color: #fff; border-color: #efb942; }
+[data-theme="blueprint"] .world-label { border-style: dashed; background: rgba(14, 44, 66, .78); }
+[data-theme="blueprint"] .symbol-one { border-radius: 50%; }
+[data-theme="blueprint"] .symbol-two { width: 0; height: 0; border-left: 42px solid transparent; border-right: 42px solid transparent; border-bottom: 74px solid rgba(255,255,255,.7); border-top: 0; background: transparent; }
+[data-theme="blueprint"] .symbol-two::after { content: ""; position: absolute; left: -37px; top: 8px; border-left: 37px solid transparent; border-right: 37px solid transparent; border-bottom: 64px solid #123f61; }
+[data-theme="blueprint"] .symbol-three { transform: rotate(45deg); }
+[data-theme="blueprint"] .topic-card { border: 1px solid #6ca5c5; border-radius: 2px; box-shadow: 7px 7px 0 rgba(6, 34, 53, .3); }
+[data-theme="blueprint"] .topic-number { font-family: ui-monospace, Consolas, monospace; }
+[data-theme="blueprint"] .route-strip { background: rgba(238, 249, 255, .94); }
+
+/* História — arquivo, fichas catalográficas, carimbos e linha do tempo. */
+[data-theme="archive"] .subject-stage {
+  background:
+    linear-gradient(90deg, rgba(91, 58, 35, .07) 1px, transparent 1px),
+    radial-gradient(circle at 80% 0, rgba(118, 63, 39, .18), transparent 26%),
+    #e6d8bb;
+  background-size: 72px 100%, auto, auto;
+}
+
+[data-theme="archive"] .theme-world { transform: rotate(1.5deg); }
+[data-theme="archive"] .world-label { border: 3px double #74452d; color: #74452d; background: rgba(239,225,194,.8); transform: rotate(-4deg); }
+[data-theme="archive"] .world-symbol { border-radius: 2px; background: rgba(251, 240, 214, .5); box-shadow: 5px 5px 0 rgba(92, 58, 38, .1); }
+[data-theme="archive"] .symbol-one { transform: rotate(6deg); }
+[data-theme="archive"] .symbol-two { transform: rotate(-7deg); }
+[data-theme="archive"] .symbol-three { border-radius: 50%; border: 3px double #8c4d31; }
+[data-theme="archive"] .topic-card { border-radius: 2px; background: #f8edcf; box-shadow: 8px 9px 0 rgba(91, 59, 37, .1); }
+[data-theme="archive"] .topic-number { margin: 18px 11px 0; padding: 9px 0 0; height: 40px; border: 2px solid var(--accent); transform: rotate(-4deg); }
+[data-theme="archive"] .topic-stack { border-left: 3px solid rgba(140, 77, 49, .28); padding-left: 18px; }
+
+/* Oficina de Texto — mesa editorial, prova tipográfica e marca-texto. */
+[data-theme="editorial"] .subject-stage {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 23.8%, rgba(29,29,26,.055) 24% 24.1%, transparent 24.2% 25%),
+    #f4f1e8;
+}
+
+[data-theme="editorial"] .subject-stage::before { background: repeating-linear-gradient(0deg, transparent 0 39px, rgba(29,29,26,.07) 40px); opacity: .45; }
+[data-theme="editorial"] .hero-copy h1 { font-family: "Arial Black", Impact, sans-serif; text-transform: uppercase; letter-spacing: -.07em; }
+[data-theme="editorial"] .hero-mark { border-radius: 0; background: #1d1d1a; color: #ffd84f; border-color: #1d1d1a; transform: rotate(-3deg); }
+[data-theme="editorial"] .world-label { background: #ffd84f; color: #1d1d1a; border: 3px solid #1d1d1a; box-shadow: 7px 7px 0 #df3d37; }
+[data-theme="editorial"] .world-symbol { border: 0; background: #1d1d1a; }
+[data-theme="editorial"] .symbol-one { width: 150px; height: 13px; top: 87px; }
+[data-theme="editorial"] .symbol-two { width: 95px; height: 42px; background: #df3d37; }
+[data-theme="editorial"] .symbol-three { width: 64px; height: 20px; background: #ffd84f; transform: rotate(-8deg); }
+[data-theme="editorial"] .topic-card { border: 3px solid #1d1d1a; border-radius: 0; box-shadow: 9px 9px 0 #df3d37; }
+[data-theme="editorial"] .snapshot { background: linear-gradient(transparent 58%, rgba(255,216,79,.5) 58% 89%, transparent 89%); }
+
+/* Filosofia — ágora noturna, colunas e constelação de ideias. */
+[data-theme="dusk"] .subject-stage {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(214,155,69,.18), transparent 18%),
+    radial-gradient(circle at 80% 4%, rgba(155,122,200,.25), transparent 25%),
+    linear-gradient(145deg, #24172f, #3d2a4d 58%, #201927);
+}
+
+[data-theme="dusk"] .subject-stage::before { background-image: radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1.5px); background-size: 42px 42px; opacity: .18; }
+[data-theme="dusk"] .hero-copy h1,
+[data-theme="dusk"] .tagline,
+[data-theme="dusk"] .hero-index,
+[data-theme="dusk"] .hero-memory,
+[data-theme="dusk"] .theme-world { color: #f5ede0; }
+[data-theme="dusk"] .hero-mark { border-radius: 50% 50% 4px 4px; color: #f5ede0; border-color: #d69b45; }
+[data-theme="dusk"] .world-label { border-color: #d69b45; color: #f2cf92; background: rgba(36,23,47,.72); }
+[data-theme="dusk"] .world-symbol { width: 46px; height: 112px; border-width: 0 6px; border-color: rgba(245,237,224,.45); border-radius: 5px 5px 0 0; }
+[data-theme="dusk"] .symbol-one { right: 34px; top: 65px; }
+[data-theme="dusk"] .symbol-two { right: 100px; top: 88px; }
+[data-theme="dusk"] .symbol-three { right: 166px; top: 111px; }
+[data-theme="dusk"] .topic-card { background: #f4eddf; border-radius: 22px 22px 7px 7px; border-bottom: 5px solid #7252a3; }
+[data-theme="dusk"] .route-strip { background: rgba(248,241,229,.92); }
+
+/* Geografia — atlas topográfico, curvas de nível e rosa dos ventos. */
+[data-theme="terrain"] .subject-stage {
+  background:
+    repeating-radial-gradient(ellipse at 83% 8%, transparent 0 24px, rgba(34,82,61,.14) 25px 27px, transparent 28px 48px),
+    linear-gradient(120deg, #dce6d5, #cbd9c4 55%, #e7dfc8);
+}
+
+[data-theme="terrain"] .subject-stage::before { background-image: repeating-radial-gradient(ellipse at 12% 65%, transparent 0 25px, rgba(29,58,46,.14) 26px 27px, transparent 28px 51px); opacity: .5; }
+[data-theme="terrain"] .theme-world { border-radius: 50%; border: 1px solid rgba(29,58,46,.25); }
+[data-theme="terrain"] .world-label { background: #e9e2cc; transform: rotate(2deg); }
+[data-theme="terrain"] .world-symbol { border-radius: 50%; border-color: rgba(29,58,46,.35); }
+[data-theme="terrain"] .symbol-one { box-shadow: 0 0 0 15px rgba(29,58,46,.06), 0 0 0 30px rgba(29,58,46,.05); }
+[data-theme="terrain"] .symbol-two { transform: scaleY(.58) rotate(18deg); }
+[data-theme="terrain"] .symbol-three { transform: rotate(45deg); border-radius: 0; }
+[data-theme="terrain"] .topic-card { background: #f3f0dd; border-radius: 4px; box-shadow: 6px 7px 0 rgba(57,119,92,.18); }
+[data-theme="terrain"] .topic-number { width: 40px; height: 40px; margin: 18px auto 0; padding-top: 12px; border-radius: 50%; background: #39775c; color: white; }
+
+/* Física — céu orbital, vetores e anéis de movimento. */
+[data-theme="cosmos"] .subject-stage {
+  background:
+    radial-gradient(circle at 75% 7%, rgba(93,117,236,.35), transparent 24%),
+    radial-gradient(circle at 14% 25%, rgba(239,187,69,.12), transparent 15%),
+    linear-gradient(145deg, #0b1530, #172852 58%, #0d1732);
+}
+
+[data-theme="cosmos"] .subject-stage::before { background-image: radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1.6px); background-size: 33px 33px; opacity: .28; }
+[data-theme="cosmos"] .hero-copy h1,
+[data-theme="cosmos"] .tagline,
+[data-theme="cosmos"] .hero-index,
+[data-theme="cosmos"] .hero-memory,
+[data-theme="cosmos"] .theme-world { color: #edf2ff; }
+[data-theme="cosmos"] .hero-mark { color: #efbb45; border-color: #efbb45; box-shadow: 0 0 25px rgba(239,187,69,.2); }
+[data-theme="cosmos"] .world-label { background: rgba(11,21,48,.68); border-color: #8193ef; }
+[data-theme="cosmos"] .world-symbol { border-radius: 50%; transform: rotate(-18deg); border-color: rgba(160,178,255,.65); }
+[data-theme="cosmos"] .symbol-one { width: 180px; height: 74px; right: 0; top: 86px; }
+[data-theme="cosmos"] .symbol-two { width: 120px; height: 120px; right: 55px; top: 62px; }
+[data-theme="cosmos"] .symbol-three { width: 18px; height: 18px; border: 0; background: #efbb45; box-shadow: 0 0 18px #efbb45; }
+[data-theme="cosmos"] .topic-card { background: #f4f6fc; border-radius: 18px; box-shadow: 0 18px 45px rgba(2,9,27,.32); }
+[data-theme="cosmos"] .route-strip { background: rgba(244,246,252,.95); }
+
+/* Biologia — caderno de campo, folhas, células e etiquetas botânicas. */
+[data-theme="garden"] .subject-stage {
+  background:
+    radial-gradient(ellipse at 82% 3%, rgba(63,123,80,.22), transparent 25%),
+    linear-gradient(110deg, #e7ecd9, #d8e5d4 64%, #eee4cd);
+}
+
+[data-theme="garden"] .subject-stage::before { background-image: repeating-linear-gradient(0deg, transparent 0 27px, rgba(48,88,57,.08) 28px); opacity: .7; }
+[data-theme="garden"] .world-label { border-radius: 99px; background: #f1ead5; }
+[data-theme="garden"] .world-symbol { border-radius: 100% 0 100% 0; background: rgba(63,123,80,.12); border-color: #3f7b50; transform: rotate(35deg); }
+[data-theme="garden"] .symbol-one { width: 85px; height: 125px; }
+[data-theme="garden"] .symbol-two { width: 58px; height: 88px; transform: rotate(-20deg); }
+[data-theme="garden"] .symbol-three { border-radius: 50%; background: transparent; box-shadow: inset 0 0 0 8px rgba(63,123,80,.1); }
+[data-theme="garden"] .topic-card { border-radius: 16px 4px 16px 4px; background: #fbf8e9; border-left: 6px solid #3f7b50; }
+[data-theme="garden"] .topic-number { font-family: Georgia, serif; font-style: italic; }
+[data-theme="garden"] .competency-box { background: #f1f3e7; }
+
+/* Química — bancada molecular, vidro, bolhas e ligações. */
+[data-theme="lab"] .subject-stage {
+  background:
+    radial-gradient(circle at 86% 8%, rgba(19,126,131,.2), transparent 22%),
+    linear-gradient(120deg, #d8ebe8, #cfe5e5 55%, #edf1e8);
+}
+
+[data-theme="lab"] .subject-stage::before { background-image: radial-gradient(circle, rgba(23,59,61,.22) 1px, transparent 2px); background-size: 25px 25px; opacity: .45; }
+[data-theme="lab"] .world-label { border-radius: 3px; background: rgba(237,247,243,.82); box-shadow: 5px 5px 0 #e67d4d; }
+[data-theme="lab"] .world-symbol { border-radius: 50%; background: rgba(255,255,255,.36); border-color: #137e83; }
+[data-theme="lab"] .symbol-one::after,
+[data-theme="lab"] .symbol-two::after { content: ""; position: absolute; width: 80px; height: 2px; background: #137e83; top: 50%; right: 100%; transform: rotate(-24deg); transform-origin: right; }
+[data-theme="lab"] .symbol-two { width: 54px; height: 54px; }
+[data-theme="lab"] .symbol-three { width: 24px; height: 24px; background: #e67d4d; border-color: #e67d4d; }
+[data-theme="lab"] .topic-card { border-radius: 22px 22px 8px 8px; background: rgba(249,253,250,.92); border-top: 5px solid #137e83; }
+[data-theme="lab"] .hero-mark { border-radius: 50% 50% 12px 12px; }
+[data-theme="lab"] .snapshot { background: linear-gradient(90deg, rgba(19,126,131,.07), transparent); padding-left: 12px; }
+
+/* Sociologia — mural urbano, cartazes sobrepostos e blocos de debate. */
+[data-theme="civic"] .subject-stage {
+  background:
+    repeating-linear-gradient(0deg, rgba(56,33,28,.025) 0 3px, transparent 3px 8px),
+    linear-gradient(115deg, #eadbd3, #e5cfc2 60%, #d9dee0);
+}
+
+[data-theme="civic"] .world-label { background: #f0e5dd; border: 3px solid #38211c; box-shadow: 7px 7px 0 #416a8a; transform: rotate(2deg); }
+[data-theme="civic"] .world-symbol { border: 3px solid #38211c; border-radius: 0; background: #efe4d8; }
+[data-theme="civic"] .symbol-one { transform: rotate(5deg); box-shadow: 7px 7px 0 #b64e38; }
+[data-theme="civic"] .symbol-two { transform: rotate(-7deg); background: #416a8a; }
+[data-theme="civic"] .symbol-three { transform: rotate(9deg); background: #e0ae4a; }
+[data-theme="civic"] .topic-card { border: 2px solid #38211c; border-radius: 2px; box-shadow: 8px 8px 0 rgba(65,106,138,.32); }
+[data-theme="civic"] .topic-card:nth-child(even) { transform: translateX(6px); box-shadow: -8px 8px 0 rgba(182,78,56,.25); }
+[data-theme="civic"] .memory-note { border-radius: 0; }
+
+/* Inglês — zine cultural, colagem pop, adesivos e alto contraste. */
+[data-theme="zine"] .subject-stage {
+  background:
+    radial-gradient(circle at 86% 10%, #f9db47 0 7%, transparent 7.2%),
+    linear-gradient(135deg, transparent 0 70%, rgba(20,163,161,.18) 70.2% 78%, transparent 78.2%),
+    #f0e1ea;
+}
+
+[data-theme="zine"] .subject-stage::before { background-image: repeating-linear-gradient(135deg, transparent 0 18px, rgba(50,28,45,.1) 19px 20px, transparent 21px 39px); opacity: .5; }
+[data-theme="zine"] .hero-copy h1 { font-family: "Arial Black", Impact, sans-serif; text-transform: uppercase; letter-spacing: -.075em; text-shadow: 5px 5px 0 rgba(20,163,161,.28); }
+[data-theme="zine"] .hero-mark { border: 3px solid #321c2d; border-radius: 50%; background: #f9db47; color: #321c2d; box-shadow: 5px 5px 0 #d73573; transform: rotate(-7deg); }
+[data-theme="zine"] .world-label { border: 3px solid #321c2d; background: #14a3a1; color: white; box-shadow: 6px 6px 0 #d73573; transform: rotate(3deg); }
+[data-theme="zine"] .world-symbol { border: 3px solid #321c2d; }
+[data-theme="zine"] .symbol-one { border-radius: 50%; background: #f9db47; }
+[data-theme="zine"] .symbol-two { background: #d73573; transform: rotate(12deg); }
+[data-theme="zine"] .symbol-three { background: #14a3a1; transform: rotate(-12deg); }
+[data-theme="zine"] .motif { padding: 4px 7px; background: white; border: 2px solid #321c2d; transform: rotate(-4deg); }
+[data-theme="zine"] .motif-2 { transform: rotate(6deg); }
+[data-theme="zine"] .topic-card { border: 3px solid #321c2d; border-radius: 0; box-shadow: 9px 9px 0 #14a3a1; }
+[data-theme="zine"] .topic-card:nth-child(even) { box-shadow: 9px 9px 0 #d73573; }
+[data-theme="zine"] .memory-note { background: #321c2d; border-radius: 0; }
+[data-theme="zine"] .trap-note { border: 3px dashed #d73573; border-radius: 0; }
+
+/* O cabeçalho de cada resumo herda a matéria, mas ganha uma microcena própria. */
+[data-theme="ink"] .topic-scene {
+  background: repeating-linear-gradient(0deg, #faf7ef 0 20px, rgba(69,88,104,.13) 21px, #faf7ef 22px);
+  border-left: 5px solid #d54b34;
+}
+
+[data-theme="sepia"] .topic-scene {
+  background: linear-gradient(90deg, rgba(100,56,34,.12) 0 16px, transparent 17px), #f5e7c6;
+  box-shadow: inset 0 -5px rgba(98,55,35,.06);
+}
+
+[data-theme="blueprint"] .topic-scene {
+  color: #edf8ff;
+  background:
+    linear-gradient(rgba(255,255,255,.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.11) 1px, transparent 1px),
+    #18547c;
+  background-size: 16px 16px;
+}
+[data-theme="blueprint"] .topic-scene small,
+[data-theme="blueprint"] .topic-scene strong { color: #edf8ff; }
+[data-theme="blueprint"] .scene-symbol { background: #123f61; color: #efb942; border-color: #efb942; }
+[data-theme="blueprint"] .topic-check { background: #edf8ff; }
+
+[data-theme="archive"] .topic-scene {
+  background: repeating-linear-gradient(90deg, #f1e1ba 0 57px, rgba(99,61,37,.1) 58px 59px);
+  border-bottom: 3px double rgba(99,61,37,.32);
+}
+[data-theme="archive"] .scene-symbol { border: 3px double #8c4d31; border-radius: 2px; transform: rotate(-3deg); }
+
+[data-theme="editorial"] .topic-scene {
+  background: linear-gradient(90deg, #1d1d1a 0 68px, #f5f1e5 68px 72%, #ffd84f 72%);
+  border-bottom: 4px solid #1d1d1a;
+}
+[data-theme="editorial"] .scene-symbol { background: #df3d37; color: white; border-color: white; border-radius: 0; box-shadow: 4px 4px 0 #ffd84f; }
+[data-theme="editorial"] .topic-check { border-radius: 0; border-width: 2px; }
+
+[data-theme="dusk"] .topic-scene {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(255,255,255,.8) 0 1px, transparent 2px),
+    linear-gradient(110deg, #34213f, #5c3e6b);
+  background-size: 26px 26px, auto;
+}
+[data-theme="dusk"] .topic-scene small,
+[data-theme="dusk"] .topic-scene strong { color: #f5ede0; }
+[data-theme="dusk"] .scene-symbol { background: #24172f; color: #d69b45; border-color: #d69b45; }
+
+[data-theme="terrain"] .topic-scene {
+  background: repeating-radial-gradient(ellipse at 72% 45%, #e9e5cf 0 13px, rgba(57,119,92,.2) 14px 15px, #e9e5cf 16px 27px);
+}
+[data-theme="terrain"] .scene-symbol { background: #39775c; color: #f3f0dd; border-color: #f3f0dd; }
+
+[data-theme="cosmos"] .topic-scene {
+  background:
+    radial-gradient(circle, rgba(255,255,255,.75) 0 1px, transparent 1.5px),
+    linear-gradient(110deg, #111d3f, #263c77);
+  background-size: 24px 24px, auto;
+}
+[data-theme="cosmos"] .topic-scene small,
+[data-theme="cosmos"] .topic-scene strong { color: #eef2ff; }
+[data-theme="cosmos"] .scene-symbol { background: #111d3f; color: #efbb45; border-color: #efbb45; box-shadow: 0 0 18px rgba(239,187,69,.25); }
+[data-theme="cosmos"] .topic-check { background: rgba(238,242,255,.92); }
+
+[data-theme="garden"] .topic-scene {
+  background:
+    radial-gradient(ellipse at 83% 30%, rgba(63,123,80,.18) 0 16px, transparent 17px),
+    radial-gradient(ellipse at 75% 70%, rgba(63,123,80,.12) 0 12px, transparent 13px),
+    #eef0dc;
+}
+[data-theme="garden"] .scene-symbol { border-radius: 100% 0 100% 0; background: #3f7b50; color: white; }
+
+[data-theme="lab"] .topic-scene {
+  background:
+    radial-gradient(circle at 78% 35%, rgba(19,126,131,.26) 0 5px, transparent 6px),
+    radial-gradient(circle at 88% 68%, rgba(230,125,77,.22) 0 9px, transparent 10px),
+    linear-gradient(110deg, #e9f5f1, #d5ece9);
+  background-size: 44px 44px, 58px 58px, auto;
+}
+[data-theme="lab"] .scene-symbol { border-radius: 50% 50% 9px 9px; background: #137e83; color: white; }
+
+[data-theme="civic"] .topic-scene {
+  background: linear-gradient(100deg, #efe2d9 0 64%, #416a8a 64% 79%, #e1ac48 79%);
+  border-bottom: 3px solid #38211c;
+}
+[data-theme="civic"] .scene-symbol { border-radius: 0; border: 3px solid #38211c; box-shadow: 4px 4px 0 #b64e38; }
+[data-theme="civic"] .topic-check { border-radius: 0; border: 2px solid #38211c; }
+
+[data-theme="zine"] .topic-scene {
+  background:
+    linear-gradient(12deg, transparent 0 63%, rgba(20,163,161,.24) 64% 76%, transparent 77%),
+    linear-gradient(-8deg, #f8db47 0 18%, #f4edf1 19% 76%, #d73573 77%);
+  border-bottom: 3px solid #321c2d;
+}
+[data-theme="zine"] .scene-symbol { border: 3px solid #321c2d; background: white; color: #d73573; box-shadow: 4px 4px 0 #14a3a1; transform: rotate(-5deg); }
+[data-theme="zine"] .topic-check { border: 2px solid #321c2d; border-radius: 0; box-shadow: 3px 3px 0 #f8db47; }
+
+.theme-world { animation: world-float 6s ease-in-out infinite; }
+.route-strip i { animation: arrow-nudge 1.2s ease-in-out infinite; }
+.hero-mark { animation: mark-breathe 3.4s ease-in-out infinite; }
+
+@keyframes stage-arrival {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes card-arrival {
+  from { opacity: 0; transform: translateY(24px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes world-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+@keyframes slow-orbit { to { rotate: 360deg; } }
+@keyframes arrow-nudge { 0%,100% { translate: 0 0; } 50% { translate: 4px 0; } }
+@keyframes mark-breathe { 0%,100% { scale: 1; } 50% { scale: 1.045; } }
+@keyframes spark-pulse { 0%,100% { scale: .65; opacity: .18; } 50% { scale: 1.5; opacity: .48; } }
+@keyframes mission-pop { from { scale: 0; opacity: 1; } to { scale: 2.8; opacity: 0; } }
+@keyframes flashcard-flip { 0% { transform: rotateX(0); } 50% { transform: rotateX(8deg) scale(.98); } 100% { transform: rotateX(0); } }
+@keyframes signature-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+
+@media (max-width: 1050px) {
+  .cover {
+    gap: 48px;
+    padding-left: clamp(24px, 5vw, 64px);
+    padding-right: clamp(24px, 5vw, 64px);
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .top-actions {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .subject-hero {
+    grid-template-columns: 90px 1fr;
+  }
+
+  .hero-memory {
+    grid-column: 2;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .content-grid {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+
+  .theme-world {
+    width: 34vw;
+    opacity: 0.42;
+  }
+
+  .topic-details > ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .cover {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding-top: 72px;
+    padding-bottom: 92px;
+  }
+
+  .cover-copy {
+    max-width: 680px;
+  }
+
+  .cover-art {
+    justify-items: start;
+  }
+
+  .cover-sheet {
+    width: min(88%, 420px);
+  }
+
+  .topbar {
+    min-height: auto;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .top-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-box {
+    order: 0;
+    flex-basis: auto;
+    max-width: none;
+  }
+
+  .mode-toggle {
+    margin-left: auto;
+  }
+
+  .subject-tabs {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .subject-stage {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .theme-world {
+    width: 48vw;
+    right: 4vw;
+    top: 36px;
+    opacity: 0.25;
+  }
+
+  .subject-hero {
+    grid-template-columns: 66px 1fr;
+    gap: 16px;
+  }
+
+  .hero-index {
+    align-self: start;
+  }
+
+  .hero-mark {
+    width: 58px;
+    height: 58px;
+    font-size: 1.35rem;
+  }
+
+  .hero-index > span:last-child {
+    writing-mode: vertical-rl;
+    max-height: 130px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.4rem, 11vw, 4.5rem);
+  }
+
+  .hero-memory {
+    grid-column: 1 / -1;
+  }
+
+  .route-strip {
+    overflow-x: auto;
+  }
+
+  .route-strip > div {
+    min-width: max-content;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .study-sidebar {
+    position: static;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quiz-card,
+  .complete-button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .cover {
+    gap: 58px;
+    padding: 58px 20px 76px;
+  }
+
+  .cover::before {
+    right: -34vw;
+    top: -22vw;
+  }
+
+  .cover h1 {
+    font-size: clamp(3.65rem, 21vw, 5.8rem);
+  }
+
+  .cover-lede {
+    margin-top: 28px;
+  }
+
+  .cover-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cover-actions > p {
+    max-width: 300px;
+  }
+
+  .cover-sheet {
+    width: calc(100% - 14px);
+    min-height: 500px;
+    padding: 30px 26px;
+    box-shadow: 14px 17px 0 rgba(0, 0, 0, 0.2), 0 28px 50px rgba(0, 0, 0, 0.25);
+  }
+
+  .brand-lockup {
+    min-width: 0;
+  }
+
+  .search-box {
+    flex-basis: 100%;
+    order: 3;
+  }
+
+  .progress-ring {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .subject-tabs > button {
+    min-width: 96px;
+  }
+
+  .subject-stage {
+    padding-top: 30px;
+  }
+
+  .theme-world,
+  .ambient-shape {
+    display: none;
+  }
+
+  .subject-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-index {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero-index > span:last-child {
+    writing-mode: initial;
+    max-height: none;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.55rem, 15vw, 4rem);
+  }
+
+  .hero-memory {
+    grid-column: 1;
+  }
+
+  .route-strip > span {
+    display: none;
+  }
+
+  .topic-card {
+    grid-template-columns: 1fr;
+  }
+
+  .topic-scene {
+    grid-template-columns: 42px 1fr;
+    padding-right: 12px;
+  }
+
+  .topic-check {
+    grid-column: 1 / -1;
+    width: max-content;
+    justify-self: end;
+  }
+
+  .topic-card::before {
+    display: none;
+  }
+
+  .topic-number {
+    position: absolute;
+    right: 18px;
+    top: 19px;
+    padding: 0;
+  }
+
+  .topic-main {
+    padding: 22px 18px;
+  }
+
+  .topic-main > header {
+    padding-right: 42px;
+  }
+
+  .snapshot {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .study-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .lens-card,
+  .quiz-card,
+  .complete-button {
+    grid-column: 1;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+    .standalone-badge {
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      z-index: 20;
+      padding: 6px 9px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 99px;
+      background: rgba(29,29,26,.88);
+      color: rgba(255,255,255,.78);
+      font: 700 9px/1 "Segoe UI", sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    @media print {
+      .cover, .skip-link, .topbar, .subject-tabs, .study-sidebar, footer, .standalone-badge { display: none !important; }
+      .subject-stage { padding: 0; background: white; }
+      .subject-stage::before, .ambient-shape { display: none; }
+      .subject-hero { margin-bottom: 24px; }
+      .content-grid { display: block; }
+      .topic-card { break-inside: avoid; box-shadow: none; margin-bottom: 16px; }
+      .competency-box { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#revisao">Pular para os resumos</a>
+  <main class="study-shell" data-theme="ink" id="shell">
+    <section class="cover" aria-labelledby="cover-title">
+      <div class="cover-copy">
+        <p class="cover-eyebrow">arquivo de estudos · por Fernando</p>
+        <h1 id="cover-title"><span>Resumos do</span>Fernando<span>.</span></h1>
+        <p class="cover-lede">Um guia direto ao ponto para entender, memorizar e testar o que importa em cada matéria.</p>
+        <div class="cover-actions">
+          <a class="cover-button" href="#revisao">começar revisão <span aria-hidden="true">→</span></a>
+          <p>Busque por assunto, ative o modo rápido e acompanhe seu progresso.</p>
+        </div>
+      </div>
+
+      <div class="cover-art" aria-label="Visão geral do guia">
+        <div class="cover-sheet">
+          <div class="cover-sheet-head"><span>GUIA DE REVISÃO</span><b>12</b></div>
+          <div class="cover-monogram" aria-hidden="true">F</div>
+          <p>Leia. Teste. Marque.</p>
+          <div class="cover-stats">
+            <div><strong>12</strong><span>matérias</span></div>
+            <div><strong>30s</strong><span>modo rápido</span></div>
+          </div>
+          <div class="cover-progress-line">
+            <span id="coverProgress">0 de 12 matérias revisadas</span>
+            <i aria-hidden="true"><b id="coverProgressBar"></b></i>
+          </div>
+          <small>Funciona offline · progresso salvo neste navegador</small>
+        </div>
+      </div>
+    </section>
+
+    <header class="topbar" id="revisao">
+      <div class="brand-lockup">
+        <div class="brand-name"><span>resumos do</span> FERNANDO<span class="brand-dot">.</span></div>
+      </div>
+
+      <div class="top-actions">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="search" placeholder="Buscar matéria ou conteúdo" aria-label="Buscar matéria ou conteúdo">
+        </label>
+        <button class="mode-toggle" id="modeToggle" aria-pressed="false">
+          <span class="toggle-track"><span></span></span>
+          modo 30s
+        </button>
+        <div class="progress-ring" id="progressRing" aria-label="0 matérias revisadas">
+          <div><strong id="progressValue">0</strong><span id="progressTotal">/12</span></div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="subject-tabs" id="tabs" aria-label="Matérias" role="tablist"></nav>
+    <section class="subject-stage" id="panel" role="tabpanel"></section>
+
+    <footer>
+      <p><strong>Resumos do Fernando</strong> · feito para revisar, não para substituir a aula.</p>
+      <span>Use as setas ← → para trocar de matéria</span>
+    </footer>
+  </main>
+  <span class="standalone-badge">arquivo offline</span>
+
+  <script>
+    const subjects = [{"id":"portugues","mark":"Aa","name":"Língua Portuguesa","short":"Português","volume":"Volume 1 · unidades 3–5","theme":"ink","world":{"label":"laboratório da linguagem","motifs":["léxico","sintaxe","sentido"]},"tagline":"A língua é uma caixa de ferramentas — a prova quer saber por que cada peça foi escolhida.","hook":"Leia primeiro a intenção, depois a gramática.","route":["identifique o gênero","observe a escolha linguística","explique o efeito no leitor"],"lens":"Os códigos de LGG e LP combinam análise de linguagem, contexto de circulação e autoria. Não basta nomear: conecte forma, intenção e efeito.","topics":[{"number":"03","title":"Classes nominais e gêneros textuais","scene":{"label":"Ateliê dos gêneros","symbol":"Aa"},"snapshot":"Substantivo nomeia; artigo determina; adjetivo caracteriza; pronome retoma; numeral quantifica. No texto, essas escolhas constroem precisão, tom e ponto de vista.","beats":["Classes nominais orbitam o substantivo e concordam com ele em gênero e número.","Artigo definido particulariza; indefinido generaliza ou apresenta algo novo.","Pronome evita repetição e cria coesão; adjetivo pode informar ou revelar avaliação.","Gênero textual nasce de uma situação real: quem fala, para quem, com qual objetivo e em qual suporte."],"memory":"Gênero é o jogo; classe gramatical é uma das jogadas.","trap":"Não confunda gênero textual (notícia, meme, artigo) com tipologia (narrar, descrever, argumentar).","action":"Reconhecer estruturas, comparar gêneros e justificar como escolhas linguísticas produzem sentido.","codes":["EM13LGG101","EM13LGG103","EM13LGG202","EM13LGG203","EM13LGG302","EM13LGG401","EM13LGG402","EM13LGG703","EM13LGG704","EM13LP01","EM13LP02","EM13LP04","EM13LP06","EM13LP07","EM13LP08","EM13LP10","EM13LP28","EM13LP31","EM13LP44","EM13LP46"]},{"number":"04","title":"Noções de semântica e estilística","scene":{"label":"Laboratório dos sentidos","symbol":"~"},"snapshot":"Semântica pergunta “o que significa?”; estilística pergunta “que efeito essa forma produz?”. Contexto decide o valor final.","beats":["Denotação é sentido mais literal; conotação ativa associações, emoção e cultura.","Polissemia: uma palavra, sentidos relacionados. Ambiguidade: mais de uma leitura possível no enunciado.","Metáfora aproxima por semelhança; metonímia, por relação; ironia diz uma coisa para sugerir outra.","Repetição, ordem das palavras, pontuação e registro também são escolhas de estilo."],"memory":"Sentido = palavra + contexto + intenção.","trap":"Figura de linguagem não é enfeite automático: sempre diga qual efeito ela cria naquele texto.","action":"Analisar efeitos de sentido, variedades linguísticas e recursos expressivos em diferentes mídias.","codes":["EM13LGG101","EM13LGG202","EM13LGG401","EM13LGG402","EM13LGG502","EM13LGG602","EM13LP01","EM13LP03","EM13LP06","EM13LP10","EM13LP11","EM13LP31","EM13LP46"]},{"number":"05","title":"Verbos","scene":{"label":"Máquina do tempo verbal","symbol":"↻"},"snapshot":"O verbo localiza ações e estados, mas também mostra certeza, hipótese, ordem, duração e voz do enunciador.","beats":["Indicativo apresenta fato; subjuntivo, possibilidade/desejo; imperativo, orientação ou ordem.","Tempo situa; aspecto mostra se a ação começou, dura, repete ou terminou.","Voz ativa destaca o agente; passiva destaca o alvo; sujeito indeterminado pode apagar responsabilidades.","Regência liga verbo a complementos; concordância alinha o verbo ao núcleo do sujeito."],"memory":"Troque o tempo ou a voz e veja o sentido se mover.","trap":"Sujeito depois do verbo continua comandando a concordância: “Chegaram as notícias”.","action":"Usar formas verbais para interpretar posicionamentos e produzir textos coesos e adequados.","codes":["EM13LGG401","EM13LGG402","EM13LGG704","EM13LGG101","EM13LGG104","EM13LGG301","EM13LP01","EM13LP06","EM13LP08","EM13LP10","EM13LP11","EM13LP15","EM13LP28","EM13LP46","EM13LP49"]}],"quiz":{"question":"Em “A cidade acordou nervosa”, o adjetivo produz qual efeito?","options":["Apenas classifica cidade","Personifica e sugere tensão","Marca voz passiva"],"answer":1,"why":"“Nervosa” atribui estado humano à cidade e condensa o clima de tensão: forma e efeito caminham juntos."}},{"id":"literatura","mark":"Li","name":"Literatura","short":"Literatura","volume":"Volume 1 · unidades 3–5","theme":"sepia","world":{"label":"biblioteca de épocas","motifs":["obra","contexto","estética"]},"tagline":"Toda escola literária é uma resposta ao seu tempo — e todo narrador tem algo a esconder.","hook":"Contexto → estética → efeito.","route":["localize a época","reconheça marcas estéticas","compare o olhar sobre a sociedade"],"lens":"As competências pedem leitura histórica e estética: relacione obra, contexto, valores culturais, circulação e construção de identidades.","topics":[{"number":"03","title":"Pré-Romantismo e Romantismo","scene":{"label":"Salão romântico","symbol":"R"},"snapshot":"Contra o equilíbrio racional, o Romantismo põe o “eu”, a emoção, a imaginação, a natureza e a liberdade no centro.","beats":["Revoluções burguesas e nacionalismos valorizam indivíduo, povo e identidade nacional.","Pré-Romantismo anuncia sensibilidade, subjetividade e crítica às regras clássicas.","Natureza vira espelho do estado de alma; o herói pode ser rebelde, solitário e idealizado.","Escapismo, sonho, passado medieval e amor impossível expressam conflito com a realidade."],"memory":"Se o mundo aperta, o romântico foge para o eu, a natureza ou o passado.","trap":"Romantismo não é só amor: inclui nacionalismo, crítica social, morte, liberdade e construção identitária.","action":"Interpretar a literatura como produção cultural e reconhecer continuidades entre estética, história e identidade.","codes":["EM13LGG602","EM13LP01","EM13LP48","EM13LP49","EM13LP50"]},{"number":"04","title":"O Romantismo no Brasil","scene":{"label":"Brasil imaginado","symbol":"BR"},"snapshot":"Após a Independência, a literatura ajuda a “inventar” o Brasil: idealiza paisagens e heróis enquanto procura uma voz nacional.","beats":["1ª geração: nacionalista e indianista; o indígena aparece como herói idealizado.","2ª geração: ultrarromântica; tédio, sonho, amor impossível, fuga e morte.","3ª geração: condoreira; liberdade, abolicionismo, oratória e tom coletivo.","Na prosa, romances urbanos, indianistas e regionalistas imaginam diferentes Brasis."],"memory":"Índio → eu → povo: um atalho para as três gerações poéticas.","trap":"O indígena romântico é símbolo nacional idealizado, não um retrato fiel da diversidade indígena.","action":"Comparar projetos de brasilidade, vozes sociais e formas de representação literária.","codes":["EM13LGG602","EM13LP01","EM13LP48","EM13LP49","EM13LP50","EM13LP52"]},{"number":"05","title":"O Realismo no Brasil e em Portugal","scene":{"label":"Sala dos espelhos","symbol":"◐"},"snapshot":"O Realismo troca a idealização pela lupa crítica: observa relações sociais, interesse, aparência, poder e contradição.","beats":["Contexto: urbanização, ciência, positivismo e crise dos valores românticos.","Narrador analítico, ironia e aprofundamento psicológico desmontam aparências.","Machado de Assis expõe autoengano e elite brasileira; Eça de Queirós critica burguesia e instituições portuguesas.","Naturalismo radicaliza o olhar determinista, aproximando comportamento de hereditariedade e meio."],"memory":"Romântico idealiza; realista desconfia.","trap":"Narrador em primeira pessoa não é garantia de verdade — em Machado, a dúvida faz parte da leitura.","action":"Analisar narrador, valores, conflitos sociais e diálogo entre literaturas de língua portuguesa.","codes":["EM13LGG602","EM13LP01","EM13LP48","EM13LP49","EM13LP50","EM13LP52"]}],"quiz":{"question":"Qual movimento melhor explica um narrador irônico que desmonta a aparência da elite?","options":["Arcadismo","Realismo","Ultrarromantismo"],"answer":1,"why":"A ironia, a crítica social e a análise das contradições são marcas centrais do Realismo."}},{"id":"matematica","mark":"∑","name":"Matemática","short":"Matemática","volume":"Volume 2 · unidades 3–5","theme":"blueprint","world":{"label":"prancheta de cálculo","motifs":["modelo","medida","prova"]},"tagline":"Fórmula sem leitura é ruído. Primeiro modele a situação; depois faça a conta.","hook":"Dados → modelo → cálculo → sentido.","route":["desenhe ou organize os dados","escolha a relação","teste unidade e plausibilidade"],"lens":"Os códigos MAT priorizam modelagem, representação, resolução e validação. Explique a estratégia e interprete a resposta no contexto.","topics":[{"number":"03","title":"Matemática aplicada","scene":{"label":"Central de modelos","symbol":"f(x)"},"snapshot":"Aplicar matemática é traduzir uma situação real em relações, operar com elas e voltar ao problema para interpretar o resultado.","beats":["Razões, proporções e porcentagens comparam grandezas; variações sucessivas não se somam automaticamente.","Funções descrevem dependência: a taxa de variação conta como uma grandeza reage à outra.","Juros compostos crescem multiplicativamente: M = C(1 + i)ᵗ.","Tabelas, gráficos e medidas estatísticas devem ser lidos com unidade, escala, fonte e contexto."],"memory":"Modelo bom responde ao problema — não apenas produz um número.","trap":"Aumentar 20% e depois reduzir 20% não volta ao início: 1,2 × 0,8 = 0,96.","action":"Modelar situações, interpretar dados e tomar decisões sustentadas por diferentes representações.","codes":["EM13MAT101","EM13MAT102","EM13MAT103","EM13MAT104","EM13MAT202","EM13MAT303","EM13MAT313","EM13MAT314","EM13MAT315","EM13MAT406","EM13MAT407","EM13MAT503"]},{"number":"04","title":"Geometria das superfícies planas I","scene":{"label":"Oficina de áreas","symbol":"□"},"snapshot":"Área mede superfície; perímetro mede contorno. A prova costuma esconder essa diferença dentro de uma situação concreta.","beats":["Retângulo: A = b·h. Triângulo: A = b·h/2. Paralelogramo: A = b·h.","Trapézio: A = (B + b)·h/2. Losango: A = D·d/2.","Círculo: A = πr²; comprimento da circunferência: C = 2πr.","Decompor uma figura irregular em formas conhecidas costuma ser a estratégia mais segura."],"memory":"Pinte para pensar em área; contorne para pensar em perímetro.","trap":"Área usa unidade ao quadrado. Converter 1 m para 100 cm faz 1 m² virar 10.000 cm².","action":"Resolver e elaborar problemas de medidas e áreas, usando representações geométricas.","codes":["EM13MAT105","EM13MAT308"]},{"number":"05","title":"Geometria das superfícies planas II","scene":{"label":"Mapa das formas","symbol":"△"},"snapshot":"Quando a figura complica, semelhança, escala e decomposição transformam o desenho em partes controláveis.","beats":["Figuras semelhantes mantêm ângulos e têm lados proporcionais; áreas variam com o quadrado da razão.","Setor circular é uma fração do círculo: A = (ângulo/360°)·πr².","Em figuras vazadas, calcule área maior menos área retirada.","Otimizar é procurar maior ou menor valor respeitando as condições do problema."],"memory":"Razão de lados k; razão de áreas k².","trap":"Uma mudança linear no lado produz mudança quadrática na área: dobrar o lado quadruplica a área.","action":"Investigar propriedades, comparar áreas e usar geometria para modelar projetos e espaços.","codes":["EM13MAT103","EM13MAT105","EM13MAT201","EM13MAT307","EM13MAT308","EM13MAT315","EM13MAT405","EM13MAT505","EM13MAT506"]}],"quiz":{"question":"Um quadrado teve o lado aumentado em 10%. Quanto sua área aumentou?","options":["10%","20%","21%"],"answer":2,"why":"A área varia com o quadrado: 1,1² = 1,21. Portanto, o aumento é de 21%."}},{"id":"historia","mark":"H","name":"História","short":"História","volume":"Volume 2 · unidades 3–5","theme":"archive","world":{"label":"arquivo do tempo","motifs":["fonte","processo","memória"]},"tagline":"História não é uma fila de datas: é uma disputa por poder, recursos e memória.","hook":"Causa + agente + processo + consequência.","route":["situe tempo e espaço","identifique interesses","conecte mudanças e permanências"],"lens":"As habilidades CHS pedem análise de processos, fontes, territórios e relações de poder. Compare perspectivas e evite causas únicas.","topics":[{"number":"03","title":"Estados modernos e expansão marítima","scene":{"label":"Sala das navegações","symbol":"N"},"snapshot":"Reis centralizam poder e arrecadação; comércio busca novas rotas; técnicas náuticas tornam possível a expansão europeia.","beats":["A monarquia se fortalece com impostos, exército, leis e alianças com a burguesia.","Mercantilismo liga riqueza a comércio favorável, metais e proteção econômica.","Portugal combina posição atlântica, experiência marítima, capital e centralização precoce.","A expansão conecta oceanos, mas produz conquista, escravização, epidemias e disputa colonial."],"memory":"Centralização financia navegação; navegação amplia o poder do Estado.","trap":"Não atribua a expansão apenas à “aventura”: havia tecnologia, religião, comércio e política de Estado.","action":"Relacionar formação estatal, circulação econômica, técnicas e transformações territoriais.","codes":["EM13CHS101","EM13CHS102","EM13CHS104","EM13CHS105","EM13CHS106","EM13CHS201","EM13CHS203","EM13CHS401","EM13CHS501","EM13CHS603"]},{"number":"04","title":"A invenção do Brasil","scene":{"label":"Arquivo Brasil","symbol":"1500"},"snapshot":"“Descobrimento” é uma narrativa europeia. O território já reunia povos diversos; a colonização impôs novas relações de poder, trabalho e espaço.","beats":["Cartas, mapas e pinturas não são espelhos neutros: registram o olhar e os interesses de quem produziu.","A extração do pau-brasil usa escambo e alianças, seguida por ocupação e administração colonial.","Capitanias, governo-geral e plantation açucareira organizam controle, terra e exportação.","Resistências indígenas e africanas mostram que os colonizados foram agentes históricos, não figuras passivas."],"memory":"O Brasil foi ocupado no território e construído no discurso.","trap":"Evite tratar indígenas como um grupo único ou colonização como encontro pacífico.","action":"Criticar fontes e narrativas, reconhecer diversidade e analisar formação territorial e colonial.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS105","EM13CHS106","EM13CHS201","EM13CHS202","EM13CHS204","EM13CHS302","EM13CHS401","EM13CHS402","EM13CHS503","EM13CHS601"]},{"number":"05","title":"O pensamento iluminista e suas consequências","scene":{"label":"Café das Luzes","symbol":"☼"},"snapshot":"O Iluminismo usa razão e crítica para questionar absolutismo e privilégios, defendendo direitos — embora nem sempre para todos.","beats":["Locke: direitos naturais e governo limitado; Montesquieu: divisão de poderes.","Voltaire critica intolerância; Rousseau pensa soberania popular e vontade geral.","As ideias circulam em livros, salões e enciclopédias e alimentam revoluções liberais.","A linguagem universal dos direitos conviveu com escravidão, colonialismo e exclusão das mulheres."],"memory":"Razão para criticar; direitos para limitar o poder.","trap":"Ideia não causa revolução sozinha: some crises econômicas, conflitos sociais e ação política.","action":"Comparar ideias políticas, seus usos históricos, limites e efeitos nas instituições modernas.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS104","EM13CHS106","EM13CHS501","EM13CHS502","EM13CHS504","EM13CHS603","EM13CHS605"]}],"quiz":{"question":"Qual leitura é historicamente mais completa para a expansão marítima?","options":["Foi obra de heróis isolados","Resultou só da fé","Uniu Estado, comércio, técnica e conquista"],"answer":2,"why":"O processo foi multicausal e articulou interesses políticos, econômicos, religiosos e tecnológicos."}},{"id":"oficina","mark":"¶","name":"Oficina de Texto","short":"Oficina","volume":"Volume 2 · produção textual","theme":"editorial","world":{"label":"mesa de redação","motifs":["tese","evidência","revisão"]},"tagline":"Uma boa redação não empilha frases bonitas: conduz o leitor por uma linha de raciocínio.","hook":"Tese clara, argumento provado, conclusão coerente.","route":["recorte o tema","defina a tese","prove em parágrafos","revise a lógica"],"lens":"Os códigos destacam planejamento, argumentação, coesão, repertório e revisão. Cada escolha deve servir ao projeto de texto.","topics":[{"number":"01","title":"Dissertação argumentativa","scene":{"label":"Redação em obras","symbol":"¶"},"snapshot":"É um texto que defende uma tese por meio de argumentos organizados, evidências pertinentes e progressão lógica.","beats":["Introdução: contextualize sem enrolar, recorte o problema e apresente uma tese respondível.","Desenvolvimento: um núcleo argumentativo por parágrafo — tópico frasal, explicação, evidência e amarração.","Use repertório como prova comentada, não como citação decorativa; explique a ponte com a tese.","Conclusão retoma o raciocínio e fecha a discussão; se pedida, a proposta deve ser viável e detalhada."],"memory":"A + E + P: afirme, explique, prove.","trap":"Conector não cria lógica. “Portanto” só funciona quando a frase realmente decorre do que veio antes.","action":"Planejar, escrever, revisar e circular textos argumentativos com autoria, coesão e responsabilidade.","codes":["EM13LGG101","EM13LGG104","EM13LGG301","EM13LP02","EM13LP03","EM13LP11","EM13LP12","EM13LP15","EM13LP37"]}],"quiz":{"question":"Qual sequência forma um parágrafo argumentativo forte?","options":["Exemplo solto + frase de efeito","Afirmação + explicação + evidência + vínculo","Citação longa + conclusão"],"answer":1,"why":"O leitor precisa enxergar o argumento, compreender sua lógica, verificar a prova e perceber a ligação com a tese."}},{"id":"filosofia","mark":"φ","name":"Filosofia","short":"Filosofia","volume":"Volume 2 · unidades 3–5","theme":"dusk","world":{"label":"ágora das ideias","motifs":["problema","conceito","argumento"]},"tagline":"Filosofar é desacelerar uma certeza até enxergar as perguntas escondidas dentro dela.","hook":"Problema → conceito → argumento.","route":["descubra a pergunta","defina os conceitos","reconstrua a resposta do autor"],"lens":"As competências CHS cobram análise conceitual, comparação de argumentos e contextualização histórica — não decore frases sem compreender o problema.","topics":[{"number":"03","title":"Filosofia medieval","scene":{"label":"Claustro das ideias","symbol":"∞"},"snapshot":"A questão central não é escolher simplesmente entre fé e razão, mas investigar como elas podem se relacionar.","beats":["Patrística: Agostinho aproxima cristianismo e platonismo; interioridade e iluminação orientam a verdade.","O problema do mal: não é substância criada, mas privação do bem ligada ao uso da liberdade.","Escolástica: Tomás de Aquino articula Aristóteles e cristianismo; razão investiga o mundo, fé trata da revelação.","As cinco vias partem de efeitos observáveis para argumentar por uma causa primeira."],"memory":"Agostinho olha para dentro; Tomás parte do mundo observado.","trap":"“Medieval” não significa ausência de razão: universidades, disputas e sistemas lógicos foram centrais.","action":"Contextualizar sistemas de pensamento e comparar respostas sobre verdade, existência e liberdade.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS104"]},{"number":"04","title":"Mundo em transição","scene":{"label":"Portal da modernidade","symbol":"↗"},"snapshot":"Renascimento, Reforma e ciência moderna deslocam autoridades e recolocam o ser humano, a natureza e o método em debate.","beats":["Humanismo recupera textos clássicos e valoriza ação, linguagem e dignidade humanas.","Reforma rompe a unidade religiosa ocidental e amplia conflitos sobre autoridade e interpretação.","Copérnico, Galileu e Kepler transformam a imagem do cosmos com matemática e observação.","A imprensa acelera circulação de ideias; mudanças culturais não apagam de imediato estruturas antigas."],"memory":"A autoridade deixa de ser ponto final e vira questão.","trap":"Transição não é ruptura instantânea: elementos medievais e modernos convivem.","action":"Analisar mudanças culturais e científicas, circulação de ideias e disputas de autoridade.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS104","EM13CHS501","EM13CHS603"]},{"number":"05","title":"O apogeu da razão","scene":{"label":"Duelo do conhecimento","symbol":"?"},"snapshot":"A filosofia moderna procura um método seguro: racionalistas confiam em princípios da razão; empiristas, na experiência.","beats":["Descartes duvida metodicamente para encontrar uma certeza: se pensa, existe como ser pensante.","Bacon valoriza indução e crítica aos “ídolos” que distorcem o conhecimento.","Locke entende a mente como formada pela experiência; Hume radicaliza a crítica à causalidade.","Kant propõe síntese: conhecimento começa na experiência, mas é organizado por estruturas do sujeito."],"memory":"Racionalismo: da razão ao mundo. Empirismo: do mundo à mente.","trap":"A dúvida cartesiana é método para buscar fundamento, não desistência de conhecer.","action":"Comparar teorias do conhecimento, seus métodos, pressupostos e limites.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS104"]}],"quiz":{"question":"Por que Descartes usa a dúvida?","options":["Para negar todo conhecimento","Para encontrar um fundamento seguro","Para defender apenas a tradição"],"answer":1,"why":"A dúvida é provisória e metódica: ela remove crenças frágeis até restar uma certeza resistente."}},{"id":"geografia","mark":"⌖","name":"Geografia","short":"Geografia","volume":"Volume 2 · unidades 3–5","theme":"terrain","world":{"label":"atlas vivo","motifs":["escala","território","fluxo"]},"tagline":"A paisagem é um processo visível: natureza, técnica e sociedade deixam marcas no território.","hook":"Processo natural + uso humano + impacto espacial.","route":["localize a escala","identifique fluxos","relacione sociedade e natureza"],"lens":"As habilidades CHS articulam natureza, território, população e desigualdade. Leia mapas, compare escalas e avalie impactos.","topics":[{"number":"03","title":"Geologia, relevo e solos","scene":{"label":"Centro da Terra","symbol":"◎"},"snapshot":"O relevo é construído por forças internas e esculpido por agentes externos; o solo nasce lentamente dessa interação com clima e vida.","beats":["Tectonismo, vulcanismo e abalos vêm da dinâmica interna e do movimento das placas.","Intemperismo quebra ou altera rochas; erosão remove, transporta e deposita sedimentos.","Planaltos tendem ao predomínio de erosão; planícies, de sedimentação; depressões são áreas rebaixadas.","Solo depende de rocha, clima, relevo, organismos e tempo; manejo inadequado acelera perda e contaminação."],"memory":"Interior levanta; clima desgasta; água transporta.","trap":"Intemperismo ocorre no lugar; erosão envolve retirada e transporte.","action":"Explicar dinâmicas físico-naturais, interpretar paisagens e avaliar usos e riscos do território.","codes":["EM13CHS102","EM13CHS106","EM13CHS206","EM13CHS301","EM13CHS302","EM13CHS303","EM13CHS304","EM13CHS306","EM13CHS604"]},{"number":"04","title":"Água e cobertura vegetal do planeta","scene":{"label":"Planeta azul","symbol":"≋"},"snapshot":"Água e vegetação formam um sistema: clima controla disponibilidade; cobertura vegetal regula infiltração, umidade, solo e rios.","beats":["O ciclo hidrológico redistribui água; pouca fração da água terrestre é doce e facilmente acessível.","Bacia hidrográfica é drenada por um rio principal e seus afluentes; aquífero armazena água subterrânea.","Vegetação responde a clima e solo e também altera o microclima e a circulação da água.","Desmatamento reduz proteção do solo, altera evapotranspiração e pode intensificar assoreamento e extremos."],"memory":"Vegetação segura o solo, devolve vapor e ajuda a água a infiltrar.","trap":"Abundância hídrica nacional não significa acesso igual: distribuição, infraestrutura e poluição importam.","action":"Analisar ciclos naturais, redes hidrográficas, biomas e conflitos socioambientais.","codes":["EM13CHS103","EM13CHS106","EM13CHS206","EM13CHS302","EM13CHS304","EM13CHS306"]},{"number":"05","title":"População: demografia e condições de vida","scene":{"label":"Observatório humano","symbol":"◉"},"snapshot":"Demografia conta pessoas; geografia pergunta como elas vivem, circulam e acessam recursos no território.","beats":["Crescimento vegetativo = natalidade − mortalidade; crescimento total também considera migrações.","Transição demográfica vai de taxas altas a baixas e altera a estrutura etária.","Pirâmides etárias revelam juventude, envelhecimento e efeitos de eventos históricos.","IDH combina renda, educação e longevidade, mas médias podem esconder desigualdades internas."],"memory":"Indicador mostra um recorte; território revela a desigualdade.","trap":"Populoso é muita gente; povoado é alta densidade demográfica.","action":"Interpretar indicadores e fluxos populacionais, relacionando-os a trabalho, direitos e qualidade de vida.","codes":["EM13CHS106","EM13CHS201","EM13CHS202","EM13CHS206","EM13CHS402","EM13CHS502"]}],"quiz":{"question":"Qual processo inclui retirada e transporte de material?","options":["Intemperismo","Erosão","Tectonismo"],"answer":1,"why":"O intemperismo altera a rocha no local; a erosão remove e transporta os fragmentos."}},{"id":"fisica","mark":"F","name":"Física","short":"Física","volume":"Volume 2 · unidades 3–5","theme":"cosmos","world":{"label":"laboratório orbital","motifs":["força","energia","equilíbrio"]},"tagline":"A Física fica menor quando você desenha as forças e acompanha para onde a energia vai.","hook":"Sistema → diagrama → lei → unidade.","route":["isole o corpo","desenhe vetores","escolha a conservação","confira sinais"],"lens":"Os códigos CNT combinam explicação de fenômenos, investigação, modelos e comunicação. A conta precisa carregar hipótese, unidade e interpretação.","topics":[{"number":"03","title":"Leis de Newton e gravitação","scene":{"label":"Sala de forças","symbol":"F"},"snapshot":"Força resultante não “mantém” o movimento: ela muda a velocidade. Sem resultante, o corpo preserva seu estado de movimento.","beats":["1ª lei: inércia. 2ª: ΣF = m·a. 3ª: forças surgem em pares, em corpos diferentes.","Peso P = m·g aponta para o centro da Terra; normal é perpendicular à superfície e não é sempre igual ao peso.","Atrito se opõe à tendência de deslizamento; no estático, ajusta-se até um valor máximo.","Gravitação: F = G·Mm/r²; campo e órbita dependem da massa e da distância."],"memory":"Resultante zero não significa repouso; pode significar velocidade constante.","trap":"Ação e reação não se anulam porque atuam em corpos diferentes.","action":"Construir modelos de forças, prever movimentos e explicar fenômenos terrestres e astronômicos.","codes":["EM13CNT204","EM13CNT207","EM13CNT301","EM13CNT303","EM13CNT306","EM13CNT307","EM13CNT310"]},{"number":"04","title":"Trabalho, energia, impulso e quantidade de movimento","scene":{"label":"Cofre da energia","symbol":"E"},"snapshot":"Duas lentes para colisões e movimentos: energia acompanha transformações; quantidade de movimento acompanha interação e impulso.","beats":["Trabalho: W = F·d·cosθ; ele mede transferência de energia por uma força.","Ec = mv²/2; potencial gravitacional perto da Terra: Ep = mgh; potência: P = ΔE/Δt.","Impulso I = F·Δt = Δp; quantidade de movimento p = m·v é vetorial.","Em sistema isolado, p total se conserva; energia cinética só se conserva em colisão elástica."],"memory":"Força por distância muda energia; força por tempo muda momento.","trap":"Conservação de energia total não significa conservação de energia mecânica — atrito a transforma em energia interna.","action":"Analisar transferências e conservações para resolver problemas e avaliar tecnologias.","codes":["EM13CNT101","EM13CNT106","EM13CNT204","EM13CNT301","EM13CNT303","EM13CNT306","EM13CNT307"]},{"number":"05","title":"Estática e física dos fluidos","scene":{"label":"Estação de equilíbrio","symbol":"Σ"},"snapshot":"Equilíbrio exige força resultante e torque resultante nulos; em fluidos, pressão transmite forças e o empuxo nasce da diferença de pressão.","beats":["Equilíbrio translacional: ΣF = 0. Rotacional: Στ = 0, com τ = F·braço perpendicular.","Densidade ρ = m/V; pressão p = F/A; pressão hidrostática cresce com profundidade: p = p₀ + ρgh.","Princípio de Pascal explica sistemas hidráulicos; pressão aplicada se transmite pelo fluido.","Empuxo é igual ao peso do fluido deslocado; flutuação compara empuxo e peso."],"memory":"Equilíbrio: não anda e não gira.","trap":"Pressão e força não são a mesma grandeza: a mesma força em área menor produz maior pressão.","action":"Aplicar condições de equilíbrio e princípios dos fluidos a máquinas, corpos e situações cotidianas.","codes":["EM13CNT204","EM13CNT301","EM13CNT303","EM13CNT306","EM13CNT307"]}],"quiz":{"question":"Um corpo move-se em linha reta com velocidade constante. A resultante é...","options":["Zero","Na direção do movimento","Igual ao peso"],"answer":0,"why":"Velocidade constante significa aceleração zero; pela 2ª lei, a força resultante também é zero."}},{"id":"biologia","mark":"Bio","name":"Biologia","short":"Biologia","volume":"Volume 2 · unidades 3–5","theme":"garden","world":{"label":"caderno de campo","motifs":["célula","evolução","vida"]},"tagline":"Na vida, estrutura e função evoluem juntas — do núcleo à diversidade das plantas.","hook":"Estrutura → processo → vantagem evolutiva.","route":["localize a escala","acompanhe o processo","compare grupos e adaptações"],"lens":"As competências CNT pedem sistemas, evidências, classificação e evolução. Relacione estruturas a funções e evite listas sem comparação.","topics":[{"number":"03","title":"Núcleo e reprodução","scene":{"label":"Arquivo do DNA","symbol":"DNA"},"snapshot":"O núcleo organiza a informação genética; divisão celular copia e distribui essa informação para crescimento, reparo e reprodução.","beats":["DNA associado a proteínas forma cromatina; quando condensa, aparecem cromossomos.","Interfase: G1 cresce, S duplica DNA, G2 prepara divisão; controle evita propagação de erros.","Mitose gera células geneticamente equivalentes e mantém a ploidia.","Meiose reduz a ploidia e aumenta variabilidade por crossing-over e segregação independente."],"memory":"Mitose mantém; meiose mistura e reduz.","trap":"Cromossomo duplicado tem duas cromátides, mas continua sendo contado como um cromossomo até a separação.","action":"Explicar transmissão da informação genética, reprodução e variabilidade com modelos celulares.","codes":["EM13CNT103","EM13CNT202","EM13CNT205","EM13CNT207","EM13CNT301","EM13CNT302","EM13CNT303","EM13CNT304","EM13CNT305"]},{"number":"04","title":"Classificação, procariotos, protozoários e algas","scene":{"label":"Árvore da vida","symbol":"Y"},"snapshot":"Classificar é representar parentesco evolutivo, não montar uma escada do “simples” ao “superior”.","beats":["Nomenclatura binomial: gênero + epíteto específico; categorias agrupam organismos por ancestralidade.","Procariotos não têm núcleo membranoso; bactérias e arqueias diferem em genética, membrana e metabolismo.","Protozoários são eucariotos heterotróficos diversos; alguns são parasitas, muitos têm papel ecológico.","Algas são principalmente fotossintetizantes aquáticas e sustentam cadeias alimentares e produção de oxigênio."],"memory":"Classificação moderna procura ramos de parentesco, não degraus de perfeição.","trap":"Nem toda bactéria causa doença; microbiotas e ciclos biogeoquímicos dependem delas.","action":"Classificar por evidências evolutivas e avaliar papéis ecológicos, sanitários e tecnológicos.","codes":["EM13CNT105","EM13CNT201","EM13CNT202","EM13CNT203","EM13CNT206","EM13CNT207","EM13CNT301","EM13CNT302","EM13CNT303","EM13CNT305","EM13CNT310"]},{"number":"05","title":"Diversidade das plantas","scene":{"label":"Jardim evolutivo","symbol":"♧"},"snapshot":"A conquista do ambiente terrestre acompanha novidades: proteção contra dessecação, vasos, sementes, pólen, flores e frutos.","beats":["Briófitas: sem vasos; dependem mais de água e têm gametófito dominante.","Pteridófitas: têm vasos, mas não sementes; ainda dependem de água para fecundação.","Gimnospermas: semente e pólen; não formam fruto. Angiospermas: flor e fruto.","Alternância de gerações intercala gametófito haploide e esporófito diploide."],"memory":"Vaso → semente → flor/fruto: a trilha das grandes novidades.","trap":"Fruto vem do ovário da flor; semente vem do óvulo fecundado.","action":"Comparar ciclos e adaptações vegetais, relacionando diversidade a evolução e ambiente.","codes":["EM13CNT105","EM13CNT201","EM13CNT202","EM13CNT206","EM13CNT207"]}],"quiz":{"question":"Qual novidade torna a fecundação independente de água externa?","options":["Rizoide","Pólen","Esporo"],"answer":1,"why":"O grão de pólen transporta o gametófito masculino, reduzindo a dependência de água para o encontro dos gametas."}},{"id":"quimica","mark":"Q","name":"Química","short":"Química","volume":"Volume 2 · unidades 3–5","theme":"lab","world":{"label":"bancada molecular","motifs":["matéria","reação","proporção"]},"tagline":"A equação é a história; os coeficientes dizem quantos personagens entram e saem.","hook":"Espécies → proporção → unidade → partículas.","route":["identifique substâncias","balanceie","converta para mol","interprete o resultado"],"lens":"Os códigos CNT valorizam modelos de matéria, investigação, cálculo e impacto. Mostre relações entre nível macroscópico, partículas e símbolos.","topics":[{"number":"03","title":"Química inorgânica","scene":{"label":"Armário inorgânico","symbol":"pH"},"snapshot":"Ácidos, bases, sais e óxidos são famílias reconhecidas por composição e comportamento — sobretudo em água e em reações.","beats":["Arrhenius: ácido libera H⁺ em água; base libera OH⁻. Brønsted amplia: ácido doa próton, base recebe.","Neutralização: ácido + base → sal + água; a proporção depende do balanceamento.","Óxidos são compostos binários com oxigênio e podem ter caráter ácido, básico, anfótero ou neutro.","Dissociação separa íons já existentes; ionização forma íons a partir de moléculas."],"memory":"Primeiro classifique; depois preveja como reage.","trap":"Força de ácido não é concentração: força mede ionização; concentração mede quantidade por volume.","action":"Usar modelos para classificar substâncias, prever reações e avaliar aplicações e riscos.","codes":["EM13CNT301","EM13CNT302","EM13CNT303","EM13CNT310"]},{"number":"04","title":"Cálculos químicos e estequiometria","scene":{"label":"Cozinha do mol","symbol":"mol"},"snapshot":"Estequiometria é uma ponte: dado → mol → proporção da equação → unidade pedida.","beats":["Balanceie antes de calcular: coeficientes expressam proporções em mol e partículas.","n = m/M converte massa em mol; N = n·Nₐ converte mol em entidades.","Reagente limitante acaba primeiro e determina o máximo de produto.","Rendimento = quantidade real/teórica × 100%; pureza informa a fração útil da amostra."],"memory":"Tudo passa pelo mol.","trap":"Não use massas na proporção dos coeficientes; primeiro converta para mol.","action":"Planejar e interpretar transformações quantitativas, considerando eficiência e consumo de recursos.","codes":["EM13CNT101","EM13CNT206","EM13CNT301","EM13CNT302","EM13CNT303"]},{"number":"05","title":"Soluções e propriedades coligativas","scene":{"label":"Clube das soluções","symbol":"aq"},"snapshot":"Solução é mistura homogênea; propriedades coligativas dependem da quantidade de partículas dissolvidas, não da identidade delas.","beats":["Concentração comum C = m/V; molaridade = n/V; diluição conserva soluto: C₁V₁ = C₂V₂.","Solubilidade é o máximo que dissolve em certas condições; curva mostra efeito da temperatura.","Soluto não volátil reduz pressão de vapor, eleva ebulição e abaixa congelamento.","Osmose move solvente através de membrana para o meio de maior concentração efetiva de partículas."],"memory":"Mais partículas: menor vapor e congelamento; maior ebulição e pressão osmótica.","trap":"Eletrólitos podem gerar várias partículas por fórmula; isso intensifica o efeito coligativo ideal.","action":"Analisar soluções por modelos e dados e relacioná-las a processos biológicos, industriais e ambientais.","codes":["EM13CNT101","EM13CNT206","EM13CNT301","EM13CNT302","EM13CNT303","EM13CNT305","EM13CNT307","EM13CNT310"]}],"quiz":{"question":"Qual é a primeira ação segura num problema estequiométrico?","options":["Converter tudo em gramas","Balancear a equação","Escolher o maior reagente"],"answer":1,"why":"Sem balanceamento, a proporção entre as substâncias está errada e todo o cálculo perde o sentido."}},{"id":"sociologia","mark":"S","name":"Sociologia","short":"Sociologia","volume":"Volume 2 · unidades 3–5","theme":"civic","world":{"label":"mural da sociedade","motifs":["trabalho","poder","consumo"]},"tagline":"A Sociologia transforma o que parece “natural” em uma pergunta sobre relações sociais.","hook":"Conceito + estrutura + exemplo social.","route":["estranhe o cotidiano","use o conceito","ligue indivíduo e sociedade"],"lens":"As habilidades CHS pedem interpretação crítica, comparação de teorias e análise de desigualdades, trabalho, poder e consumo.","topics":[{"number":"03","title":"O pensamento de Karl Marx","scene":{"label":"Fábrica de Marx","symbol":"M"},"snapshot":"Marx lê a sociedade a partir da produção material e do conflito entre classes que ocupam posições diferentes nesse processo.","beats":["Materialismo histórico: formas de produzir organizam relações sociais e mudam por contradições.","Burguesia controla os meios de produção; proletariado vende força de trabalho.","Mais-valia é o valor produzido além do que retorna ao trabalhador como salário.","Alienação separa o trabalhador do produto, do processo, de si e dos outros; ideologia naturaliza relações históricas."],"memory":"Quem produz? Quem controla? Quem fica com o excedente?","trap":"Classe social em Marx não é apenas faixa de renda; é posição nas relações de produção.","action":"Analisar trabalho, conflito, desigualdade e transformação social por categorias teóricas.","codes":["EM13CHS101","EM13CHS102","EM13CHS103"]},{"number":"04","title":"O pensamento de Max Weber","scene":{"label":"Mapa das ações","symbol":"W"},"snapshot":"Weber parte do sentido que os indivíduos atribuem às ações e investiga como essas ações formam instituições.","beats":["Ação tradicional, afetiva, racional por valores e racional por fins são tipos ideais para interpretar condutas.","Compreensão (Verstehen) reconstrói o sentido da ação sem abandonar explicação rigorosa.","Dominação pode ser tradicional, carismática ou legal-racional.","Modernidade intensifica racionalização e burocracia; eficiência convive com impessoalidade e controle."],"memory":"Marx pergunta pela posição; Weber pergunta pelo sentido.","trap":"Tipo ideal não é modelo perfeito: é ferramenta conceitual para comparar a realidade.","action":"Interpretar ações, legitimidade e instituições e comparar explicações sociológicas.","codes":["EM13CHS101","EM13CHS102","EM13CHS103"]},{"number":"05","title":"Capitalismo e consumo","scene":{"label":"Vitrine do consumo","symbol":"$"},"snapshot":"Consumir satisfaz necessidades, mas também comunica identidade, pertencimento e status dentro de um sistema de produção e publicidade.","beats":["Mercadoria tem valor de uso e de troca; relações sociais podem aparecer como relações entre coisas.","Publicidade não só informa: associa produtos a estilos de vida, desejos e distinções.","Crédito e obsolescência aceleram consumo, endividamento e descarte.","Consumo consciente importa, mas soluções também dependem de regulação, produção e infraestrutura."],"memory":"A compra termina no caixa; seus efeitos começam antes e continuam depois.","trap":"Não reduza o problema a “escolha individual”: renda, oferta, cultura e política moldam o consumo.","action":"Avaliar criticamente produção, publicidade, desigualdade, sustentabilidade e práticas de consumo.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS301","EM13CHS502","EM13CHS503","EM13CHS504"]}],"quiz":{"question":"Qual comparação está correta?","options":["Marx: sentido da ação; Weber: mais-valia","Marx: relações de produção; Weber: sentido da ação","Ambos negam instituições"],"answer":1,"why":"É um bom eixo de comparação: Marx enfatiza estrutura e conflito; Weber, sentidos da ação e formas de dominação."}},{"id":"ingles","mark":"EN","name":"Língua Inglesa","short":"Inglês","volume":"Making a Change / B 2.2","theme":"zine","world":{"label":"culture zine","motifs":["voice","context","change"]},"tagline":"Ler em inglês não é traduzir cada palavra: é construir o sentido usando pistas do próprio texto.","hook":"Contexto → palavras-chave → posicionamento.","route":["observe título e imagem","encontre palavras repetidas","identifique voz e objetivo"],"lens":"O foco é leitura crítica, repertório cultural e uso social da língua: localizar pistas, inferir sentidos e reconhecer o posicionamento de quem escreve.","topics":[{"number":"01","title":"Our Art","scene":{"label":"Galeria da identidade","symbol":"ART"},"snapshot":"A arte pode representar identidades, questionar estereótipos e dar visibilidade a vozes muitas vezes ignoradas. O texto em inglês deve ser lido junto com suas imagens e seu contexto cultural.","beats":["Antes de ler tudo, use title (título), image (imagem), captions (legendas) e source (fonte) para prever o assunto.","Pergunte: Who created it? (Quem criou?), For whom? (Para quem?) e What is the message? (Qual é a mensagem?).","Vocabulário-chave: artwork = obra de arte; heritage = patrimônio/herança cultural; belonging = pertencimento; audience = público.","Expressões como “I believe” (eu acredito), “in my view” (na minha visão) e “this suggests” (isso sugere) revelam opinião."],"memory":"Não decodifique palavra por palavra; reúna pistas que apontem para a mensagem principal.","trap":"Uma palavra parecida com o português pode ser falso cognato. Confirme o sentido pela frase e pelo tema.","action":"Interpretar linguagem verbal e visual, reconhecer diversidade cultural e defender um ponto de vista com evidências.","codes":[]},{"number":"02","title":"Sport and Activism","scene":{"label":"Arquibancada ativista","symbol":"GO!"},"snapshot":"Atletas podem usar sua visibilidade para transformar o esporte em espaço de debate sobre direitos, justiça e representatividade.","beats":["Separe fact (fato verificável) de opinion (avaliação) e procure a evidence usada para sustentar uma afirmação.","Causa: because/since = porque; due to = devido a. Consequência: therefore = portanto; as a result = como resultado.","Contraste: but = mas; however = porém; although = embora; while = enquanto/ao passo que.","Vocabulário-chave: protest = protesto; equality = igualdade; awareness = conscientização; boycott = boicote; backlash = reação negativa."],"memory":"Depois de “however”, preste atenção: o autor está mudando a direção do argumento.","trap":"Ativismo é o tema, mas a questão pode avaliar fonte, opinião, conector ou uma inferência.","action":"Analisar discurso midiático, argumentação, participação social e o alcance público da língua inglesa.","codes":[]},{"number":"03","title":"Social Pressure","scene":{"label":"Radar social","symbol":"!"},"snapshot":"A pressão social influencia comportamentos por meio do desejo de pertencimento, da comparação, da aprovação e do medo de exclusão — dentro e fora da internet.","beats":["Peer pressure é a pressão do grupo. Pode ser explícita, com uma cobrança direta, ou implícita, por expectativas e comparação.","Modal verbs regulam a força da mensagem: must = obrigação forte; should = conselho; can = capacidade ou possibilidade.","Reconheça estratégias persuasivas baseadas em popularidade, autoridade, urgência, medo e imagens idealizadas.","Vocabulário-chave: fit in = encaixar-se; stand out = destacar-se; self-esteem = autoestima; boundaries = limites."],"memory":"Procure quem deseja que outra pessoa faça o quê — e por qual motivo.","trap":"Não responda pela sua opinião antes de verificar o que o texto realmente permite concluir.","action":"Inferir sentidos, avaliar estratégias persuasivas e discutir bem-estar e uso responsável das mídias.","codes":[]}],"quiz":{"question":"Qual conector normalmente introduz uma ideia de contraste?","options":["Therefore","However","Because"],"answer":1,"why":"“However” significa “porém/entretanto” e muda a direção do argumento. A frase seguinte costuma trazer uma ressalva importante do autor."}}];
+    const state = {
+      activeId: subjects[0].id,
+      quickMode: false,
+      completed: [],
+      completedTopics: [],
+      revealedMemories: [],
+      quizChoice: null,
+      query: ""
+    };
+
+    const shell = document.getElementById("shell");
+    const tabs = document.getElementById("tabs");
+    const panel = document.getElementById("panel");
+    const search = document.getElementById("search");
+    const modeToggle = document.getElementById("modeToggle");
+    const progressRing = document.getElementById("progressRing");
+    const progressValue = document.getElementById("progressValue");
+    const progressTotal = document.getElementById("progressTotal");
+    const coverProgress = document.getElementById("coverProgress");
+    const coverProgressBar = document.getElementById("coverProgressBar");
+
+    try {
+      const saved = localStorage.getItem("fernando-materias-revisadas") || localStorage.getItem("vespera-revisadas");
+      if (saved) state.completed = JSON.parse(saved);
+      const savedTopics = localStorage.getItem("fernando-resumos-concluidos");
+      if (savedTopics) state.completedTopics = JSON.parse(savedTopics);
+    } catch (_) {}
+
+    function esc(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function activeSubject() {
+      return subjects.find((subject) => subject.id === state.activeId) || subjects[0];
+    }
+
+    function visibleSubjects() {
+      const query = state.query.trim().toLocaleLowerCase("pt-BR");
+      if (!query) return subjects;
+      return subjects.filter((subject) =>
+        [subject.name].concat(subject.topics.map((topic) => topic.title))
+          .join(" ")
+          .toLocaleLowerCase("pt-BR")
+          .includes(query)
+      );
+    }
+
+    function updateProgress() {
+      const percent = Math.round((state.completed.length / subjects.length) * 100);
+      progressRing.style.setProperty("--progress", (percent * 3.6) + "deg");
+      progressRing.setAttribute("aria-label", state.completed.length + " de " + subjects.length + " matérias revisadas");
+      progressValue.textContent = state.completed.length;
+      progressTotal.textContent = "/" + subjects.length;
+      coverProgress.textContent = state.completed.length + " de " + subjects.length + " matérias revisadas";
+      coverProgressBar.style.width = percent + "%";
+    }
+
+    function renderTabs() {
+      const visible = visibleSubjects();
+      if (!visible.length) {
+        tabs.innerHTML = '<p class="no-results">Nada encontrado. Tente “energia”, “Romantismo” ou “redação”.</p>';
+        return;
+      }
+
+      tabs.innerHTML = visible.map((subject) => {
+        const active = subject.id === state.activeId;
+        const done = state.completed.includes(subject.id);
+        return '<button id="tab-' + esc(subject.id) + '" role="tab" aria-selected="' + active + '" aria-controls="panel-' + esc(subject.id) + '" tabindex="' + (active ? "0" : "-1") + '" class="' + (active ? "active " : "") + (done ? "done" : "") + '" data-subject="' + esc(subject.id) + '">' +
+          '<span class="tab-mark">' + esc(subject.mark) + '</span>' +
+          '<span>' + esc(subject.short) + '</span>' +
+          (done ? '<i aria-label="revisada">✓</i>' : "") +
+          '</button>';
+      }).join("");
+
+      tabs.querySelectorAll("[data-subject]").forEach((button) => {
+        button.addEventListener("click", () => selectSubject(button.dataset.subject));
+      });
+    }
+
+    function topicCard(topic, topicIndex, subject) {
+      const topicKey = subject.id + ":" + topic.number;
+      const topicDone = state.completedTopics.includes(topicKey);
+      const memoryRevealed = state.revealedMemories.includes(topicKey);
+      const learningBlock = topic.codes.length
+        ? '<details class="competency-box"><summary><span>Matriz de competências</span><small>' + topic.codes.length + ' referências</small></summary><p>' + esc(topic.action) + '</p><div class="code-cloud">' + topic.codes.map((code) => '<code>' + esc(code) + '</code>').join("") + '</div></details>'
+        : '<div class="learning-goal"><span>o que dominar</span><p>' + esc(topic.action) + '</p></div>';
+
+      return '<article class="topic-card topic-card-' + (topicIndex + 1) + ' ' + (topicDone ? "is-topic-done" : "") + '" style="--topic-order:' + topicIndex + '">' +
+        '<div class="topic-scene">' +
+          '<span class="scene-symbol">' + esc(topic.scene.symbol) + '</span>' +
+          '<div><small>tema deste resumo</small><strong>' + esc(topic.scene.label) + '</strong></div>' +
+          '<button class="topic-check" data-topic="' + esc(topicKey) + '" aria-pressed="' + topicDone + '"><span>' + (topicDone ? "✓" : "+") + '</span>' + (topicDone ? "missão concluída" : "concluir missão") + '</button>' +
+          '<i class="scene-spark spark-one"></i><i class="scene-spark spark-two"></i>' +
+        '</div>' +
+        '<div class="topic-number">' + esc(topic.number) + '</div>' +
+        '<div class="topic-main">' +
+          '<header><span>UNIDADE ' + esc(topic.number) + '</span><h2>' + esc(topic.title) + '</h2></header>' +
+          '<div class="snapshot"><span>em 30 segundos</span><p>' + esc(topic.snapshot) + '</p></div>' +
+          '<div class="topic-details">' +
+            '<h3>O fio da meada</h3>' +
+            '<ul>' + topic.beats.map((beat) => '<li>' + esc(beat) + '</li>').join("") + '</ul>' +
+            '<div class="memory-grid">' +
+              '<button class="memory-note ' + (memoryRevealed ? "is-revealed" : "") + '" data-memory="' + esc(topicKey) + '" aria-pressed="' + memoryRevealed + '">' +
+                '<span>' + (memoryRevealed ? "atalho revelado" : "flashcard · clique para virar") + '</span>' +
+                '<strong>' + (memoryRevealed ? esc(topic.memory) : "Tente lembrar antes de revelar a resposta.") + '</strong><i aria-hidden="true">↻</i>' +
+              '</button>' +
+              '<div class="trap-note"><span>pegadinha</span><p>' + esc(topic.trap) + '</p></div>' +
+            '</div>' +
+            learningBlock +
+          '</div>' +
+          '<div class="fernando-signature"><span>Feito por</span><strong>Fernando</strong><i></i></div>' +
+        '</div>' +
+      '</article>';
+    }
+
+    function quizCard(subject) {
+      const answered = state.quizChoice !== null;
+      const options = subject.quiz.options.map((option, index) => {
+        let status = "";
+        if (answered) {
+          if (index === subject.quiz.answer) status = "correct";
+          else if (index === state.quizChoice) status = "wrong";
+        }
+        return '<button class="' + status + '" data-quiz="' + index + '" ' + (answered ? "disabled" : "") + '>' +
+          '<span>' + String.fromCharCode(65 + index) + '</span>' + esc(option) +
+        '</button>';
+      }).join("");
+
+      let feedback = "";
+      if (answered) {
+        const right = state.quizChoice === subject.quiz.answer;
+        feedback = '<div class="quiz-feedback" role="status">' +
+          '<strong>' + (right ? "Acertou — boa leitura." : "Quase. Repare no raciocínio:") + '</strong>' +
+          '<p>' + esc(subject.quiz.why) + '</p>' +
+          '<button id="retryQuiz">tentar de novo</button>' +
+        '</div>';
+      }
+
+      return '<div class="sidebar-card quiz-card">' +
+        '<span class="card-label">TESTE DE 1 MINUTO</span>' +
+        '<h3>' + esc(subject.quiz.question) + '</h3>' +
+        '<div class="quiz-options">' + options + '</div>' + feedback +
+      '</div>';
+    }
+
+    function renderPanel() {
+      const subject = activeSubject();
+      const subjectNumber = String(subjects.findIndex((item) => item.id === subject.id) + 1).padStart(2, "0");
+      const isComplete = state.completed.includes(subject.id);
+      const activeCompletedCount = subject.topics.filter((topic) => state.completedTopics.includes(subject.id + ":" + topic.number)).length;
+      shell.dataset.theme = subject.theme;
+      panel.id = "panel-" + subject.id;
+      panel.setAttribute("aria-labelledby", "tab-" + subject.id);
+
+      panel.innerHTML =
+        '<div class="ambient-shape shape-one"></div><div class="ambient-shape shape-two"></div>' +
+        '<div class="theme-world" aria-hidden="true"><span class="world-label">' + esc(subject.world.label) + '</span>' +
+          '<div class="motif-cloud">' + subject.world.motifs.map((motif, index) => '<b class="motif motif-' + (index + 1) + '">' + esc(motif) + '</b>').join("") + '</div>' +
+          '<i class="world-symbol symbol-one"></i><i class="world-symbol symbol-two"></i><i class="world-symbol symbol-three"></i></div>' +
+        '<header class="subject-hero">' +
+          '<div class="hero-index"><span class="hero-mark">' + esc(subject.mark) + '</span><span>' + esc(subject.volume) + '</span></div>' +
+          '<div class="hero-copy"><p class="overline">ROTA DE REVISÃO · ' + subjectNumber + '</p><h1>' + esc(subject.name) + '</h1><p class="tagline">' + esc(subject.tagline) + '</p></div>' +
+          '<div class="hero-memory"><span>guarde isto</span><strong>' + esc(subject.hook) + '</strong></div>' +
+        '</header>' +
+        '<div class="route-strip" aria-label="Estratégia da matéria">' +
+          '<span>COMO PENSAR</span>' +
+          subject.route.map((step, index) => '<div><b>' + (index + 1) + '</b>' + esc(step) + (index < subject.route.length - 1 ? '<i>→</i>' : "") + '</div>').join("") +
+        '</div>' +
+        '<div class="content-grid">' +
+          '<div class="topic-stack">' + subject.topics.map((topic, index) => topicCard(topic, index, subject)).join("") + '</div>' +
+          '<aside class="study-sidebar">' +
+            '<div class="sidebar-card lens-card"><span class="card-label">A LENTE DA BNCC</span><p>' + esc(subject.lens) + '</p></div>' +
+            '<div class="sidebar-card mission-card"><span class="card-label">MISSÕES DA MATÉRIA</span>' +
+              '<div><strong>' + activeCompletedCount + '</strong><span>de ' + subject.topics.length + ' concluídas</span></div>' +
+              '<i><span style="width:' + ((activeCompletedCount / subject.topics.length) * 100) + '%"></span></i>' +
+              '<p>Cada resumo concluído deixa esta trilha mais viva.</p></div>' +
+            quizCard(subject) +
+            '<button class="complete-button ' + (isComplete ? "is-complete" : "") + '" id="completeButton"><span>' + (isComplete ? "✓" : "○") + '</span>' + (isComplete ? "Matéria revisada" : "Marcar como revisada") + '</button>' +
+          '</aside>' +
+        '</div>';
+
+      panel.querySelectorAll("[data-quiz]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.quizChoice = Number(button.dataset.quiz);
+          renderPanel();
+        });
+      });
+
+      panel.querySelectorAll("[data-topic]").forEach((button) => {
+        button.addEventListener("click", () => toggleTopic(button.dataset.topic));
+      });
+
+      panel.querySelectorAll("[data-memory]").forEach((button) => {
+        button.addEventListener("click", () => toggleMemory(button.dataset.memory));
+      });
+
+      const retry = document.getElementById("retryQuiz");
+      if (retry) retry.addEventListener("click", () => {
+        state.quizChoice = null;
+        renderPanel();
+      });
+
+      document.getElementById("completeButton").addEventListener("click", toggleComplete);
+      panel.style.animation = "none";
+      void panel.offsetWidth;
+      panel.style.animation = "";
+    }
+
+    function render() {
+      renderTabs();
+      renderPanel();
+      updateProgress();
+    }
+
+    function selectSubject(id) {
+      state.activeId = id;
+      state.quizChoice = null;
+      render();
+      requestAnimationFrame(() => {
+        const tab = document.getElementById("tab-" + id);
+        if (tab) tab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      });
+    }
+
+    function toggleComplete() {
+      const subject = activeSubject();
+      const id = subject.id;
+      const completing = !state.completed.includes(id);
+      state.completed = completing ? state.completed.concat(id) : state.completed.filter((item) => item !== id);
+      const topicKeys = subject.topics.map((topic) => id + ":" + topic.number);
+      state.completedTopics = completing
+        ? Array.from(new Set(state.completedTopics.concat(topicKeys)))
+        : state.completedTopics.filter((key) => !topicKeys.includes(key));
+      try {
+        localStorage.setItem("fernando-materias-revisadas", JSON.stringify(state.completed));
+        localStorage.setItem("fernando-resumos-concluidos", JSON.stringify(state.completedTopics));
+      } catch (_) {}
+      render();
+    }
+
+    function toggleTopic(topicKey) {
+      const subject = activeSubject();
+      const willComplete = !state.completedTopics.includes(topicKey);
+      state.completedTopics = willComplete
+        ? state.completedTopics.concat(topicKey)
+        : state.completedTopics.filter((key) => key !== topicKey);
+      const subjectKeys = subject.topics.map((topic) => subject.id + ":" + topic.number);
+      const allComplete = subjectKeys.every((key) => state.completedTopics.includes(key));
+      state.completed = allComplete
+        ? Array.from(new Set(state.completed.concat(subject.id)))
+        : state.completed.filter((id) => id !== subject.id);
+      try {
+        localStorage.setItem("fernando-materias-revisadas", JSON.stringify(state.completed));
+        localStorage.setItem("fernando-resumos-concluidos", JSON.stringify(state.completedTopics));
+      } catch (_) {}
+      render();
+    }
+
+    function toggleMemory(topicKey) {
+      state.revealedMemories = state.revealedMemories.includes(topicKey)
+        ? state.revealedMemories.filter((key) => key !== topicKey)
+        : state.revealedMemories.concat(topicKey);
+      renderPanel();
+    }
+
+    modeToggle.addEventListener("click", () => {
+      state.quickMode = !state.quickMode;
+      shell.classList.toggle("quick-mode", state.quickMode);
+      modeToggle.classList.toggle("is-on", state.quickMode);
+      modeToggle.setAttribute("aria-pressed", String(state.quickMode));
+    });
+
+    search.addEventListener("input", () => {
+      state.query = search.value;
+      const visible = visibleSubjects();
+      if (visible.length && !visible.some((subject) => subject.id === state.activeId)) {
+        state.activeId = visible[0].id;
+        state.quizChoice = null;
+      }
+      render();
+    });
+
+    tabs.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      const index = subjects.findIndex((subject) => subject.id === state.activeId);
+      const step = event.key === "ArrowRight" ? 1 : -1;
+      const next = subjects[(index + step + subjects.length) % subjects.length];
+      selectSubject(next.id);
+      requestAnimationFrame(() => {
+        const tab = document.getElementById("tab-" + next.id);
+        if (tab) tab.focus();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>
