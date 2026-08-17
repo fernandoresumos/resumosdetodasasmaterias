@@ -1161,6 +1161,134 @@ summary:focus-visible {
   font-weight: 650;
 }
 
+.explanation-block {
+  margin: 24px 0 0;
+  padding: clamp(18px, 2.5vw, 26px);
+  border-left: 4px solid var(--topic-tone);
+  border-radius: 0 10px 10px 0;
+  background: color-mix(in srgb, var(--topic-tone) 5%, white);
+}
+
+.explanation-block h3,
+.formula-panel > h3,
+.author-panel > h3 {
+  margin: 0 0 12px;
+  color: var(--topic-tone);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.explanation-block p {
+  margin: 0;
+  color: #393b36;
+  font-size: .96rem;
+  line-height: 1.72;
+}
+
+.explanation-block p + p { margin-top: 12px; }
+
+.formula-panel {
+  margin-top: 18px;
+  padding: clamp(18px, 2.5vw, 24px);
+  border: 1px solid color-mix(in srgb, var(--topic-tone) 34%, transparent);
+  border-radius: 12px;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--topic-tone) 8%, white), #fff);
+}
+
+.formula-list {
+  display: grid;
+  gap: 12px;
+}
+
+.formula-card {
+  display: grid;
+  grid-template-columns: minmax(190px, .72fr) minmax(0, 1.28fr);
+  gap: 16px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: rgba(255,255,255,.88);
+}
+
+.formula-head {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.formula-head span {
+  color: var(--muted);
+  font-size: .66rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.formula-expression {
+  color: var(--deep);
+  font: 800 clamp(1rem, 2vw, 1.25rem)/1.35 "Cambria Math", Georgia, serif;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.formula-explain p {
+  margin: 0 0 8px;
+  color: #4a4b46;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.formula-terms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.formula-terms small {
+  padding: 5px 7px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--topic-tone) 9%, #f3f1eb);
+  color: #4b4c46;
+  font-size: .7rem;
+  line-height: 1.35;
+}
+
+.author-panel {
+  margin-top: 18px;
+  padding: clamp(18px, 2.5vw, 24px);
+  border: 1px solid color-mix(in srgb, var(--topic-tone) 32%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--topic-tone) 5%, #fffdf8);
+}
+
+.author-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.author-card {
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255,255,255,.9);
+}
+
+.author-card strong {
+  display: block;
+  color: var(--deep);
+  font: 800 .98rem/1.25 Georgia, serif;
+}
+
+.author-card span {
+  display: block;
+  margin-top: 5px;
+  color: #55564f;
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
 .topic-details > h3 {
   margin: 22px 0 13px;
   font-size: 0.72rem;
@@ -2353,6 +2481,19 @@ footer span {
     gap: 7px;
   }
 
+  .explanation-block {
+    padding: 17px;
+  }
+
+  .formula-card {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .author-list {
+    grid-template-columns: 1fr;
+  }
+
   .memory-grid {
     grid-template-columns: 1fr;
   }
@@ -2406,7 +2547,8 @@ footer span {
       .subject-stage::before, .ambient-shape { display: none; }
       .subject-hero { margin-bottom: 24px; }
       .content-grid { display: block; }
-      .topic-card { break-inside: avoid; box-shadow: none; margin-bottom: 16px; }
+      .topic-card { break-inside: auto; box-shadow: none; margin-bottom: 24px; }
+      .topic-scene, .topic-main > header, .snapshot, .explanation-block, .formula-card, .memory-grid { break-inside: avoid; }
       .competency-box { display: none; }
     }
   </style>
@@ -2486,6 +2628,323 @@ footer span {
     };
 
     const shell = document.getElementById("shell");
+    // Complementos conferidos com o roteiro da 2ª etapa e com os materiais anexados.
+    // A estrutura visual permanece a mesma: apenas enriquecemos o conteúdo de cada unidade.
+    const topicComplements = {
+      "portugues:03": [
+        "Substantivo pode ser comum ou próprio, concreto ou abstrato, simples ou composto, primitivo ou derivado; o adjetivo pode assumir a forma de locução adjetiva, como “amor de mãe” → “amor materno”.",
+        "Tipos textuais mais frequentes: narração conta fatos; descrição caracteriza; dissertação expõe ideias; argumentação defende uma tese; injunção orienta ações. Um gênero pode misturar mais de um tipo.",
+        "Exemplos de finalidade: notícia informa; propaganda persuade; receita instrui; artigo de opinião argumenta; crônica narra e reflete sobre o cotidiano."
+      ],
+      "portugues:04": [
+        "Sinonímia aproxima sentidos; antonímia opõe; homônimos têm forma igual ou semelhante com sentidos diferentes; parônimos têm grafia ou som próximos, como comprimento e cumprimento.",
+        "Figuras essenciais: comparação usa conectivo; personificação atribui ação humana; hipérbole exagera; antítese aproxima opostos; eufemismo suaviza uma ideia desagradável.",
+        "Exemplo de polissemia: “banco” pode ser assento ou instituição financeira; a frase ao redor elimina a dúvida."
+      ],
+      "portugues:05": [
+        "Pretérito perfeito indica ação concluída; imperfeito, ação habitual ou em curso no passado; mais-que-perfeito, ação anterior a outra ação passada.",
+        "Na voz reflexiva, o sujeito pratica e recebe a ação: “João se machucou”. Compare com a ativa (“João fez”) e a passiva (“foi feito por João”).",
+        "Além de ação e estado, o verbo pode indicar fenômeno da natureza ou mudança de estado; observe pessoa, número, modo, tempo e voz."
+      ],
+      "literatura:03": [
+        "O Romantismo brasileiro começa oficialmente em 1836, com Suspiros Poéticos e Saudades, de Gonçalves de Magalhães.",
+        "Marcas recorrentes: sentimentalismo, subjetividade, liberdade criativa, religiosidade, nacionalismo, idealização amorosa e valorização da natureza.",
+        "O Pré-Romantismo é uma transição: conserva elementos anteriores, mas já amplia a emoção, os conflitos amorosos, a subjetividade e os temas nacionais."
+      ],
+      "literatura:04": [
+        "Autores-chave: Gonçalves Dias na geração indianista; Álvares de Azevedo na ultrarromântica; Castro Alves, o “poeta dos escravos”, na condoreira.",
+        "José de Alencar se destaca na prosa: Iracema, O Guarani e Ubirajara são indianistas; Senhora é urbano; O Sertanejo é regionalista.",
+        "O romance romântico combina personagens idealizadas, natureza, nacionalismo e conflitos entre amor e convenções sociais."
+      ],
+      "literatura:05": [
+        "No Brasil, o marco é Memórias Póstumas de Brás Cubas (1881). Machado de Assis usa ironia, análise psicológica, crítica à hipocrisia e narradores pouco confiáveis.",
+        "Em Dom Casmurro, Bentinho narra a própria versão; por isso, a suposta traição de Capitu permanece uma dúvida interpretativa.",
+        "Em Portugal, a Questão Coimbrã (1865) antecipa a ruptura; Eça de Queirós critica burguesia, clero e costumes em O Primo Basílio, O Crime do Padre Amaro e Os Maias."
+      ],
+      "matematica:03": [
+        "Matemática financeira: juros simples crescem por adição, J = C·i·t; juros compostos crescem por multiplicação, M = C(1+i)ᵗ.",
+        "Tendência central: média soma e divide; mediana ocupa o centro; moda é o valor mais frequente. Valores extremos afetam especialmente a média.",
+        "Dispersão: amplitude é máximo − mínimo; variância e desvio padrão medem o afastamento em torno da média. Quanto maior o desvio, menos homogêneos são os dados."
+      ],
+      "matematica:04": [
+        "Revise ângulos, classificação de triângulos e quadriláteros, soma dos ângulos internos e propriedades dos polígonos.",
+        "Em figuras circulares, diferencie círculo (superfície) de circunferência (contorno) e reconheça raio, diâmetro, corda, arco e setor.",
+        "Antes da fórmula, marque base e altura perpendicular; lado inclinado não substitui automaticamente a altura."
+      ],
+      "matematica:05": [
+        "Pontos notáveis: encontro das medianas = baricentro; bissetrizes = incentro; mediatrizes = circuncentro; alturas = ortocentro.",
+        "Semelhança exige ângulos correspondentes iguais e lados proporcionais; use-a para descobrir comprimentos inacessíveis.",
+        "No triângulo retângulo: a² = b² + c²; sen = oposto/hipotenusa, cos = adjacente/hipotenusa e tg = oposto/adjacente.",
+        "Relações métricas ligam hipotenusa, catetos, altura e projeções; desenhe e nomeie cada segmento antes de substituir valores."
+      ],
+      "historia:03": [
+        "A Reforma Protestante rompe a unidade religiosa ocidental; monarquias e burguesia também disputam poder e recursos com a Igreja.",
+        "Antes da conquista europeia, maias, astecas, incas e muitos outros povos possuíam organizações políticas, econômicas e culturais próprias.",
+        "O absolutismo se consolidou de modos diferentes na França e na Inglaterra; as Revoluções Puritana e Gloriosa limitaram o poder real inglês."
+      ],
+      "historia:04": [
+        "Antes dos portugueses, o território era ocupado por numerosos povos indígenas; “descobrimento” não significa terra vazia.",
+        "A colonização passa pelo período pré-colonial (1500–1530), capitanias, governo-geral, açúcar, escravização indígena e africana e tráfico atlântico.",
+        "Franceses e holandeses disputaram áreas coloniais; pecuária, bandeiras, missões e mineração impulsionaram a expansão territorial.",
+        "A Igreja atuou na catequese, educação e organização social; a mineração deslocou o eixo econômico e ampliou a urbanização interna."
+      ],
+      "historia:05": [
+        "O Iluminismo critica privilégios e absolutismo, defendendo razão, liberdade, direitos e limites ao poder.",
+        "Compare as independências: Estados Unidos, Haiti e América espanhola tiveram grupos sociais, objetivos e resultados diferentes.",
+        "A Revolução Francesa atravessa fases e desemboca no período napoleônico; não foi um processo linear nem socialmente uniforme.",
+        "A Revolução Industrial transforma produção, trabalho, cidades e relações sociais, combinando inovação técnica e exploração operária."
+      ],
+      "filosofia:03": [
+        "O Neoplatonismo liga a realidade sensível a uma realidade superior e influencia Santo Agostinho: alma e verdade espiritual têm primazia sobre o mundo material.",
+        "Na Patrística, os Padres da Igreja defendem racionalmente a fé; para Agostinho, o conhecimento verdadeiro depende da iluminação divina.",
+        "Na Escolástica, universidades e lógica organizam o debate. Tomás de Aquino, influenciado por Aristóteles, afirma que fé e razão podem se complementar.",
+        "As Cinco Vias de Tomás de Aquino são argumentos racionais sobre a existência de Deus, partindo de movimento, causalidade, contingência, graus de perfeição e finalidade."
+      ],
+      "filosofia:04": [
+        "O Humanismo valoriza educação, cultura greco-romana e capacidade humana; o Renascimento desloca o foco do teocentrismo sem simplesmente abandonar a religião.",
+        "A ciência moderna combina observação, experimentação e matemática; Copérnico, Kepler e Galileu questionam explicações tradicionais da natureza.",
+        "Maquiavel analisa o poder de modo realista em O Príncipe; Thomas Morus usa a sociedade imaginária de Utopia para criticar seu tempo.",
+        "Contrato social: Hobbes prioriza segurança e Estado forte; Locke, vida, liberdade e propriedade; Rousseau, soberania popular e vontade geral."
+      ],
+      "filosofia:05": [
+        "Descartes usa a dúvida metódica para buscar uma certeza indubitável: se duvida, pensa; se pensa, existe. Daí o “Penso, logo existo”.",
+        "Empirismo: Bacon defende observação e indução; Locke descreve a mente como tábula rasa; Berkeley enfatiza a percepção; Hume questiona causalidade e certezas.",
+        "Racionalismo: Espinosa relaciona Deus e Natureza em uma ordem necessária; Leibniz explica a realidade por mônadas e verdades racionais.",
+        "Pascal reconhece a potência e os limites da razão e reserva papel decisivo à fé nas questões religiosas.",
+        "Macete: racionalismo parte da razão; empirismo parte da experiência. Compare sempre a fonte e o limite do conhecimento em cada autor."
+      ],
+      "geografia:03": [
+        "A dinâmica da crosta envolve placas tectônicas, terremotos, vulcanismo e dobramentos; agentes externos desgastam, transportam e depositam materiais.",
+        "O ciclo das rochas conecta magmáticas, sedimentares e metamórficas; calor, pressão, intemperismo e solidificação transformam um tipo em outro.",
+        "Recursos minerais e combustíveis fósseis são finitos; extração e uso geram impactos sociais, econômicos e ambientais.",
+        "No Brasil, classifique o relevo em planaltos, planícies e depressões e relacione uso do solo a erosão, contaminação e práticas de conservação."
+      ],
+      "geografia:04": [
+        "Hidrosfera inclui oceanos, geleiras, águas subterrâneas, rios e lagos; disponibilidade total não significa acesso fácil a água potável.",
+        "Na hidrografia brasileira, observe bacias, usos múltiplos, geração elétrica, abastecimento e conflitos pela apropriação da água.",
+        "Biomas mundiais e domínios morfoclimáticos brasileiros resultam da interação entre clima, relevo, solo, vegetação e hidrografia.",
+        "Desenvolvimento sustentável exige conciliar produção, bem-estar e limites ambientais, reconhecendo interesses e conflitos entre atores sociais."
+      ],
+      "geografia:05": [
+        "Indicadores como natalidade, mortalidade, fecundidade, expectativa de vida e crescimento vegetativo ajudam a interpretar a dinâmica populacional.",
+        "Pirâmides etárias mostram a estrutura por idade e sexo; a transição demográfica descreve mudanças históricas nas taxas de natalidade e mortalidade.",
+        "Relacione população e trabalho, teorias demográficas e condições brasileiras, evitando explicar pobreza apenas pelo tamanho da população.",
+        "Migrações internas e internacionais têm fatores de atração e repulsão; refugiados fogem de perseguição ou grave ameaça e podem enfrentar xenofobia."
+      ],
+      "fisica:03": [
+        "Forças usuais: normal é perpendicular à superfície; tração atua em fios; elástica segue F = kx no regime ideal; atrito resiste ao deslizamento.",
+        "Leis de Kepler: órbitas elípticas, áreas iguais em tempos iguais e relação entre período e tamanho orbital.",
+        "Para satélite em órbita circular, a gravidade fornece a força centrípeta; maior raio orbital implica menor velocidade e maior período."
+      ],
+      "fisica:04": [
+        "Força elástica armazena energia Eel = kx²/2; o trabalho do peso depende apenas da variação de altura.",
+        "Em colisões, a quantidade de movimento total se conserva num sistema isolado; classifique como elástica, inelástica ou perfeitamente inelástica.",
+        "Use potência média P = W/Δt e rendimento = energia útil/energia total para comparar máquinas e processos."
+      ],
+      "fisica:05": [
+        "Centro de massa representa a distribuição de massa; centro de gravidade é o ponto de aplicação efetiva do peso e coincide com ele em campo uniforme.",
+        "Teorema de Stevin: Δp = ρgΔh; vasos comunicantes atingem níveis compatíveis com as densidades e pressões envolvidas.",
+        "Experimento de Torricelli evidencia a pressão atmosférica; Pascal explica prensas hidráulicas; Arquimedes explica o empuxo.",
+        "Fluidos em movimento: A·v é constante no escoamento ideal; Bernoulli relaciona pressão, velocidade e altura; o efeito Magnus desvia corpos em rotação."
+      ],
+      "biologia:03": [
+        "Gametogênese produz gametas por meiose; espermatogênese e ovogênese diferem em ritmo, quantidade e distribuição do citoplasma.",
+        "No sistema genital humano, relacione órgãos, produção de gametas, hormônios, ciclo menstrual, fecundação e métodos contraceptivos.",
+        "Embriologia: segmentação forma mórula e blástula; gastrulação origina folhetos embrionários; organogênese diferencia tecidos e órgãos.",
+        "Células-tronco têm capacidade de autorrenovação e diferenciação; seu potencial varia entre totipotentes, pluripotentes e multipotentes."
+      ],
+      "biologia:04": [
+        "Filogenias são hipóteses de parentesco: nós representam ancestrais comuns e grupos-irmãos compartilham ancestral mais recente.",
+        "Bacterioses e protozooses devem ser ligadas a agente, transmissão, prevenção e condições de saneamento, não apenas memorizadas pelo nome."
+      ],
+      "biologia:05": [
+        "Tecidos vegetais: meristemas promovem crescimento; revestimento protege; parênquimas preenchem e realizam funções; sustentação dá suporte.",
+        "Xilema transporta principalmente água e sais; floema distribui açúcares e outras substâncias orgânicas.",
+        "Hormônios vegetais regulam crescimento e respostas: auxina, giberelina, citocinina, etileno e ácido abscísico têm ações diferentes."
+      ],
+      "quimica:03": [
+        "Sais são compostos iônicos formados por cátion e ânion; sua nomenclatura e solubilidade ajudam a prever produtos de reações.",
+        "Reações inorgânicas incluem síntese, decomposição, simples troca, dupla troca e neutralização; verifique evidências como precipitado, gás ou mudança de pH.",
+        "Chuva ácida, acidificação, corrosão e tratamento de água ligam funções inorgânicas a fenômenos ambientais."
+      ],
+      "quimica:04": [
+        "Massa atômica refere-se ao átomo; massa molecular ou massa-fórmula resulta da soma das massas dos átomos da espécie química.",
+        "Um mol contém aproximadamente 6,02×10²³ entidades; em condições especificadas, gases podem ser relacionados por volume molar.",
+        "Fluxo seguro: balanceie → converta o dado em mol → aplique a proporção → volte à unidade pedida → ajuste pureza ou rendimento."
+      ],
+      "quimica:05": [
+        "Quanto ao soluto dissolvido, uma solução pode ser insaturada, saturada ou supersaturada; não confunda saturação com concentração alta.",
+        "Concentrações podem aparecer em g/L, mol/L, porcentagem, ppm e título; confira sempre unidade e volume final.",
+        "Em mistura sem reação, some quantidades de soluto e volumes quando a aproximação for permitida; com reação, calcule primeiro a estequiometria."
+      ],
+      "sociologia:03": [
+        "Infraestrutura ou base econômica envolve forças e relações de produção; a superestrutura reúne instituições, ideias, leis e formas políticas ligadas a essa base.",
+        "Modos de produção mudam historicamente e a luta de classes expressa suas contradições.",
+        "Fetichismo da mercadoria faz relações entre pessoas parecerem propriedades naturais das coisas e oculta o trabalho social."
+      ],
+      "sociologia:04": [
+        "Racionalização amplia cálculo, previsibilidade e controle; o desencantamento do mundo indica a perda de explicações mágicas como princípio organizador.",
+        "Na burocracia legal-racional, cargos, normas escritas e hierarquia substituem relações puramente pessoais, trazendo eficiência e rigidez."
+      ],
+      "sociologia:05": [
+        "Fases do capitalismo: comercial, industrial e financeiro/informacional; cada etapa altera produção, circulação, trabalho e poder econômico.",
+        "Taylorismo, fordismo e toyotismo organizam o trabalho de maneiras diferentes; flexibilização e plataformas trazem novas formas de precarização.",
+        "A Escola de Frankfurt critica a indústria cultural, que padroniza bens simbólicos e transforma cultura em mercadoria para consumo de massa.",
+        "Desenvolvimento sustentável envolve produção, desigualdade, consumo, condições de trabalho e responsabilidade socioambiental."
+      ]
+    };
+
+    subjects.forEach((subject) => {
+      subject.topics.forEach((topic) => {
+        const extra = topicComplements[subject.id + ":" + topic.number] || [];
+        topic.beats.push(...extra.filter((item) => !topic.beats.includes(item)));
+      });
+    });
+
+    const englishCompetencies = {
+      "01": ["EM13LGG101", "EM13LGG202", "EM13LGG301", "EM13LGG601", "EM13LGG602"],
+      "02": ["EM13LGG102", "EM13LGG302", "EM13LGG303", "EM13LGG703"],
+      "03": ["EM13LGG102", "EM13LGG202", "EM13LGG302", "EM13LGG704"]
+    };
+    const english = subjects.find((subject) => subject.id === "ingles");
+    if (english) {
+      english.topics.forEach((topic) => {
+        topic.codes = englishCompetencies[topic.number] || topic.codes;
+      });
+      english.lens += " Como o roteiro escolar encaminha as habilidades por material externo, foram incluídas abaixo as competências gerais de Linguagens mais diretamente relacionadas a cada tema.";
+    }
+
+    const topicExplanations = {
+      "portugues:03": ["As classes nominais trabalham em conjunto dentro do sintagma nominal. O substantivo funciona como núcleo, enquanto artigos, pronomes, numerais e adjetivos delimitam ou caracterizam aquilo que ele nomeia. Em uma questão, não basta classificar a palavra: observe por que o autor escolheu uma forma definida ou indefinida, uma avaliação positiva ou negativa e uma retomada por pronome. Já os gêneros textuais são modelos de comunicação que mudam conforme objetivo, público e suporte; por isso, uma notícia, uma propaganda e uma crônica organizam a linguagem de modos diferentes."],
+      "portugues:04": ["Semântica e estilística se encontram quando interpretamos o efeito de uma escolha linguística. A mesma palavra pode mudar de sentido conforme o contexto, assumir valor literal ou figurado e até permitir mais de uma leitura. As figuras de linguagem intensificam ideias, criam humor, emoção ou crítica; elas não devem ser apenas nomeadas. Na prova, identifique o recurso, destaque a pista do texto e explique o efeito produzido no leitor."],
+      "portugues:05": ["O verbo organiza a sequência dos acontecimentos e revela a atitude de quem fala. O indicativo aproxima o enunciado da certeza; o subjuntivo abre espaço para hipótese, desejo ou dúvida; o imperativo orienta ou ordena. Os tempos mostram quando algo ocorre, enquanto o aspecto indica se a ação terminou, se estava acontecendo ou se era habitual. Alterar a voz verbal também muda o foco: a ativa destaca quem age, e a passiva destaca aquilo que recebe a ação."],
+      "literatura:03": ["O Romantismo surge em um contexto de revoluções políticas, fortalecimento da burguesia e valorização das identidades nacionais. Em oposição ao equilíbrio racional anterior, os escritores colocam emoção, imaginação e individualidade no centro. A natureza costuma refletir o estado de espírito das personagens, e o amor aparece idealizado ou impossível. O Pré-Romantismo funciona como passagem para essa sensibilidade, antecipando a subjetividade e a liberdade estética que se consolidariam no movimento romântico."],
+      "literatura:04": ["No Brasil recém-independente, a literatura participa da construção de uma imagem nacional. A primeira geração procura símbolos brasileiros e idealiza o indígena; a segunda se volta para o sofrimento individual, o tédio e a morte; a terceira amplia o olhar para liberdade e abolição. Na prosa, José de Alencar representa diferentes espaços do país por meio dos romances indianista, urbano e regionalista. É importante perceber que essas obras constroem imagens do Brasil, mas não são retratos neutros da realidade."],
+      "literatura:05": ["O Realismo reage à idealização romântica e passa a observar relações sociais, interesses e contradições com maior desconfiança. Machado de Assis faz o leitor questionar a versão apresentada pelo narrador, usando ironia e análise psicológica para revelar a hipocrisia da elite. Em Portugal, Eça de Queirós critica a burguesia, o clero e os costumes. A chave é comparar: o romântico costuma idealizar sentimentos e personagens; o realista investiga seus motivos e desmonta aparências."],
+      "matematica:03": ["Matemática aplicada começa pela tradução de uma situação real para números, tabelas, gráficos ou funções. Em porcentagem e matemática financeira, verifique sempre qual é o valor inicial e se as variações são sucessivas. Em estatística, média, mediana e moda descrevem o centro dos dados, enquanto amplitude, variância e desvio padrão mostram o quanto eles se espalham. Uma resposta completa apresenta o cálculo, mantém as unidades e interpreta o resultado dentro do problema."],
+      "matematica:04": ["Na geometria plana, desenhar e identificar as medidas conhecidas costuma ser mais importante do que decorar fórmulas isoladas. Perímetro mede o contorno; área mede a superfície. Triângulos, quadriláteros, polígonos e círculos podem ser decompostos em formas simples, permitindo calcular regiões irregulares. A altura usada nas fórmulas é sempre perpendicular à base, e conversões de área precisam ser feitas ao quadrado."],
+      "matematica:05": ["Esta unidade combina propriedades dos triângulos com proporcionalidade. Semelhança permite relacionar lados correspondentes quando os ângulos são iguais; no triângulo retângulo, Pitágoras e as razões trigonométricas conectam lados e ângulos. Os pontos notáveis aparecem como encontros de segmentos específicos: medianas, bissetrizes, mediatrizes e alturas. Antes de calcular, nomeie catetos, hipotenusa, projeções e ângulo de referência para evitar trocar as relações."],
+      "historia:03": ["A formação dos Estados modernos concentrou poder nas monarquias e se articulou ao mercantilismo e à expansão marítima. Ao mesmo tempo, a Reforma Protestante abalou a unidade religiosa europeia, e a disputa por rotas e riquezas ampliou a conquista de outros territórios. É necessário observar também os povos que já viviam na América e compreender a colonização como processo de dominação, resistência e troca cultural. Na Inglaterra, conflitos políticos produziram limites ao absolutismo e fortaleceram o Parlamento."],
+      "historia:04": ["A colonização portuguesa não começou em um território vazio: inúmeros povos indígenas já possuíam culturas e formas próprias de organização. A partir de 1530, a Coroa estruturou a administração e a produção açucareira, apoiadas na grande propriedade e na escravização. Invasões, pecuária, bandeiras, missões religiosas e mineração ajudaram a ocupar o interior. Ao estudar esse período, relacione economia, trabalho, poder e resistência, evitando reduzir a história apenas às decisões portuguesas."],
+      "historia:05": ["O Iluminismo criticou privilégios e defendeu o uso público da razão, influenciando revoluções e independências. Porém, esses movimentos não foram iguais: Estados Unidos, Haiti e América espanhola envolveram grupos e projetos distintos. A Revolução Francesa transformou ideias de cidadania e poder, mas atravessou conflitos e fases até o período napoleônico. Paralelamente, a Revolução Industrial alterou a produção e a vida urbana, criando riqueza e também duras condições de trabalho."],
+      "oficina:01": ["Uma dissertação argumentativa responde a um problema por meio de uma tese clara e de argumentos organizados. A introdução apresenta o tema e o posicionamento; o desenvolvimento explica cada argumento com dados, exemplos, causas ou comparações; a conclusão retoma a ideia central e fecha o raciocínio. Coesão é a ligação entre as partes do texto, enquanto coerência é a lógica do conjunto. Planejar antes de escrever evita repetição e ajuda cada parágrafo a cumprir uma função."],
+      "filosofia:03": ["A Filosofia Medieval procura compreender racionalmente questões apresentadas pela fé. Santo Agostinho, influenciado por Platão e pelo Neoplatonismo, valoriza a interioridade e afirma que a verdade depende da iluminação divina. Séculos depois, Tomás de Aquino retoma Aristóteles e defende que razão e fé podem chegar a verdades compatíveis. A diferença principal está na influência filosófica e no caminho utilizado, mas ambos procuram conciliar pensamento racional e cristianismo."],
+      "filosofia:04": ["O Renascimento amplia a confiança na capacidade humana sem eliminar automaticamente a religião. A ciência moderna passa a observar, experimentar e matematizar a natureza. Na política, Maquiavel analisa como o poder funciona na prática, enquanto Thomas Morus imagina uma sociedade ideal para criticar a realidade. Os contratualistas perguntam por que o Estado existe: Hobbes busca segurança, Locke protege direitos naturais e Rousseau coloca a soberania na vontade geral do povo."],
+      "filosofia:05": ["Na modernidade, a grande disputa é descobrir de onde vem o conhecimento seguro. Descartes começa pela dúvida e encontra no pensamento uma certeza; por isso, representa o racionalismo. Bacon, Locke, Berkeley e Hume enfatizam diferentes papéis da experiência e da percepção, formando a tradição empirista. Espinosa e Leibniz confiam na estrutura racional da realidade, enquanto Pascal chama atenção para os limites da razão. Compare sempre fonte, método e limite do conhecimento em cada autor."],
+      "geografia:03": ["O relevo é resultado da ação combinada de forças internas, como tectonismo e vulcanismo, e externas, como intemperismo e erosão. O ciclo das rochas mostra que materiais magmáticos, sedimentares e metamórficos podem se transformar ao longo do tempo geológico. Solos surgem da interação entre rocha, clima, relevo e organismos, mas podem perder fertilidade por manejo inadequado. Mineração e combustíveis fósseis devem ser analisados junto com seus usos econômicos e impactos ambientais."],
+      "geografia:04": ["Embora a água cubra grande parte do planeta, apenas uma fração está disponível de forma acessível para consumo. No Brasil, rios e aquíferos sustentam abastecimento, agricultura, indústria e energia, o que pode gerar disputas. A vegetação não depende apenas do clima: relevo, solo e água também moldam biomas e domínios morfoclimáticos. Desenvolvimento sustentável significa reconhecer esses limites naturais e negociar interesses sociais, econômicos e ambientais."],
+      "geografia:05": ["A demografia estuda tamanho, distribuição, estrutura e movimento das populações. Taxas de natalidade, mortalidade e fecundidade ajudam a entender a transição demográfica, enquanto pirâmides etárias revelam envelhecimento ou juventude populacional. Migrações resultam de fatores econômicos, políticos, ambientais e familiares; refugiados se deslocam por ameaça grave e possuem proteção jurídica específica. Os indicadores precisam ser interpretados em conjunto, pois nenhum número isolado explica as condições de vida."],
+      "fisica:03": ["As leis de Newton ligam forças ao movimento. Quando a força resultante é zero, o corpo permanece em repouso ou em movimento uniforme; quando há resultante, surge aceleração. Para resolver questões, isole o corpo, desenhe cada força e só depois projete nos eixos. Na gravitação, a mesma força que atrai objetos para a Terra mantém planetas e satélites em órbita, e as leis de Kepler descrevem como o movimento orbital varia com a distância."],
+      "fisica:04": ["Trabalho mede a energia transferida por uma força ao longo de um deslocamento. Energia cinética está associada ao movimento, enquanto as energias potenciais dependem da posição ou deformação. Impulso mede a ação de uma força durante certo tempo e corresponde à variação da quantidade de movimento. Em colisões de um sistema isolado, a quantidade de movimento total se conserva; já a energia cinética só permanece igual nas colisões elásticas."],
+      "fisica:05": ["Um corpo extenso está em equilíbrio quando não translada nem gira, portanto a soma das forças e a soma dos torques devem ser nulas. Nos fluidos, pressão depende da força distribuída sobre uma área e aumenta com a profundidade. Pascal explica máquinas hidráulicas e Arquimedes explica o empuxo. Quando o fluido se movimenta, continuidade e Bernoulli relacionam área, velocidade, pressão e altura, permitindo interpretar tubos, asas e o efeito Magnus."],
+      "biologia:03": ["O núcleo guarda e organiza a informação genética, que precisa ser duplicada antes da divisão celular. Mitose produz células equivalentes para crescimento e reparo; meiose reduz o número de cromossomos e cria variabilidade para a reprodução sexuada. A formação dos gametas, a fecundação e as primeiras etapas embrionárias conectam os níveis celular e organismal. Células-tronco são estudadas porque conseguem se renovar e originar tipos celulares diferentes."],
+      "biologia:04": ["A classificação biológica moderna procura representar parentesco evolutivo. Em uma árvore filogenética, o que importa é o ancestral comum e não a posição visual de um grupo. Bactérias e arqueias são procariotas, mas possuem diferenças importantes; protozoários e algas reúnem organismos eucariontes muito diversos. Nas doenças, associe agente, transmissão e prevenção, lembrando que a maioria desses organismos também exerce funções ecológicas essenciais."],
+      "biologia:05": ["A ocupação do ambiente terrestre pelas plantas ocorreu com o surgimento gradual de estruturas como vasos, sementes, pólen, flores e frutos. Essa sequência ajuda a comparar briófitas, pteridófitas, gimnospermas e angiospermas. Dentro do organismo vegetal, tecidos realizam crescimento, proteção, sustentação, fotossíntese e transporte. Hormônios coordenam germinação, alongamento, amadurecimento e respostas ao ambiente, mostrando que plantas também regulam ativamente seu desenvolvimento."],
+      "quimica:03": ["As funções inorgânicas agrupam substâncias por composição e comportamento. Em água, ácidos aumentam a disponibilidade de H⁺ e bases, de OH⁻; quando reagem, podem formar sal e água. Óxidos apresentam comportamentos diferentes conforme o elemento ligado ao oxigênio. Para interpretar uma reação, classifique as substâncias, balanceie a equação e procure evidências como formação de gás, precipitado ou mudança de pH. Esses conceitos explicam processos ambientais, industriais e domésticos."],
+      "quimica:04": ["A estequiometria usa a equação balanceada como uma receita quantitativa. Os coeficientes indicam proporções em mol, e o mol conecta massa, partículas e volume gasoso. Primeiro converta o dado para mol; depois aplique a proporção entre reagente e produto; por fim retorne à unidade pedida. Se houver mais de um reagente, determine qual acaba primeiro. Pureza corrige a quantidade realmente útil e rendimento compara o produto obtido com o máximo teórico."],
+      "quimica:05": ["Uma solução é uma mistura homogênea cuja composição pode ser expressa de várias formas. Concentração relaciona quantidade de soluto e quantidade de solução; na diluição, acrescentar solvente reduz a concentração sem alterar a quantidade de soluto. As propriedades coligativas aparecem porque partículas dissolvidas modificam o comportamento do solvente: diminuem a pressão de vapor e a temperatura de congelamento, mas elevam a ebulição e a pressão osmótica. Eletrólitos costumam produzir efeitos maiores porque formam mais partículas."],
+      "sociologia:03": ["Marx entende a sociedade a partir de como os seres humanos produzem sua existência. Quem controla os meios de produção ocupa posição diferente de quem vende a força de trabalho, criando conflito de classes e apropriação da mais-valia. Ideologia pode fazer relações históricas parecerem naturais, e o fetichismo da mercadoria esconde o trabalho por trás dos produtos. Assim, desigualdade não é vista apenas como diferença individual, mas como resultado de uma estrutura social."],
+      "sociologia:04": ["Weber procura compreender o sentido que as pessoas atribuem às próprias ações. Seus tipos ideais não descrevem perfeitamente a realidade; servem como instrumentos de comparação. A dominação se mantém quando é considerada legítima e pode apoiar-se na tradição, no carisma ou em normas legais. Na modernidade, racionalização e burocracia tornam instituições previsíveis e eficientes, mas também podem aumentar impessoalidade, controle e sensação de aprisionamento em regras."],
+      "sociologia:05": ["O capitalismo muda ao longo do tempo, alterando a organização do trabalho, o consumo e a circulação de riqueza. Taylorismo, fordismo e toyotismo buscam produtividade por métodos diferentes, enquanto plataformas digitais criam novas formas de flexibilidade e precarização. A Escola de Frankfurt mostra como a indústria cultural padroniza entretenimento e transforma cultura em mercadoria. Consumo e sustentabilidade precisam ser analisados para além da escolha individual, considerando publicidade, renda, produção e políticas públicas."],
+      "ingles:01": ["Em textos sobre arte, use elementos visuais e paratextuais antes de traduzir: título, imagem, legenda e fonte indicam tema, público e intenção. Depois, procure palavras repetidas e expressões de opinião para descobrir como a obra representa identidade, pertencimento ou herança cultural. A resposta deve combinar uma pista verbal com uma pista visual, mostrando como ambas constroem a mensagem."],
+      "ingles:02": ["Em esporte e ativismo, a questão geralmente cobra a diferença entre fato e opinião, a relação de causa e consequência ou o posicionamento de uma fonte. Atletas usam visibilidade pública para defender direitos, mas podem enfrentar backlash. Conectores como because, therefore, although e however revelam como o argumento avança. Leia a frase anterior e a posterior ao conector para não interpretar uma ideia isoladamente."],
+      "ingles:03": ["Social pressure descreve como grupos influenciam escolhas pelo desejo de aceitação ou pelo medo de exclusão. O texto pode apresentar conselho, obrigação ou possibilidade por meio de modal verbs: should, must e can não possuem a mesma força. Em publicidade e redes sociais, observe apelos à popularidade, autoridade, urgência e comparação. Antes de opinar, identifique quem tenta influenciar quem, qual comportamento deseja provocar e qual estratégia utiliza."]
+    };
+
+    const formulaReference = {
+      "matematica:03": [
+        {label:"Porcentagem",expression:"Vf = Vi · (1 ± p/100)",note:"Use + para aumento e − para desconto. Em mudanças sucessivas, multiplique os fatores em vez de somar as porcentagens.",terms:["Vf = valor final","Vi = valor inicial","p = taxa percentual"]},
+        {label:"Juros simples",expression:"J = C · i · t  |  M = C + J",note:"O juro cresce sempre sobre o capital inicial.",terms:["J = juros","C = capital inicial","i = taxa por período","t = número de períodos","M = montante"]},
+        {label:"Juros compostos",expression:"M = C · (1 + i)ᵗ",note:"Cada período rende sobre o saldo acumulado. Taxa e tempo devem usar a mesma unidade.",terms:["M = montante","C = capital inicial","i = taxa decimal","t = períodos"]},
+        {label:"Média e dispersão",expression:"x̄ = Σxi/n  |  A = xmax − xmin  |  σ = √[Σ(xi − x̄)²/n]",note:"A média localiza o centro; amplitude e desvio padrão medem espalhamento. Em amostra, pode-se usar n − 1 no denominador do desvio.",terms:["x̄ = média","xi = cada valor","n = quantidade","A = amplitude","σ = desvio padrão"]}
+      ],
+      "matematica:04": [
+        {label:"Áreas básicas",expression:"Área do retângulo = b · h\nÁrea do triângulo = (b · h) / 2\nÁrea do trapézio = ((B + b) · h) / 2",note:"A altura h deve ser perpendicular à base.",terms:["b = base","B = base maior","h = altura"]},
+        {label:"Losango e paralelogramo",expression:"Área do losango = (D · d) / 2\nÁrea do paralelogramo = b · h",note:"No losango, D e d são as diagonais; no paralelogramo, use a altura perpendicular.",terms:["D = diagonal maior","d = diagonal menor","b = base","h = altura"]},
+        {label:"Círculo e circunferência",expression:"Área do círculo = π · r²\nComprimento da circunferência = 2 · π · r",note:"Área mede a região interna; o comprimento mede o contorno.",terms:["r = raio","π ≈ 3,14"]},
+        {label:"Polígono regular",expression:"Soma dos ângulos internos = (n − 2) · 180°",note:"Calcula a soma dos ângulos internos de um polígono convexo.",terms:["n = número de lados"]}
+      ],
+      "matematica:05": [
+        {label:"Teorema de Pitágoras",expression:"a² = b² + c²",note:"Vale apenas em triângulo retângulo; a é a hipotenusa, lado oposto ao ângulo de 90°.",terms:["a = hipotenusa","b e c = catetos"]},
+        {label:"Razões trigonométricas",expression:"sen θ = CO/H  |  cos θ = CA/H  |  tg θ = CO/CA",note:"Oposto e adjacente são definidos em relação ao ângulo θ escolhido.",terms:["θ = ângulo","CO = cateto oposto","CA = cateto adjacente","H = hipotenusa"]},
+        {label:"Semelhança e áreas",expression:"L₁/L₂ = k  |  A₁/A₂ = k²",note:"Se os lados variam por k, as áreas variam pelo quadrado de k.",terms:["k = razão de semelhança","L = medida linear","A = área"]}
+      ],
+      "geografia:05": [
+        {label:"Densidade demográfica",expression:"D = P/A",note:"Mostra a população relativa; não informa sozinho como as pessoas se distribuem dentro do território.",terms:["D = hab./km²","P = população absoluta","A = área em km²"]},
+        {label:"Crescimento vegetativo",expression:"CV = TN − TM",note:"Compara nascimentos e mortes; o crescimento total também considera o saldo migratório.",terms:["CV = crescimento vegetativo","TN = taxa de natalidade","TM = taxa de mortalidade"]}
+      ],
+      "fisica:03": [
+        {label:"2ª lei de Newton",expression:"ΣF = m·a",note:"A aceleração tem a direção e o sentido da força resultante.",terms:["ΣF = força resultante (N)","m = massa (kg)","a = aceleração (m/s²)"]},
+        {label:"Peso e força elástica",expression:"P = m·g  |  Fel = k·x",note:"Peso é força gravitacional; a lei de Hooke vale no limite elástico da mola.",terms:["g = gravidade","k = constante da mola (N/m)","x = deformação (m)"]},
+        {label:"Gravitação universal",expression:"F = G·M·m/r²",note:"A atração aumenta com as massas e diminui com o quadrado da distância entre os centros.",terms:["G = constante gravitacional","M e m = massas","r = distância entre centros"]},
+        {label:"Órbita circular",expression:"Fcp = m·v²/r  |  T²/R³ = constante",note:"Na órbita, a gravidade fornece a força centrípeta; a segunda relação resume a 3ª lei de Kepler.",terms:["v = velocidade orbital","r ou R = raio orbital","T = período"]}
+      ],
+      "fisica:04": [
+        {label:"Trabalho",expression:"W = F·d·cos θ",note:"Só a componente da força na direção do deslocamento realiza trabalho.",terms:["W = trabalho (J)","F = força (N)","d = deslocamento (m)","θ = ângulo entre F e d"]},
+        {label:"Energias mecânicas",expression:"Ec = m·v²/2  |  Epg = m·g·h  |  Eel = k·x²/2",note:"Sem forças dissipativas, a soma das energias mecânicas permanece constante.",terms:["Ec = cinética","Epg = potencial gravitacional","Eel = potencial elástica","h = altura"]},
+        {label:"Potência",expression:"Pot = W/Δt = ΔE/Δt",note:"Mede a rapidez da transferência ou transformação de energia.",terms:["Pot = potência (W)","W = trabalho (J)","ΔE = energia (J)","Δt = tempo (s)"]},
+        {label:"Impulso e momento",expression:"I = F·Δt = Δp  |  p = m·v",note:"Em sistema isolado, a soma vetorial das quantidades de movimento se conserva.",terms:["I = impulso (N·s)","p = quantidade de movimento","v = velocidade"]}
+      ],
+      "fisica:05": [
+        {label:"Equilíbrio e torque",expression:"ΣF = 0  |  Στ = 0  |  τ = F·d⊥",note:"Equilíbrio completo exige ausência de aceleração linear e angular.",terms:["τ = torque (N·m)","F = força","d⊥ = braço perpendicular"]},
+        {label:"Densidade e pressão",expression:"ρ = m/V  |  p = F/A",note:"A mesma força produz maior pressão quando aplicada em menor área.",terms:["ρ = densidade","m = massa","V = volume","p = pressão","A = área"]},
+        {label:"Stevin e empuxo",expression:"Δp = ρ·g·Δh  |  E = ρfluido·g·Vdeslocado",note:"A pressão cresce com a profundidade; o empuxo equivale ao peso do fluido deslocado.",terms:["Δh = variação de profundidade","E = empuxo","Vdeslocado = volume imerso"]},
+        {label:"Continuidade e Bernoulli",expression:"A₁v₁ = A₂v₂  |  p + ρgh + ρv²/2 = constante",note:"No escoamento ideal, uma seção menor aumenta a velocidade e altera a pressão.",terms:["A = área da seção","v = velocidade","p = pressão","h = altura"]}
+      ],
+      "quimica:03": [
+        {label:"Neutralização",expression:"ácido + base → sal + água",note:"A proporção correta depende do balanceamento e da quantidade de H⁺ e OH⁻ envolvidos.",terms:["ácido = doador de H⁺","base = receptora de H⁺ ou fonte de OH⁻","sal = composto iônico"]},
+        {label:"pH",expression:"pH = −log[H⁺]  |  pH + pOH = 14",note:"A 25 °C, pH menor que 7 é ácido, igual a 7 é neutro e maior que 7 é básico.",terms:["[H⁺] = concentração molar de H⁺","pOH = medida associada a OH⁻"]}
+      ],
+      "quimica:04": [
+        {label:"Quantidade de matéria",expression:"n = m/M",note:"É a ponte mais usada entre a massa dada e a proporção da equação.",terms:["n = mol","m = massa (g)","M = massa molar (g/mol)"]},
+        {label:"Número de partículas",expression:"N = n·NA",note:"Converte mol em átomos, moléculas, íons ou outras entidades.",terms:["N = número de entidades","n = mol","NA = 6,02×10²³ mol⁻¹"]},
+        {label:"Volume molar",expression:"V = n·Vm",note:"Use apenas quando o estado e as condições de temperatura e pressão estiverem definidos.",terms:["V = volume do gás","n = mol","Vm = volume molar nas condições dadas"]},
+        {label:"Pureza e rendimento",expression:"pureza = mútil/mtotal·100%  |  η = mreal/mteórica·100%",note:"Pureza corrige o reagente disponível; rendimento corrige o produto efetivamente obtido.",terms:["η = rendimento","mreal = massa obtida","mteórica = massa prevista"]}
+      ],
+      "quimica:05": [
+        {label:"Concentração comum",expression:"C = msoluto/Vsolução",note:"Normalmente expressa em g/L; confira se o volume está em litros.",terms:["C = concentração comum","m = massa do soluto","V = volume da solução"]},
+        {label:"Concentração molar",expression:"M = nsoluto/Vsolução",note:"Indica quantos mols de soluto existem por litro de solução.",terms:["M = molaridade (mol/L)","n = mol de soluto","V = volume em L"]},
+        {label:"Diluição",expression:"C₁V₁ = C₂V₂",note:"A quantidade de soluto é conservada quando apenas solvente é acrescentado.",terms:["C₁ e C₂ = concentrações","V₁ e V₂ = volumes inicial e final"]},
+        {label:"Efeitos coligativos",expression:"ΔTe = i·Ke·m  |  ΔTc = i·Kc·m  |  π = i·M·R·T",note:"Os efeitos dependem da quantidade efetiva de partículas dissolvidas.",terms:["i = fator de partículas","m = molalidade","Ke/Kc = constantes do solvente","π = pressão osmótica","T = temperatura absoluta"]}
+      ]
+    };
+
+    const literatureAuthors = {
+      "literatura:03": [
+        {name:"Jean-Jacques Rousseau",detail:"Precursor da sensibilidade romântica. Obra de referência: Júlia ou A Nova Heloísa."},
+        {name:"Johann Wolfgang von Goethe",detail:"Romantismo alemão. Obra principal: Os Sofrimentos do Jovem Werther."},
+        {name:"Lord Byron",detail:"Herói rebelde, melancolia e liberdade individual. Obras: Don Juan e Childe Harold."},
+        {name:"Victor Hugo",detail:"Grande nome francês, unindo emoção e crítica social. Obras: Os Miseráveis e Notre-Dame de Paris."},
+        {name:"Walter Scott",detail:"Popularizou o romance histórico. Obra de destaque: Ivanhoé."},
+        {name:"Gonçalves de Magalhães",detail:"Marco inicial do Romantismo brasileiro com Suspiros Poéticos e Saudades, em 1836."}
+      ],
+      "literatura:04": [
+        {name:"Gonçalves Dias",detail:"1ª geração, nacionalista e indianista. Obras: Canção do Exílio e I-Juca-Pirama."},
+        {name:"Álvares de Azevedo",detail:"2ª geração, ultrarromântica. Obras: Lira dos Vinte Anos e Noite na Taverna."},
+        {name:"Castro Alves",detail:"3ª geração, condoreira e abolicionista. Obras: O Navio Negreiro e Espumas Flutuantes."},
+        {name:"José de Alencar",detail:"Principal romancista do período. Obras: Iracema, O Guarani, Senhora e O Sertanejo."},
+        {name:"Joaquim Manuel de Macedo",detail:"Romance urbano e de costumes. Obra principal: A Moreninha."},
+        {name:"Manuel Antônio de Almeida",detail:"Visão menos idealizada da vida urbana. Obra: Memórias de um Sargento de Milícias."}
+      ],
+      "literatura:05": [
+        {name:"Machado de Assis",detail:"Principal realista brasileiro. Obras: Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro."},
+        {name:"Raul Pompeia",detail:"Romance de crítica social e análise psicológica. Obra principal: O Ateneu."},
+        {name:"Aluísio Azevedo",detail:"Principal nome do Naturalismo brasileiro. Obras: O Cortiço e O Mulato."},
+        {name:"Eça de Queirós",detail:"Principal realista português. Obras: O Primo Basílio, O Crime do Padre Amaro e Os Maias."},
+        {name:"Antero de Quental",detail:"Ligado à Questão Coimbrã e à renovação intelectual portuguesa. Obra: Sonetos Completos."},
+        {name:"Cesário Verde",detail:"Poesia de observação urbana e crítica da modernidade. Obra reunida em O Livro de Cesário Verde."}
+      ]
+    };
+
+    subjects.forEach((subject) => {
+      subject.topics.forEach((topic) => {
+        const key = subject.id + ":" + topic.number;
+        topic.explanation = topicExplanations[key] || [];
+        topic.formulas = formulaReference[key] || [];
+        topic.authors = literatureAuthors[key] || [];
+      });
+    });
+
     const tabs = document.getElementById("tabs");
     const panel = document.getElementById("panel");
     const search = document.getElementById("search");
@@ -2559,6 +3018,36 @@ footer span {
       });
     }
 
+    function explanationBlock(topic) {
+      if (!topic.explanation || !topic.explanation.length) return "";
+      return '<section class="explanation-block"><h3>Entenda o conteúdo</h3>' +
+        topic.explanation.map((paragraph) => '<p>' + esc(paragraph) + '</p>').join("") +
+      '</section>';
+    }
+
+    function formulaBlock(topic) {
+      if (!topic.formulas || !topic.formulas.length) return "";
+      return '<section class="formula-panel"><h3>Fórmulas explicadas</h3><div class="formula-list">' +
+        topic.formulas.map((formula) =>
+          '<div class="formula-card">' +
+            '<div class="formula-head"><span>' + esc(formula.label) + '</span><div class="formula-expression">' + esc(formula.expression) + '</div></div>' +
+            '<div class="formula-explain"><p>' + esc(formula.note) + '</p><div class="formula-terms">' +
+              formula.terms.map((term) => '<small>' + esc(term) + '</small>').join("") +
+            '</div></div>' +
+          '</div>'
+        ).join("") +
+      '</div></section>';
+    }
+
+    function authorBlock(topic) {
+      if (!topic.authors || !topic.authors.length) return "";
+      return '<section class="author-panel"><h3>Principais autores e obras</h3><div class="author-list">' +
+        topic.authors.map((author) =>
+          '<div class="author-card"><strong>' + esc(author.name) + '</strong><span>' + esc(author.detail) + '</span></div>'
+        ).join("") +
+      '</div></section>';
+    }
+
     function topicCard(topic, topicIndex, subject) {
       const topicKey = subject.id + ":" + topic.number;
       const topicDone = state.completedTopics.includes(topicKey);
@@ -2578,8 +3067,11 @@ footer span {
         '<div class="topic-main">' +
           '<header><span>UNIDADE ' + esc(topic.number) + '</span><h2>' + esc(topic.title) + '</h2></header>' +
           '<div class="snapshot"><span>em 30 segundos</span><p>' + esc(topic.snapshot) + '</p></div>' +
+          explanationBlock(topic) +
+          authorBlock(topic) +
+          formulaBlock(topic) +
           '<div class="topic-details">' +
-            '<h3>O fio da meada</h3>' +
+            '<h3>Pontos que fecham o assunto</h3>' +
             '<ul>' + topic.beats.map((beat) => '<li>' + esc(beat) + '</li>').join("") + '</ul>' +
             '<div class="memory-grid">' +
               '<button class="memory-note ' + (memoryRevealed ? "is-revealed" : "") + '" data-memory="' + esc(topicKey) + '" aria-pressed="' + memoryRevealed + '">' +
