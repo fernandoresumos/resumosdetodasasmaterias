@@ -1268,6 +1268,10 @@ summary:focus-visible {
   gap: 10px;
 }
 
+.thinker-panel .author-list {
+  grid-template-columns: 1fr;
+}
+
 .author-card {
   padding: 13px 14px;
   border: 1px solid var(--line);
@@ -2698,7 +2702,9 @@ footer span {
         "O Neoplatonismo liga a realidade sensível a uma realidade superior e influencia Santo Agostinho: alma e verdade espiritual têm primazia sobre o mundo material.",
         "Na Patrística, os Padres da Igreja defendem racionalmente a fé; para Agostinho, o conhecimento verdadeiro depende da iluminação divina.",
         "Na Escolástica, universidades e lógica organizam o debate. Tomás de Aquino, influenciado por Aristóteles, afirma que fé e razão podem se complementar.",
-        "As Cinco Vias de Tomás de Aquino são argumentos racionais sobre a existência de Deus, partindo de movimento, causalidade, contingência, graus de perfeição e finalidade."
+        "As Cinco Vias de Tomás de Aquino são argumentos racionais sobre a existência de Deus, partindo de movimento, causalidade, contingência, graus de perfeição e finalidade.",
+        "Guilherme de Ockham questiona até onde a razão consegue demonstrar verdades religiosas, ajuda a separar os campos da fé e da razão e defende maior independência entre Igreja e poder político.",
+        "A Navalha de Ockham recomenda não criar entidades ou explicações desnecessárias: entre explicações igualmente capazes de resolver um problema, deve-se preferir a que faz menos suposições."
       ],
       "filosofia:04": [
         "O Humanismo valoriza educação, cultura greco-romana e capacidade humana; o Renascimento desloca o foco do teocentrismo sem simplesmente abandonar a religião.",
@@ -2828,7 +2834,7 @@ footer span {
       "historia:04": ["A colonização portuguesa não começou em um território vazio: inúmeros povos indígenas já possuíam culturas e formas próprias de organização. A partir de 1530, a Coroa estruturou a administração e a produção açucareira, apoiadas na grande propriedade e na escravização. Invasões, pecuária, bandeiras, missões religiosas e mineração ajudaram a ocupar o interior. Ao estudar esse período, relacione economia, trabalho, poder e resistência, evitando reduzir a história apenas às decisões portuguesas."],
       "historia:05": ["O Iluminismo criticou privilégios e defendeu o uso público da razão, influenciando revoluções e independências. Porém, esses movimentos não foram iguais: Estados Unidos, Haiti e América espanhola envolveram grupos e projetos distintos. A Revolução Francesa transformou ideias de cidadania e poder, mas atravessou conflitos e fases até o período napoleônico. Paralelamente, a Revolução Industrial alterou a produção e a vida urbana, criando riqueza e também duras condições de trabalho."],
       "oficina:01": ["Uma dissertação argumentativa responde a um problema por meio de uma tese clara e de argumentos organizados. A introdução apresenta o tema e o posicionamento; o desenvolvimento explica cada argumento com dados, exemplos, causas ou comparações; a conclusão retoma a ideia central e fecha o raciocínio. Coesão é a ligação entre as partes do texto, enquanto coerência é a lógica do conjunto. Planejar antes de escrever evita repetição e ajuda cada parágrafo a cumprir uma função."],
-      "filosofia:03": ["A Filosofia Medieval procura compreender racionalmente questões apresentadas pela fé. Santo Agostinho, influenciado por Platão e pelo Neoplatonismo, valoriza a interioridade e afirma que a verdade depende da iluminação divina. Séculos depois, Tomás de Aquino retoma Aristóteles e defende que razão e fé podem chegar a verdades compatíveis. A diferença principal está na influência filosófica e no caminho utilizado, mas ambos procuram conciliar pensamento racional e cristianismo."],
+      "filosofia:03": ["A Filosofia Medieval procura compreender racionalmente questões apresentadas pela fé. Santo Agostinho, influenciado por Platão e pelo Neoplatonismo, valoriza a interioridade e afirma que a verdade depende da iluminação divina. Séculos depois, Tomás de Aquino retoma Aristóteles e defende que razão e fé podem chegar a verdades compatíveis. No final da Escolástica, Guilherme de Ockham limita o alcance das demonstrações racionais sobre a fé e separa com mais força os campos filosófico e teológico. A diferença principal entre os três está no modo como relacionam fé e razão: Agostinho aproxima a razão da iluminação divina; Tomás procura conciliá-las; Ockham ressalta seus limites e sua autonomia."],
       "filosofia:04": ["O Renascimento amplia a confiança na capacidade humana sem eliminar automaticamente a religião. A ciência moderna passa a observar, experimentar e matematizar a natureza. Na política, Maquiavel analisa como o poder funciona na prática, enquanto Thomas Morus imagina uma sociedade ideal para criticar a realidade. Os contratualistas perguntam por que o Estado existe: Hobbes busca segurança, Locke protege direitos naturais e Rousseau coloca a soberania na vontade geral do povo."],
       "filosofia:05": ["Na modernidade, a grande disputa é descobrir de onde vem o conhecimento seguro. Descartes começa pela dúvida e encontra no pensamento uma certeza; por isso, representa o racionalismo. Bacon, Locke, Berkeley e Hume enfatizam diferentes papéis da experiência e da percepção, formando a tradição empirista. Espinosa e Leibniz confiam na estrutura racional da realidade, enquanto Pascal chama atenção para os limites da razão. Compare sempre fonte, método e limite do conhecimento em cada autor."],
       "geografia:03": ["O relevo é resultado da ação combinada de forças internas, como tectonismo e vulcanismo, e externas, como intemperismo e erosão. O ciclo das rochas mostra que materiais magmáticos, sedimentares e metamórficos podem se transformar ao longo do tempo geológico. Solos surgem da interação entre rocha, clima, relevo e organismos, mas podem perder fertilidade por manejo inadequado. Mineração e combustíveis fósseis devem ser analisados junto com seus usos econômicos e impactos ambientais."],
@@ -2936,12 +2942,22 @@ footer span {
       ]
     };
 
+    const philosophyThinkers = {
+      "filosofia:03": [
+        {
+          name:"Guilherme de Ockham (c. 1285-1347)",
+          detail:"Pensador do fim da Escolástica. Defendeu que muitas verdades da fé não podem ser demonstradas apenas pela razão, favoreceu a separação entre Igreja e Estado e ficou associado ao nominalismo e à Navalha de Ockham: não multiplicar explicações ou entidades sem necessidade. Macete: Ockham = separar os campos e cortar excessos."
+        }
+      ]
+    };
+
     subjects.forEach((subject) => {
       subject.topics.forEach((topic) => {
         const key = subject.id + ":" + topic.number;
         topic.explanation = topicExplanations[key] || [];
         topic.formulas = formulaReference[key] || [];
         topic.authors = literatureAuthors[key] || [];
+        topic.thinkers = philosophyThinkers[key] || [];
       });
     });
 
@@ -3048,6 +3064,15 @@ footer span {
       '</div></section>';
     }
 
+    function thinkerBlock(topic) {
+      if (!topic.thinkers || !topic.thinkers.length) return "";
+      return '<section class="author-panel thinker-panel"><h3>Pensador em destaque</h3><div class="author-list">' +
+        topic.thinkers.map((thinker) =>
+          '<div class="author-card"><strong>' + esc(thinker.name) + '</strong><span>' + esc(thinker.detail) + '</span></div>'
+        ).join("") +
+      '</div></section>';
+    }
+
     function topicCard(topic, topicIndex, subject) {
       const topicKey = subject.id + ":" + topic.number;
       const topicDone = state.completedTopics.includes(topicKey);
@@ -3068,6 +3093,7 @@ footer span {
           '<header><span>UNIDADE ' + esc(topic.number) + '</span><h2>' + esc(topic.title) + '</h2></header>' +
           '<div class="snapshot"><span>em 30 segundos</span><p>' + esc(topic.snapshot) + '</p></div>' +
           explanationBlock(topic) +
+          thinkerBlock(topic) +
           authorBlock(topic) +
           formulaBlock(topic) +
           '<div class="topic-details">' +
