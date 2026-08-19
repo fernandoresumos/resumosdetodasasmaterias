@@ -931,6 +931,47 @@ summary:focus-visible {
   margin-left: 5px;
 }
 
+.lesson-toc {
+  margin-top: 18px;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.68);
+}
+
+.lesson-toc a {
+  min-height: 58px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent) 5%, white);
+  color: var(--deep);
+  text-decoration: none;
+  font-size: .76rem;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.lesson-toc a span {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-size: .68rem;
+}
+
+.lesson-toc a:hover { transform: translateY(-2px); background: white; }
+
 .content-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 350px);
@@ -1188,6 +1229,283 @@ summary:focus-visible {
 
 .explanation-block p + p { margin-top: 12px; }
 
+.deep-lesson {
+  margin-top: 18px;
+  border: 1px solid color-mix(in srgb, var(--topic-tone) 34%, transparent);
+  border-radius: 13px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.deep-lesson > summary {
+  min-height: 64px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  cursor: pointer;
+  background: linear-gradient(110deg, color-mix(in srgb, var(--topic-tone) 13%, white), white);
+}
+
+.deep-lesson > summary::-webkit-details-marker { display: none; }
+
+.deep-lesson > summary::before {
+  content: "+";
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--topic-tone);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.deep-lesson[open] > summary::before { content: "−"; }
+
+.deep-lesson > summary div {
+  display: grid;
+  gap: 2px;
+}
+
+.deep-lesson > summary strong {
+  color: var(--deep);
+  font: 800 1.02rem/1.2 Georgia, serif;
+}
+
+.deep-lesson > summary small {
+  color: var(--muted);
+  font-size: .7rem;
+}
+
+.lesson-body {
+  padding: clamp(18px, 3vw, 30px);
+  border-top: 1px solid var(--line);
+}
+
+.lesson-goal {
+  margin: 0 0 20px;
+  padding: 13px 15px;
+  border-left: 4px solid var(--accent-2);
+  background: color-mix(in srgb, var(--accent-2) 7%, white);
+  color: #3e403a;
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+.lesson-goal strong { color: var(--deep); }
+
+.lesson-steps {
+  display: grid;
+  gap: 13px;
+}
+
+.lesson-step {
+  padding: 16px 17px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbfaf6;
+}
+
+.lesson-step h4 {
+  margin: 0 0 8px;
+  color: var(--topic-tone);
+  font: 800 1rem/1.3 Georgia, serif;
+}
+
+.lesson-step p {
+  margin: 0;
+  color: #44463f;
+  font-size: .88rem;
+  line-height: 1.7;
+}
+
+.worked-example,
+.practice-box {
+  margin-top: 15px;
+  padding: 17px 18px;
+  border-radius: 10px;
+}
+
+.worked-example {
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, white);
+}
+
+.practice-box {
+  border: 1px dashed color-mix(in srgb, var(--accent-2) 65%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 6%, white);
+}
+
+.worked-example > span,
+.practice-box > span {
+  color: var(--accent);
+  font-size: .65rem;
+  font-weight: 850;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.worked-example h4,
+.practice-box h4 {
+  margin: 6px 0 8px;
+  color: var(--deep);
+  font: 800 1rem/1.3 Georgia, serif;
+}
+
+.worked-example p,
+.practice-box p {
+  margin: 0;
+  color: #44463f;
+  font-size: .86rem;
+  line-height: 1.65;
+}
+
+.worked-example p + p { margin-top: 8px; }
+
+.practice-answer {
+  margin-top: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+}
+
+.practice-answer summary {
+  width: max-content;
+  list-style: none;
+  cursor: pointer;
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.practice-answer summary::-webkit-details-marker { display: none; }
+.practice-answer summary::before { content: "+ "; }
+.practice-answer[open] summary::before { content: "− "; }
+.practice-answer p { margin-top: 9px; }
+
+.exam-readiness {
+  margin-top: 18px;
+  padding: clamp(18px, 2.7vw, 26px);
+  border: 1px solid color-mix(in srgb, var(--topic-tone) 38%, transparent);
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--topic-tone) 7%, white), rgba(255,255,255,.96));
+}
+
+.exam-readiness > header {
+  margin-bottom: 14px;
+}
+
+.exam-readiness > header span {
+  color: var(--topic-tone);
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.exam-readiness > header h3 {
+  margin: 5px 0 0;
+  color: var(--deep);
+  font: 800 1.15rem/1.25 Georgia, serif;
+}
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.concept-card {
+  min-height: 96px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: rgba(255,255,255,.88);
+}
+
+.concept-card strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--topic-tone);
+  font: 800 .92rem/1.25 Georgia, serif;
+}
+
+.concept-card span {
+  display: block;
+  color: #494b45;
+  font-size: .81rem;
+  line-height: 1.58;
+}
+
+.exam-columns {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.exam-list,
+.mastery-check {
+  padding: 15px 16px;
+  border-radius: 9px;
+}
+
+.exam-list {
+  border-left: 4px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 5%, white);
+}
+
+.mastery-check {
+  border-left: 4px solid var(--accent-2);
+  background: color-mix(in srgb, var(--accent-2) 6%, white);
+}
+
+.exam-list h4,
+.mastery-check h4 {
+  margin: 0 0 9px;
+  color: var(--deep);
+  font: 800 .9rem/1.25 Georgia, serif;
+}
+
+.exam-list ul,
+.mastery-check ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+  list-style: none;
+}
+
+.exam-list li,
+.mastery-check li {
+  position: relative;
+  padding-left: 18px;
+  color: #44463f;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+.exam-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.mastery-check li::before {
+  content: "□";
+  position: absolute;
+  left: 0;
+  color: color-mix(in srgb, var(--accent-2) 75%, black);
+  font-weight: 900;
+}
+
 .formula-panel {
   margin-top: 18px;
   padding: clamp(18px, 2.5vw, 24px);
@@ -1269,7 +1587,7 @@ summary:focus-visible {
 }
 
 .thinker-panel .author-list {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .author-card {
@@ -1722,7 +2040,12 @@ summary:focus-visible {
 .quick-mode .trap-note,
 .quick-mode .competency-box,
 .quick-mode .lens-card,
-.quick-mode .route-strip {
+.quick-mode .route-strip,
+.quick-mode .lesson-toc,
+.quick-mode .explanation-block,
+.quick-mode .deep-lesson,
+.quick-mode .formula-panel,
+.quick-mode .author-panel {
   display: none;
 }
 
@@ -2392,6 +2715,11 @@ footer span {
     box-shadow: 14px 17px 0 rgba(0, 0, 0, 0.2), 0 28px 50px rgba(0, 0, 0, 0.25);
   }
 
+  .concept-grid,
+  .exam-columns {
+    grid-template-columns: 1fr;
+  }
+
   .brand-lockup {
     min-width: 0;
   }
@@ -2446,6 +2774,10 @@ footer span {
     display: none;
   }
 
+  .lesson-toc {
+    grid-template-columns: 1fr;
+  }
+
   .topic-card {
     grid-template-columns: 1fr;
   }
@@ -2495,6 +2827,10 @@ footer span {
   }
 
   .author-list {
+    grid-template-columns: 1fr;
+  }
+
+  .thinker-panel .author-list {
     grid-template-columns: 1fr;
   }
 
@@ -2564,16 +2900,16 @@ footer span {
       <div class="cover-copy">
         <p class="cover-eyebrow">arquivo de estudos · por Fernando</p>
         <h1 id="cover-title"><span>Resumos do</span>Fernando<span>.</span></h1>
-        <p class="cover-lede">Um guia direto ao ponto para entender, memorizar e testar o que importa em cada matéria.</p>
+        <p class="cover-lede">Um guia completo para aprender a matéria do zero, acompanhar exemplos, praticar e depois revisar o que realmente importa.</p>
         <div class="cover-actions">
-          <a class="cover-button" href="#revisao">começar revisão <span aria-hidden="true">→</span></a>
-          <p>Busque por assunto, ative o modo rápido e acompanhe seu progresso.</p>
+          <a class="cover-button" href="#revisao">começar a aprender <span aria-hidden="true">→</span></a>
+          <p>Estude no modo aula, pratique e use o modo 30s somente para a revisão final.</p>
         </div>
       </div>
 
       <div class="cover-art" aria-label="Visão geral do guia">
         <div class="cover-sheet">
-          <div class="cover-sheet-head"><span>GUIA DE REVISÃO</span><b>12</b></div>
+          <div class="cover-sheet-head"><span>GUIA DE ESTUDOS</span><b>12</b></div>
           <div class="cover-monogram" aria-hidden="true">F</div>
           <p>Leia. Teste. Marque.</p>
           <div class="cover-stats">
@@ -2945,10 +3281,772 @@ footer span {
     const philosophyThinkers = {
       "filosofia:03": [
         {
+          name:"Santo Agostinho (354-430)",
+          detail:"Patrística. Influenciado por Platão e pelo Neoplatonismo, afirma que a fé orienta a razão e que a verdade depende da iluminação divina. Defende o livre-arbítrio para explicar a origem moral do mal. Macete: Agostinho = Platão + interioridade + iluminação."
+        },
+        {
+          name:"Tomás de Aquino (1225-1274)",
+          detail:"Escolástica. Influenciado por Aristóteles, considera fé e razão caminhos diferentes, mas compatíveis. Formula as Cinco Vias para argumentar racionalmente a existência de Deus. Macete: Tomás = Aristóteles + conciliação + Cinco Vias."
+        },
+        {
           name:"Guilherme de Ockham (c. 1285-1347)",
           detail:"Pensador do fim da Escolástica. Defendeu que muitas verdades da fé não podem ser demonstradas apenas pela razão, favoreceu a separação entre Igreja e Estado e ficou associado ao nominalismo e à Navalha de Ockham: não multiplicar explicações ou entidades sem necessidade. Macete: Ockham = separar os campos e cortar excessos."
         }
+      ],
+      "filosofia:04": [
+        {
+          name:"Nicolau Copérnico (1473-1543)",
+          detail:"Defende o heliocentrismo: a Terra e os demais planetas giram em torno do Sol. Sua proposta rompe com o geocentrismo dominante. Macete: Copérnico = Sol no centro do sistema."
+        },
+        {
+          name:"Johannes Kepler (1571-1630)",
+          detail:"Mostra matematicamente que os planetas descrevem órbitas elípticas e formula três leis do movimento planetário. Macete: Kepler = órbitas elípticas e matemática."
+        },
+        {
+          name:"Galileu Galilei (1564-1642)",
+          detail:"Combina observação, experimentação e matemática no estudo da natureza. Suas observações telescópicas fortalecem o heliocentrismo. Macete: Galileu = experiência + matemática."
+        },
+        {
+          name:"Nicolau Maquiavel (1469-1527)",
+          detail:"Em O Príncipe, analisa a política como ela funciona na prática. Virtù é a capacidade de agir; fortuna são as circunstâncias. O governante busca estabilidade do Estado. Macete: Maquiavel = realismo político, não maldade."
+        },
+        {
+          name:"Thomas Morus (1478-1535)",
+          detail:"Em Utopia, descreve uma sociedade imaginária para criticar desigualdade, propriedade e costumes de sua época. Macete: Morus = sociedade ideal usada como crítica social."
+        },
+        {
+          name:"Thomas Hobbes (1588-1679)",
+          detail:"No estado de natureza, insegurança e conflito ameaçam a vida. Pelo contrato social, indivíduos transferem poder a um soberano forte em troca de proteção. Macete: Hobbes = medo + segurança + Estado forte."
+        },
+        {
+          name:"John Locke (1632-1704) — política", 
+          detail:"Defende direitos naturais à vida, à liberdade e à propriedade. O governo é limitado e pode ser substituído se violar esses direitos. Macete: Locke político = direitos naturais e direito de resistência."
+        },
+        {
+          name:"Jean-Jacques Rousseau (1712-1778)",
+          detail:"A soberania pertence ao povo e a lei legítima expressa a vontade geral, voltada ao bem comum. Macete: Rousseau = povo + soberania popular + vontade geral."
+        }
+      ],
+      "filosofia:05": [
+        {
+          name:"René Descartes (1596-1650)",
+          detail:"Racionalista. Usa a dúvida metódica para encontrar uma certeza: se pensa, existe. Defende ideias claras e distintas e um método racional. Macete: Descartes = dúvida + razão + “Penso, logo existo”."
+        },
+        {
+          name:"Francis Bacon (1561-1626)",
+          detail:"Empirista. Valoriza observação, experimentação e indução. Critica os “ídolos”, preconceitos que distorcem o conhecimento. Macete: Bacon = experiência + indução + combate aos ídolos."
+        },
+        {
+          name:"John Locke (1632-1704) — conhecimento",
+          detail:"Empirista. A mente nasce como tábula rasa e forma ideias a partir da experiência, por sensação e reflexão. Macete: Locke empirista = nada de ideias prontas; conhecimento vem da experiência."
+        },
+        {
+          name:"George Berkeley (1685-1753)",
+          detail:"Empirista e imaterialista. Questiona uma matéria existente de forma independente da percepção; conhecer é lidar com ideias percebidas. Macete: Berkeley = ser é ser percebido."
+        },
+        {
+          name:"David Hume (1711-1776)",
+          detail:"Leva o empirismo ao ceticismo. A causalidade não é observada diretamente: nasce do hábito de associar acontecimentos repetidos. Macete: Hume = experiência + hábito + dúvida sobre a causa."
+        },
+        {
+          name:"Baruch Espinosa (1632-1677)",
+          detail:"Racionalista. Deus e Natureza formam uma única realidade, regida por necessidade. Ser livre é compreender racionalmente as causas. Macete: Espinosa = Deus ou Natureza + determinismo."
+        },
+        {
+          name:"Gottfried Wilhelm Leibniz (1646-1716)",
+          detail:"Racionalista. A realidade é formada por mônadas, unidades simples e não materiais, coordenadas por uma harmonia preestabelecida. Macete: Leibniz = mônadas + harmonia + melhor mundo possível."
+        },
+        {
+          name:"Blaise Pascal (1623-1662)",
+          detail:"Reconhece a importância da razão, mas destaca seus limites diante da existência e da fé. Aposta de Pascal discute racionalmente a decisão de crer. Macete: Pascal = razão limitada + fé."
+        }
       ]
+    };
+
+    const guidedLessons = {
+      "portugues:03": {
+        goal:"Entender como as classes nominais formam grupos de palavras e como os gêneros textuais adaptam a linguagem a uma situação de comunicação.",
+        steps:[
+          {title:"1. Encontre o núcleo",text:"Em um grupo nominal, o substantivo costuma ser o centro. Em “aqueles dois projetos científicos”, projetos é o núcleo; aqueles é pronome, dois é numeral e científicos é adjetivo. Todos acrescentam informações ao substantivo e normalmente concordam com ele em gênero e número."},
+          {title:"2. Observe o efeito das escolhas",text:"Artigo definido apresenta algo como conhecido; artigo indefinido introduz ou generaliza. Adjetivos podem descrever ou avaliar. Pronomes retomam termos e evitam repetição. Em interpretação, diga como a escolha muda precisão, tom ou ponto de vista, em vez de apenas nomear a classe."},
+          {title:"3. Identifique gênero, tipo e finalidade",text:"Gênero é a forma social do texto, como notícia, meme, receita ou artigo de opinião. Tipo textual é o modo de organização, como narrar, descrever, expor, argumentar ou instruir. Um artigo de opinião é um gênero predominantemente argumentativo, mas pode narrar um fato para sustentar a tese."}
+        ],
+        example:{title:"Analisando uma manchete",prompt:"“Os jovens pesquisadores brasileiros anunciaram uma descoberta.”",solution:"Pesquisadores é o substantivo central. Os particulariza o grupo; jovens e brasileiros caracterizam-no. O verbo anunciaram concorda com o núcleo no plural. Como manchete, a frase prioriza informação direta e responde quem fez o quê."},
+        practice:{question:"Em “Uma decisão corajosa mudou o projeto”, qual é o núcleo do grupo nominal e que efeito produz o artigo uma?",answer:"O núcleo é decisão. O artigo indefinido uma apresenta a decisão pela primeira vez e ainda não a trata como algo conhecido ou específico para o leitor."}
+      },
+      "portugues:04": {
+        goal:"Interpretar significados pelo contexto e explicar como figuras e escolhas estilísticas criam efeitos no texto.",
+        steps:[
+          {title:"1. Separe significado de uso",text:"Denotação é o sentido mais literal e convencional; conotação é o sentido associado ou figurado. Polissemia ocorre quando uma palavra possui sentidos relacionados. Ambiguidade surge quando o enunciado permite mais de uma leitura. O contexto é a principal ferramenta para decidir qual sentido está ativo."},
+          {title:"2. Compare relações entre palavras",text:"Sinônimos aproximam sentidos, mas raramente são idênticos em todo contexto. Antônimos opõem ideias. Homônimos coincidem na forma e diferem no significado; parônimos são parecidos na escrita ou pronúncia, como descrição e discrição. A prova costuma cobrar o sentido adequado à frase."},
+          {title:"3. Explique a figura completa",text:"Metáfora aproxima ideias sem conectivo; comparação explicita a aproximação; metonímia troca um termo por outro relacionado; ironia sugere algo diferente do literal. Personificação, hipérbole, antítese e eufemismo também criam efeitos. A resposta completa segue: recurso + trecho + efeito."}
+        ],
+        example:{title:"Do recurso ao efeito",prompt:"“A cidade engoliu os trabalhadores ao amanhecer.”",solution:"Há personificação e metáfora: a cidade recebe a ação humana de engolir. O efeito é representar a multidão entrando no espaço urbano e sugerir rotina opressiva ou perda da individualidade."},
+        practice:{question:"Em “Que maravilha, perdi o ônibus de novo”, qual recurso aparece e qual efeito produz?",answer:"Ironia. A expressão positiva “que maravilha” contrasta com a situação negativa e comunica irritação ou frustração."}
+      },
+      "portugues:05": {
+        goal:"Ler o verbo como marcador de ação, tempo, certeza, continuidade, concordância e foco do enunciado.",
+        steps:[
+          {title:"1. Identifique a informação verbal",text:"Verbos podem indicar ação, estado, mudança ou fenômeno. Pessoa e número ligam o verbo ao sujeito; tempo localiza o fato; modo mostra a atitude do falante. Indicativo aproxima da certeza, subjuntivo marca possibilidade ou desejo e imperativo orienta."},
+          {title:"2. Entenda tempo e aspecto",text:"Pretérito perfeito apresenta ação concluída; imperfeito mostra ação habitual ou em andamento no passado; mais-que-perfeito indica ação anterior a outra ação passada. Mais do que decorar nomes, perceba a linha do tempo criada no texto."},
+          {title:"3. Veja quem ganha destaque",text:"Na voz ativa, o sujeito pratica a ação. Na passiva, o alvo vira sujeito e recebe destaque. A indeterminação do sujeito pode ocultar quem agiu. Regência define a preposição exigida pelo verbo, e concordância segue o núcleo do sujeito mesmo quando ele aparece depois."}
+        ],
+        example:{title:"Mudando o foco",prompt:"Ativa: “A equipe concluiu o relatório.”",solution:"Na passiva, fica “O relatório foi concluído pela equipe”. O fato básico permanece, mas o foco muda da equipe para o relatório. Se escrevermos “Concluíram o relatório”, o agente fica indeterminado."},
+        practice:{question:"Por que o correto é “Chegaram as notícias”, mesmo com o sujeito depois do verbo?",answer:"Porque notícias é o núcleo do sujeito e está no plural. A posição posterior não elimina a concordância."}
+      },
+      "literatura:03": {
+        goal:"Compreender por que o Romantismo valoriza emoção, indivíduo, natureza e liberdade e reconhecer suas marcas em textos.",
+        steps:[
+          {title:"1. Relacione movimento e contexto",text:"Revoluções burguesas, nacionalismos e reação ao racionalismo iluminista fortaleceram a valorização do indivíduo. O artista romântico rejeita regras rígidas e transforma sentimento, imaginação e liberdade criativa em princípios estéticos."},
+          {title:"2. Leia os símbolos românticos",text:"A natureza espelha o estado de alma; a noite pode representar melancolia, e a tempestade, conflito. O herói aparece rebelde, solitário ou incompreendido. Amor impossível, sonho, passado medieval, morte e escapismo expressam insatisfação com o presente."},
+          {title:"3. Entenda o Pré-Romantismo",text:"O Pré-Romantismo é uma transição, não uma escola totalmente separada. Ele enfraquece o equilíbrio clássico e antecipa subjetividade, sentimentalismo e interesse pelo nacional. Goethe, Rousseau e outros autores ajudam a formar essa nova sensibilidade."}
+        ],
+        example:{title:"Comparação de estilos",prompt:"Um poema descreve uma paisagem equilibrada e universal; outro transforma a lua em confidente do eu lírico apaixonado.",solution:"O segundo é mais romântico porque a natureza reflete a subjetividade. O primeiro se aproxima de uma estética clássica, preocupada com equilíbrio e impessoalidade."},
+        practice:{question:"Por que o Romantismo não pode ser resumido apenas a histórias de amor?",answer:"Porque também aborda nacionalismo, identidade, liberdade, crítica social, morte, religiosidade, rebeldia e fuga da realidade."}
+      },
+      "literatura:04": {
+        goal:"Diferenciar as gerações românticas brasileiras e entender como poesia e romance ajudaram a construir imagens do país.",
+        steps:[
+          {title:"1. Primeira geração: criar uma nação",text:"Após a Independência, escritores buscam símbolos nacionais. A natureza é grandiosa e o indígena aparece como herói idealizado. Gonçalves Dias é o nome central. Essa representação participa de um projeto de identidade, mas não descreve fielmente a diversidade indígena."},
+          {title:"2. Segunda e terceira gerações",text:"A segunda geração, de Álvares de Azevedo, concentra-se no eu, no tédio, na idealização amorosa e na morte. A terceira, de Castro Alves, assume tom público, oratório e abolicionista. O percurso vai do herói nacional ao sofrimento individual e depois à questão social."},
+          {title:"3. A prosa representa diferentes Brasis",text:"José de Alencar escreve romances indianistas, urbanos e regionalistas. Joaquim Manuel de Macedo retrata costumes urbanos; Manuel Antônio de Almeida apresenta figuras menos idealizadas. Esses romances ampliam o público leitor e organizam conflitos entre amor, dinheiro, família e sociedade."}
+        ],
+        example:{title:"Identificando a geração",prompt:"Um poema denuncia a escravidão, fala à coletividade e utiliza imagens grandiosas.",solution:"É condoreiro, portanto pertence à terceira geração. A preocupação social, a defesa da liberdade e a linguagem oratória aproximam o texto de Castro Alves."},
+        practice:{question:"Use o macete “índio → eu → povo” para explicar as três gerações.",answer:"Índio representa a geração nacionalista; eu, a geração ultrarromântica e subjetiva; povo, a geração condoreira voltada a liberdade e causas sociais."}
+      },
+      "literatura:05": {
+        goal:"Reconhecer a ruptura realista, analisar narradores e diferenciar Realismo e Naturalismo.",
+        steps:[
+          {title:"1. Da idealização à suspeita",text:"O Realismo reage ao sentimentalismo romântico. Personagens são contraditórias, o casamento pode envolver interesse e o narrador investiga vaidade, poder e hipocrisia. Ciência, urbanização e crise dos valores burgueses formam o contexto do movimento."},
+          {title:"2. Machado e o narrador não confiável",text:"Machado de Assis usa ironia, conversa com o leitor e cria narradores que defendem a própria versão. Em Dom Casmurro, a dúvida sobre Capitu existe porque conhecemos apenas a memória de Bentinho. Interpretar exige separar fato narrado de julgamento do narrador."},
+          {title:"3. Realismo e Naturalismo",text:"O Realismo enfatiza análise psicológica e social. O Naturalismo radicaliza a observação e explica comportamentos por hereditariedade, meio e condições materiais. Em Portugal, Eça de Queirós critica burguesia e clero; no Brasil, Aluísio Azevedo é referência naturalista."}
+        ],
+        example:{title:"Narrador sob suspeita",prompt:"Um narrador afirma que sempre foi justo, mas seus próprios relatos mostram egoísmo e manipulação.",solution:"A contradição cria um narrador não confiável. O leitor deve interpretar além daquilo que ele declara, recurso muito usado por Machado de Assis."},
+        practice:{question:"Qual diferença básica ajuda a separar uma personagem romântica de uma realista?",answer:"A romântica tende à idealização; a realista costuma ser contraditória, condicionada por interesses e examinada criticamente."}
+      },
+      "matematica:03": {
+        goal:"Traduzir problemas reais em cálculos de porcentagem, finanças e estatística e interpretar o resultado.",
+        steps:[
+          {title:"1. Modele antes de calcular",text:"Separe dados, pergunta e unidade. Identifique se há proporção, variação percentual, função ou conjunto de dados. Um resultado numérico sem vínculo com o contexto pode estar matematicamente correto e ainda responder à pergunta errada."},
+          {title:"2. Diferencie variações e juros",text:"Uma taxa percentual deve virar fator: aumento de 10% multiplica por 1,10; desconto de 10%, por 0,90. Juros simples crescem sobre o capital inicial; compostos, sobre o saldo acumulado. Taxa e tempo precisam estar na mesma unidade."},
+          {title:"3. Leia centro e dispersão juntos",text:"Média, mediana e moda descrevem o centro por critérios diferentes. Amplitude e desvio padrão mostram espalhamento. Dois grupos podem ter a mesma média, mas riscos muito diferentes se um deles apresentar desvio padrão maior."}
+        ],
+        example:{title:"Juros compostos passo a passo",prompt:"R$ 1.000 são aplicados a 10% por dois períodos.",solution:"M = 1.000·(1+0,10)² = 1.000·1,21 = R$ 1.210. O ganho foi R$ 210. Não somamos apenas 20%, pois o segundo período rende também sobre os R$ 100 obtidos no primeiro."},
+        practice:{question:"Um produto de R$ 200 recebe desconto de 20% e depois aumento de 20%. Ele volta a R$ 200?",answer:"Não. 200·0,80 = 160 e 160·1,20 = 192. As taxas incidem sobre bases diferentes."}
+      },
+      "matematica:04": {
+        goal:"Escolher fórmulas de perímetro e área, decompor figuras e controlar corretamente as unidades.",
+        steps:[
+          {title:"1. Descubra o que está sendo medido",text:"Perímetro é a soma do contorno e usa unidades lineares, como metro. Área mede a superfície e usa unidades quadradas, como m². Sublinhe no enunciado palavras como cercar, contornar, pintar, revestir ou ocupar."},
+          {title:"2. Decomponha figuras",text:"Uma região irregular pode ser dividida em retângulos, triângulos, trapézios ou círculos. Se houver um recorte, calcule área maior menos área retirada. Base e altura devem ser perpendiculares, mesmo quando a figura estiver inclinada."},
+          {title:"3. Converta com dimensão",text:"Se 1 m = 100 cm, então 1 m² = 10.000 cm². A conversão é elevada ao quadrado porque área possui duas dimensões. Faça a conversão antes ou depois do cálculo, mas mantenha todas as medidas na mesma unidade."}
+        ],
+        example:{title:"Área com recorte",prompt:"Uma placa mede 8 m por 5 m e possui um recorte retangular de 2 m por 1 m.",solution:"Área maior = 8·5 = 40 m². Recorte = 2·1 = 2 m². Área restante = 40−2 = 38 m²."},
+        practice:{question:"Um triângulo tem base 12 cm e altura 5 cm. Qual é a área?",answer:"Área = base·altura/2 = 12·5/2 = 30 cm²."}
+      },
+      "matematica:05": {
+        goal:"Usar semelhança, relações métricas e trigonometria para resolver problemas com triângulos.",
+        steps:[
+          {title:"1. Confirme a semelhança",text:"Triângulos semelhantes possuem ângulos correspondentes iguais e lados proporcionais. Organize os lados na mesma ordem. Se a razão linear é k, perímetros variam por k e áreas por k²."},
+          {title:"2. Resolva o triângulo retângulo",text:"A hipotenusa fica oposta ao ângulo de 90°. Pitágoras liga apenas os lados. Seno, cosseno e tangente relacionam um ângulo agudo aos lados; por isso, oposto e adjacente dependem do ângulo escolhido."},
+          {title:"3. Reconheça os pontos notáveis",text:"Medianas encontram-se no baricentro; bissetrizes, no incentro; mediatrizes, no circuncentro; alturas, no ortocentro. Desenhar cada segmento evita decorar nomes sem compreender sua origem."}
+        ],
+        example:{title:"Escada apoiada",prompt:"Uma escada de 5 m alcança uma parede a 4 m de altura. A que distância está o pé da parede?",solution:"A escada é a hipotenusa. Pelo Teorema de Pitágoras: 5² = 4² + x². Logo, 25 = 16 + x², x² = 9 e x = 3 m."},
+        practice:{question:"Em um triângulo retângulo, o cateto oposto mede 6 e a hipotenusa 10. Qual é o seno do ângulo?",answer:"sen θ = oposto/hipotenusa = 6/10 = 0,6."}
+      },
+      "historia:03": {
+        goal:"Relacionar formação dos Estados, mercantilismo, Reforma e expansão marítima como partes da transição para a modernidade.",
+        steps:[
+          {title:"1. Centralização do poder",text:"Reis ampliaram impostos, exércitos e burocracias, reduzindo a fragmentação feudal. A burguesia apoiou parte desse processo porque mercados unificados e moedas estáveis favoreciam o comércio. Absolutismo não significa poder idêntico em todos os países."},
+          {title:"2. Economia e expansão",text:"Mercantilismo reúne práticas como metalismo, proteção alfandegária, monopólios e busca de balança comercial favorável. Portugal e Espanha investiram em navegação para acessar rotas, metais e produtos, iniciando conquista, colonização e escravização em larga escala."},
+          {title:"3. Reforma e conflitos",text:"Lutero, Calvino e outras correntes romperam a unidade católica. Questões religiosas misturaram-se a interesses políticos e econômicos. Na Inglaterra, Revoluções Puritana e Gloriosa limitaram a monarquia e fortaleceram o Parlamento."}
+        ],
+        example:{title:"Ligando os processos",prompt:"Por que expansão marítima e centralização monárquica aparecem juntas?",solution:"Viagens exigiam investimento, diplomacia, navios e força militar. Estados centralizados conseguiam reunir recursos e garantir monopólios, enquanto o comércio ultramarino fortalecia a arrecadação real."},
+        practice:{question:"Mercantilismo era uma teoria única aplicada igualmente por todos os reinos?",answer:"Não. Era um conjunto variável de práticas econômicas voltadas ao fortalecimento do Estado e do comércio."}
+      },
+      "historia:04": {
+        goal:"Compreender a colonização do Brasil como processo de exploração, trabalho compulsório, resistência e transformação territorial.",
+        steps:[
+          {title:"1. Antes e no início da colonização",text:"O território era ocupado por povos indígenas diversos. Entre 1500 e 1530, a exploração portuguesa concentrou-se no pau-brasil e em feitorias. A ameaça estrangeira e o interesse econômico estimularam ocupação mais permanente."},
+          {title:"2. Administração, açúcar e escravidão",text:"Capitanias e governo-geral organizaram o domínio. Engenhos articularam terra, capital, comércio e trabalho escravizado. A escravização indígena e africana encontrou resistência contínua; o tráfico atlântico tornou-se parte lucrativa do sistema colonial."},
+          {title:"3. Interiorização e mineração",text:"Pecuária, bandeiras, missões e disputas com franceses e holandeses ampliaram a ocupação. A mineração no século XVIII deslocou o eixo econômico, estimulou cidades e aumentou fiscalização e impostos da Coroa."}
+        ],
+        example:{title:"Mudança econômica",prompt:"O que muda com a mineração em relação ao açúcar?",solution:"A economia continua colonial e escravista, mas cresce a urbanização, a circulação interna e a presença fiscal da Coroa. O centro econômico desloca-se para o Sudeste."},
+        practice:{question:"Por que é incorreto dizer que os portugueses encontraram uma “terra vazia”?",answer:"Porque centenas de povos indígenas já viviam no território com línguas, culturas, economias e organizações próprias."}
+      },
+      "historia:05": {
+        goal:"Entender como Iluminismo, revoluções políticas e industrialização transformaram direitos, poder e trabalho.",
+        steps:[
+          {title:"1. Ideias iluministas",text:"Iluministas criticaram absolutismo, privilégios e intolerância. Liberdade, direitos, separação de poderes e soberania popular assumiram sentidos diferentes em Locke, Montesquieu, Voltaire e Rousseau, mas sustentaram críticas ao Antigo Regime."},
+          {title:"2. Revoluções e independências",text:"Estados Unidos, Haiti, França e América espanhola não repetem um modelo. A Revolução Haitiana foi também antiescravista; a Francesa atravessou monarquia constitucional, república, Terror e reação; Napoleão preservou reformas e concentrou poder."},
+          {title:"3. Revolução Industrial",text:"Máquinas, fábrica e carvão aumentaram produtividade e separaram trabalhador dos meios de produção. Urbanização acelerada, longas jornadas e baixos salários estimularam associações operárias e novas críticas sociais."}
+        ],
+        example:{title:"Ideias e limites",prompt:"A Declaração dos Direitos proclamou igualdade. Isso eliminou desigualdades imediatamente?",solution:"Não. Mulheres, escravizados e pobres continuaram excluídos em muitos lugares. A linguagem universal dos direitos criou princípios importantes, mas sua aplicação foi disputada."},
+        practice:{question:"Qual elemento torna a independência do Haiti singular?",answer:"Foi conduzida por pessoas escravizadas e resultou na abolição da escravidão e na criação de um Estado independente."}
+      },
+      "oficina:01": {
+        goal:"Planejar e escrever uma dissertação argumentativa clara, coerente e sustentada por evidências.",
+        steps:[
+          {title:"1. Construa uma tese",text:"A tese responde ao problema e orienta todo o texto. Evite frases vagas como “esse assunto é importante”. Prefira um posicionamento específico com duas razões que possam virar os parágrafos de desenvolvimento."},
+          {title:"2. Organize parágrafos",text:"Cada parágrafo precisa de tópico frasal, explicação, evidência e ligação com a tese. Dados, exemplos, repertório histórico e relações de causa servem como prova quando são explicados; apenas citar um autor não garante argumento."},
+          {title:"3. Revise coesão e conclusão",text:"Conectivos mostram relação entre ideias: causa, contraste, consequência, exemplificação. A conclusão não deve criar argumento novo. Ela retoma a tese e apresenta fechamento ou proposta coerente com o problema."}
+        ],
+        example:{title:"Da tese ao plano",prompt:"Tema: desinformação nas redes. Tese: o problema cresce pela baixa educação midiática e pelo funcionamento das plataformas.",solution:"Desenvolvimento 1 explica dificuldade de verificar fontes. Desenvolvimento 2 analisa algoritmos e engajamento. A conclusão pode propor educação midiática e transparência das plataformas, vinculando cada medida a uma causa."},
+        practice:{question:"Transforme “A violência é ruim” em uma tese argumentativa mais específica.",answer:"Exemplo: “A redução da violência urbana exige políticas preventivas de educação e inclusão, além de investigação eficiente, porque repressão isolada não enfrenta suas causas sociais.”"}
+      },
+      "filosofia:03": {
+        goal:"Entender como Patrística, Escolástica e Ockham responderam de modos diferentes ao problema entre fé e razão.",
+        steps:[
+          {title:"1. Patrística e Agostinho",text:"A Patrística organiza e defende intelectualmente o cristianismo. Agostinho aproxima Platão da fé: o mundo espiritual é superior e a verdade é reconhecida interiormente pela iluminação divina. O livre-arbítrio explica o mal moral como escolha humana, não criação de Deus."},
+          {title:"2. Escolástica e Tomás",text:"Com universidades e recuperação de Aristóteles, a Escolástica utiliza lógica e debate. Tomás distingue verdades alcançáveis pela razão e mistérios conhecidos pela revelação, mas considera que não podem se contradizer. As Cinco Vias partem de observações do mundo para argumentar sobre Deus."},
+          {title:"3. Ockham e a crise escolástica",text:"Ockham limita a demonstração racional das verdades de fé e favorece autonomia entre filosofia e teologia, além de distinguir poderes religioso e político. Seu nominalismo nega que universais existam como coisas separadas. A Navalha de Ockham evita suposições desnecessárias, não manda escolher automaticamente a explicação mais curta."}
+        ],
+        example:{title:"Comparando os três",prompt:"Como Agostinho, Tomás e Ockham relacionam fé e razão?",solution:"Agostinho subordina a compreensão à iluminação e à fé; Tomás busca conciliação sistemática; Ockham separa mais fortemente os campos e ressalta os limites da razão em matéria religiosa."},
+        practice:{question:"A Navalha de Ockham afirma que a explicação mais simples é sempre verdadeira?",answer:"Não. Ela recomenda evitar entidades e hipóteses desnecessárias entre explicações que dão conta das evidências."}
+      },
+      "filosofia:04": {
+        goal:"Compreender a passagem do Humanismo à ciência moderna e as diferentes justificativas do poder político.",
+        steps:[
+          {title:"1. Humanismo e nova ciência",text:"Humanismo recupera textos antigos e valoriza educação e ação humana. Copérnico desloca a Terra do centro; Kepler matematiza órbitas; Galileu combina experiência e cálculo. A autoridade tradicional passa a conviver com observação, demonstração e crítica."},
+          {title:"2. Maquiavel e Morus",text:"Maquiavel separa análise política de um ideal moral abstrato e observa virtù, fortuna e conservação do Estado. Morus cria Utopia para criticar propriedade, desigualdade e costumes. Um descreve mecanismos do poder; o outro imagina alternativa para julgar o presente."},
+          {title:"3. Contratualistas",text:"Hobbes parte da insegurança e defende soberano forte. Locke parte de direitos naturais e limita o governo. Rousseau afirma soberania popular e vontade geral. Todos usam o estado de natureza como hipótese para explicar a origem legítima da sociedade política."}
+        ],
+        example:{title:"Identificando o autor",prompt:"“O governo existe para proteger vida, liberdade e propriedade e pode ser substituído se falhar.”",solution:"A ideia é de Locke. Direitos existem antes do governo e limitam seu poder; por isso, o povo conserva direito de resistência."},
+        practice:{question:"Qual diferença central separa Hobbes e Rousseau?",answer:"Hobbes concentra poder para garantir segurança; Rousseau localiza a soberania no povo e na vontade geral."}
+      },
+      "filosofia:05": {
+        goal:"Comparar racionalismo e empirismo e compreender o método e os limites propostos pelos principais filósofos modernos.",
+        steps:[
+          {title:"1. Racionalismo",text:"Descartes duvida metodicamente e encontra certeza no pensamento. Espinosa descreve uma realidade necessária em que Deus e Natureza são uma só substância. Leibniz utiliza mônadas e verdades racionais. O ponto comum é a confiança na razão para alcançar estruturas necessárias."},
+          {title:"2. Empirismo",text:"Bacon valoriza indução e combate preconceitos. Locke afirma que ideias vêm da experiência. Berkeley liga existência conhecida à percepção. Hume distingue impressões e ideias e mostra que causalidade é hábito, não conexão observada diretamente."},
+          {title:"3. Pascal e os limites",text:"Pascal é matemático e filósofo, mas rejeita a ideia de que a razão resolva tudo. A condição humana envolve grandeza, fragilidade e fé. Na prova, compare fonte do conhecimento, método e limite: razão necessária, experiência sensível ou reconhecimento de fronteiras da razão."}
+        ],
+        example:{title:"Racionalista ou empirista?",prompt:"“A mente não possui conteúdo pronto; ideias surgem por sensação e reflexão.”",solution:"É Locke e pertence ao empirismo. A imagem da tábula rasa nega ideias inatas e torna a experiência a origem do conteúdo mental."},
+        practice:{question:"Por que Hume questiona a causalidade?",answer:"Porque observamos um evento seguido de outro, mas não uma força necessária ligando-os. A expectativa causal nasce da repetição e do hábito."}
+      },
+      "geografia:03": {
+        goal:"Explicar como forças internas e externas formam relevo, rochas e solos e avaliar o uso de recursos minerais.",
+        steps:[
+          {title:"1. Estrutura e dinâmica terrestre",text:"Placas litosféricas movem-se sobre camadas mais plásticas. Encontros geram dobramentos, vulcanismo e terremotos; afastamentos criam nova crosta; deslizamentos acumulam tensão. Esses processos internos formam grandes estruturas."},
+          {title:"2. Rochas, relevo e solo",text:"Rochas magmáticas solidificam do magma; sedimentares resultam de deposição e compactação; metamórficas são transformadas por calor e pressão. Intemperismo fragmenta e altera rochas, enquanto erosão transporta material. Solo depende também de clima, relevo, organismos e tempo."},
+          {title:"3. Recursos e conservação",text:"Minérios e combustíveis fósseis concentram-se em contextos geológicos específicos e são finitos. Extração pode gerar renda e infraestrutura, mas também desmatamento, contaminação e conflitos. Curvas de nível, cobertura vegetal e manejo adequado reduzem erosão."}
+        ],
+        example:{title:"Lendo uma paisagem",prompt:"Uma encosta sem vegetação recebe chuva intensa e surgem sulcos no terreno.",solution:"A chuva provoca erosão hídrica. Sem raízes e cobertura, há menor proteção e maior escoamento superficial, removendo a camada fértil do solo."},
+        practice:{question:"Qual é a diferença entre intemperismo e erosão?",answer:"Intemperismo desgasta ou altera a rocha no local; erosão remove e transporta o material."}
+      },
+      "geografia:04": {
+        goal:"Relacionar ciclo da água, bacias hidrográficas, vegetação e conflitos socioambientais.",
+        steps:[
+          {title:"1. Água disponível",text:"A maior parte da água terrestre é salgada ou está em geleiras e aquíferos. O ciclo hidrológico renova fluxos, mas distribuição, poluição e infraestrutura determinam acesso. Escassez pode ser física ou produzida por desigualdade e má gestão."},
+          {title:"2. Bacias e usos",text:"Bacia hidrográfica é a área drenada por um rio principal e afluentes. Agricultura, cidades, indústria, navegação e hidrelétricas disputam quantidade e qualidade da água. A gestão deve considerar toda a bacia, pois impactos a montante afetam áreas a jusante."},
+          {title:"3. Biomas e domínios",text:"Clima influencia vegetação, mas solo, relevo e água também importam. Domínios morfoclimáticos combinam esses elementos em grandes conjuntos brasileiros. Sustentabilidade exige comparar benefícios econômicos, populações atingidas e limites ecológicos."}
+        ],
+        example:{title:"Conflito pelo rio",prompt:"Uma barragem gera energia, mas alaga comunidades e altera peixes.",solution:"A análise completa reconhece benefício energético e custos sociais e ecológicos. Não basta classificar a obra como simplesmente boa ou ruim; é preciso discutir alternativas e compensações."},
+        practice:{question:"Por que disponibilidade de água não garante acesso à água potável?",answer:"Porque tratamento, distribuição, renda, poluição e infraestrutura condicionam quem consegue utilizar a água com segurança."}
+      },
+      "geografia:05": {
+        goal:"Interpretar indicadores, pirâmides etárias, migrações e condições de vida sem tirar conclusões de um único número.",
+        steps:[
+          {title:"1. Medidas demográficas",text:"População absoluta é o total de habitantes; densidade divide população por área. Natalidade, mortalidade e fecundidade descrevem ritmos diferentes. Crescimento total soma crescimento vegetativo e saldo migratório."},
+          {title:"2. Transição e estrutura",text:"Na transição demográfica, mortalidade cai antes da natalidade, acelerando crescimento; depois, ambas ficam baixas e a população envelhece. Pirâmides etárias revelam base jovem, concentração adulta ou aumento de idosos e ajudam a planejar serviços públicos."},
+          {title:"3. Migração, trabalho e refúgio",text:"Migrações combinam fatores de expulsão e atração. Refugiados fogem de perseguição, guerra ou grave ameaça e possuem proteção específica. Xenofobia transforma diferenças em hostilidade. Indicadores de renda, saúde, educação e trabalho devem ser lidos em conjunto."}
+        ],
+        example:{title:"Pirâmide em transformação",prompt:"A base fica estreita e o topo se alarga ao longo das décadas.",solution:"A fecundidade caiu e a expectativa de vida aumentou. O país precisará adaptar previdência, saúde e mercado de trabalho ao envelhecimento."},
+        practice:{question:"Uma densidade baixa significa que todo o território é pouco ocupado?",answer:"Não. A média pode esconder forte concentração em cidades e grandes áreas quase vazias."}
+      },
+      "fisica:03": {
+        goal:"Construir diagramas de forças, aplicar as leis de Newton e relacionar gravidade a órbitas.",
+        steps:[
+          {title:"1. Isole o corpo",text:"Escolha um corpo e desenhe apenas forças que atuam nele: peso, normal, tração, atrito e força elástica. Ação e reação agem em corpos diferentes, por isso não aparecem juntas no mesmo diagrama."},
+          {title:"2. Aplique a resultante",text:"Se a soma das forças é zero, a aceleração é zero: o corpo pode estar parado ou com velocidade constante. Se há resultante, ΣF = m·a. Escolha eixos convenientes e respeite sinais e unidades."},
+          {title:"3. Da queda à órbita",text:"A gravitação universal diminui com o quadrado da distância. Em órbita circular, a gravidade funciona como força centrípeta: o satélite está continuamente caindo ao redor do planeta. Kepler descreve forma, velocidade e período das órbitas."}
+        ],
+        example:{title:"Bloco no chão",prompt:"Um bloco de 10 kg está parado em superfície horizontal, com g = 10 m/s².",solution:"Peso = m·g = 100 N para baixo. Como a resultante vertical é zero, a normal vale 100 N para cima. Normal e peso se equilibram, mas não formam par de ação e reação."},
+        practice:{question:"Um carro anda em linha reta com velocidade constante. A força resultante é diferente de zero?",answer:"Não. Velocidade constante significa aceleração zero; então a resultante é zero."}
+      },
+      "fisica:04": {
+        goal:"Escolher entre energia e quantidade de movimento para analisar movimentos, máquinas e colisões.",
+        steps:[
+          {title:"1. Trabalho transfere energia",text:"Trabalho depende da componente da força ao longo do deslocamento. Força perpendicular não realiza trabalho. Energia cinética cresce com o quadrado da velocidade; potenciais dependem da altura ou deformação."},
+          {title:"2. Conservação com atenção",text:"Sem forças dissipativas, energia mecânica se conserva. Com atrito, parte vira energia interna, mas energia total continua conservada. Potência mede rapidez da transformação, e rendimento compara energia útil com energia recebida."},
+          {title:"3. Impulso e colisões",text:"Impulso é força multiplicada pelo intervalo de tempo e altera a quantidade de movimento. Em sistema isolado, o momento total se conserva. Energia cinética só se conserva em colisão elástica."}
+        ],
+        example:{title:"Queda sem resistência",prompt:"Um corpo de 2 kg cai de 5 m, com g = 10 m/s².",solution:"No alto, Epg = mgh = 100 J. Antes de tocar o chão, esses 100 J tornam-se aproximadamente energia cinética. Então mv²/2 = 100 e v = 10 m/s."},
+        practice:{question:"Por que airbag aumenta a segurança pelo conceito de impulso?",answer:"Para a mesma variação de momento, aumenta o tempo da colisão e reduz a força média sobre a pessoa."}
+      },
+      "fisica:05": {
+        goal:"Resolver equilíbrio de corpos e interpretar pressão, empuxo e movimento de fluidos.",
+        steps:[
+          {title:"1. Equilíbrio completo",text:"Equilíbrio translacional exige ΣF = 0; rotacional exige Στ = 0. Torque depende da força e da distância perpendicular ao eixo. Centro de massa ajuda a prever estabilidade e tombamento."},
+          {title:"2. Fluidos em repouso",text:"Densidade é massa por volume; pressão é força por área. Stevin mostra que pressão cresce com profundidade. Pascal explica amplificação de força em sistemas hidráulicos, e Arquimedes relaciona empuxo ao peso do fluido deslocado."},
+          {title:"3. Fluidos em movimento",text:"Continuidade indica que menor área de tubo implica maior velocidade em fluxo incompressível. Bernoulli relaciona pressão, velocidade e altura. Diferenças de velocidade e pressão ajudam a explicar asas, pulverizadores e efeito Magnus."}
+        ],
+        example:{title:"Prensa hidráulica",prompt:"Um pistão de 2 cm² recebe 20 N e comunica pressão a outro de 20 cm².",solution:"F1/A1 = F2/A2. Então 20/2 = F2/20, logo F2 = 200 N. A força aumenta dez vezes, mas o deslocamento do pistão maior é menor."},
+        practice:{question:"Por que uma faca afiada corta melhor com a mesma força?",answer:"Porque a área de contato menor produz pressão maior: p = F/A."}
+      },
+      "biologia:03": {
+        goal:"Conectar núcleo, ciclo celular, mitose, meiose, reprodução e desenvolvimento embrionário.",
+        steps:[
+          {title:"1. DNA e ciclo celular",text:"DNA associado a proteínas forma cromatina. Em G1 a célula cresce; em S duplica o DNA; em G2 prepara divisão. Pontos de controle evitam que danos sejam transmitidos. Cromossomo duplicado possui duas cromátides-irmãs."},
+          {title:"2. Mitose e meiose",text:"Mitose mantém número cromossômico e gera células semelhantes para crescimento e reparo. Meiose realiza duas divisões, reduz ploidia e produz variabilidade por crossing-over e segregação independente."},
+          {title:"3. Reprodução e embrião",text:"Gametogênese forma gametas. Após fecundação, segmentação produz mórula e blástula; gastrulação forma folhetos; organogênese diferencia estruturas. Células-tronco variam no potencial de gerar tipos celulares."}
+        ],
+        example:{title:"Contando cromossomos",prompt:"Uma célula humana duplica o DNA antes da mitose.",solution:"Ela continua com 46 cromossomos, agora duplicados em 92 cromátides. Após separação, cada célula-filha recebe 46 cromossomos."},
+        practice:{question:"Qual processo gera maior variabilidade: mitose ou meiose? Por quê?",answer:"Meiose, por crossing-over, distribuição independente dos cromossomos e combinação posterior de gametas."}
+      },
+      "biologia:04": {
+        goal:"Ler filogenias e comparar procariotos, protozoários e algas por estrutura, evolução e importância.",
+        steps:[
+          {title:"1. Classificar é propor parentesco",text:"Nomenclatura binomial usa gênero e epíteto específico. Em cladogramas, cada nó representa ancestral comum. A proximidade do desenho não basta; grupos-irmãos são os que compartilham ancestral mais recente."},
+          {title:"2. Procariotos",text:"Bactérias e arqueias não possuem núcleo membranoso, mas diferem em membranas, genética e metabolismo. Bactérias participam de microbiotas, decomposição e ciclos; apenas parte causa doença."},
+          {title:"3. Protozoários e algas",text:"Protozoários são eucariotos heterotróficos diversos; algas são principalmente fotossintetizantes aquáticas. Ao estudar doenças, ligue agente, transmissão e prevenção. Ao estudar ecologia, considere produção de oxigênio e base das cadeias aquáticas."}
+        ],
+        example:{title:"Lendo um cladograma",prompt:"A e B compartilham um nó recente; C se separou antes.",solution:"A e B são grupos-irmãos e têm parentesco mais próximo entre si do que com C. Isso não significa que A evoluiu de B."},
+        practice:{question:"Por que dizer que bactérias são “primitivas” é inadequado?",answer:"Porque espécies atuais possuem longa história evolutiva e adaptações complexas; evolução não é uma escada de inferior para superior."}
+      },
+      "biologia:05": {
+        goal:"Comparar grupos vegetais, ciclos, tecidos, transporte e hormônios como adaptações ao ambiente terrestre.",
+        steps:[
+          {title:"1. Novidades evolutivas",text:"Briófitas não possuem vasos; pteridófitas têm vasos; gimnospermas possuem sementes e pólen; angiospermas acrescentam flores e frutos. Dependência de água para fecundação diminui com o pólen."},
+          {title:"2. Alternância de gerações",text:"Gametófito haploide produz gametas; fecundação forma zigoto diploide, que gera esporófito; meiose no esporófito produz esporos. A fase dominante muda entre os grupos."},
+          {title:"3. Tecidos e regulação",text:"Xilema transporta água e sais; floema distribui compostos orgânicos. Meristemas promovem crescimento. Auxina, giberelina, citocinina, etileno e ácido abscísico coordenam respostas e desenvolvimento."}
+        ],
+        example:{title:"Semente não é fruto",prompt:"Após a fecundação em uma angiosperma, o que acontece com óvulo e ovário?",solution:"O óvulo origina a semente; o ovário desenvolve-se em fruto. Gimnospermas possuem sementes, mas não ovário e, portanto, não formam frutos verdadeiros."},
+        practice:{question:"Qual tecido leva açúcares das folhas para outras partes?",answer:"Floema. O xilema transporta principalmente água e sais minerais."}
+      },
+      "quimica:03": {
+        goal:"Classificar funções inorgânicas, prever reações e relacionar comportamento macroscópico a íons e partículas.",
+        steps:[
+          {title:"1. Ácidos e bases",text:"Para Arrhenius, ácidos aumentam H⁺ em água e bases aumentam OH⁻. Brønsted amplia: ácido doa próton e base recebe. Força mede grau de ionização; concentração mede quantidade por volume — conceitos diferentes."},
+          {title:"2. Sais e óxidos",text:"Sais são compostos iônicos formados por cátions e ânions. Óxidos são binários com oxigênio e podem ter caráter ácido, básico, anfótero ou neutro. A classificação ajuda a prever reação com água, ácidos e bases."},
+          {title:"3. Reconheça a transformação",text:"Balanceie a equação antes de interpretar. Precipitado, gás, mudança de pH ou temperatura indicam reação. Neutralização forma sal e água, mas a proporção depende do número de H⁺ e OH⁻ envolvidos."}
+        ],
+        example:{title:"Neutralização",prompt:"H₂SO₄ + NaOH → ?",solution:"O ácido fornece dois H⁺, então são necessários dois NaOH: H₂SO₄ + 2 NaOH → Na₂SO₄ + 2 H₂O. O balanceamento revela a proporção 1:2."},
+        practice:{question:"Um ácido forte muito diluído é necessariamente mais concentrado que um ácido fraco?",answer:"Não. Força descreve ionização; concentração descreve quantidade por volume. Um ácido forte pode estar muito diluído."}
+      },
+      "quimica:04": {
+        goal:"Usar mol e equações balanceadas para calcular reagentes, produtos, pureza e rendimento.",
+        steps:[
+          {title:"1. A ponte do mol",text:"Massa molar converte gramas em mol; constante de Avogadro converte mol em entidades; volume molar converte mol de gás nas condições informadas. Identifique o que o dado representa antes de escolher a fórmula."},
+          {title:"2. Proporção estequiométrica",text:"Coeficientes da equação indicam proporção em mol, não diretamente em massa. O caminho seguro é: balancear, converter para mol, aplicar proporção e voltar à unidade pedida."},
+          {title:"3. Situações reais",text:"Reagente limitante acaba primeiro e define o produto máximo. Pureza reduz a fração útil da amostra. Rendimento compara produção real e teórica. Cada correção deve entrar na etapa adequada."}
+        ],
+        example:{title:"Formação de água",prompt:"2 H₂ + O₂ → 2 H₂O. Quantos mol de água surgem de 3 mol de O₂ com H₂ em excesso?",solution:"A proporção é 1 mol O₂ para 2 mol H₂O. Logo, 3 mol O₂ produzem 6 mol H₂O."},
+        practice:{question:"Uma reação prevê 100 g de produto, mas fornece 80 g. Qual é o rendimento?",answer:"Rendimento = 80/100·100% = 80%."}
+      },
+      "quimica:05": {
+        goal:"Calcular concentrações e explicar propriedades coligativas pelo número de partículas dissolvidas.",
+        steps:[
+          {title:"1. Descreva a solução",text:"Soluto é dissolvido; solvente é o meio predominante. Insaturada ainda dissolve mais, saturada atingiu o limite e supersaturada contém quantidade instável acima dele. Solubilidade depende das condições."},
+          {title:"2. Calcule e transforme",text:"Concentração comum usa massa por volume; molaridade, mol por volume. Na diluição, quantidade de soluto é conservada. Em mistura com reação, faça estequiometria antes da concentração final."},
+          {title:"3. Conte partículas",text:"Soluto não volátil reduz pressão de vapor, abaixa congelamento e eleva ebulição. Osmose movimenta solvente através de membrana. Eletrólitos produzem mais partículas e intensificam efeitos ideais."}
+        ],
+        example:{title:"Diluição",prompt:"100 mL de solução 2 mol/L são diluídos até 500 mL.",solution:"C₁V₁ = C₂V₂: 2·100 = C₂·500. Então C₂ = 0,4 mol/L. O volume aumentou cinco vezes e a concentração caiu cinco vezes."},
+        practice:{question:"Por que sal ajuda a derreter gelo em estradas?",answer:"As partículas dissolvidas abaixam a temperatura de congelamento da água, efeito chamado crioscopia."}
+      },
+      "sociologia:03": {
+        goal:"Usar conceitos de Marx para explicar produção, classes, exploração, alienação e ideologia.",
+        steps:[
+          {title:"1. Materialismo histórico",text:"Sociedades organizam-se a partir de formas de produzir a vida. Forças produtivas e relações de produção formam a base econômica, ligada a instituições, leis e ideias. Contradições impulsionam mudanças históricas."},
+          {title:"2. Classe e mais-valia",text:"Burguesia controla meios de produção; proletariado vende força de trabalho. O trabalhador produz valor superior ao salário recebido, e essa diferença se relaciona à mais-valia. Classe é posição na produção, não apenas renda."},
+          {title:"3. Alienação e fetichismo",text:"Alienação separa trabalhador do produto, processo, potencial humano e outros trabalhadores. Fetichismo faz relações sociais parecerem qualidades naturais das mercadorias. Ideologia pode ocultar que relações históricas poderiam ser diferentes."}
+        ],
+        example:{title:"O produto esconde o trabalho",prompt:"Um celular aparece apenas como objeto desejável e seu preço parece natural.",solution:"A análise marxista pergunta por mineração, fábricas, jornadas e distribuição do valor. O fetichismo oculta relações humanas atrás da mercadoria."},
+        practice:{question:"Por que classe social em Marx não é sinônimo de faixa salarial?",answer:"Porque é definida principalmente pela relação com os meios de produção e pela posição no processo produtivo."}
+      },
+      "sociologia:04": {
+        goal:"Compreender ação social, tipos ideais, dominação, burocracia e racionalização em Weber.",
+        steps:[
+          {title:"1. Ação com sentido",text:"Ação social considera o comportamento de outras pessoas. Weber distingue ação tradicional, afetiva, racional por valores e racional por fins. São tipos ideais: ferramentas de análise, não pessoas puras ou modelos perfeitos."},
+          {title:"2. Dominação legítima",text:"Poder torna-se dominação quando encontra obediência considerada legítima. Tradição sustenta monarquias e costumes; carisma sustenta liderança extraordinária; legal-racional sustenta cargos e regras impessoais."},
+          {title:"3. Modernidade e burocracia",text:"Racionalização amplia cálculo, previsão e controle. Burocracia organiza competências, hierarquia e documentos, aumentando eficiência, mas também rigidez. Desencantamento indica perda de explicações mágicas como organizadoras do mundo."}
+        ],
+        example:{title:"Classificando uma ação",prompt:"Uma estudante escolhe curso apenas comparando salário, duração e chance de emprego.",solution:"Predomina ação racional por fins, pois meios são calculados para alcançar um resultado. Motivações reais podem misturar mais de um tipo."},
+        practice:{question:"Um líder é obedecido por sua imagem extraordinária e devoção pessoal. Qual dominação?",answer:"Dominação carismática."}
+      },
+      "sociologia:05": {
+        goal:"Relacionar fases do capitalismo, organização do trabalho, indústria cultural, consumo e sustentabilidade.",
+        steps:[
+          {title:"1. Capitalismo em transformação",text:"Capitalismo comercial enfatiza circulação colonial; industrial, fábrica e máquinas; financeiro e informacional, bancos, corporações, dados e redes globais. As fases se sobrepõem e reorganizam poder e trabalho."},
+          {title:"2. Modelos produtivos",text:"Taylorismo divide e controla tarefas; fordismo combina linha de montagem e produção em massa; toyotismo busca flexibilidade e estoque reduzido. Plataformas digitais ampliam autonomia aparente e podem transferir riscos ao trabalhador."},
+          {title:"3. Cultura e consumo",text:"A Escola de Frankfurt critica padronização e mercantilização da cultura. Publicidade liga produtos a identidade e status. Consumo sustentável importa, mas escolhas são condicionadas por renda, oferta, infraestrutura e regulação."}
+        ],
+        example:{title:"Do consumo à estrutura",prompt:"Uma campanha pede que cada pessoa reduza plástico.",solution:"A ação individual ajuda, mas a análise sociológica acrescenta design de embalagens, responsabilidade das empresas, coleta pública e legislação. O problema não depende só do consumidor."},
+        practice:{question:"Qual diferença básica existe entre fordismo e toyotismo?",answer:"Fordismo enfatiza produção padronizada em massa; toyotismo enfatiza flexibilidade, produção conforme demanda e estoques menores."}
+      },
+      "ingles:01": {
+        goal:"Ler textos sobre arte usando pistas visuais, contexto, palavras-chave e marcas de opinião sem traduzir tudo.",
+        steps:[
+          {title:"1. Faça uma previsão",text:"Observe title, image, caption, source e layout. Pergunte who, where, when e purpose. Essa leitura inicial cria uma hipótese e reduz a dependência de tradução palavra por palavra."},
+          {title:"2. Procure redes de palavras",text:"Palavras repetidas e cognatos confiáveis indicam o tema. Artwork, heritage, belonging, identity e audience costumam aparecer nesse campo. Confirme falsos cognatos pelo contexto."},
+          {title:"3. Identifique voz e mensagem",text:"I believe, in my view e this suggests marcam opinião. Dados e datas tendem a sustentar fatos. Relacione linguagem verbal e visual para explicar como a obra representa identidades ou questiona estereótipos."}
+        ],
+        example:{title:"Leitura por pistas",prompt:"Título: “Painting Our Roots”; imagem mostra mural comunitário; legenda menciona local artists.",solution:"Mesmo sem traduzir tudo, é possível prever que o texto trata de arte ligada a raízes culturais e comunidade. Roots provavelmente é metafórico: origens e pertencimento."},
+        practice:{question:"O que significa audience em um texto sobre exposição?",answer:"Público ou audiência: as pessoas para quem a obra ou evento se dirige."}
+      },
+      "ingles:02": {
+        goal:"Analisar textos sobre esporte e ativismo identificando fato, opinião, evidência e conectores argumentativos.",
+        steps:[
+          {title:"1. Localize a afirmação",text:"Fact pode ser verificado; opinion expressa avaliação. Evidence sustenta uma claim por dado, exemplo, testemunho ou fonte. Pergunte: o autor só afirma ou também prova?"},
+          {title:"2. Siga os conectores",text:"Because e since introduzem causa; therefore e as a result, consequência; however e although, contraste. O conector mostra a relação lógica mesmo quando parte do vocabulário é desconhecida."},
+          {title:"3. Reconheça posições",text:"Atletas podem protest, boycott ou raise awareness. O texto pode apoiar, criticar ou apenas informar. Palavras avaliativas e seleção de fontes revelam o tom; backlash indica reação negativa."}
+        ],
+        example:{title:"Contraste",prompt:"“The athlete was criticized. However, the protest increased awareness.”",solution:"However muda a direção: primeiro aparece crítica; depois, um efeito positivo. A ideia principal pode destacar que o ativismo teve impacto apesar da reação."},
+        practice:{question:"Qual é a diferença entre therefore e although?",answer:"Therefore introduz consequência; although introduz concessão ou contraste."}
+      },
+      "ingles:03": {
+        goal:"Interpretar pressão social, modal verbs e estratégias de persuasão em grupos, publicidade e redes sociais.",
+        steps:[
+          {title:"1. Descubra a relação",text:"Peer pressure é influência de pessoas do mesmo grupo. Pode ser explícita, com ordem, ou implícita, por comparação e medo de exclusão. Identifique quem influencia, qual ação deseja e qual recompensa ou ameaça aparece."},
+          {title:"2. Meça a força do modal",text:"Must indica obrigação forte; should, conselho; can, capacidade ou possibilidade; may e might, possibilidade menos certa. A troca do modal muda o grau de pressão e o tom."},
+          {title:"3. Veja a estratégia persuasiva",text:"Popularidade, autoridade, urgência, medo e imagens idealizadas são apelos frequentes. Fit in é encaixar-se; stand out é destacar-se; boundaries são limites. Compare mensagem e efeito sobre self-esteem."}
+        ],
+        example:{title:"Força da mensagem",prompt:"“You should try” e “You must buy it now.”",solution:"A primeira frase aconselha; a segunda combina obrigação forte e urgência, produzindo pressão maior."},
+        practice:{question:"Em “Everyone has it, so you need it too”, qual estratégia aparece?",answer:"Apelo à popularidade e ao pertencimento: tenta convencer porque todos supostamente possuem o produto."}
+      }
+    };
+
+    const examBoosters = {
+      "portugues:03": {
+        concepts:[
+          {term:"Sintagma nominal",definition:"Grupo organizado em torno de um substantivo ou pronome. Determinantes e modificadores acrescentam quantidade, identificação ou característica ao núcleo."},
+          {term:"Flexão nominal",definition:"Variação de gênero e número. Artigo, pronome, numeral e adjetivo normalmente concordam com o substantivo: “as duas novas propostas”."},
+          {term:"Locução adjetiva",definition:"Conjunto de palavras com valor de adjetivo, em geral preposição + substantivo: “amor de mãe” equivale a “amor materno”."},
+          {term:"Gênero × tipo textual",definition:"Gênero é a prática social concreta, como notícia ou receita; tipo é a forma de organização, como narração, descrição, exposição, argumentação ou injunção."}
+        ],
+        exam:["Classificar uma palavra e justificar o efeito de definição, avaliação, quantidade ou retomada que ela produz.","Reconhecer finalidade, público e suporte de um gênero e identificar a tipologia predominante."],
+        check:["Localizar o núcleo e explicar a concordância do grupo nominal.","Distinguir gênero textual de tipologia textual.","Explicar como pronomes criam coesão e evitam repetição."]
+      },
+      "portugues:04": {
+        concepts:[
+          {term:"Denotação e conotação",definition:"Denotação é o sentido mais literal; conotação ativa associações culturais, afetivas ou figuradas definidas pelo contexto."},
+          {term:"Polissemia e ambiguidade",definition:"Polissemia é uma palavra com sentidos relacionados; ambiguidade é um enunciado que permite mais de uma interpretação."},
+          {term:"Homônimo e parônimo",definition:"Homônimos têm forma igual ou semelhante e sentidos diferentes; parônimos têm grafia ou som próximos, como “descrição” e “discrição”."},
+          {term:"Figuras de linguagem",definition:"Metáfora aproxima, metonímia substitui por relação, antítese opõe, hipérbole exagera, eufemismo suaviza e ironia cria contraste entre o dito e o pretendido."}
+        ],
+        exam:["Identificar o sentido contextual de uma palavra e justificar pela pista presente no texto.","Nomear uma figura e explicar seu efeito de humor, crítica, intensidade, emoção ou caracterização."],
+        check:["Diferenciar polissemia de ambiguidade.","Reconhecer as principais figuras sem depender de palavras decoradas.","Responder no formato recurso + trecho + efeito."]
+      },
+      "portugues:05": {
+        concepts:[
+          {term:"Estrutura verbal",definition:"Radical concentra o sentido; vogal temática indica a conjugação; desinências informam modo, tempo, pessoa e número."},
+          {term:"Verbo regular e irregular",definition:"Regular conserva o radical e as terminações-modelo; irregular sofre alteração no radical ou nas terminações, como “fazer → fiz”."},
+          {term:"Vozes verbais",definition:"Na ativa, o sujeito pratica a ação; na passiva, recebe; na reflexiva, pratica e recebe. A escolha muda o foco e pode ocultar o agente."},
+          {term:"Regência e concordância",definition:"Regência determina a preposição exigida pelo verbo; concordância ajusta a forma verbal ao núcleo do sujeito."}
+        ],
+        exam:["Reescrever um período em outro tempo, modo ou voz e explicar a mudança de sentido.","Corrigir concordância e regência identificando sujeito, núcleo e complemento verbal."],
+        check:["Reconhecer tempos e modos verbais pelo valor no contexto.","Transformar voz ativa em passiva sem mudar o fato básico.","Distinguir ação concluída, habitual e em andamento."]
+      },
+      "literatura:03": {
+        concepts:[
+          {term:"Subjetivismo",definition:"Valorização do eu, das emoções e da experiência individual em oposição à impessoalidade e às regras clássicas."},
+          {term:"Escapismo",definition:"Fuga simbólica da realidade para o sonho, a morte, a infância, a natureza, o passado medieval ou lugares exóticos."},
+          {term:"Herói romântico",definition:"Figura excepcional, rebelde, solitária e frequentemente em conflito com a sociedade; pode assumir o perfil melancólico chamado byroniano."},
+          {term:"Nacionalismo",definition:"Busca de língua, paisagem, passado e personagens capazes de representar a identidade de um povo."}
+        ],
+        exam:["Associar um trecho à subjetividade, natureza, idealização, liberdade, nacionalismo ou escapismo.","Relacionar características do movimento às revoluções burguesas e à reação ao racionalismo clássico."],
+        check:["Explicar por que natureza e emoção são centrais.","Reconhecer Goethe, Byron, Victor Hugo e Walter Scott.","Evitar reduzir Romantismo a histórias de amor."]
+      },
+      "literatura:04": {
+        concepts:[
+          {term:"1ª geração",definition:"Nacionalista e indianista: idealiza natureza, pátria e indígena como herói nacional. Principal poeta: Gonçalves Dias."},
+          {term:"2ª geração",definition:"Ultrarromântica: egocentrismo, tédio, sonho, amor impossível e morte. Principal nome: Álvares de Azevedo."},
+          {term:"3ª geração",definition:"Condoreira: poesia pública, liberdade e abolicionismo, com tom oratório. Principal nome: Castro Alves."},
+          {term:"Romance romântico",definition:"Pode ser indianista, urbano, regionalista ou histórico. José de Alencar é a referência principal dessa diversidade."}
+        ],
+        exam:["Identificar a geração por tema, vocabulário, postura do eu lírico e projeto de Brasil.","Comparar a idealização romântica com a realidade histórica de indígenas, mulheres e população escravizada."],
+        check:["Relacionar cada geração a seus temas e autores.","Diferenciar romance urbano, indianista e regionalista.","Explicar o papel da Independência na construção da identidade nacional."]
+      },
+      "literatura:05": {
+        concepts:[
+          {term:"Realismo",definition:"Analisa relações sociais e psicológicas com ironia, crítica às aparências, linguagem menos idealizadora e personagens contraditórias."},
+          {term:"Naturalismo",definition:"Radicaliza a observação e explica o comportamento por hereditariedade, meio e condições sociais, com influência do determinismo."},
+          {term:"Narrador não confiável",definition:"Sua versão é parcial, interessada ou contraditória; o leitor precisa desconfiar e reconstruir os fatos pelas pistas."},
+          {term:"Discurso indireto livre",definition:"Mistura a voz do narrador aos pensamentos da personagem sem marca explícita, aproximando análise psicológica e ambiguidade."}
+        ],
+        exam:["Comparar um fragmento romântico e um realista observando idealização, narrador, linguagem e conflito social.","Analisar ironia e contradições em Machado de Assis ou crítica de instituições em Eça de Queirós."],
+        check:["Diferenciar Realismo de Naturalismo.","Reconhecer Machado, Aluísio Azevedo, Raul Pompeia e Eça de Queirós.","Justificar por que o narrador não deve ser aceito automaticamente como verdadeiro."]
+      },
+      "matematica:03": {
+        concepts:[
+          {term:"Razão e proporção",definition:"Razão compara grandezas por divisão; proporção é a igualdade entre razões. Verifique se as grandezas são direta ou inversamente proporcionais."},
+          {term:"Variação percentual",definition:"Aumento de p% multiplica por 1 + p/100; desconto multiplica por 1 − p/100. Variações sucessivas são multiplicadas, não somadas."},
+          {term:"Média, mediana e moda",definition:"Média divide a soma pelo total; mediana ocupa o centro após ordenar; moda é o valor mais frequente. Cada medida responde a uma pergunta diferente."},
+          {term:"Dispersão",definition:"Amplitude é máximo menos mínimo; variância mede desvios quadráticos; desvio padrão é a raiz da variância e fica na unidade original."}
+        ],
+        exam:["Interpretar tabelas e gráficos antes de calcular, mantendo unidade e base percentual corretas.","Escolher média ou mediana conforme a presença de valores extremos e explicar o resultado no contexto."],
+        check:["Aplicar porcentagens sucessivas sem somá-las.","Resolver juros simples e compostos identificando capital, taxa e tempo.","Dizer o que uma medida estatística revela, não apenas calculá-la."]
+      },
+      "matematica:04": {
+        concepts:[
+          {term:"Perímetro × área",definition:"Perímetro mede o contorno em unidades lineares; área mede a superfície em unidades quadradas."},
+          {term:"Polígonos",definition:"A soma dos ângulos internos é (n − 2)·180°. Em polígono regular, todos os lados e ângulos possuem mesma medida."},
+          {term:"Circunferência × círculo",definition:"Circunferência é a linha de comprimento 2πr; círculo é a região interna de área πr²."},
+          {term:"Decomposição",definition:"Figuras compostas podem ser separadas em triângulos, retângulos, trapézios ou setores; somam-se ou subtraem-se as áreas necessárias."}
+        ],
+        exam:["Descobrir medidas ausentes e só então escolher a fórmula, observando se a questão pede contorno ou superfície.","Calcular região sombreada por diferença de áreas e converter corretamente cm², m² e outras unidades."],
+        check:["Escrever o nome completo de cada área e identificar seus termos.","Usar altura perpendicular à base.","Distinguir raio, diâmetro, corda, arco e setor circular."]
+      },
+      "matematica:05": {
+        concepts:[
+          {term:"Semelhança de triângulos",definition:"Triângulos semelhantes têm ângulos correspondentes iguais e lados proporcionais. Critérios: ângulo-ângulo, lado-ângulo-lado e lado-lado-lado."},
+          {term:"Pontos notáveis",definition:"Baricentro encontra medianas; incentro, bissetrizes; circuncentro, mediatrizes; ortocentro, alturas."},
+          {term:"Teorema de Pitágoras",definition:"No triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos: a² = b² + c²."},
+          {term:"Razões trigonométricas",definition:"Seno = cateto oposto/hipotenusa; cosseno = adjacente/hipotenusa; tangente = oposto/adjacente, sempre em relação ao ângulo escolhido."}
+        ],
+        exam:["Provar semelhança, montar a proporção com lados correspondentes e interpretar a escala.","Combinar Pitágoras, relações métricas e trigonometria em altura, distância ou inclinação."],
+        check:["Nomear hipotenusa e catetos em relação ao ângulo.","Associar cada ponto notável às retas que o formam.","Montar proporções mantendo a mesma ordem de correspondência."]
+      },
+      "historia:03": {
+        concepts:[
+          {term:"Estado moderno",definition:"Centralização de leis, impostos, exército e administração sob a monarquia, em aliança e conflito com nobreza, burguesia e poderes locais."},
+          {term:"Absolutismo e mercantilismo",definition:"Absolutismo concentra autoridade política; mercantilismo reúne práticas de intervenção econômica, protecionismo, colonialismo e busca de metais."},
+          {term:"Reforma e Contrarreforma",definition:"A Reforma rompe a unidade cristã ocidental; a reação católica reorganiza doutrina, disciplina e expansão religiosa."},
+          {term:"Conquista da América",definition:"Processo de violência, epidemias, alianças, escravização e resistência que destruiu ou reorganizou sociedades indígenas."}
+        ],
+        exam:["Relacionar centralização monárquica, comércio, expansão marítima e colonização sem tratá-los como fatos isolados.","Comparar absolutismo continental com as Revoluções Inglesas e a limitação parlamentar do rei."],
+        check:["Diferenciar Estado moderno, absolutismo e nação.","Reconhecer astecas, maias e incas antes da conquista.","Explicar Reforma, Contrarreforma e seus efeitos políticos."]
+      },
+      "historia:04": {
+        concepts:[
+          {term:"Administração colonial",definition:"Capitanias hereditárias descentralizaram a ocupação; o Governo-Geral coordenou defesa, justiça e arrecadação."},
+          {term:"Sistema açucareiro",definition:"Latifúndio, monocultura, exportação e trabalho escravizado estruturaram engenhos e uma sociedade desigual, mas não totalmente imóvel."},
+          {term:"Escravidão e resistência",definition:"Indígenas e africanos foram escravizados; fugas, quilombos, revoltas, negociações e preservação cultural expressaram resistências diversas."},
+          {term:"Interiorização",definition:"Pecuária, bandeiras, missões, drogas do sertão e mineração ampliaram ocupação, conflitos e circulação pelo interior."}
+        ],
+        exam:["Explicar como economia, trabalho, religião e território se conectavam na colonização.","Analisar documento evitando a ideia de colonização pacífica ou de passividade dos povos dominados."],
+        check:["Organizar as fases pré-colonial, açucareira e mineradora.","Explicar invasões holandesas e União Ibérica.","Reconhecer quilombos, revoltas e resistências indígenas."]
+      },
+      "historia:05": {
+        concepts:[
+          {term:"Iluminismo",definition:"Defesa da razão crítica contra privilégios e intolerância. Locke, Montesquieu, Voltaire e Rousseau formularam propostas diferentes."},
+          {term:"Revoluções atlânticas",definition:"Independências dos Estados Unidos, Haiti e América espanhola mobilizaram liberdade e soberania, mas tiveram sujeitos e limites próprios."},
+          {term:"Revolução Francesa",definition:"Passou por Assembleia, Convenção, Diretório e Consulado, alterando cidadania, propriedade e poder em meio a conflitos internos e externos."},
+          {term:"Revolução Industrial",definition:"Máquinas, fábrica, divisão do trabalho e urbanização elevaram a produção e criaram novas relações entre burguesia e proletariado."}
+        ],
+        exam:["Comparar quem participou, o que defendia e quais limites sociais existiram em cada revolução.","Ordenar causas, fases e consequências, evitando tratar liberdade política como igualdade social automática."],
+        check:["Associar pensadores iluministas às suas ideias.","Diferenciar independências dos EUA, Haiti e América espanhola.","Relacionar industrialização a urbanização e questão operária."]
+      },
+      "oficina:01": {
+        concepts:[
+          {term:"Tema, recorte e tese",definition:"Tema é o assunto amplo; recorte delimita o problema; tese é a posição que o texto defenderá sobre esse problema."},
+          {term:"Argumento e evidência",definition:"Argumento explica por que a tese é válida; evidência é dado, exemplo, referência, comparação ou fato que lhe dá sustentação."},
+          {term:"Coesão e coerência",definition:"Coesão liga frases por conectores, pronomes e retomadas; coerência garante lógica, progressão e ausência de contradição."},
+          {term:"Parágrafo argumentativo",definition:"Funciona melhor com tópico frasal, explicação, evidência, análise da evidência e fechamento conectado à tese."}
+        ],
+        exam:["Identificar tese, argumentos, contra-argumentos e estratégias de conclusão em um texto.","Produzir texto com projeto claro, repertório pertinente e conectores que expressem causa, oposição, consequência e conclusão."],
+        check:["Escrever tese específica e discutível.","Garantir uma função clara para cada parágrafo.","Revisar repetição, conectores, concordância e pontuação."]
+      },
+      "filosofia:03": {
+        concepts:[
+          {term:"Patrística",definition:"Primeira fase medieval, ligada aos Padres da Igreja. Santo Agostinho aproxima Cristianismo e Platonismo e valoriza interioridade e iluminação divina."},
+          {term:"Escolástica",definition:"Filosofia das escolas e universidades medievais, marcada pelo debate racional e pela organização sistemática das questões da fé."},
+          {term:"Cinco Vias",definition:"Tomás de Aquino parte de movimento, causalidade, contingência, graus de perfeição e finalidade para argumentar racionalmente sobre Deus."},
+          {term:"Nominalismo",definition:"Para Ockham, universais como “humanidade” são nomes ou conceitos, não entidades existentes separadamente dos indivíduos."}
+        ],
+        exam:["Comparar como Agostinho, Tomás e Ockham relacionam fé e razão.","Reconhecer a Navalha de Ockham como princípio de economia explicativa, não como prova de que a hipótese mais simples é sempre verdadeira."],
+        check:["Distinguir Patrística de Escolástica.","Associar Agostinho a Platão e Tomás a Aristóteles.","Explicar nominalismo, Cinco Vias e Navalha de Ockham."]
+      },
+      "filosofia:04": {
+        concepts:[
+          {term:"Humanismo e antropocentrismo",definition:"Valorizam capacidades, obras e responsabilidade humanas; não significam necessariamente abandono da religião."},
+          {term:"Ciência moderna",definition:"Copérnico propõe heliocentrismo, Kepler descreve órbitas e Galileu articula observação, experimento e matemática."},
+          {term:"Realismo político",definition:"Maquiavel investiga a manutenção do Estado a partir das ações e circunstâncias reais; virtù é capacidade de agir e fortuna é a instabilidade das condições."},
+          {term:"Contratualismo",definition:"Hobbes, Locke e Rousseau imaginam estado de natureza e contrato para justificar o poder político, mas chegam a modelos diferentes."}
+        ],
+        exam:["Comparar Hobbes, Locke e Rousseau quanto à natureza humana, finalidade do contrato, soberania e direito de resistência.","Relacionar Renascimento e Revolução Científica à mudança de método, sem repetir que a Idade Média simplesmente rejeitava toda razão."],
+        check:["Explicar heliocentrismo e método científico.","Diferenciar virtù de virtude moral comum.","Associar segurança, direitos naturais e vontade geral aos autores corretos."]
+      },
+      "filosofia:05": {
+        concepts:[
+          {term:"Racionalismo",definition:"Procura fundamentos seguros na razão. Descartes usa dúvida metódica; Espinosa pensa uma única substância; Leibniz formula as mônadas."},
+          {term:"Empirismo",definition:"Afirma que o conhecimento depende da experiência. Bacon destaca indução; Locke, tábula rasa; Berkeley, percepção; Hume, hábito e ceticismo."},
+          {term:"Cogito",definition:"Ao duvidar de tudo, Descartes encontra uma certeza: o próprio ato de pensar prova a existência do sujeito pensante."},
+          {term:"Causalidade em Hume",definition:"Não percebemos uma conexão necessária entre causa e efeito; a repetição cria expectativa por costume ou hábito."}
+        ],
+        exam:["Comparar fonte, método e limite do conhecimento em dois pensadores, em vez de apenas rotulá-los.","Interpretar situações sobre ideias inatas, experiência, indução, percepção, causalidade ou limites da razão."],
+        check:["Distinguir dúvida metódica de ceticismo definitivo.","Explicar tábula rasa, ídolos, mônadas e Deus/Natureza.","Associar cada pensador à tese central correta."]
+      },
+      "geografia:03": {
+        concepts:[
+          {term:"Agentes internos e externos",definition:"Tectonismo, vulcanismo e abalos constroem ou deformam o relevo; intemperismo, erosão, transporte e sedimentação o desgastam e remodelam."},
+          {term:"Limites de placas",definition:"Divergentes afastam placas, convergentes aproximam e transformantes deslizam lateralmente; cada limite produz formas e riscos diferentes."},
+          {term:"Ciclo das rochas",definition:"Rochas magmáticas, sedimentares e metamórficas transformam-se por solidificação, deposição, pressão, calor, fusão e intemperismo."},
+          {term:"Solo",definition:"Forma-se lentamente da interação entre rocha, clima, organismos, relevo e tempo; erosão, compactação e contaminação podem degradá-lo."}
+        ],
+        exam:["Relacionar processo geológico, forma de relevo e risco ambiental em mapas, perfis ou imagens.","Analisar mineração e combustíveis fósseis considerando formação, uso econômico, impactos e recuperação ambiental."],
+        check:["Distinguir intemperismo de erosão.","Reconhecer os três tipos de limite de placas.","Explicar o ciclo das rochas e fatores de formação do solo."]
+      },
+      "geografia:04": {
+        concepts:[
+          {term:"Ciclo hidrológico",definition:"Evaporação e transpiração, condensação, precipitação, infiltração e escoamento transferem água entre atmosfera, superfície e subsolo."},
+          {term:"Bacia hidrográfica",definition:"Área drenada por um rio principal e seus afluentes, delimitada por divisores de água; é unidade importante de planejamento."},
+          {term:"Bioma e ecossistema",definition:"Bioma reúne grandes conjuntos de vida e clima; ecossistema enfatiza relações entre seres vivos e ambiente em qualquer escala."},
+          {term:"Domínio morfoclimático",definition:"Integra relevo, clima, solo, vegetação e hidrografia em grandes paisagens; não é sinônimo perfeito de bioma."}
+        ],
+        exam:["Interpretar conflito pelo uso da água entre abastecimento, energia, irrigação, indústria e conservação.","Comparar paisagens brasileiras e avaliar efeitos de desmatamento, barragens, poluição ou mudanças climáticas."],
+        check:["Explicar etapas do ciclo e partes de uma bacia.","Distinguir bioma, ecossistema e domínio morfoclimático.","Relacionar sustentabilidade a decisões econômicas e sociais concretas."]
+      },
+      "geografia:05": {
+        concepts:[
+          {term:"Indicadores demográficos",definition:"Natalidade, mortalidade, fecundidade, mortalidade infantil, expectativa de vida e crescimento vegetativo descrevem dimensões diferentes da população."},
+          {term:"Transição demográfica",definition:"Passagem histórica de altas para baixas taxas de mortalidade e natalidade, alterando crescimento e estrutura etária."},
+          {term:"Teorias populacionais",definition:"Malthus relaciona crescimento e alimentos; neomalthusianos enfatizam controle natalista; reformistas ligam pobreza à desigualdade social."},
+          {term:"Migração e refúgio",definition:"Migração pode ser interna ou internacional, voluntária ou forçada; refugiado foge de perseguição, guerra ou grave violação e possui proteção específica."}
+        ],
+        exam:["Interpretar pirâmides etárias e propor consequências para escola, trabalho, previdência e saúde.","Comparar teorias populacionais e analisar fluxos migratórios sem naturalizar xenofobia ou culpar indivíduos."],
+        check:["Calcular ou interpretar crescimento vegetativo e densidade.","Ler base, corpo e topo de uma pirâmide etária.","Diferenciar população absoluta, densidade, migrante e refugiado."]
+      },
+      "fisica:03": {
+        concepts:[
+          {term:"Força resultante",definition:"Soma vetorial de todas as forças. Se é zero, a velocidade permanece constante; se não é, produz aceleração na mesma direção da resultante."},
+          {term:"Forças usuais",definition:"Peso é gravitacional; normal é perpendicular à superfície; tração acompanha fios; atrito se opõe ao deslizamento relativo ou à sua tendência."},
+          {term:"Ação e reação",definition:"Têm mesma intensidade e sentidos opostos, mas agem em corpos diferentes; por isso não se anulam no diagrama de um único corpo."},
+          {term:"Gravitação e órbita",definition:"A atração gravitacional fornece força centrípeta. Kepler descreve órbitas elípticas, áreas varridas e relação entre período e tamanho da órbita."}
+        ],
+        exam:["Montar diagrama de corpo livre, escolher eixos e aplicar ΣF = m·a em cada direção.","Relacionar distância, massa, período, velocidade orbital e força gravitacional sem confundir massa com peso."],
+        check:["Distinguir equilíbrio de repouso obrigatório.","Identificar corretamente pares de ação e reação.","Reconhecer as três leis de Kepler e a gravitação de Newton."]
+      },
+      "fisica:04": {
+        concepts:[
+          {term:"Trabalho",definition:"Transferência de energia por força ao longo do deslocamento: W = F·d·cosθ. Pode ser positivo, negativo ou nulo."},
+          {term:"Energia mecânica",definition:"Soma das energias cinética e potenciais. Conserva-se quando apenas forças conservativas realizam trabalho; atrito transforma energia mecânica em outras formas."},
+          {term:"Potência e rendimento",definition:"Potência mede rapidez da transferência de energia; rendimento compara energia ou potência útil com a total."},
+          {term:"Impulso e quantidade de movimento",definition:"Impulso é F·Δt e equivale a Δp. Em sistema isolado, a quantidade de movimento total se conserva."}
+        ],
+        exam:["Escolher entre abordagem por forças, energia ou impulso conforme os dados e o intervalo analisado.","Classificar colisão: em todas as isoladas conserva-se o momento; somente na elástica conserva-se também a energia cinética."],
+        check:["Interpretar o sinal do trabalho.","Distinguir conservação de energia total e de energia mecânica.","Resolver impulso pela área sob gráfico força × tempo."]
+      },
+      "fisica:05": {
+        concepts:[
+          {term:"Torque e equilíbrio",definition:"Torque mede a tendência de rotação: τ = F·d⊥. Equilíbrio de corpo extenso exige soma das forças e soma dos torques iguais a zero."},
+          {term:"Densidade e pressão",definition:"Densidade é massa por volume; pressão é força por área. Em fluido em repouso, a pressão cresce com a profundidade."},
+          {term:"Pascal e Arquimedes",definition:"Pascal explica transmissão de pressão e prensas hidráulicas; Arquimedes dá o empuxo igual ao peso do fluido deslocado."},
+          {term:"Continuidade e Bernoulli",definition:"Em escoamento ideal, menor área aumenta velocidade; a soma entre pressão, termo cinético e termo gravitacional permanece constante ao longo da linha de fluxo."}
+        ],
+        exam:["Equilibrar alavancas usando distância perpendicular e escolher um ponto de apoio que simplifique os torques.","Explicar flutuação, vasos comunicantes, sifões, asas e efeito Magnus combinando pressão, velocidade e empuxo."],
+        check:["Diferenciar massa específica de pressão.","Calcular pressão hidrostática e força hidráulica.","Aplicar equilíbrio translacional e rotacional ao mesmo corpo."]
+      },
+      "biologia:03": {
+        concepts:[
+          {term:"Cromatina, cromossomo e cromátide",definition:"Cromatina é DNA associado a proteínas; cromossomo é sua forma condensada; após duplicação, duas cromátides-irmãs permanecem unidas."},
+          {term:"Mitose × meiose",definition:"Mitose conserva ploidia e gera duas células semelhantes; meiose reduz ploidia, tem duas divisões e produz variabilidade por permutação e segregação."},
+          {term:"Gametogênese e ciclo reprodutivo",definition:"Espermatogênese e ovogênese formam gametas; hormônios coordenam ovulação, ciclo uterino e produção de caracteres sexuais."},
+          {term:"Embriologia inicial",definition:"Fecundação forma zigoto; clivagens formam mórula e blástula; gastrulação estabelece folhetos embrionários que originam tecidos e órgãos."}
+        ],
+        exam:["Comparar quantidade de DNA, número de cromossomos e variabilidade ao longo do ciclo celular.","Relacionar contraceptivos ao ponto em que atuam e interpretar etapas de fecundação e desenvolvimento embrionário."],
+        check:["Ordenar interfase, mitose e meiose.","Explicar crossing-over e segregação independente.","Diferenciar células-tronco totipotentes, pluripotentes e multipotentes."]
+      },
+      "biologia:04": {
+        concepts:[
+          {term:"Taxonomia e nomenclatura",definition:"Categorias organizam seres vivos; o nome científico é binomial, com gênero iniciado em maiúscula e epíteto específico em minúscula, ambos destacados."},
+          {term:"Filogenia",definition:"Clado reúne ancestral comum e todos os descendentes. Homologia indica origem evolutiva comum; analogia indica função parecida sem mesma origem."},
+          {term:"Bactérias e arqueias",definition:"Ambas são procariontes, mas diferem em membrana, parede e genética. Bactérias incluem decompositoras, simbiontes, industriais e patogênicas."},
+          {term:"Protozoários e algas",definition:"São eucariontes diversos. Protozooses dependem do ciclo do parasita; algas sustentam cadeias aquáticas e grande parcela da produção de oxigênio."}
+        ],
+        exam:["Ler cladogramas pelo ancestral comum mais recente, ignorando a ordem visual das pontas.","Associar doença ao agente, vetor ou via de transmissão e medida preventiva específica."],
+        check:["Escrever corretamente um nome científico.","Distinguir homologia de analogia.","Revisar tuberculose, cólera, malária, Chagas, leishmaniose e amebíase."]
+      },
+      "biologia:05": {
+        concepts:[
+          {term:"Grupos vegetais",definition:"Briófitas não têm vasos; pteridófitas têm vasos; gimnospermas têm semente; angiospermas têm flor e fruto."},
+          {term:"Alternância de gerações",definition:"O ciclo alterna gametófito haploide, que produz gametas, e esporófito diploide, que produz esporos por meiose."},
+          {term:"Xilema e floema",definition:"Xilema conduz água e sais, principalmente da raiz para as folhas; floema distribui açúcares das fontes para os drenos."},
+          {term:"Hormônios vegetais",definition:"Auxina participa de alongamento e tropismos; giberelina de crescimento; citocinina de divisão; etileno de amadurecimento; ácido abscísico de dormência e fechamento estomático."}
+        ],
+        exam:["Comparar adaptações evolutivas, geração dominante e dependência de água para reprodução nos quatro grupos.","Interpretar experimentos sobre transporte, transpiração, tropismos, germinação e amadurecimento."],
+        check:["Ordenar vasos, sementes, pólen, flores e frutos na evolução.","Diferenciar gameta de esporo.","Associar tecidos e hormônios às suas funções."]
+      },
+      "quimica:03": {
+        concepts:[
+          {term:"Ácido e base",definition:"Em Arrhenius, ácido aumenta H⁺ em água e base aumenta OH⁻; em Brønsted-Lowry, ácido doa próton e base recebe próton."},
+          {term:"Ionização × dissociação",definition:"Ionização forma íons a partir de moléculas, como HCl em água; dissociação separa íons já presentes em composto iônico, como NaCl."},
+          {term:"Sais e óxidos",definition:"Sal reúne cátion e ânion; óxido é composto binário com oxigênio. Suas propriedades dependem da composição e reação com água, ácidos ou bases."},
+          {term:"Tipos de reação",definition:"Síntese, decomposição, deslocamento, dupla troca e combustão ajudam a prever produtos; balanceamento conserva os átomos."}
+        ],
+        exam:["Identificar função inorgânica, nomear composto e prever comportamento em reação ou em água.","Balancear equações e relacionar neutralização, combustão, corrosão e chuva ácida a situações reais."],
+        check:["Distinguir ionização de dissociação.","Reconhecer ácidos, bases, sais e óxidos pela fórmula.","Calcular ou interpretar pH sem confundir acidez com concentração absoluta."]
+      },
+      "quimica:04": {
+        concepts:[
+          {term:"Mol e constante de Avogadro",definition:"Um mol corresponde a 6,02 × 10²³ entidades. A entidade pode ser átomo, molécula, íon ou unidade-fórmula."},
+          {term:"Massa molar",definition:"Massa de um mol em g/mol, obtida somando as massas atômicas de todos os átomos da fórmula química."},
+          {term:"Reagente limitante",definition:"É consumido primeiro e determina o máximo de produto; o outro permanece em excesso."},
+          {term:"Pureza e rendimento",definition:"Pureza corrige quanto da amostra realmente reage; rendimento compara produto real ao produto teórico previsto."}
+        ],
+        exam:["Seguir a sequência balancear → converter em mol → usar coeficientes → converter para a unidade pedida.","Combinar limitante, excesso, pureza e rendimento em problemas de produção real."],
+        check:["Distinguir coeficiente estequiométrico de índice da fórmula.","Converter entre massa, mol, partículas e volume gasoso quando permitido.","Manter unidades e algarismos coerentes até a resposta."]
+      },
+      "quimica:05": {
+        concepts:[
+          {term:"Saturação e solubilidade",definition:"Insaturada está abaixo do limite; saturada, no limite; supersaturada, acima em condição instável. Solubilidade varia com temperatura e, para gases, pressão."},
+          {term:"Formas de concentração",definition:"Concentração comum usa g/L; molaridade usa mol/L; título e porcentagem expressam fração; ppm descreve proporções muito pequenas."},
+          {term:"Diluição e mistura",definition:"Na diluição, mol de soluto se conserva. Em mistura sem reação, somam-se quantidades; com reação, a estequiometria vem antes da concentração final."},
+          {term:"Propriedades coligativas",definition:"Tonoscopia, ebulioscopia, crioscopia e osmose dependem do número efetivo de partículas, corrigido pelo fator de van't Hoff."}
+        ],
+        exam:["Ler curva de solubilidade e decidir se há dissolução total, corpo de fundo ou cristalização após mudança de temperatura.","Calcular concentração, diluição, mistura e pressão osmótica com conversão correta de volume e temperatura."],
+        check:["Diferenciar solução concentrada de solução saturada.","Escolher a fórmula pela unidade pedida.","Explicar por que eletrólitos intensificam efeitos coligativos."]
+      },
+      "sociologia:03": {
+        concepts:[
+          {term:"Materialismo histórico",definition:"Explica mudanças sociais pelas condições materiais, modos de produção e conflitos, sem reduzir automaticamente toda ideia a uma causa econômica simples."},
+          {term:"Base e superestrutura",definition:"A base envolve forças e relações de produção; a superestrutura inclui Estado, leis e ideias, em interação histórica com essa base."},
+          {term:"Mais-valia",definition:"Valor produzido pelo trabalhador além do equivalente ao salário, apropriado pelo proprietário dos meios de produção."},
+          {term:"Alienação e fetichismo",definition:"Alienação separa o trabalhador de sua atividade e produto; fetichismo oculta relações sociais e faz mercadorias parecerem possuir valor por si mesmas."}
+        ],
+        exam:["Aplicar conceitos marxistas a trabalho por aplicativo, consumo, fábrica, desigualdade ou publicidade.","Diferenciar classe social como posição na produção de simples faixa de renda."],
+        check:["Explicar luta de classes e modo de produção.","Distinguir mais-valia de lucro contábil em sentido amplo.","Reconhecer alienação, ideologia e fetichismo em exemplos."]
+      },
+      "sociologia:04": {
+        concepts:[
+          {term:"Ação social",definition:"Conduta orientada pelo comportamento de outras pessoas. Pode ser tradicional, afetiva, racional por valores ou racional por fins."},
+          {term:"Tipo ideal",definition:"Modelo analítico que acentua características para comparar a realidade; não significa comportamento perfeito ou desejável."},
+          {term:"Dominação legítima",definition:"Tradicional apoia-se no costume; carismática na devoção ao líder; legal-racional em regras e cargos impessoais."},
+          {term:"Racionalização",definition:"Expansão de cálculo, eficiência, previsão e controle, expressa na burocracia e acompanhada pelo desencantamento do mundo."}
+        ],
+        exam:["Classificar a ação pelo sentido atribuído pelo agente, lembrando que situações reais podem misturar tipos.","Identificar a fonte da legitimidade em liderança, empresa, Estado ou instituição religiosa."],
+        check:["Diferenciar ação racional por fins e por valores.","Explicar por que burocracia pode ser eficiente e rígida.","Não confundir poder, dominação e violência."]
+      },
+      "sociologia:05": {
+        concepts:[
+          {term:"Fases do capitalismo",definition:"Comercial enfatiza circulação e colonização; industrial, fábrica e máquinas; financeiro-informacional, bancos, corporações, dados e redes globais."},
+          {term:"Taylorismo, fordismo e toyotismo",definition:"Taylor controla tempos e tarefas; Ford organiza linha e massa; Toyota flexibiliza, reduz estoques e produz segundo a demanda."},
+          {term:"Indústria cultural",definition:"Para Adorno e Horkheimer, cultura produzida como mercadoria tende à padronização, repetição e consumo passivo, embora recepções possam variar."},
+          {term:"Trabalho em plataformas",definition:"Algoritmos distribuem tarefas e avaliam desempenho; flexibilidade pode coexistir com transferência de custos e riscos ao trabalhador."}
+        ],
+        exam:["Comparar modelos produtivos em textos, charges ou situações de trabalho contemporâneo.","Analisar consumo e sustentabilidade articulando escolhas pessoais, empresas, renda, infraestrutura e políticas públicas."],
+        check:["Relacionar cada modelo a suas características.","Explicar cultura de massa, publicidade e construção de necessidades.","Avaliar precarização sem confundir flexibilidade com ausência de controle."]
+      },
+      "ingles:01": {
+        concepts:[
+          {term:"Skimming",definition:"Leitura rápida para captar tema, finalidade e ideia principal usando título, começo, repetição e elementos visuais."},
+          {term:"Scanning",definition:"Busca seletiva de informação específica, como nome, data, lugar, número ou palavra-chave, sem ler tudo em sequência."},
+          {term:"Cognate e false cognate",definition:"Cognato se parece com o português e mantém sentido próximo; falso cognato engana, como “actually” = na verdade."},
+          {term:"Main idea e inference",definition:"Main idea é a mensagem central explícita ou dominante; inference é conclusão apoiada por pistas, não por opinião pessoal."}
+        ],
+        exam:["Combinar título, imagem, legenda, fonte e palavras repetidas para prever assunto e público.","Localizar evidência textual para justificar interpretação sobre arte, identidade, pertencimento ou representação."],
+        check:["Ler sem tentar traduzir palavra por palavra.","Distinguir informação explícita de inferência.","Reconhecer marcas de opinião como I believe, in my view e suggests."]
+      },
+      "ingles:02": {
+        concepts:[
+          {term:"Fact, opinion e claim",definition:"Fact é verificável; opinion expressa avaliação; claim é uma afirmação que precisa de sustentação argumentativa."},
+          {term:"Evidence e source",definition:"Evidence pode ser dado, exemplo ou testemunho; source indica origem e ajuda a avaliar autoridade, interesse e confiabilidade."},
+          {term:"Logical connectors",definition:"Because/since marcam causa; therefore/as a result, consequência; however/although, contraste ou concessão."},
+          {term:"Tone e bias",definition:"Tone é a atitude percebida na linguagem; bias é tendência que favorece um ponto de vista na seleção e apresentação dos fatos."}
+        ],
+        exam:["Identificar tese, evidência e relação lógica em texto sobre esporte e ativismo.","Inferir se o autor apoia, critica ou informa pela escolha de adjetivos, fontes e conectores."],
+        check:["Diferenciar protest, boycott, awareness e backlash.","Localizar a palavra que muda a direção do argumento.","Justificar tom ou opinião com trecho do texto."]
+      },
+      "ingles:03": {
+        concepts:[
+          {term:"Peer pressure",definition:"Influência explícita ou implícita dos pares para que alguém se comporte de modo aceito pelo grupo."},
+          {term:"Modal verbs",definition:"Must indica forte obrigação; should, conselho; can, capacidade/possibilidade; may e might, possibilidade; have to, necessidade externa."},
+          {term:"Persuasion",definition:"Popularidade, autoridade, urgência, medo, recompensa e comparação social são estratégias que tentam orientar escolhas."},
+          {term:"Social wellbeing",definition:"Self-esteem, belonging, boundaries e mental health ajudam a interpretar efeitos de redes, publicidade e grupos sobre o indivíduo."}
+        ],
+        exam:["Comparar a força de mensagens pela troca de modal, imperativo ou expressão de urgência.","Identificar quem pressiona, a ação desejada e o apelo emocional usado em anúncio, diálogo ou postagem."],
+        check:["Ordenar os modais por grau de obrigação ou possibilidade.","Reconhecer fit in, stand out, left out e set boundaries.","Distinguir conselho, obrigação, capacidade e probabilidade."]
+      }
     };
 
     subjects.forEach((subject) => {
@@ -2958,6 +4056,8 @@ footer span {
         topic.formulas = formulaReference[key] || [];
         topic.authors = literatureAuthors[key] || [];
         topic.thinkers = philosophyThinkers[key] || [];
+        topic.lesson = guidedLessons[key] || null;
+        topic.booster = examBoosters[key] || null;
       });
     });
 
@@ -3066,11 +4166,46 @@ footer span {
 
     function thinkerBlock(topic) {
       if (!topic.thinkers || !topic.thinkers.length) return "";
-      return '<section class="author-panel thinker-panel"><h3>Pensador em destaque</h3><div class="author-list">' +
+      return '<section class="author-panel thinker-panel"><h3>Pensadores essenciais</h3><div class="author-list">' +
         topic.thinkers.map((thinker) =>
           '<div class="author-card"><strong>' + esc(thinker.name) + '</strong><span>' + esc(thinker.detail) + '</span></div>'
         ).join("") +
       '</div></section>';
+    }
+
+    function examReadinessBlock(topic) {
+      if (!topic.booster) return "";
+      const booster = topic.booster;
+      return '<section class="exam-readiness">' +
+        '<header><span>revisão para a prova</span><h3>Conceitos obrigatórios e como eles são cobrados</h3></header>' +
+        '<div class="concept-grid">' + booster.concepts.map((concept) =>
+          '<div class="concept-card"><strong>' + esc(concept.term) + '</strong><span>' + esc(concept.definition) + '</span></div>'
+        ).join("") + '</div>' +
+        '<div class="exam-columns">' +
+          '<section class="exam-list"><h4>Como costuma cair</h4><ul>' + booster.exam.map((item) => '<li>' + esc(item) + '</li>').join("") + '</ul></section>' +
+          '<section class="mastery-check"><h4>Antes de concluir, confirme</h4><ul>' + booster.check.map((item) => '<li>' + esc(item) + '</li>').join("") + '</ul></section>' +
+        '</div>' +
+      '</section>';
+    }
+
+    function lessonBlock(topic, topicIndex) {
+      if (!topic.lesson) return "";
+      const lesson = topic.lesson;
+      const example = lesson.example
+        ? '<section class="worked-example"><span>exemplo resolvido</span><h4>' + esc(lesson.example.title) + '</h4><p><strong>Situação:</strong> ' + esc(lesson.example.prompt) + '</p><p><strong>Resolução:</strong> ' + esc(lesson.example.solution) + '</p></section>'
+        : "";
+      const practice = lesson.practice
+        ? '<section class="practice-box"><span>agora é sua vez</span><h4>' + esc(lesson.practice.question) + '</h4><details class="practice-answer"><summary>ver resposta explicada</summary><p>' + esc(lesson.practice.answer) + '</p></details></section>'
+        : "";
+
+      return '<details class="deep-lesson" ' + (topicIndex === 0 ? "open" : "") + '>' +
+        '<summary><div><strong>Aula completa, passo a passo</strong><small>' + lesson.steps.length + ' explicações + conceitos de prova + exemplo + exercício</small></div></summary>' +
+        '<div class="lesson-body">' +
+          '<p class="lesson-goal"><strong>Ao terminar esta aula, você vai conseguir:</strong> ' + esc(lesson.goal) + '</p>' +
+          '<div class="lesson-steps">' + lesson.steps.map((step) => '<section class="lesson-step"><h4>' + esc(step.title) + '</h4><p>' + esc(step.text) + '</p></section>').join("") + '</div>' +
+          example + practice + examReadinessBlock(topic) +
+        '</div>' +
+      '</details>';
     }
 
     function topicCard(topic, topicIndex, subject) {
@@ -3081,7 +4216,7 @@ footer span {
         ? '<details class="competency-box"><summary><span>Matriz de competências</span><small>' + topic.codes.length + ' referências</small></summary><p>' + esc(topic.action) + '</p><div class="code-cloud">' + topic.codes.map((code) => '<code>' + esc(code) + '</code>').join("") + '</div></details>'
         : '<div class="learning-goal"><span>o que dominar</span><p>' + esc(topic.action) + '</p></div>';
 
-      return '<article class="topic-card topic-card-' + (topicIndex + 1) + ' ' + (topicDone ? "is-topic-done" : "") + '" style="--topic-order:' + topicIndex + '">' +
+      return '<article id="topic-' + esc(topicKey) + '" class="topic-card topic-card-' + (topicIndex + 1) + ' ' + (topicDone ? "is-topic-done" : "") + '" style="--topic-order:' + topicIndex + '">' +
         '<div class="topic-scene">' +
           '<span class="scene-symbol">' + esc(topic.scene.symbol) + '</span>' +
           '<div><small>tema deste resumo</small><strong>' + esc(topic.scene.label) + '</strong></div>' +
@@ -3093,6 +4228,7 @@ footer span {
           '<header><span>UNIDADE ' + esc(topic.number) + '</span><h2>' + esc(topic.title) + '</h2></header>' +
           '<div class="snapshot"><span>em 30 segundos</span><p>' + esc(topic.snapshot) + '</p></div>' +
           explanationBlock(topic) +
+          lessonBlock(topic, topicIndex) +
           thinkerBlock(topic) +
           authorBlock(topic) +
           formulaBlock(topic) +
@@ -3159,13 +4295,16 @@ footer span {
           '<i class="world-symbol symbol-one"></i><i class="world-symbol symbol-two"></i><i class="world-symbol symbol-three"></i></div>' +
         '<header class="subject-hero">' +
           '<div class="hero-index"><span class="hero-mark">' + esc(subject.mark) + '</span><span>' + esc(subject.volume) + '</span></div>' +
-          '<div class="hero-copy"><p class="overline">ROTA DE REVISÃO · ' + subjectNumber + '</p><h1>' + esc(subject.name) + '</h1><p class="tagline">' + esc(subject.tagline) + '</p></div>' +
+          '<div class="hero-copy"><p class="overline">GUIA DE APRENDIZAGEM · ' + subjectNumber + '</p><h1>' + esc(subject.name) + '</h1><p class="tagline">' + esc(subject.tagline) + '</p></div>' +
           '<div class="hero-memory"><span>guarde isto</span><strong>' + esc(subject.hook) + '</strong></div>' +
         '</header>' +
         '<div class="route-strip" aria-label="Estratégia da matéria">' +
           '<span>COMO PENSAR</span>' +
           subject.route.map((step, index) => '<div><b>' + (index + 1) + '</b>' + esc(step) + (index < subject.route.length - 1 ? '<i>→</i>' : "") + '</div>').join("") +
         '</div>' +
+        '<nav class="lesson-toc" aria-label="Unidades desta matéria">' +
+          subject.topics.map((topic) => '<a href="#topic-' + esc(subject.id + ":" + topic.number) + '"><span>' + esc(topic.number) + '</span>' + esc(topic.title) + '</a>').join("") +
+        '</nav>' +
         '<div class="content-grid">' +
           '<div class="topic-stack">' + subject.topics.map((topic, index) => topicCard(topic, index, subject)).join("") + '</div>' +
           '<aside class="study-sidebar">' +
