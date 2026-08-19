@@ -4990,6 +4990,60 @@ footer span {
       quimica:["Átomo","Alquimista do Laboratório"], sociologia:["Elo","Analista das Redes"], ingles:["Nova","Voice Scout"]
     };
 
+    const pixelNpcDesigns = {
+      portugues:{primary:"#c84f43",light:"#ef7863",cape:"#173c2b",hair:"#183127",skin:"#ffc79a",accent:"#f3c64f",detail:"#f5eee0",type:"quill"},
+      literatura:{primary:"#6d3d78",light:"#9a5ca8",cape:"#35233f",hair:"#3a211d",skin:"#d99672",accent:"#e8b8ef",detail:"#f3dfc1",type:"beret"},
+      matematica:{primary:"#256e9a",light:"#48a1c8",cape:"#17334b",hair:"#22313c",skin:"#e6aa82",accent:"#f0bf45",detail:"#d9f4ff",type:"goggles"},
+      historia:{primary:"#87502f",light:"#bd7950",cape:"#3f2c22",hair:"#6a3b25",skin:"#b97355",accent:"#e3bd72",detail:"#f2dec1",type:"scroll"},
+      oficina:{primary:"#bd3f4f",light:"#ed6470",cape:"#50202c",hair:"#251b25",skin:"#f1b58d",accent:"#ffd15c",detail:"#fff0cf",type:"pencil"},
+      filosofia:{primary:"#4f477f",light:"#7c70ad",cape:"#282541",hair:"#d5c3a4",skin:"#c98562",accent:"#e6d083",detail:"#ece7ff",type:"laurel"},
+      geografia:{primary:"#397d54",light:"#63a66f",cape:"#24462f",hair:"#503723",skin:"#d79367",accent:"#e2ba55",detail:"#d9efc8",type:"explorer"},
+      fisica:{primary:"#314f79",light:"#4f79a8",cape:"#172c44",hair:"#1d222b",skin:"#e6a87c",accent:"#59d8e8",detail:"#d9f7ff",type:"visor"},
+      biologia:{primary:"#258677",light:"#43b5a0",cape:"#17493f",hair:"#633a2c",skin:"#a96548",accent:"#9fe36f",detail:"#e0f7d5",type:"leaves"},
+      quimica:{primary:"#e7ece6",light:"#ffffff",cape:"#304454",hair:"#292f36",skin:"#efb48b",accent:"#60d7c7",detail:"#9ae8ff",type:"lab"},
+      sociologia:{primary:"#c47a2b",light:"#eaa24a",cape:"#493323",hair:"#171b19",skin:"#7e4935",accent:"#efcf58",detail:"#fff0c4",type:"network"},
+      ingles:{primary:"#7d3f8f",light:"#b25bb7",cape:"#253452",hair:"#28304f",skin:"#e5a87f",accent:"#67d5f2",detail:"#f5dcff",type:"headphones"}
+    };
+
+    function pixelAccessory(type, colors) {
+      const {accent, detail, cape, hair} = colors;
+      const accessories = {
+        quill:'<rect x="86" y="4" width="7" height="28" fill="'+detail+'" transform="rotate(24 86 4)"/><rect x="90" y="8" width="5" height="12" fill="'+accent+'" transform="rotate(24 90 8)"/>',
+        beret:'<rect x="30" y="7" width="58" height="10" fill="'+cape+'"/><rect x="40" y="3" width="42" height="8" fill="'+colors.primary+'"/><rect x="80" y="10" width="14" height="7" fill="'+colors.light+'"/>',
+        goggles:'<rect x="40" y="31" width="18" height="12" fill="'+accent+'"/><rect x="70" y="31" width="18" height="12" fill="'+accent+'"/><rect x="58" y="34" width="12" height="4" fill="'+hair+'"/><rect x="44" y="34" width="10" height="5" fill="'+detail+'"/><rect x="74" y="34" width="10" height="5" fill="'+detail+'"/>',
+        scroll:'<rect x="94" y="74" width="15" height="24" fill="'+detail+'"/><rect x="91" y="72" width="20" height="6" fill="'+accent+'"/><rect x="91" y="94" width="20" height="6" fill="'+accent+'"/><rect x="98" y="79" width="8" height="3" fill="'+cape+'"/>',
+        pencil:'<rect x="84" y="3" width="7" height="34" fill="'+accent+'" transform="rotate(35 84 3)"/><rect x="85" y="2" width="7" height="7" fill="'+detail+'" transform="rotate(35 85 2)"/>',
+        laurel:'<rect x="28" y="13" width="12" height="7" fill="'+accent+'"/><rect x="36" y="7" width="12" height="7" fill="'+accent+'"/><rect x="80" y="7" width="12" height="7" fill="'+accent+'"/><rect x="88" y="13" width="12" height="7" fill="'+accent+'"/><rect x="48" y="4" width="32" height="4" fill="'+detail+'"/>',
+        explorer:'<rect x="25" y="8" width="76" height="11" fill="'+cape+'"/><rect x="34" y="2" width="56" height="12" fill="'+colors.primary+'"/><rect x="80" y="15" width="26" height="6" fill="'+accent+'"/><rect x="18" y="60" width="12" height="38" fill="'+colors.light+'"/>',
+        visor:'<rect x="34" y="29" width="60" height="14" fill="'+accent+'"/><rect x="39" y="32" width="50" height="7" fill="'+detail+'"/><rect x="88" y="34" width="14" height="5" fill="'+colors.light+'"/>',
+        leaves:'<rect x="28" y="7" width="15" height="8" fill="'+accent+'"/><rect x="37" y="2" width="10" height="10" fill="'+colors.light+'"/><rect x="80" y="2" width="10" height="10" fill="'+colors.light+'"/><rect x="87" y="8" width="15" height="8" fill="'+accent+'"/><rect x="17" y="70" width="13" height="22" fill="'+accent+'"/>',
+        lab:'<rect x="31" y="51" width="66" height="47" fill="'+colors.primary+'"/><rect x="37" y="55" width="24" height="39" fill="'+colors.light+'"/><rect x="67" y="55" width="24" height="39" fill="'+colors.light+'"/><rect x="54" y="72" width="20" height="20" fill="'+cape+'"/><rect x="58" y="76" width="12" height="10" fill="'+accent+'"/><rect x="40" y="31" width="18" height="11" fill="'+detail+'"/><rect x="70" y="31" width="18" height="11" fill="'+detail+'"/>',
+        network:'<rect x="18" y="65" width="10" height="10" fill="'+accent+'"/><rect x="18" y="88" width="10" height="10" fill="'+accent+'"/><rect x="31" y="77" width="10" height="10" fill="'+detail+'"/><rect x="26" y="72" width="9" height="4" fill="'+colors.light+'" transform="rotate(38 26 72)"/><rect x="26" y="90" width="9" height="4" fill="'+colors.light+'" transform="rotate(-38 26 90)"/>',
+        headphones:'<rect x="26" y="18" width="8" height="31" fill="'+accent+'"/><rect x="94" y="18" width="8" height="31" fill="'+accent+'"/><rect x="34" y="9" width="60" height="7" fill="'+accent+'"/><rect x="22" y="34" width="14" height="20" fill="'+detail+'"/><rect x="92" y="34" width="14" height="20" fill="'+detail+'"/><rect x="99" y="49" width="15" height="4" fill="'+accent+'"/>'
+      };
+      return accessories[type] || "";
+    }
+
+    const pixelNpcSheetCache = {};
+    function makePixelNpcSheet(subjectId) {
+      if (pixelNpcSheetCache[subjectId]) return pixelNpcSheetCache[subjectId];
+      const c = pixelNpcDesigns[subjectId] || pixelNpcDesigns.portugues;
+      const accessory = pixelAccessory(c.type, c);
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" shape-rendering="crispEdges"><defs>' +
+        '<g id="shadow"><rect x="28" y="116" width="72" height="5" fill="#07100a" opacity=".55"/><rect x="20" y="121" width="88" height="4" fill="#07100a" opacity=".28"/></g>' +
+        '<g id="legs"><rect x="38" y="93" width="22" height="22" fill="'+c.cape+'"/><rect x="68" y="93" width="22" height="22" fill="'+c.cape+'"/><rect x="34" y="108" width="28" height="10" fill="#0b1510"/><rect x="68" y="108" width="28" height="10" fill="#0b1510"/><rect x="38" y="108" width="20" height="4" fill="'+c.light+'"/><rect x="72" y="108" width="20" height="4" fill="'+c.light+'"/></g>' +
+        '<g id="cape"><rect x="24" y="48" width="80" height="50" fill="#0b1510"/><rect x="20" y="62" width="88" height="34" fill="'+c.cape+'"/><rect x="16" y="78" width="16" height="22" fill="'+c.cape+'"/><rect x="96" y="78" width="16" height="22" fill="'+c.cape+'"/></g>' +
+        '<g id="torso"><rect x="32" y="54" width="64" height="48" fill="#0b1510"/><rect x="36" y="50" width="56" height="48" fill="'+c.primary+'"/><rect x="40" y="54" width="48" height="40" fill="'+c.light+'"/><rect x="44" y="58" width="40" height="7" fill="'+c.detail+'" opacity=".22"/><rect x="36" y="90" width="56" height="8" fill="'+c.primary+'"/><rect x="56" y="62" width="16" height="18" fill="#111a14"/><rect x="58" y="60" width="14" height="16" fill="'+c.accent+'"/><rect x="61" y="63" width="8" height="10" fill="'+c.detail+'"/></g>' +
+        '<g id="head"><rect x="34" y="18" width="60" height="42" fill="#0b1510"/><rect x="30" y="26" width="68" height="28" fill="#0b1510"/><rect x="34" y="22" width="60" height="34" fill="'+c.skin+'"/><rect x="38" y="26" width="52" height="30" fill="'+c.skin+'"/><rect x="26" y="32" width="10" height="16" fill="'+c.skin+'"/><rect x="92" y="32" width="10" height="16" fill="'+c.skin+'"/><rect x="30" y="12" width="60" height="16" fill="'+c.hair+'"/><rect x="24" y="16" width="72" height="12" fill="'+c.hair+'"/><rect x="28" y="24" width="24" height="8" fill="'+c.hair+'"/><rect x="76" y="20" width="20" height="16" fill="'+c.hair+'"/><rect x="46" y="36" width="8" height="10" fill="#17211a"/><rect x="74" y="36" width="8" height="10" fill="#17211a"/><rect x="48" y="36" width="4" height="4" fill="'+c.detail+'"/><rect x="76" y="36" width="4" height="4" fill="'+c.detail+'"/>'+accessory+'</g>' +
+        '<g id="idleArms"><rect x="24" y="58" width="14" height="34" fill="#0b1510"/><rect x="90" y="58" width="14" height="34" fill="#0b1510"/><rect x="20" y="62" width="14" height="26" fill="'+c.primary+'"/><rect x="94" y="62" width="14" height="26" fill="'+c.primary+'"/><rect x="22" y="84" width="12" height="12" fill="'+c.skin+'"/><rect x="94" y="84" width="12" height="12" fill="'+c.skin+'"/></g></defs>' +
+        '<g transform="translate(64 32) scale(3)"><use href="#shadow"/><use href="#legs"/><use href="#cape"/><use href="#idleArms"/><use href="#torso"/><use href="#head"/><rect x="56" y="50" width="16" height="4" fill="#7a3940"/></g>' +
+        '<g transform="translate(576 32) scale(3)"><use href="#shadow"/><g transform="translate(0 -2)"><use href="#legs"/><use href="#cape"/><use href="#idleArms"/><use href="#torso"/><use href="#head"/><rect x="56" y="50" width="16" height="4" fill="#7a3940"/></g></g>' +
+        '<g transform="translate(64 544) scale(3)"><use href="#shadow"/><use href="#legs"/><use href="#cape"/><rect x="22" y="58" width="14" height="36" fill="#0b1510"/><rect x="18" y="62" width="14" height="28" fill="'+c.primary+'"/><rect x="20" y="86" width="12" height="12" fill="'+c.skin+'"/><rect x="92" y="48" width="14" height="40" fill="#0b1510"/><rect x="96" y="44" width="14" height="40" fill="'+c.primary+'"/><rect x="98" y="38" width="12" height="12" fill="'+c.skin+'"/><use href="#torso"/><use href="#head"/><rect x="56" y="48" width="16" height="8" fill="#5b2930"/></g>' +
+        '<g transform="translate(576 544) scale(3)"><use href="#shadow"/><use href="#legs"/><use href="#cape"/><rect x="20" y="50" width="14" height="40" fill="#0b1510"/><rect x="16" y="46" width="14" height="40" fill="'+c.primary+'"/><rect x="14" y="40" width="12" height="12" fill="'+c.skin+'"/><rect x="92" y="58" width="14" height="36" fill="#0b1510"/><rect x="96" y="62" width="14" height="28" fill="'+c.primary+'"/><rect x="98" y="86" width="12" height="12" fill="'+c.skin+'"/><use href="#torso"/><use href="#head"/><rect x="54" y="48" width="20" height="8" fill="#5b2930"/></g></svg>';
+      pixelNpcSheetCache[subjectId] = "data:image/svg+xml," + encodeURIComponent(svg);
+      return pixelNpcSheetCache[subjectId];
+    }
+
     const rarityRules = {
       common:{label:"Comum",chance:"62%",weight:62,xp:20,shards:1},
       rare:{label:"Rara",chance:"28%",weight:28,xp:35,shards:2},
@@ -6423,7 +6477,7 @@ footer span {
       const npc = questNpcs[subject.id] || ["Guia","Mestre da Quest"];
       return '<div class="npc-zone ' + (talking ? 'is-talking' : '') + '" aria-label="' + esc(npc[0] + ', ' + npc[1]) + '">' +
         '<div class="pixel-summon" aria-hidden="true"></div>' +
-        '<div class="pixel-npc-sprite" aria-hidden="true"></div>' +
+        '<div class="pixel-npc-sprite" style="--npc-sprite-sheet:url(\'' + esc(makePixelNpcSheet(subject.id)) + '\')" aria-hidden="true"></div>' +
         '<span class="pixel-exclaim" aria-hidden="true">!</span>' +
         '<span class="pixel-subject-badge" aria-hidden="true">' + esc(subject.mark) + '</span>' +
         '<span class="npc-nameplate">' + esc(npc[0]) + ' · ' + esc(npc[1]) + '</span>' +
