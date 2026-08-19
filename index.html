@@ -2865,6 +2865,1878 @@ footer span {
 }
 
 
+    /* Camada aventura: mantém o conteúdo, mas transforma a experiência em uma jornada. */
+    body {
+      background: #171c19;
+    }
+
+    .study-shell {
+      --fun-lime: #c8ff57;
+      --fun-cyan: #75e6da;
+      --fun-violet: #9d7cff;
+      background:
+        radial-gradient(circle at 8% 16%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 24rem),
+        linear-gradient(rgba(30,35,31,.025) 1px, transparent 1px),
+        var(--paper);
+      background-size: auto, 100% 26px, auto;
+    }
+
+    .cover {
+      min-height: min(900px, 100svh);
+      background:
+        radial-gradient(circle at 72% 20%, rgba(200,255,87,.18), transparent 18rem),
+        radial-gradient(circle at 18% 82%, rgba(117,230,218,.12), transparent 20rem),
+        linear-gradient(135deg, #121714 0%, #202923 52%, #161a18 100%);
+    }
+
+    .cover::before {
+      border-radius: 32% 68% 56% 44% / 49% 36% 64% 51%;
+      background: linear-gradient(135deg, #ff694e, #d73d35 62%, #a4264c);
+      box-shadow: -60px 58px 0 rgba(242,184,75,.94), -116px 104px 0 rgba(117,230,218,.2);
+      animation: cover-blob 9s ease-in-out infinite alternate;
+    }
+
+    .cover-copy::after {
+      content: "ESCOLHA • EXPLORE • DOMINE";
+      display: inline-flex;
+      margin-top: 28px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 99px;
+      color: rgba(255,255,255,.54);
+      font-size: .58rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+    }
+
+    .cover h1 {
+      filter: drop-shadow(0 22px 38px rgba(0,0,0,.22));
+    }
+
+    .cover-button {
+      border-radius: 99px;
+      background: var(--fun-lime);
+      color: #172016;
+      box-shadow: 0 13px 30px rgba(200,255,87,.2), inset 0 -3px 0 rgba(0,0,0,.12);
+    }
+
+    .cover-button:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      box-shadow: 0 20px 38px rgba(200,255,87,.3), inset 0 -3px 0 rgba(0,0,0,.12);
+    }
+
+    .cover-sheet {
+      border: 1px solid rgba(255,255,255,.36);
+      border-radius: 34px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(241,238,225,.94));
+      box-shadow: 28px 30px 0 rgba(0,0,0,.22), 0 42px 90px rgba(0,0,0,.34);
+      transform: rotate(3deg);
+      animation: sheet-float 5.5s ease-in-out infinite;
+    }
+
+    .cover-sheet::before {
+      content: "JORNADA ATIVA";
+      position: absolute;
+      inset: auto;
+      right: -14px;
+      top: 74px;
+      width: auto;
+      height: auto;
+      padding: 8px 14px;
+      border: 0;
+      border-radius: 7px;
+      background: var(--fun-lime);
+      color: #1b241a;
+      font-size: .58rem;
+      font-weight: 950;
+      letter-spacing: .1em;
+      transform: rotate(6deg);
+      box-shadow: 4px 5px 0 rgba(0,0,0,.16);
+    }
+
+    .cover-monogram {
+      width: 170px;
+      height: 170px;
+      margin: auto auto 2px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      background: linear-gradient(145deg, var(--accent), color-mix(in srgb, var(--accent) 65%, #7a234b));
+      color: white;
+      font-size: 8.5rem;
+      line-height: 1;
+      letter-spacing: -.08em;
+      box-shadow: 9px 10px 0 var(--accent-2);
+      text-shadow: none;
+    }
+
+    .cover-stats > div {
+      border-radius: 18px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .cover-xp {
+      margin-top: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-radius: 12px;
+      background: #202722;
+      color: white;
+    }
+
+    .cover-xp span {
+      color: var(--fun-lime);
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .cover-xp b {
+      color: rgba(255,255,255,.56);
+      font-size: .56rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom-color: rgba(255,255,255,.1);
+      background: rgba(23,29,25,.92);
+      color: white;
+      box-shadow: 0 10px 28px rgba(24,28,25,.16);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand-name,
+    .brand-name span { color: white; }
+
+    .brand-dot { color: var(--fun-lime) !important; }
+
+    .xp-hud {
+      min-width: 154px;
+      height: 48px;
+      padding: 7px 11px;
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      grid-template-rows: auto 4px;
+      align-items: center;
+      gap: 3px 9px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 14px;
+      background: rgba(255,255,255,.07);
+    }
+
+    .xp-gem {
+      grid-row: 1 / 3;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--fun-lime);
+      color: #172016;
+      box-shadow: 0 0 18px rgba(200,255,87,.3);
+    }
+
+    .xp-hud > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .xp-hud small {
+      color: rgba(255,255,255,.55);
+      font-size: .53rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+    }
+
+    .xp-hud strong {
+      color: var(--fun-lime);
+      font-size: .69rem;
+    }
+
+    .xp-hud > i {
+      height: 4px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(255,255,255,.12);
+    }
+
+    .xp-hud > i b {
+      height: 100%;
+      display: block;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--fun-lime), var(--fun-cyan));
+      transition: width 500ms ease;
+    }
+
+    .search-box {
+      border-color: rgba(255,255,255,.13);
+      background: rgba(255,255,255,.08);
+      color: white;
+    }
+
+    .search-box input { color: white; }
+    .search-box input::placeholder { color: rgba(255,255,255,.48); }
+    .mode-toggle { color: rgba(255,255,255,.72); }
+
+    .subject-tabs {
+      position: sticky;
+      top: 76px;
+      z-index: 40;
+      min-height: 98px;
+      padding: 12px clamp(16px, 4vw, 62px);
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      background: rgba(247,244,237,.9);
+      box-shadow: 0 10px 24px rgba(37,38,33,.08);
+      backdrop-filter: blur(15px);
+      scrollbar-width: none;
+    }
+
+    .subject-tabs::-webkit-scrollbar { display: none; }
+
+    .subject-tabs > button {
+      min-width: 146px;
+      height: 72px;
+      padding: 10px 12px;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 10px;
+      border: 1px solid rgba(31,35,31,.1);
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 5px 13px rgba(35,36,31,.04);
+    }
+
+    .subject-tabs > button:hover {
+      transform: translateY(-5px) rotate(-.5deg);
+      background: white;
+    }
+
+    .subject-tabs > button.active {
+      height: 76px;
+      border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+      border-radius: 18px;
+      background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 14%, white), white);
+      box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 15%, transparent);
+      transform: translateY(-2px);
+    }
+
+    .subject-tabs > button.active::after {
+      left: 16px;
+      right: 16px;
+      bottom: 6px;
+      height: 4px;
+      border-radius: 99px;
+    }
+
+    .tab-mark {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--accent) 12%, white);
+      color: var(--accent);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+
+    .tab-copy {
+      min-width: 0;
+      display: grid;
+      gap: 3px;
+      text-align: left;
+    }
+
+    .tab-copy strong {
+      overflow: hidden;
+      color: var(--deep);
+      font-size: .74rem;
+      text-overflow: ellipsis;
+    }
+
+    .tab-copy small {
+      color: var(--muted);
+      font-size: .55rem;
+    }
+
+    .tab-copy i {
+      height: 3px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(20,22,20,.1);
+    }
+
+    .tab-copy i b {
+      height: 100%;
+      display: block;
+      border-radius: inherit;
+      background: var(--accent);
+    }
+
+    .subject-stage {
+      padding-top: clamp(46px, 6vw, 84px);
+      background:
+        radial-gradient(circle at 7% 12%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 24rem),
+        radial-gradient(circle at 92% 32%, color-mix(in srgb, var(--accent-2) 13%, transparent), transparent 26rem),
+        var(--stage);
+    }
+
+    .subject-hero {
+      padding: clamp(24px, 4vw, 42px);
+      overflow: hidden;
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 30px;
+      background:
+        linear-gradient(125deg, rgba(255,255,255,.93), color-mix(in srgb, var(--accent) 9%, rgba(255,255,255,.9)));
+      box-shadow: 0 24px 60px color-mix(in srgb, var(--deep) 10%, transparent);
+    }
+
+    .hero-mark {
+      border: 0;
+      border-radius: 18px;
+      background: var(--accent);
+      color: white;
+      box-shadow: 8px 9px 0 var(--accent-2);
+      transform: rotate(-4deg);
+    }
+
+    .hero-copy .overline::before {
+      content: "● ";
+      color: var(--fun-lime);
+      text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent);
+    }
+
+    .hero-memory {
+      border-radius: 18px;
+      transform: rotate(1deg);
+      box-shadow: 7px 8px 0 color-mix(in srgb, var(--accent) 18%, transparent);
+    }
+
+    .route-strip {
+      border: 0;
+      border-radius: 18px;
+      background: var(--deep);
+      color: white;
+      box-shadow: 0 12px 28px rgba(24,26,23,.12);
+    }
+
+    .route-strip > div { color: rgba(255,255,255,.72); }
+    .route-strip b { background: var(--accent); }
+
+    .lesson-toc {
+      position: relative;
+      padding: 18px;
+      gap: 12px;
+      border: 0;
+      border-radius: 22px;
+      background: rgba(255,255,255,.68);
+      box-shadow: 0 10px 24px rgba(30,32,28,.06);
+    }
+
+    .lesson-toc a {
+      min-height: 70px;
+      border: 0;
+      border-radius: 15px;
+      background: white;
+      box-shadow: 0 6px 15px rgba(30,31,28,.06);
+    }
+
+    .lesson-toc a:hover {
+      transform: translateY(-4px) rotate(-.5deg);
+      box-shadow: 0 12px 22px color-mix(in srgb, var(--accent) 13%, transparent);
+    }
+
+    .lesson-toc a span {
+      border-radius: 11px;
+      box-shadow: 3px 3px 0 var(--accent-2);
+    }
+
+    .content-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(290px, 360px);
+      gap: clamp(24px, 4vw, 46px);
+    }
+
+    .topic-stack { gap: 28px; }
+
+    .topic-card {
+      grid-template-columns: 58px minmax(0, 1fr);
+      border: 1px solid color-mix(in srgb, var(--topic-tone) 23%, transparent);
+      border-radius: 26px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 20px 48px rgba(30,31,28,.09), inset 0 1px 0 white;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-8px) rotate(.18deg);
+      box-shadow: 0 30px 62px color-mix(in srgb, var(--topic-tone) 16%, transparent);
+    }
+
+    .topic-card::before { left: 57px; }
+
+    .topic-scene {
+      min-height: 78px;
+      padding: 13px 18px;
+      grid-template-columns: 48px minmax(0, 1fr) auto;
+      border-bottom: 0;
+      background:
+        radial-gradient(circle at 83% 25%, color-mix(in srgb, var(--topic-tone) 24%, transparent) 0 4px, transparent 5px),
+        linear-gradient(110deg, color-mix(in srgb, var(--topic-tone) 18%, white), rgba(255,255,255,.92));
+      background-size: 30px 30px, auto;
+    }
+
+    .scene-symbol {
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--topic-tone);
+      color: white;
+      box-shadow: 5px 6px 0 color-mix(in srgb, var(--topic-tone) 25%, transparent);
+    }
+
+    .topic-scene small {
+      color: color-mix(in srgb, var(--topic-tone) 78%, black);
+    }
+
+    .topic-check {
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 0;
+      background: white;
+      box-shadow: 0 6px 14px rgba(30,32,28,.08);
+    }
+
+    .topic-number {
+      padding-top: 32px;
+      color: color-mix(in srgb, var(--topic-tone) 72%, black);
+      font-size: 1.25rem;
+    }
+
+    .topic-number::before {
+      content: "◆";
+      display: block;
+      margin-bottom: 7px;
+      color: var(--topic-tone);
+      font-size: .62rem;
+    }
+
+    .topic-main { padding: clamp(24px, 3.5vw, 40px); }
+
+    .topic-main > header > span { font-weight: 900; letter-spacing: .08em; }
+
+    .snapshot {
+      margin-top: 16px;
+      padding: 17px 18px;
+      border: 0;
+      border-radius: 15px;
+      background: color-mix(in srgb, var(--topic-tone) 7%, #fffdf8);
+    }
+
+    .snapshot > span {
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .deep-lesson,
+    .formula-panel,
+    .author-panel,
+    .exam-readiness {
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(32,34,30,.045);
+    }
+
+    .deep-lesson > summary {
+      min-height: 76px;
+      background: linear-gradient(110deg, color-mix(in srgb, var(--topic-tone) 17%, white), white);
+    }
+
+    .deep-lesson > summary::before {
+      width: 38px;
+      height: 38px;
+      flex-basis: 38px;
+      border-radius: 12px;
+      box-shadow: 4px 4px 0 color-mix(in srgb, var(--topic-tone) 20%, transparent);
+    }
+
+    .lesson-step,
+    .concept-card,
+    .formula-card,
+    .author-card {
+      border-radius: 14px;
+      transition: transform 170ms ease, box-shadow 170ms ease;
+    }
+
+    .lesson-step:hover,
+    .concept-card:hover,
+    .formula-card:hover,
+    .author-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 18px rgba(28,30,27,.07);
+    }
+
+    .worked-example,
+    .practice-box,
+    .exam-list,
+    .mastery-check,
+    .memory-note,
+    .trap-note,
+    .competency-box { border-radius: 14px; }
+
+    .memory-note { box-shadow: 6px 7px 0 color-mix(in srgb, var(--accent) 22%, transparent); }
+
+    .is-topic-done {
+      border-color: color-mix(in srgb, #4bbd71 48%, transparent);
+      box-shadow: 0 24px 55px rgba(61,159,94,.15);
+    }
+
+    .is-topic-done .topic-scene {
+      background: linear-gradient(110deg, rgba(86,198,121,.2), rgba(255,255,255,.92));
+    }
+
+    .is-topic-done .topic-number::before { content: "✓"; color: #2e9a55; }
+
+    .study-sidebar { gap: 16px; }
+
+    .sidebar-card {
+      border-radius: 20px;
+      box-shadow: 0 16px 34px rgba(30,31,27,.08);
+    }
+
+    .mission-card {
+      background: linear-gradient(145deg, var(--deep), color-mix(in srgb, var(--deep) 78%, var(--accent)));
+      color: white;
+    }
+
+    .mission-card .card-label,
+    .mission-card p,
+    .mission-card > div span { color: rgba(255,255,255,.62); }
+    .mission-card > div strong { color: var(--fun-lime); }
+
+    .quiz-card {
+      border: 0;
+      background:
+        radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--accent) 36%, transparent), transparent 9rem),
+        #1e2420;
+      color: white;
+    }
+
+    .quiz-card .card-label { color: var(--fun-lime); }
+    .quiz-card h3 { color: white; }
+
+    .quiz-options button {
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.07);
+      color: white;
+    }
+
+    .quiz-options button:hover:not(:disabled) {
+      border-color: var(--fun-lime);
+      background: rgba(200,255,87,.12);
+      transform: translateX(4px);
+    }
+
+    .quiz-feedback { border-radius: 14px; }
+
+    .complete-button {
+      min-height: 62px;
+      border-radius: 18px;
+      box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 15%, transparent);
+    }
+
+    .celebration-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .xp-toast {
+      position: absolute;
+      left: 50%;
+      top: 18%;
+      padding: 13px 18px 13px 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 16px;
+      background: rgba(24,31,26,.94);
+      color: white;
+      box-shadow: 0 24px 55px rgba(0,0,0,.25);
+      opacity: 0;
+      transform: translate(-50%, -20px) scale(.86);
+      backdrop-filter: blur(12px);
+    }
+
+    .xp-toast span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--fun-lime);
+      color: #172016;
+    }
+
+    .xp-toast strong { font-size: .82rem; }
+    .is-celebrating .xp-toast { animation: toast-pop 1.65s ease both; }
+
+    .confetti {
+      --x: 140px;
+      --y: 260px;
+      --r: 240deg;
+      --c: var(--accent);
+      position: absolute;
+      left: 50%;
+      top: 24%;
+      width: 9px;
+      height: 15px;
+      border-radius: 3px;
+      background: var(--c);
+      opacity: 0;
+    }
+
+    .is-celebrating .confetti { animation: confetti-flight 1.25s cubic-bezier(.15,.7,.25,1) both; }
+    .confetti:nth-of-type(2n) { --x: -210px; --y: 310px; --r: -320deg; --c: var(--fun-lime); }
+    .confetti:nth-of-type(3n) { --x: 270px; --y: 220px; --r: 420deg; --c: var(--accent-2); }
+    .confetti:nth-of-type(4n) { --x: -330px; --y: 190px; --r: -520deg; --c: var(--fun-cyan); }
+    .confetti:nth-of-type(5n) { --x: 380px; --y: 360px; --r: 620deg; --c: var(--fun-violet); }
+    .confetti:nth-of-type(7n) { --x: -90px; --y: 420px; --r: -720deg; --c: #ff6f59; }
+
+    @keyframes cover-blob {
+      to { transform: translate(-18px, 28px) rotate(9deg) scale(1.04); }
+    }
+
+    @keyframes sheet-float {
+      0%, 100% { transform: rotate(3deg) translateY(0); }
+      50% { transform: rotate(1.5deg) translateY(-13px); }
+    }
+
+    @keyframes toast-pop {
+      0% { opacity: 0; transform: translate(-50%, -20px) scale(.86); }
+      14%, 76% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -12px) scale(.96); }
+    }
+
+    @keyframes confetti-flight {
+      0% { opacity: 1; transform: translate(0,0) rotate(0); }
+      100% { opacity: 0; transform: translate(var(--x),var(--y)) rotate(var(--r)); }
+    }
+
+    @media (max-width: 1050px) {
+      .subject-tabs { top: 72px; }
+      .content-grid { grid-template-columns: minmax(0, 1fr) 300px; }
+      .xp-hud { min-width: 136px; }
+    }
+
+    @media (max-width: 800px) {
+      .topbar { position: relative; }
+      .subject-tabs { position: sticky; top: 0; }
+      .xp-hud { order: 1; }
+      .search-box { order: 3; }
+      .mode-toggle { order: 2; }
+      .subject-hero { border-radius: 24px; }
+      .content-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .cover { min-height: auto; }
+      .cover-sheet { transform: none; animation: none; border-radius: 26px; }
+      .cover-sheet::before { right: -6px; }
+      .cover-xp { align-items: flex-start; flex-direction: column; }
+      .top-actions { gap: 9px; }
+      .xp-hud { flex: 1 1 150px; min-width: 0; }
+      .mode-toggle { margin-left: 0; }
+      .subject-tabs { min-height: 88px; padding: 9px 12px; }
+      .subject-tabs > button { min-width: 138px; height: 68px; border-radius: 16px; }
+      .subject-stage { padding-top: 30px; }
+      .subject-hero { padding: 20px; }
+      .topic-card { grid-template-columns: 44px minmax(0, 1fr); border-radius: 20px; }
+      .topic-card::before { left: 43px; }
+      .topic-number { font-size: .92rem; }
+      .topic-scene { grid-template-columns: 42px 1fr; }
+      .scene-symbol { width: 40px; height: 40px; }
+      .topic-check { grid-column: 1 / -1; width: 100%; justify-content: center; }
+      .topic-main { padding: 19px; }
+      .snapshot { grid-template-columns: 1fr; gap: 6px; }
+      .xp-toast { width: calc(100% - 34px); justify-content: center; }
+    }
+
+    /* Refinamento final: contraste consistente, trilha visual e mobile-first. */
+    .study-shell .subject-hero {
+      color: #18241d;
+      isolation: isolate;
+    }
+
+    .study-shell .subject-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 8px;
+      z-index: -1;
+      border-radius: 30px 0 0 30px;
+      background: linear-gradient(var(--accent), var(--accent-2));
+    }
+
+    .study-shell .subject-hero::after {
+      content: attr(data-world-mark);
+      position: absolute;
+      right: 3%;
+      bottom: -28%;
+      z-index: -1;
+      color: color-mix(in srgb, var(--accent) 7%, transparent);
+      font: 900 clamp(9rem, 18vw, 18rem)/1 Georgia, serif;
+      letter-spacing: -.08em;
+      pointer-events: none;
+    }
+
+    .study-shell .subject-hero .hero-copy h1,
+    .study-shell .subject-hero .tagline,
+    .study-shell .subject-hero .hero-index,
+    .study-shell .subject-hero .hero-memory,
+    .study-shell .subject-hero .hero-memory > strong,
+    .study-shell .subject-hero .hero-memory > span {
+      color: #18241d;
+    }
+
+    .study-shell .subject-hero .tagline {
+      color: #38463e;
+    }
+
+    .study-shell .subject-hero .hero-index {
+      color: #516057;
+    }
+
+    .study-shell .subject-hero .overline {
+      color: color-mix(in srgb, var(--accent) 82%, #16231b);
+      font-weight: 950;
+      letter-spacing: .11em;
+    }
+
+    .study-shell .hero-memory {
+      padding: 18px;
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+      border-left: 4px solid var(--accent-2);
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      box-shadow: 8px 9px 0 color-mix(in srgb, var(--accent) 12%, transparent);
+      backdrop-filter: blur(8px);
+    }
+
+    .study-shell .hero-memory > span {
+      color: #667169;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .hero-progress {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(24,36,29,.12);
+    }
+
+    .hero-progress > div {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+    }
+
+    .hero-progress > div b {
+      color: var(--accent);
+      font: 900 1.2rem/1 Georgia, serif;
+    }
+
+    .hero-progress > div span {
+      color: #667169;
+      font-size: .61rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .hero-progress > i {
+      height: 6px;
+      margin: 8px 0 11px;
+      display: block;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(24,36,29,.1);
+    }
+
+    .hero-progress > i b {
+      height: 100%;
+      display: block;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .hero-progress > a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      color: #243129;
+      font-size: .7rem;
+      font-weight: 850;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .hero-progress > a span {
+      width: 25px;
+      height: 25px;
+      flex: 0 0 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--accent);
+      color: white;
+    }
+
+    .study-shell .route-strip,
+    [data-theme="blueprint"] .route-strip,
+    [data-theme="dusk"] .route-strip,
+    [data-theme="cosmos"] .route-strip {
+      background: #202a23;
+      color: white;
+    }
+
+    .study-shell .route-strip > div {
+      color: rgba(255,255,255,.78);
+    }
+
+    .study-shell .route-strip > span {
+      color: color-mix(in srgb, var(--accent-2) 72%, white);
+      border-right-color: rgba(255,255,255,.16);
+    }
+
+    .lesson-toc a {
+      position: relative;
+      grid-template-columns: 38px minmax(0,1fr) 24px;
+      overflow: hidden;
+      color: #1d2921;
+    }
+
+    .lesson-toc a > div {
+      min-width: 0;
+      display: grid;
+      gap: 3px;
+    }
+
+    .lesson-toc a small {
+      color: #68736b;
+      font-size: .55rem;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .lesson-toc a strong {
+      overflow: hidden;
+      color: #1d2921;
+      font-size: .77rem;
+      line-height: 1.25;
+      text-overflow: ellipsis;
+    }
+
+    .lesson-toc a > i {
+      color: var(--accent);
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .lesson-toc a.is-next {
+      border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 13%, white), white);
+      box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 15%, transparent);
+    }
+
+    .lesson-toc a.is-next::after {
+      content: "AGORA";
+      position: absolute;
+      right: -20px;
+      top: 5px;
+      padding: 3px 22px;
+      background: var(--accent-2);
+      color: #1f271f;
+      font-size: .46rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      transform: rotate(34deg);
+    }
+
+    .lesson-toc a.is-cleared {
+      border-color: rgba(57,157,91,.26);
+      background: linear-gradient(135deg, rgba(85,196,121,.14), white);
+    }
+
+    .lesson-toc a.is-cleared > span {
+      background: #3ca761;
+      box-shadow: 3px 3px 0 rgba(35,108,59,.2);
+    }
+
+    .topic-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 28px 0 86px;
+      height: 4px;
+      border-radius: 99px 99px 0 0;
+      background: linear-gradient(90deg, var(--topic-tone), transparent 72%);
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .explanation-block,
+    .lesson-step,
+    .worked-example,
+    .practice-box,
+    .exam-readiness,
+    .formula-panel,
+    .author-panel,
+    .topic-details {
+      color: #252d28;
+    }
+
+    .explanation-block h3::before { content: "01 · "; }
+    .formula-panel > h3::before { content: "ƒ · "; }
+    .author-panel > h3::before { content: "★ · "; }
+    .exam-readiness > header span::before { content: "✓ "; }
+
+    @media (max-width: 800px) {
+      .subject-hero::after { bottom: -12%; opacity: .75; }
+      .lesson-toc {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(250px, 82%);
+        grid-template-columns: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+
+      .lesson-toc::-webkit-scrollbar { display: none; }
+      .lesson-toc a { scroll-snap-align: start; }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+
+      .cover {
+        gap: 34px;
+        padding: 44px 18px 58px;
+      }
+
+      .cover h1 { font-size: clamp(3.5rem, 20vw, 4.9rem); }
+      .cover-lede { font-size: 1rem; line-height: 1.55; }
+      .cover-actions { width: 100%; gap: 14px; }
+      .cover-button { width: 100%; min-height: 58px; justify-content: space-between; }
+      .cover-actions > p { max-width: none; }
+
+      .cover-sheet {
+        width: 100%;
+        min-height: 390px;
+        padding: 24px;
+        box-shadow: 10px 12px 0 rgba(0,0,0,.2), 0 24px 42px rgba(0,0,0,.22);
+      }
+
+      .cover-monogram {
+        width: 112px;
+        height: 112px;
+        font-size: 5.4rem;
+        border-radius: 19px;
+      }
+
+      .cover-sheet > p { margin: 20px 0 14px; font-size: 1.08rem; }
+      .cover-stats > div { padding: 12px 7px; }
+      .cover-stats strong { font-size: 1.45rem; }
+      .cover-progress-line { margin-top: 14px; }
+      .cover-sheet > small { margin-top: 9px; }
+
+      .topbar { padding: 12px 14px; }
+      .brand-name { font-size: 1.12rem; }
+      .top-actions { width: 100%; }
+      .xp-hud { height: 46px; }
+      .search-box { min-height: 46px; }
+      .mode-toggle { min-height: 46px; padding: 7px 10px; }
+
+      .subject-tabs {
+        min-height: 78px;
+        padding: 8px 10px;
+        gap: 8px;
+      }
+
+      .subject-tabs > button {
+        min-width: 128px;
+        height: 62px;
+        padding: 8px 9px;
+        grid-template-columns: 34px 1fr;
+      }
+
+      .subject-tabs > button.active { height: 64px; }
+      .tab-mark { width: 34px; height: 34px; }
+
+      .subject-stage { padding: 24px 12px 58px; }
+
+      .study-shell .subject-hero {
+        grid-template-columns: 58px minmax(0,1fr);
+        gap: 14px;
+        padding: 20px 17px 18px;
+        border-radius: 22px;
+      }
+
+      .study-shell .subject-hero::before { width: 6px; border-radius: 22px 0 0 22px; }
+      .study-shell .subject-hero::after { right: 1%; bottom: -1%; font-size: 8rem; }
+
+      .hero-index {
+        grid-column: 1;
+        align-self: start;
+        padding: 0;
+      }
+
+      .hero-index > span:last-child { display: none; }
+      .hero-mark { width: 52px; height: 52px; font-size: 1.25rem; }
+
+      .hero-copy { grid-column: 2; min-width: 0; }
+      .hero-copy .overline { margin-bottom: 6px; font-size: .58rem; line-height: 1.35; }
+      .hero-copy h1 { font-size: clamp(2rem, 10.5vw, 3.2rem); line-height: .94; }
+      .tagline { margin-top: 12px; font-size: .88rem; line-height: 1.5; }
+
+      .study-shell .hero-memory {
+        grid-column: 1 / -1;
+        padding: 15px;
+        border-radius: 16px;
+      }
+
+      .hero-memory > strong { font-size: 1rem; }
+      .hero-progress > a { min-height: 32px; }
+
+      .route-strip {
+        margin-top: 18px;
+        min-height: 52px;
+        padding: 9px 12px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .route-strip::-webkit-scrollbar { display: none; }
+      .route-strip > div { font-size: .68rem; }
+
+      .lesson-toc {
+        margin-top: 12px;
+        padding: 10px;
+        grid-auto-columns: 86%;
+        gap: 9px;
+        border-radius: 18px;
+      }
+
+      .lesson-toc a { min-height: 64px; padding: 9px 11px; }
+      .content-grid { margin-top: 18px; }
+      .topic-stack { gap: 20px; }
+
+      .topic-card {
+        display: block;
+        border-radius: 20px;
+      }
+
+      .topic-card::before,
+      .topic-number { display: none; }
+
+      .topic-card::after { inset: auto 18px 0; }
+      .topic-scene { padding: 12px; }
+      .topic-scene > div { min-width: 0; }
+      .topic-scene strong { font-size: .92rem; }
+      .topic-check { min-height: 46px; }
+      .topic-main { padding: 20px 16px 22px; }
+      .topic-main > header { padding-right: 0; }
+      .topic-main h2 { font-size: clamp(1.45rem, 7vw, 1.9rem); }
+
+      .snapshot,
+      .explanation-block,
+      .lesson-body,
+      .exam-readiness,
+      .formula-panel,
+      .author-panel { padding: 16px; }
+
+      .snapshot p { font-size: .94rem; line-height: 1.55; }
+      .explanation-block p { font-size: .9rem; line-height: 1.68; }
+      .deep-lesson > summary { min-height: 68px; padding: 12px 14px; }
+      .deep-lesson > summary strong { font-size: .94rem; }
+      .deep-lesson > summary small { font-size: .63rem; }
+      .lesson-step { padding: 14px; }
+      .lesson-step p { font-size: .86rem; line-height: 1.65; }
+      .concept-grid,
+      .exam-columns,
+      .author-list,
+      .thinker-panel .author-list { grid-template-columns: 1fr; }
+      .formula-card { grid-template-columns: 1fr; padding: 14px; }
+      .formula-expression { font-size: 1rem; }
+      .topic-details > ul { grid-template-columns: 1fr; }
+      .memory-grid { grid-template-columns: 1fr; }
+      .study-sidebar { grid-template-columns: 1fr; }
+      .lens-card,
+      .mission-card,
+      .quiz-card,
+      .complete-button { grid-column: 1; }
+      .complete-button { min-height: 58px; }
+      .standalone-badge { display: none; }
+    }
+
+    /* QUEST GATE — o fim de cada matéria vira uma missão repetível */
+    .quest-gate {
+      --npc-sprite-sheet: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHNoYXBlLXJlbmRlcmluZz0iY3Jpc3BFZGdlcyI+CiAgPGRlZnM+CiAgICA8ZyBpZD0ic2hhZG93Ij48cmVjdCB4PSIyOCIgeT0iMTE1IiB3aWR0aD0iNzIiIGhlaWdodD0iNSIgZmlsbD0iIzA3MTAwYSIgb3BhY2l0eT0iLjU1Ii8+PHJlY3QgeD0iMjAiIHk9IjEyMCIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjQiIGZpbGw9IiMwNzEwMGEiIG9wYWNpdHk9Ii4yOCIvPjwvZz4KICAgIDxnIGlkPSJsZWdzIj4KICAgICAgPHJlY3QgeD0iMzgiIHk9IjkzIiB3aWR0aD0iMjIiIGhlaWdodD0iMjIiIGZpbGw9IiMxOTJhMjIiLz48cmVjdCB4PSI2OCIgeT0iOTMiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgZmlsbD0iIzE5MmEyMiIvPgogICAgICA8cmVjdCB4PSIzNCIgeT0iMTA4IiB3aWR0aD0iMjgiIGhlaWdodD0iMTAiIGZpbGw9IiMwYjE1MTAiLz48cmVjdCB4PSI2OCIgeT0iMTA4IiB3aWR0aD0iMjgiIGhlaWdodD0iMTAiIGZpbGw9IiMwYjE1MTAiLz4KICAgICAgPHJlY3QgeD0iMzgiIHk9IjEwOCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjQiIGZpbGw9IiMzNDRiM2QiLz48cmVjdCB4PSI3MiIgeT0iMTA4IiB3aWR0aD0iMjAiIGhlaWdodD0iNCIgZmlsbD0iIzM0NGIzZCIvPgogICAgPC9nPgogICAgPGcgaWQ9ImNhcGUiPgogICAgICA8cmVjdCB4PSIyNCIgeT0iNDgiIHdpZHRoPSI4MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzEwMWMxNiIvPjxyZWN0IHg9IjIwIiB5PSI2MiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjM0IiBmaWxsPSIjMTQyOTFmIi8+CiAgICAgIDxyZWN0IHg9IjE2IiB5PSI3OCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIyIiBmaWxsPSIjMTkzZDJiIi8+PHJlY3QgeD0iOTYiIHk9Ijc4IiB3aWR0aD0iMTYiIGhlaWdodD0iMjIiIGZpbGw9IiMxOTNkMmIiLz4KICAgICAgPHJlY3QgeD0iMjQiIHk9Ijk2IiB3aWR0aD0iMTYiIGhlaWdodD0iOCIgZmlsbD0iIzBiMTcxMSIvPjxyZWN0IHg9Ijg4IiB5PSI5NiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjgiIGZpbGw9IiMwYjE3MTEiLz4KICAgIDwvZz4KICAgIDxnIGlkPSJ0b3JzbyI+CiAgICAgIDxyZWN0IHg9IjMyIiB5PSI1NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQ4IiBmaWxsPSIjMGIxNTEwIi8+CiAgICAgIDxyZWN0IHg9IjM2IiB5PSI1MCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjQ4IiBmaWxsPSIjZDU1ZjRjIi8+CiAgICAgIDxyZWN0IHg9IjQwIiB5PSI1NCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQwIiBmaWxsPSIjZTU2ZjU4Ii8+CiAgICAgIDxyZWN0IHg9IjQ0IiB5PSI1OCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjgiIGZpbGw9IiNlZjgzNmIiLz4KICAgICAgPHJlY3QgeD0iMzYiIHk9IjkwIiB3aWR0aD0iNTYiIGhlaWdodD0iOCIgZmlsbD0iIzlmNDAzOCIvPgogICAgICA8cmVjdCB4PSI1NiIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxOCIgZmlsbD0iIzExMWExNCIvPgogICAgICA8cmVjdCB4PSI1OCIgeT0iNjAiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNiIgZmlsbD0iI2YyYmE0OCIvPgogICAgICA8cmVjdCB4PSI2MSIgeT0iNjMiIHdpZHRoPSI4IiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZlMzg2Ii8+CiAgICAgIDxyZWN0IHg9IjQ4IiB5PSI4MiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjQiIGZpbGw9IiM3ZTMwMmIiLz4KICAgIDwvZz4KICAgIDxnIGlkPSJoZWFkIj4KICAgICAgPHJlY3QgeD0iMzQiIHk9IjE4IiB3aWR0aD0iNjAiIGhlaWdodD0iNDIiIGZpbGw9IiMwYjE1MTAiLz4KICAgICAgPHJlY3QgeD0iMzAiIHk9IjI2IiB3aWR0aD0iNjgiIGhlaWdodD0iMjgiIGZpbGw9IiMwYjE1MTAiLz4KICAgICAgPHJlY3QgeD0iMzQiIHk9IjIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMzQiIGZpbGw9IiNlZmFkN2UiLz4KICAgICAgPHJlY3QgeD0iMzgiIHk9IjI2IiB3aWR0aD0iNTIiIGhlaWdodD0iMzAiIGZpbGw9IiNmZmM3OWEiLz4KICAgICAgPHJlY3QgeD0iMjYiIHk9IjMyIiB3aWR0aD0iMTAiIGhlaWdodD0iMTYiIGZpbGw9IiNlODlkNzIiLz48cmVjdCB4PSI5MiIgeT0iMzIiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxNiIgZmlsbD0iI2U4OWQ3MiIvPgogICAgICA8cmVjdCB4PSIzMCIgeT0iMTIiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxNiIgZmlsbD0iIzEwMWMxNiIvPgogICAgICA8cmVjdCB4PSIyNCIgeT0iMTYiIHdpZHRoPSI3MiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzE1MjgxZSIvPgogICAgICA8cmVjdCB4PSIyOCIgeT0iMjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSI4IiBmaWxsPSIjMTUyODFlIi8+CiAgICAgIDxyZWN0IHg9Ijc2IiB5PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjMTUyODFlIi8+CiAgICAgIDxyZWN0IHg9IjM0IiB5PSI4IiB3aWR0aD0iNDgiIGhlaWdodD0iOCIgZmlsbD0iIzFlMzkyYSIvPgogICAgICA8cmVjdCB4PSI0NiIgeT0iMzYiIHdpZHRoPSI4IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMTcyMTFhIi8+PHJlY3QgeD0iNzQiIHk9IjM2IiB3aWR0aD0iOCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzE3MjExYSIvPgogICAgICA8cmVjdCB4PSI0OCIgeT0iMzYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNkN2ZmZjAiLz48cmVjdCB4PSI3NiIgeT0iMzYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNkN2ZmZjAiLz4KICAgICAgPHJlY3QgeD0iNjAiIHk9IjQ0IiB3aWR0aD0iOCIgaGVpZ2h0PSI0IiBmaWxsPSIjYzM3MDYzIi8+CiAgICA8L2c+CiAgICA8ZyBpZD0iaWRsZS1hcm1zIj4KICAgICAgPHJlY3QgeD0iMjQiIHk9IjU4IiB3aWR0aD0iMTQiIGhlaWdodD0iMzQiIGZpbGw9IiMwYjE1MTAiLz48cmVjdCB4PSI5MCIgeT0iNTgiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzNCIgZmlsbD0iIzBiMTUxMCIvPgogICAgICA8cmVjdCB4PSIyMCIgeT0iNjIiIHdpZHRoPSIxNCIgaGVpZ2h0PSIyNiIgZmlsbD0iI2Q1NWY0YyIvPjxyZWN0IHg9Ijk0IiB5PSI2MiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjI2IiBmaWxsPSIjZDU1ZjRjIi8+CiAgICAgIDxyZWN0IHg9IjIyIiB5PSI4NCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmZjNzlhIi8+PHJlY3QgeD0iOTQiIHk9Ijg0IiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIGZpbGw9IiNmZmM3OWEiLz4KICAgIDwvZz4KICA8L2RlZnM+CgogIDwhLS0gaWRsZSAxIC0tPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY0IDMyKSBzY2FsZSgzKSI+CiAgICA8dXNlIGhyZWY9IiNzaGFkb3ciLz48dXNlIGhyZWY9IiNsZWdzIi8+PHVzZSBocmVmPSIjY2FwZSIvPjx1c2UgaHJlZj0iI2lkbGUtYXJtcyIvPjx1c2UgaHJlZj0iI3RvcnNvIi8+PHVzZSBocmVmPSIjaGVhZCIvPgogICAgPHJlY3QgeD0iNTYiIHk9IjUwIiB3aWR0aD0iMTYiIGhlaWdodD0iNCIgZmlsbD0iIzhjM2YzZCIvPjxyZWN0IHg9IjYwIiB5PSI1MCIgd2lkdGg9IjgiIGhlaWdodD0iNCIgZmlsbD0iI2ZmZDBiMCIvPgogIDwvZz4KCiAgPCEtLSBpZGxlIDIgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTc2IDMyKSBzY2FsZSgzKSI+CiAgICA8dXNlIGhyZWY9IiNzaGFkb3ciLz4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTIpIj48dXNlIGhyZWY9IiNsZWdzIi8+PHVzZSBocmVmPSIjY2FwZSIvPjx1c2UgaHJlZj0iI2lkbGUtYXJtcyIvPjx1c2UgaHJlZj0iI3RvcnNvIi8+PHVzZSBocmVmPSIjaGVhZCIvPgogICAgICA8cmVjdCB4PSI1NiIgeT0iNTAiIHdpZHRoPSIxNiIgaGVpZ2h0PSI0IiBmaWxsPSIjOGMzZjNkIi8+PHJlY3QgeD0iNjAiIHk9IjUwIiB3aWR0aD0iOCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZkMGIwIi8+CiAgICA8L2c+CiAgPC9nPgoKICA8IS0tIHRhbGsgMSAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NCA1NDQpIHNjYWxlKDMpIj4KICAgIDx1c2UgaHJlZj0iI3NoYWRvdyIvPjx1c2UgaHJlZj0iI2xlZ3MiLz48dXNlIGhyZWY9IiNjYXBlIi8+CiAgICA8cmVjdCB4PSIyMiIgeT0iNTgiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzNiIgZmlsbD0iIzBiMTUxMCIvPjxyZWN0IHg9IjE4IiB5PSI2MiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjI4IiBmaWxsPSIjZDU1ZjRjIi8+PHJlY3QgeD0iMjAiIHk9Ijg2IiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIGZpbGw9IiNmZmM3OWEiLz4KICAgIDxyZWN0IHg9IjkyIiB5PSI0OCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjQwIiBmaWxsPSIjMGIxNTEwIi8+PHJlY3QgeD0iOTYiIHk9IjQ0IiB3aWR0aD0iMTQiIGhlaWdodD0iNDAiIGZpbGw9IiNkNTVmNGMiLz48cmVjdCB4PSI5OCIgeT0iMzgiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgZmlsbD0iI2ZmYzc5YSIvPgogICAgPHVzZSBocmVmPSIjdG9yc28iLz48dXNlIGhyZWY9IiNoZWFkIi8+CiAgICA8cmVjdCB4PSI1NiIgeT0iNDgiIHdpZHRoPSIxNiIgaGVpZ2h0PSI4IiBmaWxsPSIjOGMzZjNkIi8+PHJlY3QgeD0iNjAiIHk9IjQ4IiB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNTkyNzJhIi8+CiAgPC9nPgoKICA8IS0tIHRhbGsgMiAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NzYgNTQ0KSBzY2FsZSgzKSI+CiAgICA8dXNlIGhyZWY9IiNzaGFkb3ciLz48dXNlIGhyZWY9IiNsZWdzIi8+PHVzZSBocmVmPSIjY2FwZSIvPgogICAgPHJlY3QgeD0iMjAiIHk9IjUwIiB3aWR0aD0iMTQiIGhlaWdodD0iNDAiIGZpbGw9IiMwYjE1MTAiLz48cmVjdCB4PSIxNiIgeT0iNDYiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0MCIgZmlsbD0iI2Q1NWY0YyIvPjxyZWN0IHg9IjE0IiB5PSI0MCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmZjNzlhIi8+CiAgICA8cmVjdCB4PSI5MiIgeT0iNTgiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzNiIgZmlsbD0iIzBiMTUxMCIvPjxyZWN0IHg9Ijk2IiB5PSI2MiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjI4IiBmaWxsPSIjZDU1ZjRjIi8+PHJlY3QgeD0iOTgiIHk9Ijg2IiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIGZpbGw9IiNmZmM3OWEiLz4KICAgIDx1c2UgaHJlZj0iI3RvcnNvIi8+PHVzZSBocmVmPSIjaGVhZCIvPgogICAgPHJlY3QgeD0iNTQiIHk9IjQ4IiB3aWR0aD0iMjAiIGhlaWdodD0iOCIgZmlsbD0iIzhjM2YzZCIvPjxyZWN0IHg9IjU4IiB5PSI0OCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjgiIGZpbGw9IiM1OTI3MmEiLz4KICAgIDxyZWN0IHg9IjQyIiB5PSIzMiIgd2lkdGg9IjgiIGhlaWdodD0iNCIgZmlsbD0iIzU2MzEyYyIvPjxyZWN0IHg9Ijc4IiB5PSIzMiIgd2lkdGg9IjgiIGhlaWdodD0iNCIgZmlsbD0iIzU2MzEyYyIvPgogIDwvZz4KPC9zdmc+Cg==");
+      position: relative;
+      max-width: 1460px;
+      margin: 34px auto 0;
+      overflow: hidden;
+      border: 1px solid color-mix(in srgb, var(--accent) 34%, #17231c);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 12% 12%, color-mix(in srgb, var(--accent-2) 24%, transparent), transparent 27%),
+        radial-gradient(circle at 92% 82%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 31%),
+        linear-gradient(145deg, #17231d 0%, color-mix(in srgb, var(--deep) 82%, #07120c) 100%);
+      color: #f5fff8;
+      box-shadow: 0 24px 60px rgba(8,18,12,.22), inset 0 1px rgba(255,255,255,.08);
+      isolation: isolate;
+    }
+
+    .quest-gate::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    .quest-gate-head {
+      display: grid;
+      grid-template-columns: minmax(250px, .9fr) minmax(330px, 1.45fr);
+      gap: 28px;
+      align-items: center;
+      padding: 32px;
+    }
+
+    .npc-zone {
+      min-height: 360px;
+      display: grid;
+      place-items: end center;
+      position: relative;
+      opacity: 0;
+      transform: translateY(70px) scale(.82);
+      transition: opacity 500ms ease, transform 700ms cubic-bezier(.18,.85,.25,1.15);
+    }
+
+    .quest-gate.is-awake .npc-zone { opacity: 1; transform: translateY(0) scale(1); }
+
+    .npc-portal {
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      left: 50%;
+      bottom: 42px;
+      border: 2px solid color-mix(in srgb, var(--accent-2) 64%, white);
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 32%, transparent), transparent 67%);
+      box-shadow: 0 0 48px color-mix(in srgb, var(--accent) 36%, transparent), inset 0 0 36px color-mix(in srgb, var(--accent-2) 22%, transparent);
+      transform: translateX(-50%);
+      animation: portal-pulse 2.8s ease-in-out infinite;
+    }
+
+    .npc-portal::before,
+    .npc-portal::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px dashed color-mix(in srgb, var(--accent-2) 56%, white);
+      border-radius: inherit;
+      animation: portal-spin 14s linear infinite;
+    }
+
+    .npc-portal::after { inset: 42px; animation-direction: reverse; animation-duration: 9s; }
+
+    .npc-sprite {
+      --skin: #f3bd91;
+      --hair: #16231c;
+      width: 196px;
+      height: 292px;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 18px 16px rgba(0,0,0,.35));
+      animation: npc-idle 3.1s ease-in-out infinite;
+    }
+
+    .npc-shadow {
+      position: absolute;
+      width: 160px;
+      height: 24px;
+      left: 18px;
+      bottom: -5px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.42);
+      filter: blur(6px);
+      animation: npc-shadow 3.1s ease-in-out infinite;
+    }
+
+    .npc-cape {
+      position: absolute;
+      width: 144px;
+      height: 176px;
+      left: 26px;
+      top: 100px;
+      border: 3px solid #0d1711;
+      border-radius: 50% 50% 26% 26%;
+      background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 45%, #07120c));
+      clip-path: polygon(16% 0, 84% 0, 100% 100%, 50% 88%, 0 100%);
+    }
+
+    .npc-body {
+      position: absolute;
+      width: 112px;
+      height: 126px;
+      left: 42px;
+      top: 126px;
+      border: 4px solid #111c15;
+      border-radius: 32px 32px 22px 22px;
+      background: linear-gradient(150deg, color-mix(in srgb, var(--accent) 82%, white), var(--accent));
+      box-shadow: inset 10px 0 rgba(255,255,255,.13), inset -12px -10px rgba(0,0,0,.14);
+    }
+
+    .npc-body::before {
+      content: "";
+      position: absolute;
+      inset: 13px 14px 50px;
+      border: 2px solid rgba(255,255,255,.52);
+      border-radius: 13px;
+      background: rgba(5,16,10,.16);
+    }
+
+    .npc-emblem {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      left: 70px;
+      top: 148px;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      border: 3px solid #101b14;
+      border-radius: 15px;
+      background: var(--accent-2);
+      color: #152019;
+      font: 950 1rem/1 "Segoe UI", sans-serif;
+      box-shadow: 0 5px 0 rgba(0,0,0,.2);
+      transform: rotate(-4deg);
+    }
+
+    .npc-head {
+      position: absolute;
+      width: 112px;
+      height: 114px;
+      left: 42px;
+      top: 33px;
+      z-index: 5;
+      border: 4px solid #111c15;
+      border-radius: 48% 48% 43% 43%;
+      background: linear-gradient(135deg, #ffd3ac, var(--skin));
+      box-shadow: inset 9px 3px rgba(255,255,255,.2), inset -7px -7px rgba(132,69,35,.12);
+    }
+
+    .npc-hair {
+      position: absolute;
+      width: 116px;
+      height: 55px;
+      left: -6px;
+      top: -11px;
+      border: 4px solid #111c15;
+      border-bottom: 0;
+      border-radius: 52% 60% 25% 18%;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 28%, #101914), var(--hair));
+      transform: rotate(-3deg);
+    }
+
+    .npc-hair::after {
+      content: "";
+      position: absolute;
+      width: 34px;
+      height: 42px;
+      right: -3px;
+      top: 24px;
+      border-radius: 0 0 70% 70%;
+      background: var(--hair);
+      transform: rotate(-14deg);
+    }
+
+    .npc-eye {
+      position: absolute;
+      width: 15px;
+      height: 19px;
+      top: 55px;
+      border: 3px solid #111c15;
+      border-radius: 50%;
+      background: white;
+      overflow: hidden;
+      animation: npc-blink 4.8s infinite;
+    }
+
+    .npc-eye::after {
+      content: "";
+      width: 7px;
+      height: 10px;
+      position: absolute;
+      left: 4px;
+      top: 5px;
+      border-radius: 50%;
+      background: #173426;
+    }
+
+    .npc-eye.left { left: 26px; }
+    .npc-eye.right { right: 26px; }
+
+    .npc-mouth {
+      position: absolute;
+      width: 26px;
+      height: 12px;
+      left: 39px;
+      top: 84px;
+      border: 3px solid #7b382e;
+      border-top: 0;
+      border-radius: 0 0 50% 50%;
+    }
+
+    .npc-arm,
+    .npc-leg {
+      position: absolute;
+      border: 4px solid #111c15;
+      background: color-mix(in srgb, var(--accent) 84%, white);
+    }
+
+    .npc-arm { width: 35px; height: 104px; top: 132px; border-radius: 20px; transform-origin: 50% 14px; }
+    .npc-arm.left { left: 25px; transform: rotate(15deg); }
+    .npc-arm.right { right: 25px; transform: rotate(-28deg); animation: npc-wave 2.4s ease-in-out infinite; }
+    .npc-leg { width: 43px; height: 72px; top: 225px; border-radius: 14px 14px 18px 18px; background: #233129; }
+    .npc-leg.left { left: 48px; }
+    .npc-leg.right { right: 48px; }
+
+    .npc-nameplate {
+      position: absolute;
+      z-index: 7;
+      left: 50%;
+      bottom: -34px;
+      width: max-content;
+      max-width: 260px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 10px;
+      background: rgba(8,19,12,.88);
+      color: white;
+      font-size: .7rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-align: center;
+      transform: translateX(-50%);
+      backdrop-filter: blur(8px);
+    }
+
+    .quest-console { position: relative; z-index: 3; }
+
+    .quest-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .quest-kicker span,
+    .rarity-chip {
+      padding: 6px 9px;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 99px;
+      background: rgba(255,255,255,.08);
+      color: #d9eadf;
+      font-size: .59rem;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .quest-console h2 {
+      margin: 0;
+      color: white;
+      font: 850 clamp(2rem, 4.5vw, 3.8rem)/.94 Georgia, serif;
+      letter-spacing: -.04em;
+    }
+
+    .quest-intro {
+      max-width: 700px;
+      margin: 14px 0 20px;
+      color: #c5d6cb;
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+
+    .npc-speech {
+      position: relative;
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      border: 1px solid color-mix(in srgb, var(--accent-2) 34%, transparent);
+      border-radius: 15px;
+      background: rgba(255,255,255,.08);
+      color: #effaf3;
+      font-size: .86rem;
+      line-height: 1.5;
+    }
+
+    .npc-speech strong { color: color-mix(in srgb, var(--accent-2) 68%, white); }
+
+    .quest-primary,
+    .quest-secondary,
+    .quest-answer,
+    .quest-next {
+      min-height: 48px;
+      border: 0;
+      border-radius: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 150ms ease, filter 150ms ease;
+    }
+
+    .quest-primary:hover,
+    .quest-secondary:hover,
+    .quest-next:hover { transform: translateY(-2px); filter: brightness(1.08); }
+
+    .quest-primary { padding: 0 20px; background: var(--accent-2); color: #142019; box-shadow: 0 7px 0 color-mix(in srgb, var(--accent-2) 45%, #0d1711); }
+    .quest-secondary { padding: 0 16px; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.07); color: white; }
+
+    .quest-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .quest-run {
+      display: grid;
+      gap: 16px;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      background: rgba(3,12,7,.36);
+      box-shadow: inset 0 1px rgba(255,255,255,.06);
+    }
+
+    .quest-run-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .quest-run-top > div { min-width: 0; }
+    .quest-run-top small { display: block; color: #93a89a; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .quest-run-top strong { display: block; margin-top: 3px; color: white; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; }
+
+    .rarity-chip.common { color: #d9ffe4; border-color: #73cf8d; background: rgba(63,142,85,.2); }
+    .rarity-chip.rare { color: #dbe9ff; border-color: #76a9ff; background: rgba(49,92,163,.22); }
+    .rarity-chip.epic { color: #f2ddff; border-color: #ca83ff; background: rgba(117,49,163,.25); box-shadow: 0 0 20px rgba(195,106,255,.13); }
+
+    .quest-progress-dots { display: flex; gap: 6px; }
+    .quest-progress-dots i { width: 28px; height: 5px; border-radius: 99px; background: rgba(255,255,255,.14); }
+    .quest-progress-dots i.done { background: #62cf83; }
+    .quest-progress-dots i.current { background: var(--accent-2); box-shadow: 0 0 10px color-mix(in srgb, var(--accent-2) 70%, transparent); }
+
+    .quest-question { margin: 0; color: white; font: 750 clamp(1.12rem, 2.5vw, 1.5rem)/1.35 Georgia, serif; }
+
+    .quest-answers { display: grid; gap: 9px; }
+    .quest-answer {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 13px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.055);
+      color: white;
+      text-align: left;
+      font-size: .84rem;
+      line-height: 1.4;
+    }
+
+    .quest-answer span { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 9px; background: rgba(255,255,255,.11); color: var(--accent-2); }
+    .quest-answer:hover:not(:disabled) { border-color: var(--accent-2); background: rgba(255,255,255,.1); transform: translateX(3px); }
+    .quest-answer.correct { border-color: #73d491; background: rgba(48,139,76,.3); }
+    .quest-answer.wrong { border-color: #e4827b; background: rgba(155,54,49,.32); }
+
+    .quest-explain {
+      padding: 14px 15px;
+      border-left: 4px solid var(--accent-2);
+      border-radius: 8px 13px 13px 8px;
+      background: rgba(255,255,255,.075);
+      color: #d6e4da;
+      font-size: .82rem;
+      line-height: 1.55;
+    }
+
+    .quest-explain strong { display: block; margin-bottom: 4px; color: white; }
+    .quest-next { width: 100%; padding: 0 18px; background: var(--accent-2); color: #142019; }
+
+    .quest-result {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid color-mix(in srgb, var(--accent-2) 45%, transparent);
+      border-radius: 20px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .quest-result-score { width: 104px; height: 104px; display: grid; place-items: center; border: 8px solid var(--accent-2); border-radius: 50%; background: rgba(0,0,0,.22); color: white; font: 900 1.7rem/1 Georgia, serif; box-shadow: 0 0 30px color-mix(in srgb, var(--accent-2) 23%, transparent); }
+    .quest-result h3 { margin: 0 0 6px; color: white; font: 800 1.4rem/1.1 Georgia, serif; }
+    .quest-result p { margin: 0 0 13px; color: #cbd9cf; font-size: .84rem; line-height: 1.5; }
+    .quest-rewards { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+    .quest-rewards span { padding: 6px 9px; border-radius: 8px; background: rgba(255,255,255,.1); color: #eff8f1; font-size: .68rem; font-weight: 850; }
+
+    .quest-index {
+      margin: 0 32px 32px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 18px;
+      background: rgba(0,0,0,.18);
+    }
+
+    .quest-index > summary {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 12px 18px;
+      color: white;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .quest-index > summary::-webkit-details-marker { display: none; }
+    .quest-index > summary div { display: grid; gap: 3px; }
+    .quest-index > summary strong { font-size: .86rem; }
+    .quest-index > summary small { color: #9fb1a4; font-size: .65rem; }
+    .quest-index > summary > span { color: var(--accent-2); font-weight: 900; }
+
+    .quest-index-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 8px;
+      max-height: 460px;
+      overflow: auto;
+      padding: 0 14px 16px;
+    }
+
+    .quest-index-item {
+      min-height: 64px;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 9px;
+      align-items: center;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 11px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .quest-index-item > span { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 8px; background: rgba(255,255,255,.08); color: #9db0a2; font-size: .67rem; font-weight: 900; }
+    .quest-index-item.discovered > span { background: #3c9b5b; color: white; }
+    .quest-index-item strong { display: block; color: white; font-size: .68rem; line-height: 1.25; }
+    .quest-index-item small { color: #93a79a; font-size: .55rem; font-weight: 850; text-transform: uppercase; }
+    .quest-index-item.rare small { color: #9bc0ff; }
+    .quest-index-item.epic small { color: #dfa7ff; }
+
+    /* Encontro de RPG em pixel art */
+    .quest-gate {
+      --pixel-ink: #0a120d;
+      --pixel-paper: #eff8e8;
+      border-width: 4px;
+      border-color: #0b130e;
+      border-radius: 8px;
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 48%, #263429), 0 24px 60px rgba(8,18,12,.28);
+    }
+
+    .quest-gate::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .14;
+      background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,.12) 3px 4px);
+      pointer-events: none;
+    }
+
+    .npc-zone {
+      min-height: 390px;
+      align-content: end;
+      padding-bottom: 54px;
+      image-rendering: pixelated;
+      transform: translateY(80px) scale(.72);
+      transition: opacity 120ms steps(2), transform 620ms steps(7);
+    }
+
+    .quest-gate.is-awake .npc-zone { transform: translateY(0) scale(1); }
+
+    .pixel-summon {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: 50%;
+      bottom: 35px;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .pixel-summon::before,
+    .pixel-summon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 13px;
+      transform: translateX(-50%);
+    }
+
+    .pixel-summon::before {
+      width: 220px;
+      height: 36px;
+      border: 4px solid #101a13;
+      background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--accent) 78%, #35613e) 0 14px, color-mix(in srgb, var(--accent) 58%, #193624) 14px 28px);
+      box-shadow: 0 8px 0 #07100a, 0 14px 0 rgba(0,0,0,.3);
+      clip-path: polygon(8% 0,92% 0,100% 50%,92% 100%,8% 100%,0 50%);
+    }
+
+    .pixel-summon::after {
+      width: 230px;
+      height: 230px;
+      bottom: 35px;
+      border: 5px dashed color-mix(in srgb, var(--accent-2) 80%, white);
+      border-radius: 50%;
+      opacity: 0;
+      filter: drop-shadow(0 0 8px var(--accent-2));
+    }
+
+    .quest-gate.is-awake .pixel-summon::after { animation: pixel-portal 900ms steps(8) both; }
+
+    .pixel-npc-sprite {
+      width: 256px;
+      height: 256px;
+      position: relative;
+      z-index: 4;
+      background-image: var(--npc-sprite-sheet);
+      background-repeat: no-repeat;
+      background-size: 200% 200%;
+      background-position: 0 0;
+      image-rendering: pixelated;
+      filter: drop-shadow(0 12px 0 rgba(0,0,0,.24)) drop-shadow(0 0 10px color-mix(in srgb, var(--accent-2) 22%, transparent));
+      animation: pixel-arrival 650ms steps(7) both, pixel-idle-frames 820ms steps(1) 650ms infinite;
+    }
+
+    .npc-zone.is-talking .pixel-npc-sprite { animation: pixel-arrival 650ms steps(7) both, pixel-talk-frames 520ms steps(1) 650ms infinite; }
+
+    .pixel-exclaim {
+      position: absolute;
+      z-index: 8;
+      top: 26px;
+      left: calc(50% + 76px);
+      width: 42px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 4px solid #0a120d;
+      background: #fff3a7;
+      color: #172019;
+      font: 950 1.8rem/1 "Courier New", monospace;
+      box-shadow: 5px 5px 0 rgba(0,0,0,.35);
+      opacity: 0;
+    }
+
+    .quest-gate.is-awake .pixel-exclaim { animation: pixel-exclaim 1.8s steps(6) 500ms both; }
+
+    .pixel-subject-badge {
+      position: absolute;
+      z-index: 6;
+      left: calc(50% - 104px);
+      bottom: 62px;
+      min-width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      padding: 0 7px;
+      border: 4px solid #0b130e;
+      background: var(--accent-2);
+      color: #101a13;
+      font: 950 .8rem/1 "Courier New", monospace;
+      box-shadow: 4px 4px 0 rgba(0,0,0,.35);
+      transform: rotate(-4deg);
+    }
+
+    .npc-nameplate {
+      bottom: 10px;
+      padding: 9px 13px 8px;
+      border: 3px solid #050b07;
+      border-radius: 2px;
+      background: #101914;
+      font: 900 .67rem/1.2 "Courier New", monospace;
+      letter-spacing: .01em;
+      box-shadow: 4px 4px 0 rgba(0,0,0,.34), inset 0 0 0 2px rgba(255,255,255,.1);
+    }
+
+    .quest-console h2,
+    .quest-question,
+    .quest-result h3 { letter-spacing: -.025em; }
+
+    .quest-kicker span,
+    .rarity-chip,
+    .quest-run-top small,
+    .quest-index-item small {
+      border-radius: 2px;
+      font-family: "Courier New", monospace;
+    }
+
+    .rpg-dialogue {
+      position: relative;
+      min-height: 118px;
+      margin: 22px 0 18px;
+      padding: 28px 22px 18px;
+      border: 4px solid #060c08;
+      border-radius: 3px;
+      background: #15211a;
+      color: #f4fbf2;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 63%, #d6dfcf), 7px 7px 0 rgba(0,0,0,.3), inset 0 0 0 2px rgba(255,255,255,.08);
+      font: 750 .88rem/1.55 "Courier New", monospace;
+    }
+
+    .npc-dialogue-name {
+      position: absolute;
+      left: 15px;
+      top: -18px;
+      padding: 7px 12px;
+      border: 3px solid #060c08;
+      background: var(--accent-2);
+      color: #101913;
+      font: 950 .72rem/1 "Courier New", monospace;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 rgba(0,0,0,.3);
+    }
+
+    .rpg-dialogue p { margin: 0; color: #f4fbf2; }
+    .rpg-dialogue .dialogue-cursor {
+      position: absolute;
+      right: 14px;
+      bottom: 9px;
+      color: var(--accent-2);
+      font-style: normal;
+      animation: dialogue-cursor 760ms steps(2) infinite;
+    }
+
+    .quest-run,
+    .quest-answer,
+    .quest-next,
+    .quest-primary,
+    .quest-secondary,
+    .quest-result,
+    .quest-index,
+    .quest-index-item { border-radius: 3px; }
+
+    .quest-answer,
+    .quest-primary,
+    .quest-secondary,
+    .quest-next {
+      font-family: "Courier New", monospace;
+      box-shadow: 4px 4px 0 rgba(0,0,0,.28);
+    }
+
+    .quest-answer:hover:not(:disabled) { transform: translate(3px,0); box-shadow: 1px 4px 0 rgba(0,0,0,.28); }
+    .quest-primary:hover,
+    .quest-secondary:hover,
+    .quest-next:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 rgba(0,0,0,.28); }
+
+    .quest-explain {
+      border: 3px solid #09110c;
+      border-left: 7px solid var(--accent-2);
+      border-radius: 2px;
+      background: #1c2820;
+      box-shadow: 4px 4px 0 rgba(0,0,0,.25);
+      font-family: "Courier New", monospace;
+    }
+
+    @keyframes pixel-arrival {
+      0% { opacity: 0; transform: translateY(70px) scaleY(.08); filter: brightness(3) drop-shadow(0 0 18px var(--accent-2)); }
+      45% { opacity: 1; transform: translateY(18px) scaleY(1.18); }
+      100% { opacity: 1; transform: translateY(0) scaleY(1); }
+    }
+    @keyframes pixel-idle-frames { 0%,49% { background-position: 0 0; } 50%,100% { background-position: 100% 0; } }
+    @keyframes pixel-talk-frames { 0%,49% { background-position: 0 100%; } 50%,100% { background-position: 100% 100%; } }
+    @keyframes pixel-portal { 0% { opacity: 0; transform: translateX(-50%) scale(.2) rotate(0); } 45% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) scale(1.35) rotate(180deg); } }
+    @keyframes pixel-exclaim { 0% { opacity: 0; transform: translateY(18px) scale(.2); } 25%,70% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-16px) scale(.75); } }
+    @keyframes dialogue-cursor { 0%,49% { opacity: 1; transform: translateY(0); } 50%,100% { opacity: .2; transform: translateY(3px); } }
+
+    @keyframes npc-idle { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-10px) rotate(1deg); } }
+    @keyframes npc-shadow { 0%,100% { transform: scale(1); opacity: .4; } 50% { transform: scale(.82); opacity: .24; } }
+    @keyframes npc-wave { 0%,100% { transform: rotate(-28deg); } 50% { transform: rotate(-52deg); } }
+    @keyframes npc-blink { 0%,46%,50%,100% { transform: scaleY(1); } 48% { transform: scaleY(.08); } }
+    @keyframes portal-spin { to { transform: rotate(360deg); } }
+    @keyframes portal-pulse { 0%,100% { transform: translateX(-50%) scale(.94); opacity: .72; } 50% { transform: translateX(-50%) scale(1.03); opacity: 1; } }
+
+    @media (max-width: 800px) {
+      .quest-gate-head { grid-template-columns: 1fr; padding: 24px; }
+      .npc-zone { min-height: 330px; }
+      .quest-index-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+
+    @media (max-width: 560px) {
+      .quest-gate { margin-top: 24px; border-radius: 22px; }
+      .quest-gate-head { gap: 12px; padding: 18px 14px 20px; }
+      .npc-zone { min-height: 302px; transform: translateY(45px) scale(.86); }
+      .npc-sprite { transform-origin: bottom center; }
+      .npc-portal { width: 238px; height: 238px; bottom: 36px; }
+      .npc-nameplate { bottom: -28px; max-width: 220px; }
+      .quest-console { margin-top: 12px; }
+      .quest-console h2 { font-size: 2.15rem; }
+      .quest-intro { font-size: .88rem; }
+      .quest-actions { display: grid; }
+      .quest-primary, .quest-secondary { width: 100%; min-height: 52px; }
+      .quest-run { padding: 16px 12px; }
+      .quest-run-top { align-items: flex-start; }
+      .quest-progress-dots i { width: 20px; }
+      .quest-question { font-size: 1.14rem; }
+      .quest-answer { min-height: 56px; padding: 9px 10px; font-size: .8rem; }
+      .quest-result { grid-template-columns: 1fr; text-align: center; }
+      .quest-result-score { margin: auto; }
+      .quest-rewards, .quest-actions { justify-content: center; }
+      .quest-index { margin: 0 14px 18px; }
+      .quest-index > summary { padding: 11px 13px; }
+      .quest-index-grid { grid-template-columns: 1fr; max-height: 390px; }
+      .quest-index-item { min-height: 60px; }
+      .npc-zone { min-height: 338px; padding-bottom: 45px; }
+      .pixel-npc-sprite { width: 220px; height: 220px; }
+      .pixel-summon { width: 250px; height: 250px; bottom: 30px; }
+      .pixel-summon::before { width: 194px; }
+      .pixel-summon::after { width: 195px; height: 195px; }
+      .pixel-subject-badge { left: calc(50% - 93px); bottom: 53px; }
+      .pixel-exclaim { top: 30px; left: calc(50% + 58px); }
+      .npc-nameplate { bottom: 6px; }
+      .rpg-dialogue { min-height: 130px; padding: 27px 14px 15px; font-size: .8rem; line-height: 1.6; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .npc-zone { opacity: 1; transform: none; }
+      .pixel-npc-sprite { animation: none !important; background-position: 0 0; }
+      .pixel-summon::after, .pixel-exclaim, .dialogue-cursor { animation: none !important; }
+    }
+
     .standalone-badge {
       position: fixed;
       right: 12px;
@@ -2882,7 +4754,7 @@ footer span {
     }
 
     @media print {
-      .cover, .skip-link, .topbar, .subject-tabs, .study-sidebar, footer, .standalone-badge { display: none !important; }
+      .cover, .skip-link, .topbar, .subject-tabs, .study-sidebar, .quest-gate, footer, .standalone-badge { display: none !important; }
       .subject-stage { padding: 0; background: white; }
       .subject-stage::before, .ambient-shape { display: none; }
       .subject-hero { margin-bottom: 24px; }
@@ -2902,8 +4774,8 @@ footer span {
         <h1 id="cover-title"><span>Resumos do</span>Fernando<span>.</span></h1>
         <p class="cover-lede">Um guia completo para aprender a matéria do zero, acompanhar exemplos, praticar e depois revisar o que realmente importa.</p>
         <div class="cover-actions">
-          <a class="cover-button" href="#revisao">começar a aprender <span aria-hidden="true">→</span></a>
-          <p>Estude no modo aula, pratique e use o modo 30s somente para a revisão final.</p>
+          <a class="cover-button" id="missionJump" href="#revisao">entrar na jornada <span aria-hidden="true">→</span></a>
+          <p>Escolha um mundo, conclua missões e suba de nível enquanto aprende.</p>
         </div>
       </div>
 
@@ -2913,9 +4785,10 @@ footer span {
           <div class="cover-monogram" aria-hidden="true">F</div>
           <p>Leia. Teste. Marque.</p>
           <div class="cover-stats">
-            <div><strong>12</strong><span>matérias</span></div>
-            <div><strong>30s</strong><span>modo rápido</span></div>
+            <div><strong>12</strong><span>mundos</span></div>
+            <div><strong id="coverLevel">01</strong><span>seu nível</span></div>
           </div>
+          <div class="cover-xp"><span id="coverXp">0 XP conquistados</span><b>cada unidade vale 100 XP</b></div>
           <div class="cover-progress-line">
             <span id="coverProgress">0 de 12 matérias revisadas</span>
             <i aria-hidden="true"><b id="coverProgressBar"></b></i>
@@ -2931,6 +4804,11 @@ footer span {
       </div>
 
       <div class="top-actions">
+        <div class="xp-hud" aria-label="Progresso por experiência">
+          <span class="xp-gem" aria-hidden="true">◆</span>
+          <div><small>NÍVEL <b id="levelValue">1</b></small><strong id="xpValue">0 XP</strong></div>
+          <i aria-hidden="true"><b id="xpBar"></b></i>
+        </div>
         <label class="search-box">
           <span aria-hidden="true">⌕</span>
           <input id="search" placeholder="Buscar matéria ou conteúdo" aria-label="Buscar matéria ou conteúdo">
@@ -2953,10 +4831,186 @@ footer span {
       <span>Use as setas ← → para trocar de matéria</span>
     </footer>
   </main>
+  <div class="celebration-layer" id="celebrationLayer" aria-live="polite"></div>
   <span class="standalone-badge">arquivo offline</span>
 
   <script>
     const subjects = [{"id":"portugues","mark":"Aa","name":"Língua Portuguesa","short":"Português","volume":"Volume 1 · unidades 3–5","theme":"ink","world":{"label":"laboratório da linguagem","motifs":["léxico","sintaxe","sentido"]},"tagline":"A língua é uma caixa de ferramentas — a prova quer saber por que cada peça foi escolhida.","hook":"Leia primeiro a intenção, depois a gramática.","route":["identifique o gênero","observe a escolha linguística","explique o efeito no leitor"],"lens":"Os códigos de LGG e LP combinam análise de linguagem, contexto de circulação e autoria. Não basta nomear: conecte forma, intenção e efeito.","topics":[{"number":"03","title":"Classes nominais e gêneros textuais","scene":{"label":"Ateliê dos gêneros","symbol":"Aa"},"snapshot":"Substantivo nomeia; artigo determina; adjetivo caracteriza; pronome retoma; numeral quantifica. No texto, essas escolhas constroem precisão, tom e ponto de vista.","beats":["Classes nominais orbitam o substantivo e concordam com ele em gênero e número.","Artigo definido particulariza; indefinido generaliza ou apresenta algo novo.","Pronome evita repetição e cria coesão; adjetivo pode informar ou revelar avaliação.","Gênero textual nasce de uma situação real: quem fala, para quem, com qual objetivo e em qual suporte."],"memory":"Gênero é o jogo; classe gramatical é uma das jogadas.","trap":"Não confunda gênero textual (notícia, meme, artigo) com tipologia (narrar, descrever, argumentar).","action":"Reconhecer estruturas, comparar gêneros e justificar como escolhas linguísticas produzem sentido.","codes":["EM13LGG101","EM13LGG103","EM13LGG202","EM13LGG203","EM13LGG302","EM13LGG401","EM13LGG402","EM13LGG703","EM13LGG704","EM13LP01","EM13LP02","EM13LP04","EM13LP06","EM13LP07","EM13LP08","EM13LP10","EM13LP28","EM13LP31","EM13LP44","EM13LP46"]},{"number":"04","title":"Noções de semântica e estilística","scene":{"label":"Laboratório dos sentidos","symbol":"~"},"snapshot":"Semântica pergunta “o que significa?”; estilística pergunta “que efeito essa forma produz?”. Contexto decide o valor final.","beats":["Denotação é sentido mais literal; conotação ativa associações, emoção e cultura.","Polissemia: uma palavra, sentidos relacionados. Ambiguidade: mais de uma leitura possível no enunciado.","Metáfora aproxima por semelhança; metonímia, por relação; ironia diz uma coisa para sugerir outra.","Repetição, ordem das palavras, pontuação e registro também são escolhas de estilo."],"memory":"Sentido = palavra + contexto + intenção.","trap":"Figura de linguagem não é enfeite automático: sempre diga qual efeito ela cria naquele texto.","action":"Analisar efeitos de sentido, variedades linguísticas e recursos expressivos em diferentes mídias.","codes":["EM13LGG101","EM13LGG202","EM13LGG401","EM13LGG402","EM13LGG502","EM13LGG602","EM13LP01","EM13LP03","EM13LP06","EM13LP10","EM13LP11","EM13LP31","EM13LP46"]},{"number":"05","title":"Verbos","scene":{"label":"Máquina do tempo verbal","symbol":"↻"},"snapshot":"O verbo localiza ações e estados, mas também mostra certeza, hipótese, ordem, duração e voz do enunciador.","beats":["Indicativo apresenta fato; subjuntivo, possibilidade/desejo; imperativo, orientação ou ordem.","Tempo situa; aspecto mostra se a ação começou, dura, repete ou terminou.","Voz ativa destaca o agente; passiva destaca o alvo; sujeito indeterminado pode apagar responsabilidades.","Regência liga verbo a complementos; concordância alinha o verbo ao núcleo do sujeito."],"memory":"Troque o tempo ou a voz e veja o sentido se mover.","trap":"Sujeito depois do verbo continua comandando a concordância: “Chegaram as notícias”.","action":"Usar formas verbais para interpretar posicionamentos e produzir textos coesos e adequados.","codes":["EM13LGG401","EM13LGG402","EM13LGG704","EM13LGG101","EM13LGG104","EM13LGG301","EM13LP01","EM13LP06","EM13LP08","EM13LP10","EM13LP11","EM13LP15","EM13LP28","EM13LP46","EM13LP49"]}],"quiz":{"question":"Em “A cidade acordou nervosa”, o adjetivo produz qual efeito?","options":["Apenas classifica cidade","Personifica e sugere tensão","Marca voz passiva"],"answer":1,"why":"“Nervosa” atribui estado humano à cidade e condensa o clima de tensão: forma e efeito caminham juntos."}},{"id":"literatura","mark":"Li","name":"Literatura","short":"Literatura","volume":"Volume 1 · unidades 3–5","theme":"sepia","world":{"label":"biblioteca de épocas","motifs":["obra","contexto","estética"]},"tagline":"Toda escola literária é uma resposta ao seu tempo — e todo narrador tem algo a esconder.","hook":"Contexto → estética → efeito.","route":["localize a época","reconheça marcas estéticas","compare o olhar sobre a sociedade"],"lens":"As competências pedem leitura histórica e estética: relacione obra, contexto, valores culturais, circulação e construção de identidades.","topics":[{"number":"03","title":"Pré-Romantismo e Romantismo","scene":{"label":"Salão romântico","symbol":"R"},"snapshot":"Contra o equilíbrio racional, o Romantismo põe o “eu”, a emoção, a imaginação, a natureza e a liberdade no centro.","beats":["Revoluções burguesas e nacionalismos valorizam indivíduo, povo e identidade nacional.","Pré-Romantismo anuncia sensibilidade, subjetividade e crítica às regras clássicas.","Natureza vira espelho do estado de alma; o herói pode ser rebelde, solitário e idealizado.","Escapismo, sonho, passado medieval e amor impossível expressam conflito com a realidade."],"memory":"Se o mundo aperta, o romântico foge para o eu, a natureza ou o passado.","trap":"Romantismo não é só amor: inclui nacionalismo, crítica social, morte, liberdade e construção identitária.","action":"Interpretar a literatura como produção cultural e reconhecer continuidades entre estética, história e identidade.","codes":["EM13LGG602","EM13LP01","EM13LP48","EM13LP49","EM13LP50"]},{"number":"04","title":"O Romantismo no Brasil","scene":{"label":"Brasil imaginado","symbol":"BR"},"snapshot":"Após a Independência, a literatura ajuda a “inventar” o Brasil: idealiza paisagens e heróis enquanto procura uma voz nacional.","beats":["1ª geração: nacionalista e indianista; o indígena aparece como herói idealizado.","2ª geração: ultrarromântica; tédio, sonho, amor impossível, fuga e morte.","3ª geração: condoreira; liberdade, abolicionismo, oratória e tom coletivo.","Na prosa, romances urbanos, indianistas e regionalistas imaginam diferentes Brasis."],"memory":"Índio → eu → povo: um atalho para as três gerações poéticas.","trap":"O indígena romântico é símbolo nacional idealizado, não um retrato fiel da diversidade indígena.","action":"Comparar projetos de brasilidade, vozes sociais e formas de representação literária.","codes":["EM13LGG602","EM13LP01","EM13LP48","EM13LP49","EM13LP50","EM13LP52"]},{"number":"05","title":"O Realismo no Brasil e em Portugal","scene":{"label":"Sala dos espelhos","symbol":"◐"},"snapshot":"O Realismo troca a idealização pela lupa crítica: observa relações sociais, interesse, aparência, poder e contradição.","beats":["Contexto: urbanização, ciência, positivismo e crise dos valores românticos.","Narrador analítico, ironia e aprofundamento psicológico desmontam aparências.","Machado de Assis expõe autoengano e elite brasileira; Eça de Queirós critica burguesia e instituições portuguesas.","Naturalismo radicaliza o olhar determinista, aproximando comportamento de hereditariedade e meio."],"memory":"Romântico idealiza; realista desconfia.","trap":"Narrador em primeira pessoa não é garantia de verdade — em Machado, a dúvida faz parte da leitura.","action":"Analisar narrador, valores, conflitos sociais e diálogo entre literaturas de língua portuguesa.","codes":["EM13LGG602","EM13LP01","EM13LP48","EM13LP49","EM13LP50","EM13LP52"]}],"quiz":{"question":"Qual movimento melhor explica um narrador irônico que desmonta a aparência da elite?","options":["Arcadismo","Realismo","Ultrarromantismo"],"answer":1,"why":"A ironia, a crítica social e a análise das contradições são marcas centrais do Realismo."}},{"id":"matematica","mark":"∑","name":"Matemática","short":"Matemática","volume":"Volume 2 · unidades 3–5","theme":"blueprint","world":{"label":"prancheta de cálculo","motifs":["modelo","medida","prova"]},"tagline":"Fórmula sem leitura é ruído. Primeiro modele a situação; depois faça a conta.","hook":"Dados → modelo → cálculo → sentido.","route":["desenhe ou organize os dados","escolha a relação","teste unidade e plausibilidade"],"lens":"Os códigos MAT priorizam modelagem, representação, resolução e validação. Explique a estratégia e interprete a resposta no contexto.","topics":[{"number":"03","title":"Matemática aplicada","scene":{"label":"Central de modelos","symbol":"f(x)"},"snapshot":"Aplicar matemática é traduzir uma situação real em relações, operar com elas e voltar ao problema para interpretar o resultado.","beats":["Razões, proporções e porcentagens comparam grandezas; variações sucessivas não se somam automaticamente.","Funções descrevem dependência: a taxa de variação conta como uma grandeza reage à outra.","Juros compostos crescem multiplicativamente: M = C(1 + i)ᵗ.","Tabelas, gráficos e medidas estatísticas devem ser lidos com unidade, escala, fonte e contexto."],"memory":"Modelo bom responde ao problema — não apenas produz um número.","trap":"Aumentar 20% e depois reduzir 20% não volta ao início: 1,2 × 0,8 = 0,96.","action":"Modelar situações, interpretar dados e tomar decisões sustentadas por diferentes representações.","codes":["EM13MAT101","EM13MAT102","EM13MAT103","EM13MAT104","EM13MAT202","EM13MAT303","EM13MAT313","EM13MAT314","EM13MAT315","EM13MAT406","EM13MAT407","EM13MAT503"]},{"number":"04","title":"Geometria das superfícies planas I","scene":{"label":"Oficina de áreas","symbol":"□"},"snapshot":"Área mede superfície; perímetro mede contorno. A prova costuma esconder essa diferença dentro de uma situação concreta.","beats":["Retângulo: A = b·h. Triângulo: A = b·h/2. Paralelogramo: A = b·h.","Trapézio: A = (B + b)·h/2. Losango: A = D·d/2.","Círculo: A = πr²; comprimento da circunferência: C = 2πr.","Decompor uma figura irregular em formas conhecidas costuma ser a estratégia mais segura."],"memory":"Pinte para pensar em área; contorne para pensar em perímetro.","trap":"Área usa unidade ao quadrado. Converter 1 m para 100 cm faz 1 m² virar 10.000 cm².","action":"Resolver e elaborar problemas de medidas e áreas, usando representações geométricas.","codes":["EM13MAT105","EM13MAT308"]},{"number":"05","title":"Geometria das superfícies planas II","scene":{"label":"Mapa das formas","symbol":"△"},"snapshot":"Quando a figura complica, semelhança, escala e decomposição transformam o desenho em partes controláveis.","beats":["Figuras semelhantes mantêm ângulos e têm lados proporcionais; áreas variam com o quadrado da razão.","Setor circular é uma fração do círculo: A = (ângulo/360°)·πr².","Em figuras vazadas, calcule área maior menos área retirada.","Otimizar é procurar maior ou menor valor respeitando as condições do problema."],"memory":"Razão de lados k; razão de áreas k².","trap":"Uma mudança linear no lado produz mudança quadrática na área: dobrar o lado quadruplica a área.","action":"Investigar propriedades, comparar áreas e usar geometria para modelar projetos e espaços.","codes":["EM13MAT103","EM13MAT105","EM13MAT201","EM13MAT307","EM13MAT308","EM13MAT315","EM13MAT405","EM13MAT505","EM13MAT506"]}],"quiz":{"question":"Um quadrado teve o lado aumentado em 10%. Quanto sua área aumentou?","options":["10%","20%","21%"],"answer":2,"why":"A área varia com o quadrado: 1,1² = 1,21. Portanto, o aumento é de 21%."}},{"id":"historia","mark":"H","name":"História","short":"História","volume":"Volume 2 · unidades 3–5","theme":"archive","world":{"label":"arquivo do tempo","motifs":["fonte","processo","memória"]},"tagline":"História não é uma fila de datas: é uma disputa por poder, recursos e memória.","hook":"Causa + agente + processo + consequência.","route":["situe tempo e espaço","identifique interesses","conecte mudanças e permanências"],"lens":"As habilidades CHS pedem análise de processos, fontes, territórios e relações de poder. Compare perspectivas e evite causas únicas.","topics":[{"number":"03","title":"Estados modernos e expansão marítima","scene":{"label":"Sala das navegações","symbol":"N"},"snapshot":"Reis centralizam poder e arrecadação; comércio busca novas rotas; técnicas náuticas tornam possível a expansão europeia.","beats":["A monarquia se fortalece com impostos, exército, leis e alianças com a burguesia.","Mercantilismo liga riqueza a comércio favorável, metais e proteção econômica.","Portugal combina posição atlântica, experiência marítima, capital e centralização precoce.","A expansão conecta oceanos, mas produz conquista, escravização, epidemias e disputa colonial."],"memory":"Centralização financia navegação; navegação amplia o poder do Estado.","trap":"Não atribua a expansão apenas à “aventura”: havia tecnologia, religião, comércio e política de Estado.","action":"Relacionar formação estatal, circulação econômica, técnicas e transformações territoriais.","codes":["EM13CHS101","EM13CHS102","EM13CHS104","EM13CHS105","EM13CHS106","EM13CHS201","EM13CHS203","EM13CHS401","EM13CHS501","EM13CHS603"]},{"number":"04","title":"A invenção do Brasil","scene":{"label":"Arquivo Brasil","symbol":"1500"},"snapshot":"“Descobrimento” é uma narrativa europeia. O território já reunia povos diversos; a colonização impôs novas relações de poder, trabalho e espaço.","beats":["Cartas, mapas e pinturas não são espelhos neutros: registram o olhar e os interesses de quem produziu.","A extração do pau-brasil usa escambo e alianças, seguida por ocupação e administração colonial.","Capitanias, governo-geral e plantation açucareira organizam controle, terra e exportação.","Resistências indígenas e africanas mostram que os colonizados foram agentes históricos, não figuras passivas."],"memory":"O Brasil foi ocupado no território e construído no discurso.","trap":"Evite tratar indígenas como um grupo único ou colonização como encontro pacífico.","action":"Criticar fontes e narrativas, reconhecer diversidade e analisar formação territorial e colonial.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS105","EM13CHS106","EM13CHS201","EM13CHS202","EM13CHS204","EM13CHS302","EM13CHS401","EM13CHS402","EM13CHS503","EM13CHS601"]},{"number":"05","title":"O pensamento iluminista e suas consequências","scene":{"label":"Café das Luzes","symbol":"☼"},"snapshot":"O Iluminismo usa razão e crítica para questionar absolutismo e privilégios, defendendo direitos — embora nem sempre para todos.","beats":["Locke: direitos naturais e governo limitado; Montesquieu: divisão de poderes.","Voltaire critica intolerância; Rousseau pensa soberania popular e vontade geral.","As ideias circulam em livros, salões e enciclopédias e alimentam revoluções liberais.","A linguagem universal dos direitos conviveu com escravidão, colonialismo e exclusão das mulheres."],"memory":"Razão para criticar; direitos para limitar o poder.","trap":"Ideia não causa revolução sozinha: some crises econômicas, conflitos sociais e ação política.","action":"Comparar ideias políticas, seus usos históricos, limites e efeitos nas instituições modernas.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS104","EM13CHS106","EM13CHS501","EM13CHS502","EM13CHS504","EM13CHS603","EM13CHS605"]}],"quiz":{"question":"Qual leitura é historicamente mais completa para a expansão marítima?","options":["Foi obra de heróis isolados","Resultou só da fé","Uniu Estado, comércio, técnica e conquista"],"answer":2,"why":"O processo foi multicausal e articulou interesses políticos, econômicos, religiosos e tecnológicos."}},{"id":"oficina","mark":"¶","name":"Oficina de Texto","short":"Oficina","volume":"Volume 2 · produção textual","theme":"editorial","world":{"label":"mesa de redação","motifs":["tese","evidência","revisão"]},"tagline":"Uma boa redação não empilha frases bonitas: conduz o leitor por uma linha de raciocínio.","hook":"Tese clara, argumento provado, conclusão coerente.","route":["recorte o tema","defina a tese","prove em parágrafos","revise a lógica"],"lens":"Os códigos destacam planejamento, argumentação, coesão, repertório e revisão. Cada escolha deve servir ao projeto de texto.","topics":[{"number":"01","title":"Dissertação argumentativa","scene":{"label":"Redação em obras","symbol":"¶"},"snapshot":"É um texto que defende uma tese por meio de argumentos organizados, evidências pertinentes e progressão lógica.","beats":["Introdução: contextualize sem enrolar, recorte o problema e apresente uma tese respondível.","Desenvolvimento: um núcleo argumentativo por parágrafo — tópico frasal, explicação, evidência e amarração.","Use repertório como prova comentada, não como citação decorativa; explique a ponte com a tese.","Conclusão retoma o raciocínio e fecha a discussão; se pedida, a proposta deve ser viável e detalhada."],"memory":"A + E + P: afirme, explique, prove.","trap":"Conector não cria lógica. “Portanto” só funciona quando a frase realmente decorre do que veio antes.","action":"Planejar, escrever, revisar e circular textos argumentativos com autoria, coesão e responsabilidade.","codes":["EM13LGG101","EM13LGG104","EM13LGG301","EM13LP02","EM13LP03","EM13LP11","EM13LP12","EM13LP15","EM13LP37"]}],"quiz":{"question":"Qual sequência forma um parágrafo argumentativo forte?","options":["Exemplo solto + frase de efeito","Afirmação + explicação + evidência + vínculo","Citação longa + conclusão"],"answer":1,"why":"O leitor precisa enxergar o argumento, compreender sua lógica, verificar a prova e perceber a ligação com a tese."}},{"id":"filosofia","mark":"φ","name":"Filosofia","short":"Filosofia","volume":"Volume 2 · unidades 3–5","theme":"dusk","world":{"label":"ágora das ideias","motifs":["problema","conceito","argumento"]},"tagline":"Filosofar é desacelerar uma certeza até enxergar as perguntas escondidas dentro dela.","hook":"Problema → conceito → argumento.","route":["descubra a pergunta","defina os conceitos","reconstrua a resposta do autor"],"lens":"As competências CHS cobram análise conceitual, comparação de argumentos e contextualização histórica — não decore frases sem compreender o problema.","topics":[{"number":"03","title":"Filosofia medieval","scene":{"label":"Claustro das ideias","symbol":"∞"},"snapshot":"A questão central não é escolher simplesmente entre fé e razão, mas investigar como elas podem se relacionar.","beats":["Patrística: Agostinho aproxima cristianismo e platonismo; interioridade e iluminação orientam a verdade.","O problema do mal: não é substância criada, mas privação do bem ligada ao uso da liberdade.","Escolástica: Tomás de Aquino articula Aristóteles e cristianismo; razão investiga o mundo, fé trata da revelação.","As cinco vias partem de efeitos observáveis para argumentar por uma causa primeira."],"memory":"Agostinho olha para dentro; Tomás parte do mundo observado.","trap":"“Medieval” não significa ausência de razão: universidades, disputas e sistemas lógicos foram centrais.","action":"Contextualizar sistemas de pensamento e comparar respostas sobre verdade, existência e liberdade.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS104"]},{"number":"04","title":"Mundo em transição","scene":{"label":"Portal da modernidade","symbol":"↗"},"snapshot":"Renascimento, Reforma e ciência moderna deslocam autoridades e recolocam o ser humano, a natureza e o método em debate.","beats":["Humanismo recupera textos clássicos e valoriza ação, linguagem e dignidade humanas.","Reforma rompe a unidade religiosa ocidental e amplia conflitos sobre autoridade e interpretação.","Copérnico, Galileu e Kepler transformam a imagem do cosmos com matemática e observação.","A imprensa acelera circulação de ideias; mudanças culturais não apagam de imediato estruturas antigas."],"memory":"A autoridade deixa de ser ponto final e vira questão.","trap":"Transição não é ruptura instantânea: elementos medievais e modernos convivem.","action":"Analisar mudanças culturais e científicas, circulação de ideias e disputas de autoridade.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS104","EM13CHS501","EM13CHS603"]},{"number":"05","title":"O apogeu da razão","scene":{"label":"Duelo do conhecimento","symbol":"?"},"snapshot":"A filosofia moderna procura um método seguro: racionalistas confiam em princípios da razão; empiristas, na experiência.","beats":["Descartes duvida metodicamente para encontrar uma certeza: se pensa, existe como ser pensante.","Bacon valoriza indução e crítica aos “ídolos” que distorcem o conhecimento.","Locke entende a mente como formada pela experiência; Hume radicaliza a crítica à causalidade.","Kant propõe síntese: conhecimento começa na experiência, mas é organizado por estruturas do sujeito."],"memory":"Racionalismo: da razão ao mundo. Empirismo: do mundo à mente.","trap":"A dúvida cartesiana é método para buscar fundamento, não desistência de conhecer.","action":"Comparar teorias do conhecimento, seus métodos, pressupostos e limites.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS104"]}],"quiz":{"question":"Por que Descartes usa a dúvida?","options":["Para negar todo conhecimento","Para encontrar um fundamento seguro","Para defender apenas a tradição"],"answer":1,"why":"A dúvida é provisória e metódica: ela remove crenças frágeis até restar uma certeza resistente."}},{"id":"geografia","mark":"⌖","name":"Geografia","short":"Geografia","volume":"Volume 2 · unidades 3–5","theme":"terrain","world":{"label":"atlas vivo","motifs":["escala","território","fluxo"]},"tagline":"A paisagem é um processo visível: natureza, técnica e sociedade deixam marcas no território.","hook":"Processo natural + uso humano + impacto espacial.","route":["localize a escala","identifique fluxos","relacione sociedade e natureza"],"lens":"As habilidades CHS articulam natureza, território, população e desigualdade. Leia mapas, compare escalas e avalie impactos.","topics":[{"number":"03","title":"Geologia, relevo e solos","scene":{"label":"Centro da Terra","symbol":"◎"},"snapshot":"O relevo é construído por forças internas e esculpido por agentes externos; o solo nasce lentamente dessa interação com clima e vida.","beats":["Tectonismo, vulcanismo e abalos vêm da dinâmica interna e do movimento das placas.","Intemperismo quebra ou altera rochas; erosão remove, transporta e deposita sedimentos.","Planaltos tendem ao predomínio de erosão; planícies, de sedimentação; depressões são áreas rebaixadas.","Solo depende de rocha, clima, relevo, organismos e tempo; manejo inadequado acelera perda e contaminação."],"memory":"Interior levanta; clima desgasta; água transporta.","trap":"Intemperismo ocorre no lugar; erosão envolve retirada e transporte.","action":"Explicar dinâmicas físico-naturais, interpretar paisagens e avaliar usos e riscos do território.","codes":["EM13CHS102","EM13CHS106","EM13CHS206","EM13CHS301","EM13CHS302","EM13CHS303","EM13CHS304","EM13CHS306","EM13CHS604"]},{"number":"04","title":"Água e cobertura vegetal do planeta","scene":{"label":"Planeta azul","symbol":"≋"},"snapshot":"Água e vegetação formam um sistema: clima controla disponibilidade; cobertura vegetal regula infiltração, umidade, solo e rios.","beats":["O ciclo hidrológico redistribui água; pouca fração da água terrestre é doce e facilmente acessível.","Bacia hidrográfica é drenada por um rio principal e seus afluentes; aquífero armazena água subterrânea.","Vegetação responde a clima e solo e também altera o microclima e a circulação da água.","Desmatamento reduz proteção do solo, altera evapotranspiração e pode intensificar assoreamento e extremos."],"memory":"Vegetação segura o solo, devolve vapor e ajuda a água a infiltrar.","trap":"Abundância hídrica nacional não significa acesso igual: distribuição, infraestrutura e poluição importam.","action":"Analisar ciclos naturais, redes hidrográficas, biomas e conflitos socioambientais.","codes":["EM13CHS103","EM13CHS106","EM13CHS206","EM13CHS302","EM13CHS304","EM13CHS306"]},{"number":"05","title":"População: demografia e condições de vida","scene":{"label":"Observatório humano","symbol":"◉"},"snapshot":"Demografia conta pessoas; geografia pergunta como elas vivem, circulam e acessam recursos no território.","beats":["Crescimento vegetativo = natalidade − mortalidade; crescimento total também considera migrações.","Transição demográfica vai de taxas altas a baixas e altera a estrutura etária.","Pirâmides etárias revelam juventude, envelhecimento e efeitos de eventos históricos.","IDH combina renda, educação e longevidade, mas médias podem esconder desigualdades internas."],"memory":"Indicador mostra um recorte; território revela a desigualdade.","trap":"Populoso é muita gente; povoado é alta densidade demográfica.","action":"Interpretar indicadores e fluxos populacionais, relacionando-os a trabalho, direitos e qualidade de vida.","codes":["EM13CHS106","EM13CHS201","EM13CHS202","EM13CHS206","EM13CHS402","EM13CHS502"]}],"quiz":{"question":"Qual processo inclui retirada e transporte de material?","options":["Intemperismo","Erosão","Tectonismo"],"answer":1,"why":"O intemperismo altera a rocha no local; a erosão remove e transporta os fragmentos."}},{"id":"fisica","mark":"F","name":"Física","short":"Física","volume":"Volume 2 · unidades 3–5","theme":"cosmos","world":{"label":"laboratório orbital","motifs":["força","energia","equilíbrio"]},"tagline":"A Física fica menor quando você desenha as forças e acompanha para onde a energia vai.","hook":"Sistema → diagrama → lei → unidade.","route":["isole o corpo","desenhe vetores","escolha a conservação","confira sinais"],"lens":"Os códigos CNT combinam explicação de fenômenos, investigação, modelos e comunicação. A conta precisa carregar hipótese, unidade e interpretação.","topics":[{"number":"03","title":"Leis de Newton e gravitação","scene":{"label":"Sala de forças","symbol":"F"},"snapshot":"Força resultante não “mantém” o movimento: ela muda a velocidade. Sem resultante, o corpo preserva seu estado de movimento.","beats":["1ª lei: inércia. 2ª: ΣF = m·a. 3ª: forças surgem em pares, em corpos diferentes.","Peso P = m·g aponta para o centro da Terra; normal é perpendicular à superfície e não é sempre igual ao peso.","Atrito se opõe à tendência de deslizamento; no estático, ajusta-se até um valor máximo.","Gravitação: F = G·Mm/r²; campo e órbita dependem da massa e da distância."],"memory":"Resultante zero não significa repouso; pode significar velocidade constante.","trap":"Ação e reação não se anulam porque atuam em corpos diferentes.","action":"Construir modelos de forças, prever movimentos e explicar fenômenos terrestres e astronômicos.","codes":["EM13CNT204","EM13CNT207","EM13CNT301","EM13CNT303","EM13CNT306","EM13CNT307","EM13CNT310"]},{"number":"04","title":"Trabalho, energia, impulso e quantidade de movimento","scene":{"label":"Cofre da energia","symbol":"E"},"snapshot":"Duas lentes para colisões e movimentos: energia acompanha transformações; quantidade de movimento acompanha interação e impulso.","beats":["Trabalho: W = F·d·cosθ; ele mede transferência de energia por uma força.","Ec = mv²/2; potencial gravitacional perto da Terra: Ep = mgh; potência: P = ΔE/Δt.","Impulso I = F·Δt = Δp; quantidade de movimento p = m·v é vetorial.","Em sistema isolado, p total se conserva; energia cinética só se conserva em colisão elástica."],"memory":"Força por distância muda energia; força por tempo muda momento.","trap":"Conservação de energia total não significa conservação de energia mecânica — atrito a transforma em energia interna.","action":"Analisar transferências e conservações para resolver problemas e avaliar tecnologias.","codes":["EM13CNT101","EM13CNT106","EM13CNT204","EM13CNT301","EM13CNT303","EM13CNT306","EM13CNT307"]},{"number":"05","title":"Estática e física dos fluidos","scene":{"label":"Estação de equilíbrio","symbol":"Σ"},"snapshot":"Equilíbrio exige força resultante e torque resultante nulos; em fluidos, pressão transmite forças e o empuxo nasce da diferença de pressão.","beats":["Equilíbrio translacional: ΣF = 0. Rotacional: Στ = 0, com τ = F·braço perpendicular.","Densidade ρ = m/V; pressão p = F/A; pressão hidrostática cresce com profundidade: p = p₀ + ρgh.","Princípio de Pascal explica sistemas hidráulicos; pressão aplicada se transmite pelo fluido.","Empuxo é igual ao peso do fluido deslocado; flutuação compara empuxo e peso."],"memory":"Equilíbrio: não anda e não gira.","trap":"Pressão e força não são a mesma grandeza: a mesma força em área menor produz maior pressão.","action":"Aplicar condições de equilíbrio e princípios dos fluidos a máquinas, corpos e situações cotidianas.","codes":["EM13CNT204","EM13CNT301","EM13CNT303","EM13CNT306","EM13CNT307"]}],"quiz":{"question":"Um corpo move-se em linha reta com velocidade constante. A resultante é...","options":["Zero","Na direção do movimento","Igual ao peso"],"answer":0,"why":"Velocidade constante significa aceleração zero; pela 2ª lei, a força resultante também é zero."}},{"id":"biologia","mark":"Bio","name":"Biologia","short":"Biologia","volume":"Volume 2 · unidades 3–5","theme":"garden","world":{"label":"caderno de campo","motifs":["célula","evolução","vida"]},"tagline":"Na vida, estrutura e função evoluem juntas — do núcleo à diversidade das plantas.","hook":"Estrutura → processo → vantagem evolutiva.","route":["localize a escala","acompanhe o processo","compare grupos e adaptações"],"lens":"As competências CNT pedem sistemas, evidências, classificação e evolução. Relacione estruturas a funções e evite listas sem comparação.","topics":[{"number":"03","title":"Núcleo e reprodução","scene":{"label":"Arquivo do DNA","symbol":"DNA"},"snapshot":"O núcleo organiza a informação genética; divisão celular copia e distribui essa informação para crescimento, reparo e reprodução.","beats":["DNA associado a proteínas forma cromatina; quando condensa, aparecem cromossomos.","Interfase: G1 cresce, S duplica DNA, G2 prepara divisão; controle evita propagação de erros.","Mitose gera células geneticamente equivalentes e mantém a ploidia.","Meiose reduz a ploidia e aumenta variabilidade por crossing-over e segregação independente."],"memory":"Mitose mantém; meiose mistura e reduz.","trap":"Cromossomo duplicado tem duas cromátides, mas continua sendo contado como um cromossomo até a separação.","action":"Explicar transmissão da informação genética, reprodução e variabilidade com modelos celulares.","codes":["EM13CNT103","EM13CNT202","EM13CNT205","EM13CNT207","EM13CNT301","EM13CNT302","EM13CNT303","EM13CNT304","EM13CNT305"]},{"number":"04","title":"Classificação, procariotos, protozoários e algas","scene":{"label":"Árvore da vida","symbol":"Y"},"snapshot":"Classificar é representar parentesco evolutivo, não montar uma escada do “simples” ao “superior”.","beats":["Nomenclatura binomial: gênero + epíteto específico; categorias agrupam organismos por ancestralidade.","Procariotos não têm núcleo membranoso; bactérias e arqueias diferem em genética, membrana e metabolismo.","Protozoários são eucariotos heterotróficos diversos; alguns são parasitas, muitos têm papel ecológico.","Algas são principalmente fotossintetizantes aquáticas e sustentam cadeias alimentares e produção de oxigênio."],"memory":"Classificação moderna procura ramos de parentesco, não degraus de perfeição.","trap":"Nem toda bactéria causa doença; microbiotas e ciclos biogeoquímicos dependem delas.","action":"Classificar por evidências evolutivas e avaliar papéis ecológicos, sanitários e tecnológicos.","codes":["EM13CNT105","EM13CNT201","EM13CNT202","EM13CNT203","EM13CNT206","EM13CNT207","EM13CNT301","EM13CNT302","EM13CNT303","EM13CNT305","EM13CNT310"]},{"number":"05","title":"Diversidade das plantas","scene":{"label":"Jardim evolutivo","symbol":"♧"},"snapshot":"A conquista do ambiente terrestre acompanha novidades: proteção contra dessecação, vasos, sementes, pólen, flores e frutos.","beats":["Briófitas: sem vasos; dependem mais de água e têm gametófito dominante.","Pteridófitas: têm vasos, mas não sementes; ainda dependem de água para fecundação.","Gimnospermas: semente e pólen; não formam fruto. Angiospermas: flor e fruto.","Alternância de gerações intercala gametófito haploide e esporófito diploide."],"memory":"Vaso → semente → flor/fruto: a trilha das grandes novidades.","trap":"Fruto vem do ovário da flor; semente vem do óvulo fecundado.","action":"Comparar ciclos e adaptações vegetais, relacionando diversidade a evolução e ambiente.","codes":["EM13CNT105","EM13CNT201","EM13CNT202","EM13CNT206","EM13CNT207"]}],"quiz":{"question":"Qual novidade torna a fecundação independente de água externa?","options":["Rizoide","Pólen","Esporo"],"answer":1,"why":"O grão de pólen transporta o gametófito masculino, reduzindo a dependência de água para o encontro dos gametas."}},{"id":"quimica","mark":"Q","name":"Química","short":"Química","volume":"Volume 2 · unidades 3–5","theme":"lab","world":{"label":"bancada molecular","motifs":["matéria","reação","proporção"]},"tagline":"A equação é a história; os coeficientes dizem quantos personagens entram e saem.","hook":"Espécies → proporção → unidade → partículas.","route":["identifique substâncias","balanceie","converta para mol","interprete o resultado"],"lens":"Os códigos CNT valorizam modelos de matéria, investigação, cálculo e impacto. Mostre relações entre nível macroscópico, partículas e símbolos.","topics":[{"number":"03","title":"Química inorgânica","scene":{"label":"Armário inorgânico","symbol":"pH"},"snapshot":"Ácidos, bases, sais e óxidos são famílias reconhecidas por composição e comportamento — sobretudo em água e em reações.","beats":["Arrhenius: ácido libera H⁺ em água; base libera OH⁻. Brønsted amplia: ácido doa próton, base recebe.","Neutralização: ácido + base → sal + água; a proporção depende do balanceamento.","Óxidos são compostos binários com oxigênio e podem ter caráter ácido, básico, anfótero ou neutro.","Dissociação separa íons já existentes; ionização forma íons a partir de moléculas."],"memory":"Primeiro classifique; depois preveja como reage.","trap":"Força de ácido não é concentração: força mede ionização; concentração mede quantidade por volume.","action":"Usar modelos para classificar substâncias, prever reações e avaliar aplicações e riscos.","codes":["EM13CNT301","EM13CNT302","EM13CNT303","EM13CNT310"]},{"number":"04","title":"Cálculos químicos e estequiometria","scene":{"label":"Cozinha do mol","symbol":"mol"},"snapshot":"Estequiometria é uma ponte: dado → mol → proporção da equação → unidade pedida.","beats":["Balanceie antes de calcular: coeficientes expressam proporções em mol e partículas.","n = m/M converte massa em mol; N = n·Nₐ converte mol em entidades.","Reagente limitante acaba primeiro e determina o máximo de produto.","Rendimento = quantidade real/teórica × 100%; pureza informa a fração útil da amostra."],"memory":"Tudo passa pelo mol.","trap":"Não use massas na proporção dos coeficientes; primeiro converta para mol.","action":"Planejar e interpretar transformações quantitativas, considerando eficiência e consumo de recursos.","codes":["EM13CNT101","EM13CNT206","EM13CNT301","EM13CNT302","EM13CNT303"]},{"number":"05","title":"Soluções e propriedades coligativas","scene":{"label":"Clube das soluções","symbol":"aq"},"snapshot":"Solução é mistura homogênea; propriedades coligativas dependem da quantidade de partículas dissolvidas, não da identidade delas.","beats":["Concentração comum C = m/V; molaridade = n/V; diluição conserva soluto: C₁V₁ = C₂V₂.","Solubilidade é o máximo que dissolve em certas condições; curva mostra efeito da temperatura.","Soluto não volátil reduz pressão de vapor, eleva ebulição e abaixa congelamento.","Osmose move solvente através de membrana para o meio de maior concentração efetiva de partículas."],"memory":"Mais partículas: menor vapor e congelamento; maior ebulição e pressão osmótica.","trap":"Eletrólitos podem gerar várias partículas por fórmula; isso intensifica o efeito coligativo ideal.","action":"Analisar soluções por modelos e dados e relacioná-las a processos biológicos, industriais e ambientais.","codes":["EM13CNT101","EM13CNT206","EM13CNT301","EM13CNT302","EM13CNT303","EM13CNT305","EM13CNT307","EM13CNT310"]}],"quiz":{"question":"Qual é a primeira ação segura num problema estequiométrico?","options":["Converter tudo em gramas","Balancear a equação","Escolher o maior reagente"],"answer":1,"why":"Sem balanceamento, a proporção entre as substâncias está errada e todo o cálculo perde o sentido."}},{"id":"sociologia","mark":"S","name":"Sociologia","short":"Sociologia","volume":"Volume 2 · unidades 3–5","theme":"civic","world":{"label":"mural da sociedade","motifs":["trabalho","poder","consumo"]},"tagline":"A Sociologia transforma o que parece “natural” em uma pergunta sobre relações sociais.","hook":"Conceito + estrutura + exemplo social.","route":["estranhe o cotidiano","use o conceito","ligue indivíduo e sociedade"],"lens":"As habilidades CHS pedem interpretação crítica, comparação de teorias e análise de desigualdades, trabalho, poder e consumo.","topics":[{"number":"03","title":"O pensamento de Karl Marx","scene":{"label":"Fábrica de Marx","symbol":"M"},"snapshot":"Marx lê a sociedade a partir da produção material e do conflito entre classes que ocupam posições diferentes nesse processo.","beats":["Materialismo histórico: formas de produzir organizam relações sociais e mudam por contradições.","Burguesia controla os meios de produção; proletariado vende força de trabalho.","Mais-valia é o valor produzido além do que retorna ao trabalhador como salário.","Alienação separa o trabalhador do produto, do processo, de si e dos outros; ideologia naturaliza relações históricas."],"memory":"Quem produz? Quem controla? Quem fica com o excedente?","trap":"Classe social em Marx não é apenas faixa de renda; é posição nas relações de produção.","action":"Analisar trabalho, conflito, desigualdade e transformação social por categorias teóricas.","codes":["EM13CHS101","EM13CHS102","EM13CHS103"]},{"number":"04","title":"O pensamento de Max Weber","scene":{"label":"Mapa das ações","symbol":"W"},"snapshot":"Weber parte do sentido que os indivíduos atribuem às ações e investiga como essas ações formam instituições.","beats":["Ação tradicional, afetiva, racional por valores e racional por fins são tipos ideais para interpretar condutas.","Compreensão (Verstehen) reconstrói o sentido da ação sem abandonar explicação rigorosa.","Dominação pode ser tradicional, carismática ou legal-racional.","Modernidade intensifica racionalização e burocracia; eficiência convive com impessoalidade e controle."],"memory":"Marx pergunta pela posição; Weber pergunta pelo sentido.","trap":"Tipo ideal não é modelo perfeito: é ferramenta conceitual para comparar a realidade.","action":"Interpretar ações, legitimidade e instituições e comparar explicações sociológicas.","codes":["EM13CHS101","EM13CHS102","EM13CHS103"]},{"number":"05","title":"Capitalismo e consumo","scene":{"label":"Vitrine do consumo","symbol":"$"},"snapshot":"Consumir satisfaz necessidades, mas também comunica identidade, pertencimento e status dentro de um sistema de produção e publicidade.","beats":["Mercadoria tem valor de uso e de troca; relações sociais podem aparecer como relações entre coisas.","Publicidade não só informa: associa produtos a estilos de vida, desejos e distinções.","Crédito e obsolescência aceleram consumo, endividamento e descarte.","Consumo consciente importa, mas soluções também dependem de regulação, produção e infraestrutura."],"memory":"A compra termina no caixa; seus efeitos começam antes e continuam depois.","trap":"Não reduza o problema a “escolha individual”: renda, oferta, cultura e política moldam o consumo.","action":"Avaliar criticamente produção, publicidade, desigualdade, sustentabilidade e práticas de consumo.","codes":["EM13CHS101","EM13CHS102","EM13CHS103","EM13CHS301","EM13CHS502","EM13CHS503","EM13CHS504"]}],"quiz":{"question":"Qual comparação está correta?","options":["Marx: sentido da ação; Weber: mais-valia","Marx: relações de produção; Weber: sentido da ação","Ambos negam instituições"],"answer":1,"why":"É um bom eixo de comparação: Marx enfatiza estrutura e conflito; Weber, sentidos da ação e formas de dominação."}},{"id":"ingles","mark":"EN","name":"Língua Inglesa","short":"Inglês","volume":"Making a Change / B 2.2","theme":"zine","world":{"label":"culture zine","motifs":["voice","context","change"]},"tagline":"Ler em inglês não é traduzir cada palavra: é construir o sentido usando pistas do próprio texto.","hook":"Contexto → palavras-chave → posicionamento.","route":["observe título e imagem","encontre palavras repetidas","identifique voz e objetivo"],"lens":"O foco é leitura crítica, repertório cultural e uso social da língua: localizar pistas, inferir sentidos e reconhecer o posicionamento de quem escreve.","topics":[{"number":"01","title":"Our Art","scene":{"label":"Galeria da identidade","symbol":"ART"},"snapshot":"A arte pode representar identidades, questionar estereótipos e dar visibilidade a vozes muitas vezes ignoradas. O texto em inglês deve ser lido junto com suas imagens e seu contexto cultural.","beats":["Antes de ler tudo, use title (título), image (imagem), captions (legendas) e source (fonte) para prever o assunto.","Pergunte: Who created it? (Quem criou?), For whom? (Para quem?) e What is the message? (Qual é a mensagem?).","Vocabulário-chave: artwork = obra de arte; heritage = patrimônio/herança cultural; belonging = pertencimento; audience = público.","Expressões como “I believe” (eu acredito), “in my view” (na minha visão) e “this suggests” (isso sugere) revelam opinião."],"memory":"Não decodifique palavra por palavra; reúna pistas que apontem para a mensagem principal.","trap":"Uma palavra parecida com o português pode ser falso cognato. Confirme o sentido pela frase e pelo tema.","action":"Interpretar linguagem verbal e visual, reconhecer diversidade cultural e defender um ponto de vista com evidências.","codes":[]},{"number":"02","title":"Sport and Activism","scene":{"label":"Arquibancada ativista","symbol":"GO!"},"snapshot":"Atletas podem usar sua visibilidade para transformar o esporte em espaço de debate sobre direitos, justiça e representatividade.","beats":["Separe fact (fato verificável) de opinion (avaliação) e procure a evidence usada para sustentar uma afirmação.","Causa: because/since = porque; due to = devido a. Consequência: therefore = portanto; as a result = como resultado.","Contraste: but = mas; however = porém; although = embora; while = enquanto/ao passo que.","Vocabulário-chave: protest = protesto; equality = igualdade; awareness = conscientização; boycott = boicote; backlash = reação negativa."],"memory":"Depois de “however”, preste atenção: o autor está mudando a direção do argumento.","trap":"Ativismo é o tema, mas a questão pode avaliar fonte, opinião, conector ou uma inferência.","action":"Analisar discurso midiático, argumentação, participação social e o alcance público da língua inglesa.","codes":[]},{"number":"03","title":"Social Pressure","scene":{"label":"Radar social","symbol":"!"},"snapshot":"A pressão social influencia comportamentos por meio do desejo de pertencimento, da comparação, da aprovação e do medo de exclusão — dentro e fora da internet.","beats":["Peer pressure é a pressão do grupo. Pode ser explícita, com uma cobrança direta, ou implícita, por expectativas e comparação.","Modal verbs regulam a força da mensagem: must = obrigação forte; should = conselho; can = capacidade ou possibilidade.","Reconheça estratégias persuasivas baseadas em popularidade, autoridade, urgência, medo e imagens idealizadas.","Vocabulário-chave: fit in = encaixar-se; stand out = destacar-se; self-esteem = autoestima; boundaries = limites."],"memory":"Procure quem deseja que outra pessoa faça o quê — e por qual motivo.","trap":"Não responda pela sua opinião antes de verificar o que o texto realmente permite concluir.","action":"Inferir sentidos, avaliar estratégias persuasivas e discutir bem-estar e uso responsável das mídias.","codes":[]}],"quiz":{"question":"Qual conector normalmente introduz uma ideia de contraste?","options":["Therefore","However","Because"],"answer":1,"why":"“However” significa “porém/entretanto” e muda a direção do argumento. A frase seguinte costuma trazer uma ressalva importante do autor."}}];
+    const questBlueprints = {
+      portugues: [
+        ["Substantivo","É a classe que nomeia seres, lugares, sentimentos, ações e ideias.","Em “a coragem venceu o medo”, coragem e medo funcionam como substantivos.","É sempre uma palavra que caracteriza outra.","Só pode nomear objetos concretos.","Localize o núcleo do grupo nominal e observe quais palavras dependem dele."],
+        ["Artigo definido e indefinido","O definido particulariza algo conhecido; o indefinido apresenta ou generaliza.","“Um aluno chegou; o aluno sentou” apresenta primeiro e retoma depois.","Os dois artigos produzem exatamente o mesmo sentido.","O artigo nunca interfere na interpretação.","Compare o grau de especificidade criado por “o/a” e “um/uma”."],
+        ["Adjetivo e efeito de sentido","O adjetivo caracteriza o substantivo e também pode revelar avaliação.","Em “medida cruel”, cruel mostra o posicionamento negativo do enunciador.","Adjetivo serve apenas para indicar quantidade.","Todo adjetivo é neutro e objetivo.","Além de classificar, explique o julgamento ou a imagem que o adjetivo constrói."],
+        ["Pronome e coesão","O pronome retoma, substitui ou acompanha referentes e evita repetições.","“Marina trouxe o livro e o entregou” usa “o” para retomar livro.","Pronome sempre introduz um referente totalmente novo.","Pronome não participa da coesão textual.","Descubra a que termo o pronome se refere antes de interpretar a frase."],
+        ["Gênero e tipologia textual","Gênero é a forma social do texto; tipologia é o modo de organização linguística.","Uma receita é gênero e usa principalmente a tipologia injuntiva.","Narração e descrição são sempre gêneros.","Notícia e propaganda são tipos textuais, não gêneros.","Pergunte objetivo, público e suporte para reconhecer o gênero; observe a organização para reconhecer a tipologia."],
+        ["Denotação e conotação","Denotação é o sentido mais literal; conotação ativa sentidos figurados e culturais.","Em “ele tem coração de pedra”, pedra é usada conotativamente.","Conotação é erro de dicionário.","Denotação depende obrigatoriamente de metáfora.","Use o contexto para decidir se a expressão nomeia algo literalmente ou cria uma imagem."],
+        ["Polissemia e ambiguidade","Polissemia é uma palavra com sentidos relacionados; ambiguidade é a possibilidade de mais de uma leitura.","“Ele estava no banco” só ganha sentido preciso quando o contexto indica assento ou instituição.","Polissemia significa duas palavras com grafias diferentes.","Ambiguidade sempre torna o texto inválido.","Diferencie o repertório de sentidos da palavra da dupla interpretação construída pela frase."],
+        ["Metáfora, metonímia e ironia","Metáfora aproxima por semelhança, metonímia por relação e ironia cria contraste entre o dito e o sugerido.","“Li Machado de Assis” é metonímia: o autor representa sua obra.","Toda comparação sem “como” é metonímia.","Ironia significa concordar literalmente com a frase.","Nomeie a figura e explique o efeito concreto que ela produz naquele texto."],
+        ["Modos verbais","Indicativo apresenta fato, subjuntivo hipótese ou desejo e imperativo orientação ou ordem.","“Se eu estudasse, teria mais segurança” emprega o subjuntivo para uma hipótese.","O subjuntivo indica certeza absoluta.","O imperativo serve apenas para narrar o passado.","Observe a atitude do enunciador diante da ação, não apenas a terminação verbal."],
+        ["Voz verbal e concordância","A voz muda o foco entre agente e alvo; a concordância segue o núcleo do sujeito.","Em “Chegaram as notícias”, o plural ocorre porque notícias é o núcleo do sujeito.","O verbo concorda sempre com a palavra imediatamente anterior.","Voz passiva e sujeito indeterminado são a mesma estrutura.","Trocar voz ou ordem dos termos pode mudar o destaque, mas não elimina as relações sintáticas."]
+      ],
+      literatura: [
+        ["Pré-Romantismo","É a transição que antecipa subjetividade, emoção e liberdade antes do Romantismo consolidado.","Uma obra ainda clássica que amplia conflitos íntimos pode revelar sensibilidade pré-romântica.","É uma fase posterior ao Realismo.","Rejeita completamente emoção e natureza.","Leia-o como passagem histórica, não como escola idêntica ao Romantismo pleno."],
+        ["Romantismo","Valoriza o eu, a emoção, a imaginação, a natureza e a liberdade criativa.","A natureza refletindo a tristeza do eu lírico é uma marca romântica.","Prioriza impessoalidade e análise científica.","Busca apenas equilíbrio racional e regras fixas.","Romantismo não é só amor: envolve identidade, nacionalismo, rebeldia, crítica e escapismo."],
+        ["Primeira geração brasileira","É nacionalista e indianista, transformando o indígena idealizado em símbolo da nação.","Gonçalves Dias e “I-Juca-Pirama” representam o projeto indianista.","Tem como centro o tédio e a morte do eu lírico.","É exclusivamente realista e urbana.","Reconheça o projeto de construir uma identidade nacional após a Independência."],
+        ["Segunda geração brasileira","É ultrarromântica, marcada por subjetividade, sonho, tédio, amor impossível e morte.","Álvares de Azevedo representa o mergulho no eu e no escapismo.","Tem tom coletivo e abolicionista como centro.","Defende observação objetiva da burguesia.","O chamado mal do século reúne idealização, melancolia e fuga da realidade."],
+        ["Terceira geração brasileira","É condoreira, oratória e voltada à liberdade e às causas sociais.","Castro Alves usa a poesia como denúncia da escravidão.","Abandona qualquer preocupação política.","É a fase do medievalismo europeu.","O voo do condor simboliza visão ampla, liberdade e voz pública."],
+        ["Prosa romântica brasileira","Organiza romances urbanos, indianistas e regionalistas para imaginar diferentes Brasis.","José de Alencar escreve “Iracema”, indianista, e “Senhora”, urbano.","Todos os romances românticos brasileiros são poemas épicos.","A prosa rejeita natureza e identidade nacional.","Identifique o espaço do romance e o tipo de Brasil que ele idealiza ou problematiza."],
+        ["Realismo","Troca a idealização por análise crítica das relações sociais e psicológicas.","Um narrador irônico que desmonta a aparência da elite indica procedimento realista.","Idealiza heróis perfeitos e amores absolutos.","Evita contradição e crítica social.","O realista desconfia das aparências e examina interesses, poder e autoengano."],
+        ["Machado de Assis","Usa ironia, análise psicológica e narradores pouco confiáveis para criticar a elite brasileira.","Em “Dom Casmurro”, a versão de Bentinho deve ser questionada, não aceita automaticamente.","É o principal poeta indianista da primeira geração.","Seus narradores sempre contam uma verdade neutra.","Em Machado, a dúvida do leitor faz parte da construção do sentido."],
+        ["Eça de Queirós","É o grande realista português e critica burguesia, clero e costumes sociais.","“O Primo Basílio” examina aparência social, adultério e moral burguesa.","É representante do indianismo brasileiro.","Defende a idealização romântica sem ironia.","Relacione a crítica das personagens às instituições portuguesas do século XIX."],
+        ["Naturalismo","Radicaliza tendências realistas com determinismo, hereditariedade, meio e coletividade.","Em “O Cortiço”, o ambiente e as condições sociais participam da explicação das condutas.","Defende liberdade absoluta sem influência social ou biológica.","É sinônimo exato de Romantismo.","Diferencie análise psicológica realista de ênfase naturalista no meio e na hereditariedade."]
+      ],
+      matematica: [
+        ["Porcentagens sucessivas","Cada taxa incide sobre o valor obtido na etapa anterior, por isso os percentuais não são simplesmente somados.","Aumentar 20% e reduzir 20% multiplica por 1,2 e por 0,8, resultando em 96% do inicial.","Aumentar e reduzir a mesma taxa sempre anula a mudança.","Percentual deve ser calculado sem considerar a base.","Transforme cada taxa em fator multiplicativo e respeite a ordem das operações."],
+        ["Função e taxa de variação","Função relaciona grandezas; a taxa mostra quanto uma varia quando a outra muda.","Numa função linear, o coeficiente de x indica a variação de y por unidade de x.","Função é apenas uma tabela sem relação entre grandezas.","Taxa de variação é sempre igual a zero.","Interprete variável, unidade e sentido da taxa antes de substituir números."],
+        ["Juros compostos","O montante cresce multiplicativamente segundo M = C(1 + i)ᵗ.","R$ 1.000 a 10% por dois períodos vira 1.000·1,1² = R$ 1.210.","Os juros são calculados sempre apenas sobre o capital inicial.","O expoente representa o valor da taxa.","C é capital, i é taxa por período e t é o número de períodos compatíveis com essa taxa."],
+        ["Leitura de gráficos","Escala, unidade, fonte e intervalo dos eixos determinam a interpretação correta.","Um eixo vertical cortado pode fazer uma pequena diferença parecer enorme.","A forma visual do gráfico basta, sem verificar os eixos.","Todo gráfico começa obrigatoriamente em zero.","Compare valores reais e proporções; não confie apenas na impressão criada pelo desenho."],
+        ["Área e perímetro","Área mede a superfície em unidades quadradas; perímetro mede o contorno em unidades lineares.","Para cercar um terreno calcula-se perímetro; para cobri-lo com grama calcula-se área.","Área e perímetro sempre possuem o mesmo valor.","Perímetro é medido em cm².","Pergunte se o problema quer pintar/preencher ou contornar/cercar antes de escolher a fórmula."],
+        ["Triângulo, trapézio e losango","As áreas são: triângulo b·h/2, trapézio (B+b)·h/2 e losango D·d/2.","Triângulo de base 12 e altura 5 tem área 30 unidades quadradas.","A altura pode ser substituída por qualquer lado inclinado.","A área do trapézio é apenas B·b.","A altura deve ser perpendicular à base; identifique corretamente cada medida antes da conta."],
+        ["Círculo e circunferência","Área do círculo é πr² e comprimento da circunferência é 2πr.","Com raio 3, a área é 9π e o comprimento é 6π.","Área do círculo é 2πr.","Circunferência é uma medida em unidades quadradas.","Raio mede do centro à borda; diâmetro vale duas vezes o raio."],
+        ["Semelhança e escala","Figuras semelhantes têm ângulos correspondentes iguais e lados proporcionais.","Se os lados são multiplicados por 3, as áreas são multiplicadas por 9.","A razão de áreas é sempre igual à razão dos lados.","Figuras com mesma área são necessariamente semelhantes.","Se a razão linear é k, perímetros variam por k e áreas por k²."],
+        ["Setor circular","Um setor é uma fração do círculo: A = ângulo/360° · πr².","Um setor de 90° ocupa um quarto da área do círculo.","O ângulo do setor não interfere na área.","Todo setor corresponde a metade do círculo.","Verifique se o ângulo está em graus e use a fração que ele representa de 360°."],
+        ["Polígonos e ângulos","A soma dos ângulos internos de um polígono convexo é (n−2)·180°.","Um hexágono tem soma interna (6−2)·180° = 720°.","A soma interna é sempre 360°, qualquer que seja n.","n representa o tamanho do lado.","Em polígono regular, divida a soma por n para encontrar cada ângulo interno."]
+      ],
+      historia: [
+        ["Estados modernos","Centralização de impostos, leis, exército e administração fortaleceu as monarquias.","A aliança entre Coroa e grupos mercantis ajudou a financiar o poder estatal.","O Estado moderno eliminou imediatamente todos os poderes locais.","Centralização ocorreu sem conflitos sociais.","Analise o processo como negociação e disputa, não como mudança instantânea."],
+        ["Mercantilismo","É um conjunto de práticas para fortalecer Estado e comércio, como proteção, metais e balança favorável.","Monopólios coloniais e tarifas protecionistas são práticas mercantilistas.","Foi uma teoria única aplicada da mesma forma em todo lugar.","Defendia livre-comércio absoluto e ausência do Estado.","Ligue política econômica, competição entre reinos e expansão colonial."],
+        ["Expansão marítima portuguesa","Resultou da combinação de centralização, posição atlântica, experiência, capital e interesses comerciais.","Tecnologia náutica e apoio da Coroa permitiram viagens de longa distância.","Foi apenas aventura individual de navegadores.","A fé foi a única causa do processo.","Use explicação multicausal: Estado, comércio, técnica, religião e conquista."],
+        ["Fontes históricas","Fontes são vestígios produzidos em contextos e precisam ser criticados, não apenas copiados.","Uma carta colonial revela fatos e também interesses e linguagem de seu autor.","Toda fonte mostra a realidade de maneira neutra.","Documento escrito é automaticamente mais verdadeiro que fonte oral.","Pergunte autoria, finalidade, público, contexto e silêncios da fonte."],
+        ["A invenção do Brasil","O nome e a narrativa do “descobrimento” expressam uma perspectiva europeia sobre território já habitado.","Reconhecer povos indígenas como agentes históricos muda a leitura de 1500.","O território estava vazio antes da chegada portuguesa.","Todos os povos indígenas formavam uma cultura única.","Diferencie chegada europeia, conquista colonial e construção posterior da identidade nacional."],
+        ["Plantation e colonização","Latifúndio, monocultura, trabalho escravizado e exportação estruturaram a economia açucareira.","O engenho articulava produção, poder local e comércio atlântico.","Plantation era pequena propriedade de subsistência com trabalho livre.","Açúcar era produzido apenas para o mercado interno.","Conecte terra, escravidão, comércio e administração colonial."],
+        ["Resistências coloniais","Indígenas e africanos escravizados resistiram por fugas, revoltas, alianças e preservação cultural.","Quilombos expressam organização social e resistência à escravidão.","Colonizados foram sempre passivos.","Resistência só existe quando há guerra aberta.","Reconheça diferentes escalas de ação e evite apagar a agência dos grupos dominados."],
+        ["Pensadores iluministas","Locke trata de direitos, Montesquieu de poderes, Voltaire de tolerância e Rousseau de soberania popular.","Defender divisão entre Executivo, Legislativo e Judiciário remete a Montesquieu.","Rousseau defendia o direito divino dos reis.","Locke rejeitava qualquer direito individual.","Associe cada autor ao problema político que procurou responder."],
+        ["Iluminismo e revoluções","Ideias de razão, direitos e limitação do poder circularam junto a crises e conflitos sociais.","Revoluções não nasceram apenas de livros: grupos agiram em contextos econômicos e políticos concretos.","Uma ideia sozinha causa automaticamente uma revolução.","Revoluções liberais preservaram todas as estruturas sem mudança.","Combine ideias, crise, interesses e ação coletiva em vez de buscar causa única."],
+        ["Limites dos direitos modernos","A linguagem universal dos direitos conviveu com escravidão, colonialismo e exclusão.","Declarar igualdade não garantiu participação imediata a mulheres e pessoas escravizadas.","Os direitos iluministas foram aplicados igualmente a todos desde o início.","Não existia contradição entre liberalismo e escravidão.","Compare o princípio declarado com quem realmente foi incluído na cidadania."],
+      ],
+      oficina: [
+        ["Recorte do tema","Recortar é transformar um assunto amplo em problema específico e discutível.","Em vez de “violência”, discutir “limites da repressão isolada na redução da violência urbana”.","Recortar significa repetir todas as palavras do tema.","Quanto mais amplo o assunto, mais precisa será a redação.","Defina espaço, grupo, aspecto ou causa para controlar o desenvolvimento."],
+        ["Tese","É a posição central que responde ao problema e será defendida pelos argumentos.","“Repressão isolada é insuficiente porque não enfrenta causas sociais” é uma tese discutível.","Tese é apenas o título do texto.","Uma pergunta sem resposta já funciona como tese.","A tese precisa ser específica o bastante para orientar cada parágrafo."],
+        ["Tópico frasal","É a frase que apresenta o núcleo argumentativo do parágrafo.","“Primeiramente, a desigualdade limita o acesso à prevenção” anuncia o argumento do parágrafo.","É uma citação longa colocada sem comentário.","Serve apenas para encerrar a conclusão.","Depois do tópico frasal, explique a relação causal que ele afirma."],
+        ["Argumento","É uma razão organizada que sustenta a tese.","Explicar como falta de infraestrutura agrava um problema constrói um argumento causal.","É qualquer opinião repetida várias vezes.","Argumento dispensa relação com a tese.","Pergunte “por que minha tese é válida?” e transforme a resposta em raciocínio demonstrável."],
+        ["Evidência","É o dado, exemplo, fato ou referência que apoia um argumento.","Uma pesquisa confiável comentada pode comprovar a dimensão do problema.","Uma frase de efeito sem fonte é evidência suficiente.","Evidência substitui completamente a explicação.","Apresente a prova e mostre explicitamente o que ela demonstra."],
+        ["Repertório produtivo","É a referência pertinente, correta e conectada à tese.","Citar uma obra e explicar como ela ilumina o problema torna o repertório produtivo.","Mencionar um autor famoso sem relação melhora qualquer texto.","Repertório precisa ocupar o parágrafo inteiro.","A ponte entre referência e argumento vale mais do que o nome famoso."],
+        ["Coesão e conectores","Coesão liga partes do texto; conectores explicitam relações lógicas já construídas.","“Portanto” introduz conclusão quando ela realmente decorre do que veio antes.","Qualquer conector combina com qualquer relação.","Repetir “além disso” garante progressão argumentativa.","Escolha o conector depois de identificar adição, causa, oposição, consequência ou conclusão."],
+        ["Contra-argumento","É uma objeção considerada e respondida para fortalecer a tese.","“Embora a punição seja necessária, sozinha ela não previne o problema” reconhece e limita outra visão.","Contra-argumentar é abandonar a própria tese.","Consiste em atacar quem discorda.","Apresente a objeção de modo justo e mostre por que ela não derruba seu raciocínio."],
+        ["Conclusão","Fecha a linha de raciocínio sem introduzir argumento totalmente novo.","Retomar a tese à luz dos argumentos produz fechamento coerente.","Conclusão deve copiar a introdução palavra por palavra.","É o melhor lugar para criar uma causa inédita.","Mostre o que ficou demonstrado e, quando solicitado, encaminhe uma solução."],
+        ["Proposta de intervenção","Deve indicar ação, agente, meio, finalidade e detalhamento viável.","“Secretarias municipais devem ampliar oficinas por meio de parcerias...” especifica quem e como.","“Todos devem se conscientizar” já é proposta completa.","A solução pode violar direitos se for eficiente.","Teste se a proposta é concreta, relacionada ao diagnóstico e respeita direitos humanos."],
+      ],
+      filosofia: [
+        ["Patrística e Santo Agostinho","A Patrística consolida a doutrina cristã; Agostinho aproxima fé, interioridade e influência platônica.","A iluminação divina orienta a busca interior pela verdade em Agostinho.","Agostinho afirma que a fé é inútil.","Patrística é a filosofia universitária do século XIII.","Em Agostinho, a razão ajuda a compreender, mas a verdade última depende de Deus."],
+        ["Escolástica e Tomás de Aquino","A Escolástica organiza debates racionais; Tomás concilia cristianismo e Aristóteles.","As cinco vias partem de aspectos do mundo para argumentar racionalmente sobre Deus.","Tomás rejeita completamente a razão.","Escolástica significa ausência de debate lógico.","Fé e razão têm objetos e métodos próprios, mas não deveriam se contradizer na verdade."],
+        ["Guilherme de Ockham","Ockham limita demonstrações sobre a fé e recomenda não multiplicar hipóteses sem necessidade.","Entre explicações equivalentes, a Navalha de Ockham prefere a que exige menos suposições.","A explicação mais simples é sempre verdadeira.","Ockham prova todas as verdades religiosas pela ciência.","Simplicidade é critério de economia explicativa, não garantia automática de verdade."],
+        ["Humanismo renascentista","Valoriza dignidade humana, estudo dos clássicos e investigação do mundo terreno.","Retomar autores greco-romanos para pensar política e arte expressa humanismo.","Elimina toda religiosidade da Europa de imediato.","Defende submissão total à tradição sem crítica.","Antropocentrismo aumenta o foco no humano, mas não significa ateísmo obrigatório."],
+        ["Maquiavel","Analisa a política por sua lógica própria, observando poder, conflito e conservação do Estado.","Em “O Príncipe”, virtù é capacidade de agir diante da fortuna e das circunstâncias.","Maquiavel ensina simplesmente que todo mal é aceitável.","Seu pensamento ignora a realidade política.","Separe análise do funcionamento do poder de uma defesa vulgar da maldade."],
+        ["Hobbes","No estado de natureza inseguro, indivíduos pactuam e transferem poder para obter paz.","O soberano forte contém a guerra de todos contra todos.","Hobbes considera o ser humano naturalmente pacífico e dispensa Estado.","Defende soberania popular direta como Rousseau.","Segurança é o eixo que justifica a concentração do poder político."],
+        ["Rousseau","A soberania pertence ao povo e a lei legítima expressa a vontade geral.","Obedecer à lei construída pelo corpo político pode significar autonomia coletiva.","Vontade geral é a soma de interesses particulares egoístas.","Rousseau defende monarquia absoluta por direito divino.","Não confunda vontade geral, orientada ao bem comum, com opinião momentânea da maioria."],
+        ["Descartes e racionalismo","Descartes usa dúvida metódica e encontra no pensamento uma certeza inicial.","“Penso, logo existo” resiste à dúvida porque duvidar já é pensar.","Racionalismo afirma que só os sentidos produzem conhecimento seguro.","Dúvida metódica significa não acreditar em nada para sempre.","A dúvida é instrumento para buscar fundamento claro e distinto, não destino final."],
+        ["Bacon e empirismo","Bacon valoriza observação, experimentação e indução, criticando os ídolos que distorcem o pensamento.","Partir de casos observados para formular generalizações controladas é procedimento indutivo.","Bacon defende dedução sem experiência.","Ídolos são apenas imagens religiosas.","A experiência precisa de método, comparação e correção de preconceitos."],
+        ["Hume e causalidade","Hume afirma que observamos sucessão de eventos, não uma conexão necessária visível entre eles.","Esperar que o sol nasça decorre do hábito criado por repetidas experiências.","Hume prova causalidade como verdade lógica absoluta.","Empirismo rejeita qualquer papel da experiência.","A crença causal é útil, mas não possui a mesma necessidade de uma relação matemática."],
+      ],
+      geografia: [
+        ["Tectônica de placas","A litosfera é dividida em placas cujo movimento cria dobramentos, falhas, vulcões e terremotos.","Em limites convergentes, a compressão pode formar cadeias montanhosas.","Continentes permanecem imóveis desde a origem da Terra.","Todo terremoto ocorre no centro estável de uma placa.","Relacione tipo de limite, movimento e forma de relevo resultante."],
+        ["Ciclo das rochas","Rochas ígneas, sedimentares e metamórficas transformam-se por processos geológicos.","Sedimentos compactados e cimentados formam rocha sedimentar.","Cada rocha pertence a um tipo para sempre.","Rocha metamórfica surge apenas de lava resfriada.","Identifique o processo — resfriamento, sedimentação, calor/pressão — antes de nomear a rocha."],
+        ["Intemperismo e erosão","Intemperismo altera a rocha no local; erosão remove e transporta materiais.","Raízes quebrando uma rocha exemplificam intemperismo físico/biológico.","Erosão não envolve transporte.","Intemperismo só ocorre por ação humana.","Depois do desgaste, observe se houve deslocamento do material."],
+        ["Formação dos solos","Solo resulta da interação entre rocha, clima, relevo, organismos e tempo.","Clima quente e úmido acelera alterações químicas e formação de perfis profundos.","Solo é apenas rocha triturada sem matéria orgânica.","Todo solo tem a mesma fertilidade.","Textura, matéria orgânica e manejo influenciam infiltração, nutrientes e erosão."],
+        ["Ciclo da água","Evaporação, condensação, precipitação, infiltração e escoamento conectam atmosfera e superfície.","Impermeabilização urbana aumenta escoamento e risco de enchentes.","A água desaparece após evaporar.","Infiltração aumenta sempre quando o solo é asfaltado.","A quantidade global circula, mas disponibilidade e qualidade variam no espaço e no tempo."],
+        ["Bacia hidrográfica","É a área drenada por um rio principal e seus afluentes, limitada por divisores de água.","Poluição a montante pode atingir municípios localizados a jusante.","Bacia é apenas o canal do rio principal.","Divisor de águas fica sempre no ponto mais baixo.","Analise toda a rede e os usos do território, não apenas um trecho do rio."],
+        ["Clima e vegetação","Temperatura, chuva, solo e relevo influenciam formações vegetais e seus ritmos.","Estação seca prolongada favorece adaptações como perda de folhas e raízes profundas.","Vegetação não responde ao clima.","Todo bioma tem espécies e paisagens uniformes.","Biomas são sistemas diversos; evite explicar sua distribuição por um único fator."],
+        ["Demografia","Taxas de natalidade, mortalidade e migração explicam a mudança populacional.","Crescimento vegetativo é natalidade menos mortalidade.","População cresce apenas por nascimento.","Migração não altera distribuição populacional.","Separe crescimento natural, saldo migratório e estrutura etária."],
+        ["Transição demográfica","Passagem de altas para baixas taxas de mortalidade e natalidade altera crescimento e envelhecimento.","Quando a mortalidade cai antes da natalidade, o crescimento acelera temporariamente.","Todos os países percorrem etapas no mesmo ritmo e da mesma forma.","Transição significa explosão populacional eterna.","Use o modelo como referência e considere diferenças históricas e políticas."],
+        ["Densidade e distribuição","Densidade é população dividida pela área, mas a média pode esconder concentrações.","Um país de baixa densidade média pode ter metrópoles muito povoadas.","Baixa densidade prova que todo o território é vazio.","População absoluta e densidade são a mesma medida.","Compare escala, redes urbanas e áreas efetivamente ocupadas antes de concluir."],
+      ],
+      fisica: [
+        ["Primeira Lei de Newton","Se a força resultante é zero, o corpo mantém repouso ou movimento retilíneo uniforme.","Um carro em linha reta com velocidade constante possui aceleração e resultante nulas.","Todo corpo em movimento precisa de força resultante para continuar.","Resultante zero significa obrigatoriamente repouso.","Força resultante causa mudança de velocidade, não a existência do movimento."],
+        ["Segunda Lei de Newton","A força resultante é igual ao produto da massa pela aceleração: Fresultante = m·a.","Com 2 kg e resultante de 10 N, a aceleração vale 5 m/s².","Massa e peso são a mesma grandeza.","A aceleração tem sempre sentido oposto à resultante.","Some vetorialmente as forças antes de aplicar a equação."],
+        ["Terceira Lei de Newton","Forças de ação e reação têm mesmo módulo, sentidos opostos e atuam em corpos diferentes.","O pé empurra o chão para trás e o chão empurra a pessoa para frente.","Ação e reação anulam-se porque atuam no mesmo corpo.","A reação acontece alguns segundos depois da ação.","Para identificar o par, nomeie os dois corpos e a mesma interação."],
+        ["Peso, normal e atrito","Peso é gravitacional; normal é contato perpendicular; atrito se opõe ao deslizamento relativo.","Num piso horizontal sem aceleração vertical, normal e peso podem ter módulos iguais.","Normal é sempre igual ao peso em qualquer situação.","Atrito sempre aponta contra a velocidade do corpo.","Desenhe o diagrama do corpo isolado; não decore igualdades que só valem em casos específicos."],
+        ["Gravitação e órbitas","Massas se atraem e a gravidade pode funcionar como força centrípeta de uma órbita.","Satélite está em queda contínua ao redor da Terra, não fora da gravidade.","No espaço não existe gravidade.","Órbita exige força empurrando o satélite para fora.","Maior distância reduz a atração e altera período e velocidade orbital."],
+        ["Trabalho e energia","Trabalho transfere energia quando uma força produz deslocamento: W = F·d·cosθ.","Força perpendicular ao deslocamento realiza trabalho nulo.","Toda força presente realiza trabalho positivo.","Trabalho é medido em newtons.","Considere o ângulo entre força e deslocamento e use joule como unidade."],
+        ["Energia mecânica","Energia cinética é mv²/2 e potencial gravitacional próxima à Terra é mgh.","Sem forças dissipativas, a soma de energia cinética e potencial permanece constante.","Dobrar a velocidade dobra a energia cinética.","Energia potencial não depende da referência escolhida.","A velocidade aparece ao quadrado; estabeleça nível de referência para a altura."],
+        ["Impulso e momento","Impulso é variação do momento: I = Fmédia·Δt = Δp.","Airbag aumenta o tempo da colisão e reduz a força média para a mesma variação de momento.","Aumentar o tempo aumenta necessariamente a força média.","Momento depende apenas da massa.","Sistemas isolados conservam momento, mesmo quando a energia cinética não se conserva."],
+        ["Pressão e empuxo","Pressão é força por área; empuxo é a força resultante associada ao fluido deslocado.","Faca afiada aumenta pressão por reduzir a área de contato.","Maior área sempre produz maior pressão com a mesma força.","Empuxo depende apenas da massa do objeto.","Compare empuxo com peso e relacione o empuxo ao peso do fluido deslocado."],
+        ["Estática e torque","Equilíbrio exige força resultante e soma dos torques iguais a zero.","Uma força aplicada mais longe do eixo produz maior torque com mesmo módulo.","Resultante zero garante equilíbrio rotacional em qualquer caso.","Torque não depende da distância ao eixo.","Verifique separadamente translação e rotação e escolha um ponto de referência conveniente."],
+      ],
+      biologia: [
+        ["DNA, gene e cromossomo","DNA é a molécula; gene é um trecho funcional; cromossomo é DNA associado a proteínas.","Um cromossomo duplicado possui duas cromátides, mas continua sendo contado pelo centrômero.","Gene e cromossomo são exatamente a mesma coisa.","Todo DNA codifica uma proteína.","Use níveis de organização e não confunda molécula, trecho de informação e estrutura condensada."],
+        ["Mitose","Produz células geneticamente muito semelhantes para crescimento e reparo.","Uma célula somática diploide origina duas células diploides após mitose.","Mitose reduz pela metade o número de cromossomos.","Mitose gera quatro gametas diferentes.","A replicação do DNA ocorre antes da divisão, durante a intérfase."],
+        ["Meiose","Realiza duas divisões, reduz ploidia e aumenta variabilidade genética.","Crossing-over e distribuição independente criam novas combinações nos gametas.","Meiose produz duas células idênticas.","Não há replicação de DNA antes da meiose.","Diferencie separação de homólogos na primeira divisão e de cromátides na segunda."],
+        ["Genética mendeliana","Alelos se separam na formação dos gametas e podem combinar-se na fecundação.","Em Aa × Aa, a proporção genotípica esperada é 1 AA : 2 Aa : 1 aa.","Dominante significa mais frequente e melhor.","Cada gameta recebe os dois alelos do gene.","Separe genótipo de fenótipo e probabilidade de certeza individual."],
+        ["Classificação e cladogramas","Classificação moderna procura representar ancestralidade e caracteres derivados compartilhados.","Dois grupos com ancestral comum mais recente são mais aparentados.","Evolução forma uma escada de organismos inferiores a superiores.","Semelhança superficial prova parentesco próximo.","Leia os nós do cladograma; a posição esquerda/direita não indica superioridade."],
+        ["Procariotos","Não possuem núcleo membranoso, mas realizam metabolismo complexo e têm material genético.","Bactérias podem decompor matéria, fixar nitrogênio ou viver na microbiota.","Toda bactéria causa doença.","Procariotos não possuem DNA nem ribossomos.","Evite chamar organismos atuais de “primitivos”; eles também têm longa evolução."],
+        ["Protozoários e algas","São eucariotos diversos; protozoários são em geral heterotróficos e algas principalmente fotossintetizantes.","Algas sustentam cadeias aquáticas e contribuem para produção de oxigênio.","Todos os protozoários são parasitas.","Toda alga é uma planta terrestre multicelular.","Classifique com cuidado e relacione diversidade a papéis ecológicos e sanitários."],
+        ["Briófitas e pteridófitas","Briófitas não têm vasos; pteridófitas têm vasos, mas ambas não formam sementes.","Musgos dependem bastante da água e apresentam gametófito dominante.","Samambaias produzem flores e frutos.","Briófitas possuem xilema e floema verdadeiros.","A dependência de água para fecundação permanece nesses dois grupos."],
+        ["Gimnospermas e angiospermas","Gimnospermas têm sementes sem fruto; angiospermas têm flor e fruto.","O fruto se origina do ovário e a semente do óvulo fecundado.","Pinheiros produzem frutos carnosos.","Flor surgiu antes dos vasos condutores.","Semente e pólen reduzem a dependência de água externa para a reprodução."],
+        ["Xilema e floema","Xilema transporta principalmente água e sais; floema distribui açúcares e outros solutos orgânicos.","Açúcar produzido na folha chega a outras partes principalmente pelo floema.","Xilema leva glicose das folhas para toda a planta.","Floema transporta apenas água da raiz.","Associe tecido, substância transportada e relação entre fonte e destino."],
+      ],
+      quimica: [
+        ["Ácidos e bases","Em Brønsted, ácido doa próton e base recebe; em Arrhenius, produzem H+ ou OH− em água.","HCl doa próton à água, enquanto NH3 pode recebê-lo.","Todo composto com hidrogênio é ácido.","Base é qualquer substância com oxigênio.","Use o modelo pedido e observe a reação, não apenas a fórmula isolada."],
+        ["pH, força e concentração","pH se relaciona a H+; força mede ionização e concentração mede quantidade por volume.","Um ácido forte muito diluído pode ter menor concentração que um ácido fraco concentrado.","Ácido forte é sempre concentrado.","pH 2 é menos ácido que pH 5.","Não confunda intensidade de ionização com quantidade de soluto presente."],
+        ["Neutralização e sais","Ácido e base reagem em proporção balanceada, formando sal e geralmente água.","HCl + NaOH → NaCl + H2O é neutralização 1:1.","Toda mistura de ácido e base fica exatamente neutra.","Sal é sempre cloreto de sódio.","Compare mols de H+ e OH− e verifique excesso de reagente."],
+        ["Óxidos","São compostos binários com oxigênio e podem ter caráter ácido, básico, anfótero ou neutro.","CO2 em água relaciona-se a comportamento de óxido ácido.","Todo óxido forma uma base em água.","O2 é um óxido por possuir oxigênio.","Primeiro confirme que há dois elementos e depois analise o comportamento químico."],
+        ["Balanceamento","Ajusta coeficientes para conservar o número de átomos de cada elemento.","2 H2 + O2 → 2 H2O conserva quatro H e dois O.","Balancear significa alterar os índices das fórmulas.","Massa pode desaparecer se o produto for gasoso.","Mude apenas coeficientes; alterar índice muda a própria substância."],
+        ["Mol e massa molar","n = m/M converte massa em mol e N = n·NA converte mol em entidades.","18 g de água correspondem a aproximadamente 1 mol de H2O.","Mol é uma unidade de massa igual a 1 g.","Massa molar não depende da fórmula.","Escreva unidades e use a massa molar da espécie química correta."],
+        ["Reagente limitante","É o reagente que acaba primeiro e determina o máximo de produto.","Compare mols disponíveis com a proporção da equação para descobrir qual limita.","O reagente de menor massa é sempre o limitante.","Todos os reagentes acabam juntos em qualquer mistura.","Divida a quantidade disponível pelo coeficiente estequiométrico para comparar necessidades."],
+        ["Rendimento e pureza","Rendimento compara produto real e teórico; pureza indica a fração útil de uma amostra.","Se o teórico é 100 g e o real 80 g, o rendimento é 80%.","Rendimento pode ser calculado sem valor teórico.","Pureza de 80% significa 80 g de impureza em 100 g.","Ajuste a massa pela pureza antes da estequiometria e calcule rendimento ao final."],
+        ["Concentração e diluição","Concentração relaciona soluto e volume; na diluição, a quantidade de soluto se conserva.","C1V1 = C2V2 permite calcular o volume após adicionar solvente.","Diluir aumenta a quantidade de soluto.","Concentração comum e molaridade têm sempre a mesma unidade.","Identifique se a concentração usa massa ou mol e mantenha volumes compatíveis."],
+        ["Propriedades coligativas","Dependem do número de partículas dissolvidas: reduzem vapor/congelamento e elevam ebulição.","Sal na água pode abaixar a temperatura de congelamento.","Dependem apenas da cor do soluto.","Adicionar soluto não volátil aumenta a pressão de vapor.","Eletrólitos podem gerar mais partículas e intensificar o efeito ideal."],
+      ],
+      sociologia: [
+        ["Materialismo histórico","Mudanças sociais são analisadas a partir das formas de produção e de suas contradições.","Transformar tecnologia e relações de trabalho pode alterar instituições e conflitos.","Ideias mudam a sociedade sem qualquer base material.","História segue plano fixo sem ação humana.","Relacione economia, poder, classes e luta histórica sem reduzir tudo a uma causa mecânica."],
+        ["Classes em Marx","Classe é definida principalmente pela posição nas relações de produção.","Burguesia controla meios de produção; proletariado vende força de trabalho.","Classe é apenas faixa de salário.","Todos os trabalhadores ocupam a mesma posição de poder que proprietários.","Pergunte quem possui, quem trabalha e quem controla o excedente."],
+        ["Mais-valia","É o valor produzido além do que retorna ao trabalhador como salário.","Parte da jornada pode repor o salário e outra parte gerar excedente apropriado.","É um imposto pago diretamente pelo consumidor.","É sinônimo de lucro obtido apenas no comércio.","Analise a relação entre valor criado no trabalho e apropriação do excedente."],
+        ["Alienação","Separa o trabalhador do produto, do processo, de sua realização e dos outros.","Executar tarefa repetitiva sem controlar finalidade e resultado exemplifica alienação.","Alienação significa apenas não conhecer notícias políticas.","É um sentimento individual sem relação com o trabalho.","Em Marx, a alienação nasce de relações sociais concretas de produção."],
+        ["Ideologia","Pode apresentar relações históricas e interesses particulares como naturais ou universais.","Dizer que desigualdade decorre apenas de mérito individual pode ocultar estruturas sociais.","Ideologia é somente mentira consciente.","Toda ideia é automaticamente ideologia no mesmo sentido.","Observe quais interesses e relações de poder uma representação torna invisíveis."],
+        ["Ação social em Weber","É a conduta orientada pelo sentido que o indivíduo atribui em relação aos outros.","Votar por convicção ética aproxima-se da ação racional por valores.","Todo movimento corporal é ação social.","Weber ignora os sentidos atribuídos pelos indivíduos.","Identifique finalidade, valor, emoção ou tradição que orienta a conduta."],
+        ["Tipo ideal","É uma construção analítica acentuada para comparar e interpretar a realidade.","Burocracia ideal-típica ajuda a medir aproximações e desvios de uma organização real.","É um modelo moral perfeito que deve ser copiado.","Descreve exatamente todos os casos existentes.","Use-o como régua conceitual, não como retrato puro da realidade."],
+        ["Dominação legítima","Weber distingue dominação tradicional, carismática e legal-racional.","Obediência ao cargo e às regras caracteriza dominação legal-racional.","Carisma depende apenas de leis escritas.","Tradição significa escolha por cálculo eficiente.","Descubra por que os dominados consideram legítima a autoridade."],
+        ["Racionalização e burocracia","A modernidade amplia cálculo, regras, especialização e impessoalidade.","Procedimentos padronizados podem gerar eficiência e também rigidez.","Burocracia é ausência completa de regras.","Racionalização elimina toda forma de controle.","Compare ganhos de previsibilidade com a possível “gaiola” de rotinas impessoais."],
+        ["Capitalismo e consumo","Consumo satisfaz necessidades e comunica identidade, status e pertencimento.","Publicidade associa mercadorias a estilos de vida para produzir desejo.","Comprar é decisão totalmente isolada da cultura e da renda.","Consumo termina sem impactos após o caixa.","Ligue escolha individual a produção, crédito, publicidade, desigualdade e descarte."],
+      ],
+      ingles: [
+        ["Title, image and source","Título, imagem e fonte ajudam a prever tema, público e finalidade antes da leitura detalhada.","Uma legenda e o veículo de publicação podem revelar contexto e posicionamento.","Elementos visuais devem ser ignorados na leitura.","A fonte nunca interfere na credibilidade.","Construa hipóteses iniciais e confirme-as com evidências do texto."],
+        ["Cognates and false cognates","Cognatos ajudam pela semelhança; falsos cognatos parecem português, mas têm outro sentido.","“Actually” geralmente significa “na verdade”, não “atualmente”.","Toda palavra parecida tem tradução idêntica.","Falsos cognatos não podem ser resolvidos pelo contexto.","Use a frase inteira para confirmar o significado e não dependa só da aparência."],
+        ["Main idea and inference","Main idea é a mensagem central; inference é conclusão sustentada por pistas.","Palavras repetidas e exemplos ajudam a reconstruir a ideia principal.","Inferir é inventar uma informação sem evidência.","Ideia principal é sempre a primeira frase.","A resposta correta deve ser ampla o bastante para cobrir o texto e específica o bastante para não virar tema genérico."],
+        ["Fact and opinion","Fato pode ser verificado; opinião expressa avaliação ou ponto de vista.","“The event happened in 2025” é verificável; “it was inspiring” é avaliativo.","Toda frase com número é opinião.","Opinião não pode usar evidência.","Procure marcas como “I believe” e adjetivos avaliativos, mas confira o contexto."],
+        ["Evidence","Evidence é a informação usada para sustentar uma claim, isto é, uma afirmação.","Dados, exemplos e falas de fontes podem apoiar a conclusão do autor.","Evidence é apenas a opinião do leitor.","Uma claim não precisa de ligação com a prova.","Pergunte qual afirmação a evidência realmente sustenta e evite extrapolar."],
+        ["Cause and consequence","Because/since introduzem causa; therefore/as a result introduzem consequência.","“It rained; therefore, the match stopped” liga chuva a resultado.","Therefore significa “embora”.","Because introduz sempre uma oposição.","Leia as duas partes e identifique qual evento explica e qual resulta."],
+        ["Contrast and concession","But/however marcam contraste; although/even though introduzem concessão.","“Although it was difficult, she continued” reconhece obstáculo e mostra continuidade.","However significa “por causa de”.","Although introduz uma consequência inevitável.","Depois de however, espere mudança de direção; com although, procure a expectativa contrariada."],
+        ["Sport and activism","Atletas usam visibilidade para ampliar debates sobre rights, equality e awareness.","Um boycott pode pressionar instituições ao recusar participação ou consumo.","Backlash significa apoio unânime.","Activism é apenas prática esportiva sem mensagem pública.","A questão pode cobrar vocabulário, fonte e argumento, não sua opinião pessoal sobre o protesto."],
+        ["Peer pressure","É a influência do grupo sobre escolhas, explícita ou implícita.","Comprar algo apenas para fit in mostra pressão por pertencimento.","Peer pressure é sempre uma ordem direta.","Stand out significa desaparecer no grupo.","Identifique quem influencia, qual comportamento é esperado e qual medo ou desejo é acionado."],
+        ["Modal verbs and persuasion","Must indica obrigação forte, should conselho e can capacidade ou possibilidade.","“You should set boundaries” oferece recomendação, não ordem absoluta.","Should expressa proibição total.","Can significa sempre certeza de que algo acontecerá.","A escolha do modal altera a força e o tom persuasivo da mensagem."],
+      ]
+    };
+
+    const questNpcs = {
+      portugues:["Lex","Guardião das Palavras"], literatura:["Lira","Cronista dos Mundos"], matematica:["Sigma","Cartógrafa das Formas"],
+      historia:["Clio","Guardiã do Arquivo"], oficina:["Íris","Editora de Batalha"], filosofia:["Sofia","Sentinela das Ideias"],
+      geografia:["Gaia","Exploradora do Território"], fisica:["Newton","Piloto das Forças"], biologia:["Flora","Guardiã da Vida"],
+      quimica:["Átomo","Alquimista do Laboratório"], sociologia:["Elo","Analista das Redes"], ingles:["Nova","Voice Scout"]
+    };
+
+    const rarityRules = {
+      common:{label:"Comum",chance:"62%",weight:62,xp:20,shards:1},
+      rare:{label:"Rara",chance:"28%",weight:28,xp:35,shards:2},
+      epic:{label:"Épica",chance:"10%",weight:10,xp:60,shards:4}
+    };
+
+    function makeQuestBank(subjectId) {
+      const seeds = questBlueprints[subjectId] || [];
+      return seeds.flatMap((seed, index) => {
+        const [concept, definition, example, wrongOne, wrongTwo, mastery] = seed;
+        const serial = String(index + 1).padStart(2, "0");
+        return [
+          {id:subjectId+"-"+serial+"-C",title:concept+" · fundamento",rarity:"common",question:"O que melhor define “"+concept+"”?",correct:definition,distractors:[wrongOne,wrongTwo],why:definition+" "+mastery},
+          {id:subjectId+"-"+serial+"-R",title:concept+" · aplicação",rarity:"rare",question:"Qual alternativa aplica “"+concept+"” corretamente?",correct:example,distractors:[wrongOne,wrongTwo],why:example+" "+mastery},
+          {id:subjectId+"-"+serial+"-E",title:concept+" · domínio",rarity:"epic",question:"Na prova, qual raciocínio sobre “"+concept+"” é o mais completo?",correct:mastery,distractors:[wrongOne,wrongTwo],why:definition+" "+mastery}
+        ];
+      });
+    }
+
+    const questBanks = Object.fromEntries(subjects.map(subject => [subject.id, makeQuestBank(subject.id)]));
+
     const state = {
       activeId: subjects[0].id,
       quickMode: false,
@@ -2964,6 +5018,8 @@ footer span {
       completedTopics: [],
       revealedMemories: [],
       quizChoice: null,
+      questSessions: {},
+      questProfile: {xp:0, shards:0, streak:0, best:{}, runs:{}, discovered:{}},
       query: ""
     };
 
@@ -4070,12 +6126,28 @@ footer span {
     const progressTotal = document.getElementById("progressTotal");
     const coverProgress = document.getElementById("coverProgress");
     const coverProgressBar = document.getElementById("coverProgressBar");
+    const levelValue = document.getElementById("levelValue");
+    const xpValue = document.getElementById("xpValue");
+    const xpBar = document.getElementById("xpBar");
+    const coverLevel = document.getElementById("coverLevel");
+    const coverXp = document.getElementById("coverXp");
+    const missionJump = document.getElementById("missionJump");
+    const celebrationLayer = document.getElementById("celebrationLayer");
 
     try {
       const saved = localStorage.getItem("fernando-materias-revisadas") || localStorage.getItem("vespera-revisadas");
       if (saved) state.completed = JSON.parse(saved);
       const savedTopics = localStorage.getItem("fernando-resumos-concluidos");
       if (savedTopics) state.completedTopics = JSON.parse(savedTopics);
+      const savedQuestProfile = localStorage.getItem("fernando-quest-profile-v1");
+      if (savedQuestProfile) {
+        const parsed = JSON.parse(savedQuestProfile);
+        state.questProfile = Object.assign(state.questProfile, parsed, {
+          best:Object.assign({}, state.questProfile.best, parsed.best || {}),
+          runs:Object.assign({}, state.questProfile.runs, parsed.runs || {}),
+          discovered:Object.assign({}, state.questProfile.discovered, parsed.discovered || {})
+        });
+      }
     } catch (_) {}
 
     function esc(value) {
@@ -4104,12 +6176,23 @@ footer span {
 
     function updateProgress() {
       const percent = Math.round((state.completed.length / subjects.length) * 100);
+      const xp = (state.completedTopics.length * 100) + (state.completed.length * 200) + state.questProfile.xp;
+      const level = Math.floor(xp / 500) + 1;
+      const levelPercent = Math.round(((xp % 500) / 500) * 100);
+      const firstPending = activeSubject().topics.find((topic) => !state.completedTopics.includes(activeSubject().id + ":" + topic.number));
       progressRing.style.setProperty("--progress", (percent * 3.6) + "deg");
       progressRing.setAttribute("aria-label", state.completed.length + " de " + subjects.length + " matérias revisadas");
       progressValue.textContent = state.completed.length;
       progressTotal.textContent = "/" + subjects.length;
       coverProgress.textContent = state.completed.length + " de " + subjects.length + " matérias revisadas";
       coverProgressBar.style.width = percent + "%";
+      levelValue.textContent = level;
+      xpValue.textContent = xp + " XP";
+      xpBar.style.width = levelPercent + "%";
+      coverLevel.textContent = String(level).padStart(2, "0");
+      coverXp.textContent = xp + " XP conquistados";
+      missionJump.href = firstPending ? "#topic-" + activeSubject().id + ":" + firstPending.number : "#revisao";
+      missionJump.firstChild.textContent = state.completedTopics.length ? "continuar jornada " : "entrar na jornada ";
     }
 
     function renderTabs() {
@@ -4122,9 +6205,11 @@ footer span {
       tabs.innerHTML = visible.map((subject) => {
         const active = subject.id === state.activeId;
         const done = state.completed.includes(subject.id);
+        const cleared = subject.topics.filter((topic) => state.completedTopics.includes(subject.id + ":" + topic.number)).length;
+        const trailPercent = Math.round((cleared / subject.topics.length) * 100);
         return '<button id="tab-' + esc(subject.id) + '" role="tab" aria-selected="' + active + '" aria-controls="panel-' + esc(subject.id) + '" tabindex="' + (active ? "0" : "-1") + '" class="' + (active ? "active " : "") + (done ? "done" : "") + '" data-subject="' + esc(subject.id) + '">' +
           '<span class="tab-mark">' + esc(subject.mark) + '</span>' +
-          '<span>' + esc(subject.short) + '</span>' +
+          '<span class="tab-copy"><strong>' + esc(subject.short) + '</strong><small>' + cleared + '/' + subject.topics.length + ' missões</small><i><b style="width:' + trailPercent + '%"></b></i></span>' +
           (done ? '<i aria-label="revisada">✓</i>' : "") +
           '</button>';
       }).join("");
@@ -4219,13 +6304,13 @@ footer span {
       return '<article id="topic-' + esc(topicKey) + '" class="topic-card topic-card-' + (topicIndex + 1) + ' ' + (topicDone ? "is-topic-done" : "") + '" style="--topic-order:' + topicIndex + '">' +
         '<div class="topic-scene">' +
           '<span class="scene-symbol">' + esc(topic.scene.symbol) + '</span>' +
-          '<div><small>tema deste resumo</small><strong>' + esc(topic.scene.label) + '</strong></div>' +
+          '<div><small>MISSÃO ' + String(topicIndex + 1).padStart(2, "0") + ' · 100 XP</small><strong>' + esc(topic.scene.label) + '</strong></div>' +
           '<button class="topic-check" data-topic="' + esc(topicKey) + '" aria-pressed="' + topicDone + '"><span>' + (topicDone ? "✓" : "+") + '</span>' + (topicDone ? "missão concluída" : "concluir missão") + '</button>' +
           '<i class="scene-spark spark-one"></i><i class="scene-spark spark-two"></i>' +
         '</div>' +
         '<div class="topic-number">' + esc(topic.number) + '</div>' +
         '<div class="topic-main">' +
-          '<header><span>UNIDADE ' + esc(topic.number) + '</span><h2>' + esc(topic.title) + '</h2></header>' +
+          '<header><span>MISSÃO ' + esc(topic.number) + ' · 100 XP</span><h2>' + esc(topic.title) + '</h2></header>' +
           '<div class="snapshot"><span>em 30 segundos</span><p>' + esc(topic.snapshot) + '</p></div>' +
           explanationBlock(topic) +
           lessonBlock(topic, topicIndex) +
@@ -4249,34 +6334,181 @@ footer span {
       '</article>';
     }
 
-    function quizCard(subject) {
-      const answered = state.quizChoice !== null;
-      const options = subject.quiz.options.map((option, index) => {
-        let status = "";
-        if (answered) {
-          if (index === subject.quiz.answer) status = "correct";
-          else if (index === state.quizChoice) status = "wrong";
-        }
-        return '<button class="' + status + '" data-quiz="' + index + '" ' + (answered ? "disabled" : "") + '>' +
-          '<span>' + String.fromCharCode(65 + index) + '</span>' + esc(option) +
-        '</button>';
-      }).join("");
+    function saveQuestProfile() {
+      try { localStorage.setItem("fernando-quest-profile-v1", JSON.stringify(state.questProfile)); } catch (_) {}
+    }
 
-      let feedback = "";
-      if (answered) {
-        const right = state.quizChoice === subject.quiz.answer;
-        feedback = '<div class="quiz-feedback" role="status">' +
-          '<strong>' + (right ? "Acertou — boa leitura." : "Quase. Repare no raciocínio:") + '</strong>' +
-          '<p>' + esc(subject.quiz.why) + '</p>' +
-          '<button id="retryQuiz">tentar de novo</button>' +
+    function shuffled(list) {
+      const copy = list.slice();
+      for (let index = copy.length - 1; index > 0; index -= 1) {
+        const swap = Math.floor(Math.random() * (index + 1));
+        [copy[index], copy[swap]] = [copy[swap], copy[index]];
+      }
+      return copy;
+    }
+
+    function weightedQuestDraw(bank, count) {
+      const pool = bank.slice();
+      const chosen = [];
+      while (chosen.length < count && pool.length) {
+        const total = pool.reduce((sum, question) => sum + rarityRules[question.rarity].weight, 0);
+        let roll = Math.random() * total;
+        let selectedIndex = 0;
+        for (let index = 0; index < pool.length; index += 1) {
+          roll -= rarityRules[pool[index].rarity].weight;
+          if (roll <= 0) { selectedIndex = index; break; }
+        }
+        const question = pool.splice(selectedIndex, 1)[0];
+        const options = shuffled([
+          {text:question.correct, correct:true},
+          ...question.distractors.map(text => ({text, correct:false}))
+        ]);
+        chosen.push(Object.assign({}, question, {options, answer:options.findIndex(option => option.correct), choice:null}));
+      }
+      return chosen;
+    }
+
+    function startQuest(subjectId) {
+      state.questSessions[subjectId] = {
+        questions:weightedQuestDraw(questBanks[subjectId], 5),
+        current:0,
+        score:0,
+        rewardXp:0,
+        rewardShards:0,
+        finished:false
+      };
+      renderPanel();
+      requestAnimationFrame(() => document.querySelector(".quest-gate")?.scrollIntoView({behavior:"smooth",block:"start"}));
+    }
+
+    function answerQuest(subjectId, optionIndex) {
+      const session = state.questSessions[subjectId];
+      if (!session || session.finished) return;
+      const question = session.questions[session.current];
+      if (question.choice !== null) return;
+      question.choice = optionIndex;
+      const correct = optionIndex === question.answer;
+      const rule = rarityRules[question.rarity];
+      const xpGain = correct ? rule.xp : 5;
+      const shardGain = correct ? rule.shards : 0;
+      session.score += correct ? 1 : 0;
+      session.rewardXp += xpGain;
+      session.rewardShards += shardGain;
+      state.questProfile.xp += xpGain;
+      state.questProfile.shards += shardGain;
+      state.questProfile.streak = correct ? state.questProfile.streak + 1 : 0;
+      const discovered = state.questProfile.discovered[subjectId] || [];
+      state.questProfile.discovered[subjectId] = Array.from(new Set(discovered.concat(question.id)));
+      saveQuestProfile();
+      renderPanel();
+      if (correct) celebrate(rule.label + " dominada · +" + xpGain + " XP");
+    }
+
+    function advanceQuest(subjectId) {
+      const session = state.questSessions[subjectId];
+      if (!session) return;
+      if (session.current < session.questions.length - 1) {
+        session.current += 1;
+      } else {
+        session.finished = true;
+        state.questProfile.runs[subjectId] = (state.questProfile.runs[subjectId] || 0) + 1;
+        state.questProfile.best[subjectId] = Math.max(state.questProfile.best[subjectId] || 0, session.score);
+        saveQuestProfile();
+        if (session.score === 5) celebrate("PERFEITO · relíquia da matéria conquistada!");
+      }
+      renderPanel();
+    }
+
+    function npcSprite(subject, talking) {
+      const npc = questNpcs[subject.id] || ["Guia","Mestre da Quest"];
+      return '<div class="npc-zone ' + (talking ? 'is-talking' : '') + '" aria-label="' + esc(npc[0] + ', ' + npc[1]) + '">' +
+        '<div class="pixel-summon" aria-hidden="true"></div>' +
+        '<div class="pixel-npc-sprite" aria-hidden="true"></div>' +
+        '<span class="pixel-exclaim" aria-hidden="true">!</span>' +
+        '<span class="pixel-subject-badge" aria-hidden="true">' + esc(subject.mark) + '</span>' +
+        '<span class="npc-nameplate">' + esc(npc[0]) + ' · ' + esc(npc[1]) + '</span>' +
+      '</div>';
+    }
+
+    function questIndex(subject) {
+      const discovered = state.questProfile.discovered[subject.id] || [];
+      const bank = questBanks[subject.id];
+      return '<details class="quest-index"><summary><div><strong>Códice de Questões · ' + bank.length + ' desafios</strong><small>' + discovered.length + ' encontrados · a raridade define a chance de aparecer</small></div><span>abrir índice ↓</span></summary>' +
+        '<div class="quest-index-grid">' + bank.map((question, index) => {
+          const rule = rarityRules[question.rarity];
+          const found = discovered.includes(question.id);
+          return '<div class="quest-index-item ' + question.rarity + ' ' + (found ? 'discovered' : '') + '"><span>' + (found ? '✓' : String(index + 1).padStart(2,"0")) + '</span><div><strong>' + esc(question.title) + '</strong><small>' + rule.label + ' · ' + rule.chance + ' de peso</small></div></div>';
+        }).join("") + '</div></details>';
+    }
+
+    function questBoard(subject) {
+      const npc = questNpcs[subject.id] || ["Guia","Mestre da Quest"];
+      const session = state.questSessions[subject.id];
+      const runs = state.questProfile.runs[subject.id] || 0;
+      const best = state.questProfile.best[subject.id] || 0;
+      let consoleContent = '';
+
+      if (!session) {
+        consoleContent = '<div class="quest-kicker"><span>QUEST REPETÍVEL</span><span>5 DE 30 DESAFIOS</span><span>OFFLINE</span></div>' +
+          '<h2>O portal da prova abriu.</h2>' +
+          '<p class="quest-intro">Depois de estudar, enfrente 5 questões sorteadas do banco de ' + questBanks[subject.id].length + '. As comuns aparecem mais; as épicas dão mais XP e fragmentos.</p>' +
+          '<div class="npc-speech rpg-dialogue" aria-live="polite"><span class="npc-dialogue-name">' + esc(npc[0]) + '</span><p data-npc-dialogue="Eu não quero saber se você decorou. Quero ver se consegue usar o que aprendeu. Preparado?"></p><i class="dialogue-cursor" aria-hidden="true">▼</i></div>' +
+          '<div class="quest-kicker"><span>melhor: ' + best + '/5</span><span>tentativas: ' + runs + '</span><span>◆ ' + state.questProfile.shards + ' fragmentos</span><span>sequência: ' + state.questProfile.streak + '</span></div>' +
+          '<div class="quest-actions"><button class="quest-primary" data-quest-start="' + subject.id + '">aceitar missão</button><button class="quest-secondary" data-open-codex>ver as 30 questões</button></div>';
+      } else if (session.finished) {
+        const perfect = session.score === 5;
+        consoleContent = '<div class="quest-kicker"><span>QUEST CONCLUÍDA</span><span>' + (perfect ? 'RANK S' : session.score >= 3 ? 'RANK A' : 'RANK B') + '</span></div>' +
+          '<div class="quest-result"><div class="quest-result-score">' + session.score + '/5</div><div><h3>' + (perfect ? 'Domínio perfeito!' : session.score >= 3 ? 'Missão vencida.' : 'Hora de fortalecer a build.') + '</h3>' +
+          '<p>' + (perfect ? 'Você leu as pegadinhas e dominou todas as raridades desta rodada.' : 'Cada nova tentativa mistura o banco e pode revelar desafios raros que ainda não apareceram.') + '</p>' +
+          '<div class="quest-rewards"><span>+' + session.rewardXp + ' XP</span><span>+' + session.rewardShards + ' fragmentos</span><span>melhor ' + Math.max(best, session.score) + '/5</span></div>' +
+          '<div class="quest-actions"><button class="quest-primary" data-quest-restart="' + subject.id + '">nova tentativa</button><button class="quest-secondary" data-open-codex>abrir códice</button></div></div></div>';
+      } else {
+        const question = session.questions[session.current];
+        const answered = question.choice !== null;
+        const rule = rarityRules[question.rarity];
+        consoleContent = '<div class="quest-run">' +
+          '<div class="quest-run-top"><div><small>DESAFIO ' + (session.current + 1) + ' DE 5</small><strong>' + esc(question.title) + '</strong></div><span class="rarity-chip ' + question.rarity + '">' + rule.label + ' · +' + rule.xp + ' XP</span></div>' +
+          '<div class="quest-progress-dots">' + session.questions.map((_, index) => '<i class="' + (index < session.current ? 'done' : index === session.current ? 'current' : '') + '"></i>').join("") + '</div>' +
+          '<h3 class="quest-question">' + esc(question.question) + '</h3>' +
+          '<div class="quest-answers">' + question.options.map((option, index) => {
+            let status = '';
+            if (answered && index === question.answer) status = 'correct';
+            else if (answered && index === question.choice) status = 'wrong';
+            return '<button class="quest-answer ' + status + '" data-quest-answer="' + index + '" ' + (answered ? 'disabled' : '') + '><span>' + String.fromCharCode(65 + index) + '</span>' + esc(option.text) + '</button>';
+          }).join("") + '</div>' +
+          (answered ? '<div class="quest-explain" role="status"><strong>' + (question.choice === question.answer ? npc[0] + ': Acerto crítico!' : npc[0] + ': Pegadinha detectada.') + '</strong>' + esc(question.why) + '</div><button class="quest-next" data-quest-next="' + subject.id + '">' + (session.current === 4 ? 'ver resultado da missão' : 'próximo desafio →') + '</button>' : '') +
         '</div>';
       }
 
-      return '<div class="sidebar-card quiz-card">' +
-        '<span class="card-label">TESTE DE 1 MINUTO</span>' +
-        '<h3>' + esc(subject.quiz.question) + '</h3>' +
-        '<div class="quiz-options">' + options + '</div>' + feedback +
-      '</div>';
+      return '<section class="quest-gate" id="quest-' + subject.id + '">' +
+        '<div class="quest-gate-head">' + npcSprite(subject, !session || !session.finished) + '<div class="quest-console">' + consoleContent + '</div></div>' +
+        questIndex(subject) + '</section>';
+    }
+
+    function observeQuestGate() {
+      const gate = document.querySelector(".quest-gate");
+      if (!gate) return;
+      if (!("IntersectionObserver" in window)) { gate.classList.add("is-awake"); return; }
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) { gate.classList.add("is-awake"); observer.disconnect(); }
+      }, {threshold:.12});
+      observer.observe(gate);
+    }
+
+    let npcDialogueTimer = null;
+    function typeNpcDialogue() {
+      if (npcDialogueTimer) window.clearInterval(npcDialogueTimer);
+      const line = panel.querySelector("[data-npc-dialogue]");
+      if (!line) return;
+      const message = line.dataset.npcDialogue || "";
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { line.textContent = message; return; }
+      line.textContent = "";
+      let cursor = 0;
+      npcDialogueTimer = window.setInterval(() => {
+        cursor += 1;
+        line.textContent = message.slice(0, cursor);
+        if (cursor >= message.length) window.clearInterval(npcDialogueTimer);
+      }, 18);
     }
 
     function renderPanel() {
@@ -4284,6 +6516,9 @@ footer span {
       const subjectNumber = String(subjects.findIndex((item) => item.id === subject.id) + 1).padStart(2, "0");
       const isComplete = state.completed.includes(subject.id);
       const activeCompletedCount = subject.topics.filter((topic) => state.completedTopics.includes(subject.id + ":" + topic.number)).length;
+      const nextTopicIndex = subject.topics.findIndex((topic) => !state.completedTopics.includes(subject.id + ":" + topic.number));
+      const nextTopic = nextTopicIndex >= 0 ? subject.topics[nextTopicIndex] : subject.topics[0];
+      const subjectProgress = Math.round((activeCompletedCount / subject.topics.length) * 100);
       shell.dataset.theme = subject.theme;
       panel.id = "panel-" + subject.id;
       panel.setAttribute("aria-labelledby", "tab-" + subject.id);
@@ -4293,17 +6528,25 @@ footer span {
         '<div class="theme-world" aria-hidden="true"><span class="world-label">' + esc(subject.world.label) + '</span>' +
           '<div class="motif-cloud">' + subject.world.motifs.map((motif, index) => '<b class="motif motif-' + (index + 1) + '">' + esc(motif) + '</b>').join("") + '</div>' +
           '<i class="world-symbol symbol-one"></i><i class="world-symbol symbol-two"></i><i class="world-symbol symbol-three"></i></div>' +
-        '<header class="subject-hero">' +
+        '<header class="subject-hero" data-world-mark="' + esc(subject.mark) + '">' +
           '<div class="hero-index"><span class="hero-mark">' + esc(subject.mark) + '</span><span>' + esc(subject.volume) + '</span></div>' +
-          '<div class="hero-copy"><p class="overline">GUIA DE APRENDIZAGEM · ' + subjectNumber + '</p><h1>' + esc(subject.name) + '</h1><p class="tagline">' + esc(subject.tagline) + '</p></div>' +
-          '<div class="hero-memory"><span>guarde isto</span><strong>' + esc(subject.hook) + '</strong></div>' +
+          '<div class="hero-copy"><p class="overline">MUNDO ' + subjectNumber + ' · GUIA DE APRENDIZAGEM</p><h1>' + esc(subject.name) + '</h1><p class="tagline">' + esc(subject.tagline) + '</p></div>' +
+          '<div class="hero-memory"><span>guarde isto</span><strong>' + esc(subject.hook) + '</strong>' +
+            '<div class="hero-progress"><div><b>' + activeCompletedCount + '/' + subject.topics.length + '</b><span>' + (isComplete ? 'mundo dominado' : 'missões concluídas') + '</span></div><i><b style="width:' + subjectProgress + '%"></b></i>' +
+            '<a href="#topic-' + esc(subject.id + ":" + nextTopic.number) + '">' + (isComplete ? 'revisar o mundo' : 'próxima: ' + esc(nextTopic.title)) + '<span>→</span></a></div>' +
+          '</div>' +
         '</header>' +
         '<div class="route-strip" aria-label="Estratégia da matéria">' +
           '<span>COMO PENSAR</span>' +
           subject.route.map((step, index) => '<div><b>' + (index + 1) + '</b>' + esc(step) + (index < subject.route.length - 1 ? '<i>→</i>' : "") + '</div>').join("") +
         '</div>' +
         '<nav class="lesson-toc" aria-label="Unidades desta matéria">' +
-          subject.topics.map((topic) => '<a href="#topic-' + esc(subject.id + ":" + topic.number) + '"><span>' + esc(topic.number) + '</span>' + esc(topic.title) + '</a>').join("") +
+          subject.topics.map((topic, index) => {
+            const key = subject.id + ":" + topic.number;
+            const done = state.completedTopics.includes(key);
+            const next = !isComplete && index === nextTopicIndex;
+            return '<a class="' + (done ? 'is-cleared ' : '') + (next ? 'is-next' : '') + '" href="#topic-' + esc(key) + '"><span>' + (done ? '✓' : esc(topic.number)) + '</span><div><small>' + (done ? 'concluída' : next ? 'próxima missão' : 'missão ' + (index + 1)) + '</small><strong>' + esc(topic.title) + '</strong></div><i>→</i></a>';
+          }).join("") +
         '</nav>' +
         '<div class="content-grid">' +
           '<div class="topic-stack">' + subject.topics.map((topic, index) => topicCard(topic, index, subject)).join("") + '</div>' +
@@ -4313,17 +6556,9 @@ footer span {
               '<div><strong>' + activeCompletedCount + '</strong><span>de ' + subject.topics.length + ' concluídas</span></div>' +
               '<i><span style="width:' + ((activeCompletedCount / subject.topics.length) * 100) + '%"></span></i>' +
               '<p>Cada resumo concluído deixa esta trilha mais viva.</p></div>' +
-            quizCard(subject) +
             '<button class="complete-button ' + (isComplete ? "is-complete" : "") + '" id="completeButton"><span>' + (isComplete ? "✓" : "○") + '</span>' + (isComplete ? "Matéria revisada" : "Marcar como revisada") + '</button>' +
           '</aside>' +
-        '</div>';
-
-      panel.querySelectorAll("[data-quiz]").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.quizChoice = Number(button.dataset.quiz);
-          renderPanel();
-        });
-      });
+        '</div>' + questBoard(subject);
 
       panel.querySelectorAll("[data-topic]").forEach((button) => {
         button.addEventListener("click", () => toggleTopic(button.dataset.topic));
@@ -4333,16 +6568,30 @@ footer span {
         button.addEventListener("click", () => toggleMemory(button.dataset.memory));
       });
 
-      const retry = document.getElementById("retryQuiz");
-      if (retry) retry.addEventListener("click", () => {
-        state.quizChoice = null;
-        renderPanel();
+      panel.querySelectorAll("[data-quest-start], [data-quest-restart]").forEach(button => {
+        button.addEventListener("click", () => startQuest(button.dataset.questStart || button.dataset.questRestart));
+      });
+
+      panel.querySelectorAll("[data-quest-answer]").forEach(button => {
+        button.addEventListener("click", () => answerQuest(subject.id, Number(button.dataset.questAnswer)));
+      });
+
+      panel.querySelectorAll("[data-quest-next]").forEach(button => {
+        button.addEventListener("click", () => advanceQuest(button.dataset.questNext));
+      });
+
+      panel.querySelectorAll("[data-open-codex]").forEach(button => {
+        button.addEventListener("click", () => {
+          const codex = panel.querySelector(".quest-index");
+          if (codex) { codex.open = true; codex.scrollIntoView({behavior:"smooth",block:"nearest"}); }
+        });
       });
 
       document.getElementById("completeButton").addEventListener("click", toggleComplete);
       panel.style.animation = "none";
       void panel.offsetWidth;
       panel.style.animation = "";
+      requestAnimationFrame(() => { observeQuestGate(); typeNpcDialogue(); });
     }
 
     function render() {
@@ -4375,6 +6624,7 @@ footer span {
         localStorage.setItem("fernando-resumos-concluidos", JSON.stringify(state.completedTopics));
       } catch (_) {}
       render();
+      if (completing) celebrate("Mundo dominado · bônus de 200 XP");
     }
 
     function toggleTopic(topicKey) {
@@ -4393,6 +6643,16 @@ footer span {
         localStorage.setItem("fernando-resumos-concluidos", JSON.stringify(state.completedTopics));
       } catch (_) {}
       render();
+      if (willComplete) celebrate("Missão concluída · +100 XP");
+    }
+
+    function celebrate(message) {
+      celebrationLayer.innerHTML = '<div class="xp-toast"><span>◆</span><strong>' + esc(message) + '</strong></div>' +
+        Array.from({length: 18}, (_, index) => '<i class="confetti confetti-' + (index + 1) + '"></i>').join("");
+      celebrationLayer.classList.remove("is-celebrating");
+      void celebrationLayer.offsetWidth;
+      celebrationLayer.classList.add("is-celebrating");
+      window.setTimeout(() => celebrationLayer.classList.remove("is-celebrating"), 1700);
     }
 
     function toggleMemory(topicKey) {
